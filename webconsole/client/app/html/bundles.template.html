@@ -1,0 +1,13 @@
+  <div class="demo-grid-1 mdl-grid" style="border: 1px solid grey;">
+    <div class="mdl-cell mdl-cell--4-col"></div>
+    <div class="mdl-cell mdl-cell--4-col">
+      <table class="mdl-data-table mdl-data-table--selectable mdl-shadow--2dp" style="width: 100%;">
+        <tbody>
+          <tr *ngFor="#bundle of bundles">
+            <td class="mdl-data-table__cell--non-numeric">{{bundle.id}}</td><td>{{bundle.symbolicName}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="mdl-cell mdl-cell--4-col"></div>
+  </div>

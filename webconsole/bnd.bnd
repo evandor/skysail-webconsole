@@ -1,0 +1,43 @@
+Bundle-Name: SKYSAIL :: osgiagent
+
+Bundle-Version: 0.1.0.${tstamp}
+
+Bundle-ActivationPolicy: lazy
+
+Private-Package: \
+	io.skysail.osgiagent,\
+	io.skysail.osgiagent.entities,\
+	io.skysail.osgiagent.listener,\
+	io.skysail.osgiagent.events,\
+	io.skysail.osgiagent.server,\
+	io.skysail.osgiagent.server.handler
+
+
+Include-Resource: libs=libs,client
+
+-buildpath: \
+    libs/jackson-core-2.5.1.jar;version=file,\
+    libs/jackson-databind-2.5.1.jar;version=file,\
+    libs/nanohttpd-webserver-2.3.0.jar;version=file,\
+    ${osgi},\
+    ${fasterxml},\
+    lombok;version=1.16,\
+    slf4j.api;version=1.7
+    
+#    org.projectlombok__lombok;version='[1.16.8,2.0.0)',\
+#    libs/osgi.cmpn-6.0.0.jar;version=file,\
+
+Export-Package: \
+    com.fasterxml.jackson.*,\
+    fi.iki.elonen.*,\
+    org.osgi.service.component.*,\
+    org.osgi.util.promise.*,\
+    org.osgi.util.function.*
+    
+Import-Package: \
+    !javax.validation.*,\
+    !javax.xml.*,\
+	!org.codehaus.*,\
+	*
+	
+Bundle-Activator: io.skysail.osgiagent.AgentActivator

@@ -1,0 +1,7 @@
+osgi:\
+    osgi.core;version=${osgi.version},\
+    org.osgi.util.function;version=1.0,\
+    org.osgi.util.promise;version=1.0,\
+    osgi.annotation;version=${osgi.annotation.version},\
+    osgi.cmpn;version=${osgi.version},\
+    org.osgi.service.component;version=1.3
