@@ -1,37 +1,61 @@
-import {Component,OnInit} from 'angular2/core';
+import {Component, OnInit,ElementRef} from 'angular2/core';
 import {FORM_DIRECTIVES, FormBuilder, NgFor, NgFormModel} from 'angular2/common';
 
 import {BundlesService} from '../services/bundles.service';
+
+declare var jQuery:any;
 
 @Component({
     selector: 'bundles',
     directives: [FORM_DIRECTIVES, NgFor, NgFormModel],
     providers: [BundlesService],
-    templateUrl: 'app/html/bundles.template.html'
+    templateUrl: 'app/html/bundles.template.html',
+    styleUrls:  ['app/css/bundles.css']
 })
 export class BundlesComponent implements OnInit {
-    
-    bundles = []; 
 
-    constructor(private _bundleService: BundlesService) {
+    bundles = [];
+    
+
+    constructor(private _bundleService: BundlesService, private _elementRef: ElementRef) {
         console.log("in BundlesComponent constructor");
 
-        this._bundleService.getBundles()
-            .subscribe(res => this.bundles = res);
-            
+       // this._bundleService.getBundles()
+         //   .subscribe(res => this.bundles = res);
+
         console.log(this.bundles);
     }
-    
+
     onInit() {
     }
-    
-    ngOnInit(){
-        console.log("oninit bundlesservice called");
-         this._bundleService.getBundles()
-            .subscribe(res => this.bundles = res);
+
+    ngOnInit() {
+        console.log("oninit bundlesservice called!");
+       // this._bundleService.getBundles()
+         //   .subscribe(res => this.bundles = res);
         //.subscribe(res => console.log(res));
+
+        console.log(jQuery(this._elementRef.nativeElement).find('#example'));
+        jQuery(this._elementRef.nativeElement).find('#example').DataTable({
+            "ajax": 'http://localhost:2002/backend/bundles',
+            "columns": [
+              { "data": "id" },
+              { "data": "symbolicName" },
+              { "data": "version" },
+              { "data": "state" }
+            ]/*,
+            "columnDefs": [
+                {
+                    "render": function (data, type, row) {
+                        return '<a href="bundles/' + data + '">' + data + '</a>';
+                    },
+                    "targets": 0
+                }
+            ]*/
+
+        });
     }
 
-    
+
 
 }

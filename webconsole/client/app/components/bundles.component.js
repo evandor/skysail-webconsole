@@ -25,32 +25,50 @@ System.register(['angular2/core', 'angular2/common', '../services/bundles.servic
             }],
         execute: function() {
             BundlesComponent = (function () {
-                function BundlesComponent(_bundleService) {
-                    var _this = this;
+                function BundlesComponent(_bundleService, _elementRef) {
                     this._bundleService = _bundleService;
+                    this._elementRef = _elementRef;
                     this.bundles = [];
                     console.log("in BundlesComponent constructor");
-                    this._bundleService.getBundles()
-                        .subscribe(function (res) { return _this.bundles = res; });
+                    // this._bundleService.getBundles()
+                    //   .subscribe(res => this.bundles = res);
                     console.log(this.bundles);
                 }
                 BundlesComponent.prototype.onInit = function () {
                 };
                 BundlesComponent.prototype.ngOnInit = function () {
-                    var _this = this;
-                    console.log("oninit bundlesservice called");
-                    this._bundleService.getBundles()
-                        .subscribe(function (res) { return _this.bundles = res; });
+                    console.log("oninit bundlesservice called!");
+                    // this._bundleService.getBundles()
+                    //   .subscribe(res => this.bundles = res);
                     //.subscribe(res => console.log(res));
+                    console.log(jQuery(this._elementRef.nativeElement).find('#example'));
+                    jQuery(this._elementRef.nativeElement).find('#example').DataTable({
+                        "ajax": 'http://localhost:2002/backend/bundles',
+                        "columns": [
+                            { "data": "id" },
+                            { "data": "symbolicName" },
+                            { "data": "version" },
+                            { "data": "state" }
+                        ] /*,
+                        "columnDefs": [
+                            {
+                                "render": function (data, type, row) {
+                                    return '<a href="bundles/' + data + '">' + data + '</a>';
+                                },
+                                "targets": 0
+                            }
+                        ]*/
+                    });
                 };
                 BundlesComponent = __decorate([
                     core_1.Component({
                         selector: 'bundles',
                         directives: [common_1.FORM_DIRECTIVES, common_1.NgFor, common_1.NgFormModel],
                         providers: [bundles_service_1.BundlesService],
-                        templateUrl: 'app/html/bundles.template.html'
+                        templateUrl: 'app/html/bundles.template.html',
+                        styleUrls: ['app/css/bundles.css']
                     }), 
-                    __metadata('design:paramtypes', [bundles_service_1.BundlesService])
+                    __metadata('design:paramtypes', [bundles_service_1.BundlesService, core_1.ElementRef])
                 ], BundlesComponent);
                 return BundlesComponent;
             }());

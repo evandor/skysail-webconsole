@@ -24,7 +24,7 @@ public class BundlesHandler extends AbstractHttpHandler { // NOSONAR
     @Override
     String getResponse() throws JsonProcessingException {
         List<BundleDescriptor> bundleDescriptors = getBundleDescriptors();
-        return mapper.writeValueAsString(bundleDescriptors);
+        return "{ \"data\": " + mapper.writeValueAsString(bundleDescriptors) + "}";
     }
 
     public List<BundleDescriptor> getBundleDescriptors() {

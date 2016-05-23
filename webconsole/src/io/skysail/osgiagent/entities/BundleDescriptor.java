@@ -43,8 +43,8 @@ public class BundleDescriptor {
         }
     }
 
-    public String getName() {
-        return symbolicName + " (" + version + ") [#" + id + "]";
-    }
+//    public String getName() {
+//        return symbolicName + " (" + version + ") [#" + id + "]";
+//    }
 
 }
