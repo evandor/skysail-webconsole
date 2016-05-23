@@ -1,0 +1,4 @@
+testlibs:\
+	de.twentyeleven.skysail.org.hamcrest.hamcrest-all-osgi,\
+	com.springsource.org.junit,\
+	org.mockito.mockito-all;version=1.10
