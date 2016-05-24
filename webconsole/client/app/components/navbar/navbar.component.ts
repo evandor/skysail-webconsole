@@ -24,8 +24,8 @@ import {AuthService} from '../../services/auth.service';
         
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li class="active"><a [routerLink]="['Courses']">Courses <span class="sr-only">(current)</span></a></li>
               <li class="active"><a [routerLink]="['Bundles']">Bundles <span class="sr-only">(current)</span></a></li>
+              <li class="active"><a [routerLink]="['Services']">Services <span class="sr-only">(current)</span></a></li>
             </ul>
         </div>
       </div>

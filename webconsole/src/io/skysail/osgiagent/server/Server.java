@@ -12,6 +12,7 @@ import io.skysail.osgiagent.server.handler.BundleListenerHandler;
 import io.skysail.osgiagent.server.handler.BundlesHandler;
 import io.skysail.osgiagent.server.handler.FrameworkListenerHandler;
 import io.skysail.osgiagent.server.handler.ServiceListenerHandler;
+import io.skysail.osgiagent.server.handler.ServicesHandler;
 import io.skysail.osgiagent.server.handler.StaticFilesHandler;
 import lombok.extern.slf4j.Slf4j;
 
@@ -24,6 +25,8 @@ public class Server extends NanoHTTPD {
     private StaticFilesHandler staticFilesHandler;
 
     private BundlesHandler bundlesHandler;
+    private ServicesHandler servicesHandler;
+
     private ServiceListenerHandler serviceListenerHandler;
     private BundleListenerHandler bundleListenerHandler;
     private FrameworkListenerHandler frameworkListenerHandler;
@@ -37,6 +40,8 @@ public class Server extends NanoHTTPD {
         frameworkListener = new AgentFrameworkListener(bundleContext);
 
         bundlesHandler = new BundlesHandler(bundleContext);
+        servicesHandler = new ServicesHandler(bundleContext);
+
         bundleListenerHandler = new BundleListenerHandler(bundleListener);
         serviceListenerHandler = new ServiceListenerHandler(serviceListener);
         frameworkListenerHandler = new FrameworkListenerHandler(frameworkListener);
@@ -49,6 +54,9 @@ public class Server extends NanoHTTPD {
         log.info("processing uri '{}'", session.getUri());
         if ("/backend/bundles".equals(session.getUri())) {
             return bundlesHandler.handle(session);
+        }
+        if ("/backend/services".equals(session.getUri())) {
+            return servicesHandler.handle(session);
         }
         if ("/backend/bundlelistener".equals(session.getUri())) {
             return bundleListenerHandler.handle(session);
@@ -64,8 +72,6 @@ public class Server extends NanoHTTPD {
             res.addHeader("Location", "/index.html");
             return res;
         }
-        //if (session.getUri().startsWith("")) {
         return staticFilesHandler.handle(session);
-        //return newFixedLengthResponse("no route matched, try \"/index.html\", or \"/bundles\"...");
     }
 }
