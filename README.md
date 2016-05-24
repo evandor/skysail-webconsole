@@ -13,3 +13,14 @@ just started, needs serious polishing, internally and visually... - just a prove
 # Version 
 
 0.1.1
+
+# Limitations
+
+currently, the internal server will always start on port 2002.
+
+# Features
+
+* Bundles overview
+* Bundle details
+* Services overview
+
