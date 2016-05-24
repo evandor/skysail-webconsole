@@ -6,6 +6,12 @@ import org.osgi.framework.BundleContext;
 import io.skysail.osgiagent.server.Server;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * Using an activator so that we don't depend on any DS implementation in the
+ * runtime framework.
+ *
+ * The activator starts the server in a new thread.
+ */
 @Slf4j
 public class AgentActivator implements BundleActivator{
 

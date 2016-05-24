@@ -9,6 +9,7 @@ import org.osgi.framework.BundleContext;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
+import fi.iki.elonen.NanoHTTPD.IHTTPSession;
 import io.skysail.osgiagent.entities.BundleDescriptor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -22,7 +23,7 @@ public class BundlesHandler extends AbstractHttpHandler { // NOSONAR
     }
 
     @Override
-    String getResponse() throws JsonProcessingException {
+    String getResponse(IHTTPSession session) throws JsonProcessingException {
         List<BundleDescriptor> bundleDescriptors = getBundleDescriptors();
         return "{ \"data\": " + mapper.writeValueAsString(bundleDescriptors) + "}";
     }

@@ -11,33 +11,33 @@ import fi.iki.elonen.NanoHTTPD.IHTTPSession;
 import fi.iki.elonen.NanoHTTPD.Method;
 import fi.iki.elonen.NanoHTTPD.Response;
 import fi.iki.elonen.NanoHTTPD.Response.Status;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public abstract class AbstractHttpHandler {
 
     protected ObjectMapper mapper = new ObjectMapper();
 
-    abstract String getResponse() throws JsonProcessingException;
+    abstract String getResponse(IHTTPSession session) throws JsonProcessingException;
 
     String getMimeType() {
         return "application/json";
     }
-
 
     public Response handle(IHTTPSession session) {
 
         String cors = "*";
         Response r;
         if (cors != null && Method.OPTIONS.equals(session.getMethod())) {
-            //r = new NanoHTTPD.Response(Response.Status.OK, NanoHTTPD.MIME_PLAINTEXT, null, 0);
             r = fi.iki.elonen.NanoHTTPD.newFixedLengthResponse(Status.OK, "text/plain", null, 0);
         } else {
 
             String msg;
             try {
-                msg = getResponse();
+                msg = getResponse(session);
                 r =  fi.iki.elonen.NanoHTTPD.newFixedLengthResponse(Status.OK, NanoHTTPD.MIME_HTML, msg);
             } catch (IOException e) {
-                e.printStackTrace();
+                log.error(e.getMessage(), e);
                 return fi.iki.elonen.NanoHTTPD.newFixedLengthResponse(Status.INTERNAL_ERROR, NanoHTTPD.MIME_HTML,
                         e.getMessage());
             }
@@ -58,4 +58,6 @@ public abstract class AbstractHttpHandler {
 
         return resp;
     }
+
+
 }

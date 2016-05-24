@@ -48,7 +48,7 @@ export class BundlesComponent implements OnInit {
             "columnDefs": [
                 {
                     "render": function (data, type, row) {
-                        return '<a href="bundles/' + data + '">' + data + '</a>';
+                        return '<a href="bundles/' + row['id'] + '">' + data + '</a>';
                     },
                     "targets": 1
                 }

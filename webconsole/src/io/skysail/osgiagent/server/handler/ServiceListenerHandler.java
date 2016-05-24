@@ -2,6 +2,7 @@ package io.skysail.osgiagent.server.handler;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
+import fi.iki.elonen.NanoHTTPD.IHTTPSession;
 import io.skysail.osgiagent.listener.AgentServiceListener;
 
 public class ServiceListenerHandler extends AbstractHttpHandler {
@@ -13,7 +14,7 @@ public class ServiceListenerHandler extends AbstractHttpHandler {
     }
 
     @Override
-    String getResponse() throws JsonProcessingException {
+    String getResponse(IHTTPSession session) throws JsonProcessingException {
         return mapper.writeValueAsString(serviceListener.getServiceEvents());
 
     }

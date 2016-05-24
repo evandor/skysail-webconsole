@@ -8,6 +8,7 @@ import fi.iki.elonen.NanoHTTPD;
 import io.skysail.osgiagent.listener.AgentBundleListener;
 import io.skysail.osgiagent.listener.AgentFrameworkListener;
 import io.skysail.osgiagent.listener.AgentServiceListener;
+import io.skysail.osgiagent.server.handler.BundleHandler;
 import io.skysail.osgiagent.server.handler.BundleListenerHandler;
 import io.skysail.osgiagent.server.handler.BundlesHandler;
 import io.skysail.osgiagent.server.handler.FrameworkListenerHandler;
@@ -30,6 +31,7 @@ public class Server extends NanoHTTPD {
     private ServiceListenerHandler serviceListenerHandler;
     private BundleListenerHandler bundleListenerHandler;
     private FrameworkListenerHandler frameworkListenerHandler;
+	private BundleHandler bundleHandler;
 
     public Server(BundleContext bundleContext) throws IOException {
         super(2002);
@@ -40,6 +42,7 @@ public class Server extends NanoHTTPD {
         frameworkListener = new AgentFrameworkListener(bundleContext);
 
         bundlesHandler = new BundlesHandler(bundleContext);
+        bundleHandler = new BundleHandler(bundleContext);
         servicesHandler = new ServicesHandler(bundleContext);
 
         bundleListenerHandler = new BundleListenerHandler(bundleListener);
@@ -49,11 +52,18 @@ public class Server extends NanoHTTPD {
 
     }
 
+    /**
+     * TODO: replace this ugliness with AppNanolets once the next nanohttpd
+     * release is out
+     */
     @Override
     public Response serve(IHTTPSession session) {
         log.info("processing uri '{}'", session.getUri());
         if ("/backend/bundles".equals(session.getUri())) {
             return bundlesHandler.handle(session);
+        }
+        if (session.getUri().startsWith("/backend/bundles/")) {
+            return bundleHandler.handle(session);
         }
         if ("/backend/services".equals(session.getUri())) {
             return servicesHandler.handle(session);

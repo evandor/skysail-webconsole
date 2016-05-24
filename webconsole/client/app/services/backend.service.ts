@@ -2,6 +2,7 @@ import {Injectable} from 'angular2/core'
 import {Http, Headers, RequestOptions} from 'angular2/http'
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import {Bundle} from '../domain/bundle';
 
 @Injectable()
 export class BackendServices {
@@ -15,18 +16,14 @@ export class BackendServices {
     }
     
     get(path){
-        
-        /*var headers = new Headers({
-            "access-control-request-method": "POST"
-        });
-
-        var options = new RequestOptions({
-            headers: headers
-        });*/
-        
         var headers = new Headers();
-        headers.append('Authorization', 'Basic YWRtaW46c2t5c2FpbA==');
+        //headers.append('Authorization', 'Basic YWRtaW46c2t5c2FpbA==');
         return this._http.get(this._baseUrl + path, { headers: headers })
+            .map(res => res.json());
+    }
+    
+    getBundle(id) : Observable<Bundle> {
+        return this._http.get(this._baseUrl + 'backend/bundles/' + id)
             .map(res => res.json());
     }
 

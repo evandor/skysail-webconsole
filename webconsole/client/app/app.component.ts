@@ -3,13 +3,16 @@ import {RouteConfig, RouterOutlet, RouterLink} from 'angular2/router';
 
 import {FooterComponent} from './components/footer.component';
 import {BundlesComponent} from './components/bundles.component';
+import {BundleComponent} from './components/bundle.component';
 import {ServicesComponent} from './components/services.component';
 
 import {Navbar} from './components/navbar/navbar.component';
 
 @RouteConfig([
-    { path: '/', as: 'Bundles', component: BundlesComponent },
-    { path: '/services', as: 'Services', component: ServicesComponent }
+    { path: '/',            as: 'Bundles',  component: BundlesComponent },
+    { path: '/bundles',     as: 'Bundles',  component: BundlesComponent },
+    { path: '/bundles/:id', as: 'Bundle',   component: BundleComponent },
+    { path: '/services',    as: 'Services', component: ServicesComponent }
 ])
 @Component({
     selector: 'my-app',

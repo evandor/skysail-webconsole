@@ -31,16 +31,13 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map'], fun
                     this._baseUrl = baseUrl;
                 };
                 BackendServices.prototype.get = function (path) {
-                    /*var headers = new Headers({
-                        "access-control-request-method": "POST"
-                    });
-            
-                    var options = new RequestOptions({
-                        headers: headers
-                    });*/
                     var headers = new http_1.Headers();
-                    headers.append('Authorization', 'Basic YWRtaW46c2t5c2FpbA==');
+                    //headers.append('Authorization', 'Basic YWRtaW46c2t5c2FpbA==');
                     return this._http.get(this._baseUrl + path, { headers: headers })
+                        .map(function (res) { return res.json(); });
+                };
+                BackendServices.prototype.getBundle = function (id) {
+                    return this._http.get(this._baseUrl + 'backend/bundles/' + id)
                         .map(function (res) { return res.json(); });
                 };
                 BackendServices = __decorate([

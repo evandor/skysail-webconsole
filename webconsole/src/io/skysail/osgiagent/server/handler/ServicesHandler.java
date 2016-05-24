@@ -11,6 +11,7 @@ import org.osgi.framework.ServiceReference;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
+import fi.iki.elonen.NanoHTTPD.IHTTPSession;
 import io.skysail.osgiagent.entities.ServiceDescriptor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -24,7 +25,7 @@ public class ServicesHandler extends AbstractHttpHandler { // NOSONAR
     }
 
     @Override
-    String getResponse() throws JsonProcessingException {
+    String getResponse(IHTTPSession session) throws JsonProcessingException {
         List<ServiceDescriptor> descriptors = getServiceDescriptors();
         return "{ \"data\": " + mapper.writeValueAsString(descriptors) + "}";
     }
