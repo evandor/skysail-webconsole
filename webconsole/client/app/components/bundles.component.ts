@@ -10,7 +10,7 @@ declare var jQuery:any;
     directives: [FORM_DIRECTIVES, NgFor, NgFormModel],
     providers: [BundlesService],
     templateUrl: 'app/html/bundles.template.html',
-    styleUrls:  ['app/css/bundles.css']
+    styleUrls:  ['app/js/datatables.css']
 })
 export class BundlesComponent implements OnInit {
 
@@ -37,21 +37,22 @@ export class BundlesComponent implements OnInit {
 
         console.log(jQuery(this._elementRef.nativeElement).find('#example'));
         jQuery(this._elementRef.nativeElement).find('#example').DataTable({
+            "lengthMenu": [[25, 50, -1], [25, 50, "All"]],
             "ajax": 'http://localhost:2002/backend/bundles',
             "columns": [
               { "data": "id" },
               { "data": "symbolicName" },
               { "data": "version" },
               { "data": "state" }
-            ]/*,
+            ],
             "columnDefs": [
                 {
                     "render": function (data, type, row) {
                         return '<a href="bundles/' + data + '">' + data + '</a>';
                     },
-                    "targets": 0
+                    "targets": 1
                 }
-            ]*/
+            ]
 
         });
     }

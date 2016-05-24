@@ -24,7 +24,7 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 FooterComponent = __decorate([
                     core_1.Component({
                         selector: 'footer',
-                        template: '&copy; 2016 graefundpartner'
+                        template: '&copy; 2016'
                     }), 
                     __metadata('design:paramtypes', [])
                 ], FooterComponent);
