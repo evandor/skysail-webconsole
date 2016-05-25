@@ -1,4 +1,4 @@
-Bundle-Name: SKYSAIL :: osgiagent
+Bundle-Name: SKYSAIL :: webconsole
 
 Bundle-Version: 0.1.1.${tstamp}
 

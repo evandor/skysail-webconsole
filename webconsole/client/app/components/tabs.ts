@@ -1,7 +1,7 @@
 import { Component } from 'angular2/core';
 import {NgFor} from 'angular2/common';
 import { Tab } from './tab';
-
+// http://plnkr.co/edit/1no1sjZ9Lkv4glsUFnnU?p=preview
 @Component({
     selector: 'tabs',
     template: `
