@@ -1,4 +1,4 @@
-System.register(['angular2/core'], function(exports_1, context_1) {
+System.register(['angular2/core', './tabs'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,28 +10,38 @@ System.register(['angular2/core'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
-    var FooterComponent;
+    var core_1, tabs_1;
+    var Tab;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (tabs_1_1) {
+                tabs_1 = tabs_1_1;
             }],
         execute: function() {
-            FooterComponent = (function () {
-                function FooterComponent() {
+            Tab = (function () {
+                function Tab(tabs) {
+                    this.active = this.active || false;
+                    tabs.addTab(this);
                 }
-                FooterComponent = __decorate([
+                Tab = __decorate([
                     core_1.Component({
-                        selector: 'footer',
-                        template: ''
+                        selector: 'tab',
+                        inputs: [
+                            'title:tabTitle',
+                            'active'
+                        ],
+                        styles: ["\n    .pane{\n      padding: 1em;\n    }\n  "],
+                        template: "\n    <div [hidden]=\"!active\" class=\"pane\">\n      <ng-content></ng-content>\n    </div>\n  "
                     }), 
-                    __metadata('design:paramtypes', [])
-                ], FooterComponent);
-                return FooterComponent;
+                    __metadata('design:paramtypes', [tabs_1.Tabs])
+                ], Tab);
+                return Tab;
             }());
-            exports_1("FooterComponent", FooterComponent);
+            exports_1("Tab", Tab);
         }
     }
 });
-//# sourceMappingURL=footer.component.js.map
+//# sourceMappingURL=tab.js.map

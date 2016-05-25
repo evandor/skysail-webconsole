@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/common', 'angular2/router', 'angular2/http', '../services/backend.service'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/common', 'angular2/router', 'angular2/http', '../services/backend.service', '../components/tabs', '../components/tab'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', 'angular
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, router_1, http_1, backend_service_1;
+    var core_1, common_1, router_1, http_1, backend_service_1, tabs_1, tab_1;
     var BundleComponent;
     return {
         setters:[
@@ -28,6 +28,12 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', 'angular
             },
             function (backend_service_1_1) {
                 backend_service_1 = backend_service_1_1;
+            },
+            function (tabs_1_1) {
+                tabs_1 = tabs_1_1;
+            },
+            function (tab_1_1) {
+                tab_1 = tab_1_1;
             }],
         execute: function() {
             BundleComponent = (function () {
@@ -52,10 +58,9 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', 'angular
                 BundleComponent = __decorate([
                     core_1.Component({
                         selector: 'bundle',
-                        directives: [common_1.FORM_DIRECTIVES, common_1.NgFor, common_1.NgFormModel],
+                        directives: [common_1.FORM_DIRECTIVES, common_1.NgFor, common_1.NgFormModel, tabs_1.Tabs, tab_1.Tab],
                         providers: [backend_service_1.BackendServices, http_1.HTTP_PROVIDERS],
                         templateUrl: 'app/html/bundle.template.html',
-                        styleUrls: ['app/js/datatables.css']
                     }), 
                     __metadata('design:paramtypes', [router_1.RouteParams, backend_service_1.BackendServices])
                 ], BundleComponent);

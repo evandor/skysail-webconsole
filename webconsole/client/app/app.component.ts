@@ -9,8 +9,7 @@ import {ServicesComponent} from './components/services.component';
 import {Navbar} from './components/navbar/navbar.component';
 
 @RouteConfig([
-    { path: '/',            as: 'Bundles',  component: BundlesComponent },
-    { path: '/bundles',     as: 'Bundles',  component: BundlesComponent },
+    { path: '/bundles',     as: 'Bundles',  component: BundlesComponent, useAsDefault: true },
     { path: '/bundles/:id', as: 'Bundle',   component: BundleComponent },
     { path: '/services',    as: 'Services', component: ServicesComponent }
 ])

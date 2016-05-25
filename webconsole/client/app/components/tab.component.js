@@ -11,27 +11,37 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var FooterComponent;
+    var TabComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            FooterComponent = (function () {
-                function FooterComponent() {
+            TabComponent = (function () {
+                function TabComponent() {
+                    this.active = false;
                 }
-                FooterComponent = __decorate([
+                __decorate([
+                    core_1.Input('tabTitle'), 
+                    __metadata('design:type', String)
+                ], TabComponent.prototype, "title", void 0);
+                __decorate([
+                    core_1.Input(), 
+                    __metadata('design:type', Object)
+                ], TabComponent.prototype, "active", void 0);
+                TabComponent = __decorate([
                     core_1.Component({
-                        selector: 'footer',
-                        template: ''
+                        selector: 'tabNotWorking',
+                        styles: ["\n    .pane{\n      padding: 1em;\n    }\n  "],
+                        template: "\n    <div [hidden]=\"!active\" class=\"pane\">\n      <ng-content></ng-content>\n    </div>\n  "
                     }), 
                     __metadata('design:paramtypes', [])
-                ], FooterComponent);
-                return FooterComponent;
+                ], TabComponent);
+                return TabComponent;
             }());
-            exports_1("FooterComponent", FooterComponent);
+            exports_1("TabComponent", TabComponent);
         }
     }
 });
-//# sourceMappingURL=footer.component.js.map
+//# sourceMappingURL=tab.component.js.map

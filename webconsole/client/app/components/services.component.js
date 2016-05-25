@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/common'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/common', '../services/backend.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/common'], function(exports_1, contex
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1;
+    var core_1, common_1, backend_service_1;
     var ServicesComponent;
     return {
         setters:[
@@ -19,47 +19,34 @@ System.register(['angular2/core', 'angular2/common'], function(exports_1, contex
             },
             function (common_1_1) {
                 common_1 = common_1_1;
+            },
+            function (backend_service_1_1) {
+                backend_service_1 = backend_service_1_1;
             }],
         execute: function() {
             ServicesComponent = (function () {
-                function ServicesComponent(_elementRef) {
+                function ServicesComponent(_elementRef, _backend) {
                     this._elementRef = _elementRef;
-                    this.bundles = [];
-                    console.log("in ServicesComponent constructor");
+                    this._backend = _backend;
+                    _backend.setBaseUrl('http://localhost:2002/');
                 }
-                ServicesComponent.prototype.onInit = function () {
-                };
                 ServicesComponent.prototype.ngOnInit = function () {
+                    var _this = this;
                     console.log("oninit services called!");
-                    console.log(jQuery(this._elementRef.nativeElement).find('#example'));
-                    jQuery(this._elementRef.nativeElement).find('#services').DataTable({
-                        "lengthMenu": [[25, 50, -1], [25, 50, "All"]],
-                        "ajax": 'http://localhost:2002/backend/services',
-                        "columns": [
-                            { "data": "id" },
-                            { "data": "objectClass" },
-                            { "data": "pid" },
-                            { "data": "ranking" }
-                        ],
-                        "columnDefs": [
-                            {
-                                "render": function (data, type, row) {
-                                    return '<a href="bundles/' + data + '">' + data + '</a>';
-                                },
-                                "targets": 1
-                            }
-                        ]
+                    this._backend.getServices()
+                        .subscribe(function (res) {
+                        _this.services = res;
+                        console.log(res);
                     });
                 };
                 ServicesComponent = __decorate([
                     core_1.Component({
                         selector: 'services',
                         directives: [common_1.FORM_DIRECTIVES, common_1.NgFor, common_1.NgFormModel],
-                        //providers: [BundlesService],
+                        providers: [backend_service_1.BackendServices],
                         templateUrl: 'app/html/services.template.html',
-                        styleUrls: ['app/js/datatables.css']
                     }), 
-                    __metadata('design:paramtypes', [core_1.ElementRef])
+                    __metadata('design:paramtypes', [core_1.ElementRef, backend_service_1.BackendServices])
                 ], ServicesComponent);
                 return ServicesComponent;
             }());

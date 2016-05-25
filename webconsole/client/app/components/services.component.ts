@@ -1,5 +1,7 @@
-import {Component, OnInit,ElementRef} from 'angular2/core';
+import {Component, OnInit, ElementRef} from 'angular2/core';
 import {FORM_DIRECTIVES, FormBuilder, NgFor, NgFormModel} from 'angular2/common';
+import {BackendServices} from '../services/backend.service';
+import {Service} from '../domain/service';
 
 //import {BundlesService} from '../services/bundles.service';
 
@@ -8,46 +10,25 @@ declare var jQuery:any;
 @Component({
     selector: 'services',
     directives: [FORM_DIRECTIVES, NgFor, NgFormModel],
-    //providers: [BundlesService],
+    providers: [BackendServices],
     templateUrl: 'app/html/services.template.html',
-    styleUrls:  ['app/js/datatables.css']
+    //styleUrls:  ['app/js/datatables.css']
 })
 export class ServicesComponent implements OnInit {
 
-    bundles = [];
-    
+    services: Service[];
 
-    constructor(private _elementRef: ElementRef) {
-        console.log("in ServicesComponent constructor");
-    }
-
-    onInit() {
+    constructor(private _elementRef: ElementRef, private _backend: BackendServices) {
+        _backend.setBaseUrl('http://localhost:2002/');
     }
 
     ngOnInit() {
         console.log("oninit services called!");
-        console.log(jQuery(this._elementRef.nativeElement).find('#example'));
-        jQuery(this._elementRef.nativeElement).find('#services').DataTable({
-            "lengthMenu": [[25, 50, -1], [25, 50, "All"]],
-            "ajax": 'http://localhost:2002/backend/services',
-            "columns": [
-              { "data": "id" },
-              { "data": "objectClass" },
-              { "data": "pid" },
-              { "data": "ranking" }
-            ],
-            "columnDefs": [
-                {
-                    "render": function (data, type, row) {
-                        return '<a href="bundles/' + data + '">' + data + '</a>';
-                    },
-                    "targets": 1
-                }
-            ]
-
-        });
+        this._backend.getServices()
+            .subscribe(res => {
+                this.services = res;
+                console.log(res);
+            });
     }
-
-
 
 }

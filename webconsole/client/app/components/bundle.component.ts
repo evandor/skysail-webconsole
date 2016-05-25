@@ -5,13 +5,15 @@ import {HTTP_PROVIDERS} from 'angular2/http';
 
 import {BackendServices} from '../services/backend.service';
 import {Bundle} from '../domain/bundle';
+import {Tabs} from '../components/tabs';
+import {Tab} from '../components/tab';
 
 @Component({
     selector: 'bundle',
-    directives: [FORM_DIRECTIVES, NgFor, NgFormModel],
+    directives: [FORM_DIRECTIVES, NgFor, NgFormModel,Tabs, Tab],
     providers: [BackendServices, HTTP_PROVIDERS],
     templateUrl: 'app/html/bundle.template.html',
-    styleUrls:  ['app/js/datatables.css']
+    //styleUrls:  ['app/js/datatables.css']
 })
 export class BundleComponent implements OnInit {
 

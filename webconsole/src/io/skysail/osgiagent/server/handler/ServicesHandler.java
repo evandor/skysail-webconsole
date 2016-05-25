@@ -27,7 +27,7 @@ public class ServicesHandler extends AbstractHttpHandler { // NOSONAR
     @Override
     String getResponse(IHTTPSession session) throws JsonProcessingException {
         List<ServiceDescriptor> descriptors = getServiceDescriptors();
-        return "{ \"data\": " + mapper.writeValueAsString(descriptors) + "}";
+        return mapper.writeValueAsString(descriptors);
     }
 
     public List<ServiceDescriptor> getServiceDescriptors() {

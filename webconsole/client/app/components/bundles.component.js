@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/common', '../services/bundles.service'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/common', "angular2/router", '../services/backend.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/common', '../services/bundles.servic
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, bundles_service_1;
+    var core_1, common_1, router_1, backend_service_1;
     var BundlesComponent;
     return {
         setters:[
@@ -20,56 +20,36 @@ System.register(['angular2/core', 'angular2/common', '../services/bundles.servic
             function (common_1_1) {
                 common_1 = common_1_1;
             },
-            function (bundles_service_1_1) {
-                bundles_service_1 = bundles_service_1_1;
+            function (router_1_1) {
+                router_1 = router_1_1;
+            },
+            function (backend_service_1_1) {
+                backend_service_1 = backend_service_1_1;
             }],
         execute: function() {
             BundlesComponent = (function () {
-                function BundlesComponent(_bundleService, _elementRef) {
-                    this._bundleService = _bundleService;
-                    this._elementRef = _elementRef;
-                    this.bundles = [];
-                    console.log("in BundlesComponent constructor");
-                    // this._bundleService.getBundles()
-                    //   .subscribe(res => this.bundles = res);
-                    console.log(this.bundles);
+                function BundlesComponent(router, _backend) {
+                    this.router = router;
+                    this._backend = _backend;
+                    _backend.setBaseUrl('http://localhost:2002/');
                 }
-                BundlesComponent.prototype.onInit = function () {
+                BundlesComponent.prototype.onSelect = function (bundle) {
+                    this.router.navigate(['Bundle', { id: bundle.id }]);
                 };
                 BundlesComponent.prototype.ngOnInit = function () {
+                    var _this = this;
                     console.log("oninit bundlesservice called!");
-                    // this._bundleService.getBundles()
-                    //   .subscribe(res => this.bundles = res);
-                    //.subscribe(res => console.log(res));
-                    console.log(jQuery(this._elementRef.nativeElement).find('#example'));
-                    jQuery(this._elementRef.nativeElement).find('#example').DataTable({
-                        "lengthMenu": [[25, 50, -1], [25, 50, "All"]],
-                        "ajax": 'http://localhost:2002/backend/bundles',
-                        "columns": [
-                            { "data": "id" },
-                            { "data": "symbolicName" },
-                            { "data": "version" },
-                            { "data": "state" }
-                        ],
-                        "columnDefs": [
-                            {
-                                "render": function (data, type, row) {
-                                    return '<a href="bundles/' + row['id'] + '">' + data + '</a>';
-                                },
-                                "targets": 1
-                            }
-                        ]
-                    });
+                    this._backend.getBundles()
+                        .subscribe(function (res) { return _this.bundles = res; });
                 };
                 BundlesComponent = __decorate([
                     core_1.Component({
                         selector: 'bundles',
-                        directives: [common_1.FORM_DIRECTIVES, common_1.NgFor, common_1.NgFormModel],
-                        providers: [bundles_service_1.BundlesService],
+                        directives: [common_1.FORM_DIRECTIVES, router_1.ROUTER_DIRECTIVES, common_1.NgFor, common_1.NgFormModel],
+                        providers: [backend_service_1.BackendServices],
                         templateUrl: 'app/html/bundles.template.html',
-                        styleUrls: ['app/js/datatables.css']
                     }), 
-                    __metadata('design:paramtypes', [bundles_service_1.BundlesService, core_1.ElementRef])
+                    __metadata('design:paramtypes', [router_1.Router, backend_service_1.BackendServices])
                 ], BundlesComponent);
                 return BundlesComponent;
             }());

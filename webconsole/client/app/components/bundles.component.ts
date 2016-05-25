@@ -1,60 +1,35 @@
 import {Component, OnInit,ElementRef} from 'angular2/core';
 import {FORM_DIRECTIVES, FormBuilder, NgFor, NgFormModel} from 'angular2/common';
+import {ROUTER_DIRECTIVES, RouteParams, Router} from "angular2/router";
 
-import {BundlesService} from '../services/bundles.service';
+import {BackendServices} from '../services/backend.service';
+import {Bundle} from '../domain/bundle';
 
 declare var jQuery:any;
 
 @Component({
     selector: 'bundles',
-    directives: [FORM_DIRECTIVES, NgFor, NgFormModel],
-    providers: [BundlesService],
+    directives: [FORM_DIRECTIVES, ROUTER_DIRECTIVES, NgFor, NgFormModel],
+    providers: [BackendServices],
     templateUrl: 'app/html/bundles.template.html',
-    styleUrls:  ['app/js/datatables.css']
+    //styleUrls:  ['app/js/datatables.css']
 })
 export class BundlesComponent implements OnInit {
 
-    bundles = [];
-    
+    bundles: Bundle[];
 
-    constructor(private _bundleService: BundlesService, private _elementRef: ElementRef) {
-        console.log("in BundlesComponent constructor");
-
-       // this._bundleService.getBundles()
-         //   .subscribe(res => this.bundles = res);
-
-        console.log(this.bundles);
+    constructor(private router: Router, private _backend: BackendServices) {
+        _backend.setBaseUrl('http://localhost:2002/');
     }
 
-    onInit() {
+    onSelect(bundle: Bundle) {
+        this.router.navigate( ['Bundle', { id: bundle.id }]  );
     }
 
     ngOnInit() {
         console.log("oninit bundlesservice called!");
-       // this._bundleService.getBundles()
-         //   .subscribe(res => this.bundles = res);
-        //.subscribe(res => console.log(res));
-
-        console.log(jQuery(this._elementRef.nativeElement).find('#example'));
-        jQuery(this._elementRef.nativeElement).find('#example').DataTable({
-            "lengthMenu": [[25, 50, -1], [25, 50, "All"]],
-            "ajax": 'http://localhost:2002/backend/bundles',
-            "columns": [
-              { "data": "id" },
-              { "data": "symbolicName" },
-              { "data": "version" },
-              { "data": "state" }
-            ],
-            "columnDefs": [
-                {
-                    "render": function (data, type, row) {
-                        return '<a href="bundles/' + row['id'] + '">' + data + '</a>';
-                    },
-                    "targets": 1
-                }
-            ]
-
-        });
+        this._backend.getBundles()
+            .subscribe(res => this.bundles = res);
     }
 
 

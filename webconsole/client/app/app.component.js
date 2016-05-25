@@ -41,8 +41,7 @@ System.register(['angular2/core', 'angular2/router', './components/footer.compon
                 }
                 AppComponent = __decorate([
                     router_1.RouteConfig([
-                        { path: '/', as: 'Bundles', component: bundles_component_1.BundlesComponent },
-                        { path: '/bundles', as: 'Bundles', component: bundles_component_1.BundlesComponent },
+                        { path: '/bundles', as: 'Bundles', component: bundles_component_1.BundlesComponent, useAsDefault: true },
                         { path: '/bundles/:id', as: 'Bundle', component: bundle_component_1.BundleComponent },
                         { path: '/services', as: 'Services', component: services_component_1.ServicesComponent }
                     ]),
