@@ -1,6 +1,6 @@
 Bundle-Name: SKYSAIL :: webconsole
 
-Bundle-Version: 0.1.1.${tstamp}
+Bundle-Version: 0.1.2.${tstamp}
 
 Bundle-Description: An OSGi webconsole to inspect a running framework
 
