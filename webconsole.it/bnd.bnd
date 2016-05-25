@@ -4,7 +4,9 @@ Bundle-Version: 0.1.1.${tstamp}
 
 Bundle-Description: webconsole integration tests
 
-Private-Package: testit
+Private-Package: \
+	testit,\
+	io.skysail.webconsole.it
 
 #Test-Cases: ${classes;CONCRETE;EXTENDS;io.skysail.client.testsupport.BrowserTests}
 Test-Cases: ${classes;CONCRETE;ANNOTATED;org.junit.runner.RunWith}

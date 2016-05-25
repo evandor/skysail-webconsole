@@ -4,15 +4,15 @@ Bundle-Version: 0.1.2.${tstamp}
 
 Bundle-Description: An OSGi webconsole to inspect a running framework
 
-Bundle-Activator: io.skysail.osgiagent.AgentActivator
+Bundle-Activator: io.skysail.webconsole.AgentActivator
 
 Private-Package: \
-	io.skysail.osgiagent,\
-	io.skysail.osgiagent.entities,\
-	io.skysail.osgiagent.listener,\
-	io.skysail.osgiagent.events,\
-	io.skysail.osgiagent.server,\
-	io.skysail.osgiagent.server.handler
+	io.skysail.webconsole,\
+	io.skysail.webconsole.entities,\
+	io.skysail.webconsole.listener,\
+	io.skysail.webconsole.events,\
+	io.skysail.webconsole.server,\
+	io.skysail.webconsole.server.handler
 
 
 Include-Resource: libs=libs,client
@@ -26,7 +26,8 @@ Include-Resource: libs=libs,client
     ${fasterxml},\
     lombok;version=1.16,\
     slf4j.api;version=1.7
-    
+
+#    ../webconsole.client/generated/webconsole.client.jar;version=file,\    
 #    libs/osgi.cmpn-6.0.0.jar;version=file,\
 
 Export-Package: \

@@ -1,0 +1,17 @@
+<h1>Bundles</h1>
+<table class="table" width='100%'>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>SymbolicName</th>
+      <th>Version</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tr *ngFor="#bundle of bundles">
+    <td>{{bundle.id}}</td>
+    <td (click)="onSelect(bundle)" style="cursor: pointer;">{{bundle.symbolicName}}</td>
+    <td>{{bundle.version}}</td>
+    <td>{{bundle.state}}</td>
+  </tr>
+</table>

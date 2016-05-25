@@ -1,0 +1,17 @@
+<h1>Services</h1>
+<table class="table" width='90%'>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>objectClass</th>
+      <th>PID</th>
+      <th>Ranking</th>
+    </tr>
+  </thead>
+  <tr *ngFor="#service of services">
+    <td>{{service.id}}</td>
+    <td>{{service.objectClass}}</td>
+    <td>{{service.pid}}</td>
+    <td>{{service.ranking}}</td>
+  </tr>
+</table>
