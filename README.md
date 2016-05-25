@@ -14,9 +14,14 @@ just started, needs serious polishing, internally and visually... - just a prove
 
 0.1.1
 
+# Screenshot
+
+please check out the wiki for a current screenshot.
+
 # Limitations
 
-currently, the internal server will always start on port 2002.
+* currently, the internal server will always start on port 2002.
+* please be aware that there is no security concept applied yet
 
 # Features
 
@@ -24,3 +29,10 @@ currently, the internal server will always start on port 2002.
 * Bundle details
 * Services overview
 
+# Try it
+
+* Start an OSGi framework where you have access to the console (e.g. ./eclipse -console)
+* to use the current build, run "install http://jenkins.twentyeleven.de/job/skysail-webconsole/ws/webconsole/generated/webconsole.jar" in the console
+* get the bundle id of the new webconsole bundle (e.g. by running "ss" (equinox) or "lb" (felix)
+* start the bundle: "start <bundleId>"
+* point your browser to "http://localhost:2002" (sorry, port is fixed for now)
