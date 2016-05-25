@@ -21,6 +21,7 @@ System.register(['angular2/core', 'angular2/common'], function(exports_1, contex
                 common_1 = common_1_1;
             }],
         execute: function() {
+            // http://plnkr.co/edit/1no1sjZ9Lkv4glsUFnnU?p=preview
             Tabs = (function () {
                 function Tabs() {
                     this.tabs = [];

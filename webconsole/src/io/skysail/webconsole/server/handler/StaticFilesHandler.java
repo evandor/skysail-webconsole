@@ -7,6 +7,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.Arrays;
 
 import org.osgi.framework.Bundle;
 
@@ -19,14 +20,17 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class StaticFilesHandler {
 
-    private Bundle agentBundle;
+    private static final String WEBCONSOLE_CLIENT = "webconsole.client";
+
+	private Bundle agentBundle;
 
     public StaticFilesHandler(Bundle bundle) {
-        this.agentBundle = bundle;
+        this.agentBundle = Arrays.stream(bundle.getBundleContext().getBundles())
+        	.filter(b -> b.getSymbolicName().equals(WEBCONSOLE_CLIENT)).findFirst().orElse(bundle);
     }
 
     private String getResponse(URI uri) {
-        URL resource = agentBundle.getResource(uri.getPath());
+        URL resource = agentBundle.getResource("/client"+ uri.getPath());
         BufferedReader br;
         if (resource == null) {
         	return null;

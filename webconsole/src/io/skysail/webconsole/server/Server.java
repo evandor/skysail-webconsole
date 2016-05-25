@@ -58,7 +58,7 @@ public class Server extends NanoHTTPD {
      */
     @Override
     public Response serve(IHTTPSession session) {
-        log.error("processing uri '{}'", session.getUri());
+        log.info("processing uri '{}'", session.getUri());
         if ("/backend/bundles".equals(session.getUri())) {
             return bundlesHandler.handle(session);
         }
