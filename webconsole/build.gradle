@@ -1,0 +1,9 @@
+apply plugin: "jacoco"
+
+repositories {
+    mavenCentral()
+}
+
+jacoco {
+    toolVersion = "0.7.1.201405082137"
+}
