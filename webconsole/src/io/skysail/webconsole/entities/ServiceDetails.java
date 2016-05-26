@@ -28,8 +28,8 @@ public class ServiceDetails extends ServiceDescriptor {
 		this.bundle = new BundleDescriptor(service.getBundle());
 		this.properties = Arrays.stream(service.getPropertyKeys())
 			.filter(key -> !key.equals(Constants.SERVICE_ID) && !key.equals(Constants.OBJECTCLASS))
-			.filter(key -> { return service.getProperty(key) != null;})
-			.collect(Collectors.toMap(Function.identity(), e -> service.getProperty(e)));
+			.filter(key -> service.getProperty(key) != null)
+			.collect(Collectors.toMap(Function.identity(), service::getProperty));
 		this.usingBundles = Arrays.stream(service.getUsingBundles() != null ? service.getUsingBundles() : new Bundle[0])
 			.map((Bundle b) -> new BundleDescriptor(b))
 			.collect(Collectors.toList());

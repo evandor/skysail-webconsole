@@ -1,0 +1,40 @@
+<h1>Details of Service <i>{{service.id}}</i>:</h1>
+
+<div *ngIf="isLoading">loading...</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th width='200px;'>Key</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <tr>
+        <th>ID</th>
+        <td>{{service.id}}</td>
+    </tr>
+    <tr>
+        <th>Object Class</th>
+        <td>{{service.objectClass}}</td>
+    </tr>
+    <tr>
+        <th>PID</th>
+        <td>{{service.pid}}</td>
+    </tr>
+    <tr>
+        <th>Ranking</th>
+        <td>{{service.ranking}}</td>
+    </tr>
+    <tr>
+        <th>Properties</th>
+        <td>{{service.properties}}</td>
+    </tr>
+    <tr>
+        <th>Bundle</th>
+        <td>{{service.bundle}}</td>
+    </tr>
+    <tr>
+        <th>Using Bundles</th>
+        <td>{{service.usingBundles}}</td>
+    </tr>
+</table>

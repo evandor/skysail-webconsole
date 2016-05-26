@@ -8,11 +8,13 @@ Bundle-Activator: io.skysail.webconsole.AgentActivator
 
 Private-Package: \
 	io.skysail.webconsole,\
+	io.skysail.webconsole.services,\
 	io.skysail.webconsole.entities,\
 	io.skysail.webconsole.listener,\
 	io.skysail.webconsole.events,\
 	io.skysail.webconsole.server,\
-	io.skysail.webconsole.server.handler
+	io.skysail.webconsole.server.handler,\
+	io.skysail.webconsole.snapshots
 
 Include-Resource: libs=libs
 
@@ -20,6 +22,10 @@ Include-Resource: libs=libs
     libs/jackson-core-2.5.1.jar;version=file,\
     libs/jackson-databind-2.5.1.jar;version=file,\
     libs/nanohttpd-webserver-2.3.0.jar;version=file,\
+    libs/javers-core-2.0.0-RC1.jar;version=file,\
+    libs/picocontainer-2.15.jar;version=file,\
+    libs/gson-2.6.2.jar;version=file,\
+    libs/joda-time-2.9.3.jar;version=file,\
     webconsole.client;version='[0.1.0,0.1.1)',\
     ${osgi},\
     ${testlibs},\
@@ -27,20 +33,27 @@ Include-Resource: libs=libs
     lombok;version=1.16,\
     slf4j.api;version=1.7
 
-#    ../webconsole.client/generated/webconsole.client.jar;version=file,\    
-#    libs/osgi.cmpn-6.0.0.jar;version=file,\
-
 Export-Package: \
     com.fasterxml.jackson.*,\
+    com.google.gson.*,\
     fi.iki.elonen.*,\
+    org.picocontainer.*,\
     org.osgi.service.component.*,\
     org.osgi.util.promise.*,\
     org.osgi.util.function.*,\
+    org.javers.*,\
+    org.joda.time.*,\
     client.*
     
 Import-Package: \
     !javax.validation.*,\
     !javax.xml.*,\
 	!org.codehaus.*,\
+	!org.joda.convert.*,\
 	*
+
+#   !org.joda.*,\
+#    !com.google.gson.*,\
+
+#    !org.picocontainer.*,\
 

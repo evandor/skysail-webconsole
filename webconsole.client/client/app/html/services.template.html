@@ -9,7 +9,7 @@
     </tr>
   </thead>
   <tr *ngFor="#service of services">
-    <td>{{service.id}}</td>
+    <td (click)="onSelect(service)" style="cursor: pointer;">{{service.id}}</td>
     <td>{{service.objectClass}}</td>
     <td>{{service.pid}}</td>
     <td>{{service.ranking}}</td>

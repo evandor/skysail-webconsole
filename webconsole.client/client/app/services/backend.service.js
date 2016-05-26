@@ -48,6 +48,14 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map'], fun
                     return this._http.get(this._baseUrl + 'backend/services')
                         .map(function (res) { return res.json(); });
                 };
+                BackendServices.prototype.getService = function (id) {
+                    return this._http.get(this._baseUrl + 'backend/services/' + id)
+                        .map(function (res) { return res.json(); });
+                };
+                BackendServices.prototype.getVersion = function () {
+                    return this._http.get(this._baseUrl + 'client/version')
+                        .map(function (res) { return res.text(); });
+                };
                 BackendServices = __decorate([
                     core_1.Injectable(), 
                     __metadata('design:paramtypes', [http_1.Http])

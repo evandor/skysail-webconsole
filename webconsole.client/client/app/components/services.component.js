@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/common', '../services/backend.service'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/common', '../services/backend.service', "angular2/router"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/common', '../services/backend.servic
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, backend_service_1;
+    var core_1, common_1, backend_service_1, router_1;
     var ServicesComponent;
     return {
         setters:[
@@ -22,21 +22,26 @@ System.register(['angular2/core', 'angular2/common', '../services/backend.servic
             },
             function (backend_service_1_1) {
                 backend_service_1 = backend_service_1_1;
+            },
+            function (router_1_1) {
+                router_1 = router_1_1;
             }],
         execute: function() {
             ServicesComponent = (function () {
-                function ServicesComponent(_elementRef, _backend) {
-                    this._elementRef = _elementRef;
+                function ServicesComponent(router, _backend) {
+                    this.router = router;
                     this._backend = _backend;
                     _backend.setBaseUrl('http://localhost:2002/');
                 }
+                ServicesComponent.prototype.onSelect = function (service) {
+                    this.router.navigate(['Service', { id: service.id }]);
+                };
                 ServicesComponent.prototype.ngOnInit = function () {
                     var _this = this;
                     console.log("oninit services called!");
                     this._backend.getServices()
                         .subscribe(function (res) {
                         _this.services = res;
-                        console.log(res);
                     });
                 };
                 ServicesComponent = __decorate([
@@ -46,7 +51,7 @@ System.register(['angular2/core', 'angular2/common', '../services/backend.servic
                         providers: [backend_service_1.BackendServices],
                         templateUrl: 'app/html/services.template.html',
                     }), 
-                    __metadata('design:paramtypes', [core_1.ElementRef, backend_service_1.BackendServices])
+                    __metadata('design:paramtypes', [router_1.Router, backend_service_1.BackendServices])
                 ], ServicesComponent);
                 return ServicesComponent;
             }());

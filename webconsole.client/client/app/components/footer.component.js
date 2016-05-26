@@ -1,4 +1,4 @@
-System.register(['angular2/core'], function(exports_1, context_1) {
+System.register(['angular2/core', '../services/backend.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,23 +10,34 @@ System.register(['angular2/core'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, backend_service_1;
     var FooterComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (backend_service_1_1) {
+                backend_service_1 = backend_service_1_1;
             }],
         execute: function() {
             FooterComponent = (function () {
-                function FooterComponent() {
+                function FooterComponent(_backend) {
+                    this._backend = _backend;
+                    _backend.setBaseUrl('http://localhost:2002/');
                 }
+                FooterComponent.prototype.ngOnInit = function () {
+                    var _this = this;
+                    this._backend.getVersion()
+                        .subscribe(function (res) { return _this.version = res; });
+                };
                 FooterComponent = __decorate([
                     core_1.Component({
                         selector: 'footer',
-                        template: ''
+                        providers: [backend_service_1.BackendServices],
+                        template: '<p><small>client: {{version}}</small></p>'
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [backend_service_1.BackendServices])
                 ], FooterComponent);
                 return FooterComponent;
             }());

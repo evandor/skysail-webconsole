@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', './components/footer.component', './components/bundles.component', './components/bundle.component', './components/services.component', './components/navbar/navbar.component'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', './components/footer.component', './components/bundles.component', './components/bundle.component', './components/services.component', './components/service.component', './components/navbar/navbar.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', './components/footer.compon
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, footer_component_1, bundles_component_1, bundle_component_1, services_component_1, navbar_component_1;
+    var core_1, router_1, footer_component_1, bundles_component_1, bundle_component_1, services_component_1, service_component_1, navbar_component_1;
     var AppComponent;
     return {
         setters:[
@@ -32,6 +32,9 @@ System.register(['angular2/core', 'angular2/router', './components/footer.compon
             function (services_component_1_1) {
                 services_component_1 = services_component_1_1;
             },
+            function (service_component_1_1) {
+                service_component_1 = service_component_1_1;
+            },
             function (navbar_component_1_1) {
                 navbar_component_1 = navbar_component_1_1;
             }],
@@ -43,7 +46,8 @@ System.register(['angular2/core', 'angular2/router', './components/footer.compon
                     router_1.RouteConfig([
                         { path: '/bundles', as: 'Bundles', component: bundles_component_1.BundlesComponent, useAsDefault: true },
                         { path: '/bundles/:id', as: 'Bundle', component: bundle_component_1.BundleComponent },
-                        { path: '/services', as: 'Services', component: services_component_1.ServicesComponent }
+                        { path: '/services', as: 'Services', component: services_component_1.ServicesComponent },
+                        { path: '/services/:id', as: 'Service', component: service_component_1.ServiceComponent }
                     ]),
                     core_1.Component({
                         selector: 'my-app',

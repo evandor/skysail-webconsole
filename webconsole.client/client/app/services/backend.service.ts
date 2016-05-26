@@ -38,4 +38,13 @@ export class BackendServices {
             .map(res => res.json());
     }
 
+    getService(id) : Observable<Service> {
+        return this._http.get(this._baseUrl + 'backend/services/' + id)
+            .map(res => res.json());
+    }
+
+    getVersion() {
+        return this._http.get(this._baseUrl + 'client/version')
+            .map(res => res.text());
+    }
 }
