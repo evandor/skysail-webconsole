@@ -1,7 +1,7 @@
 import {Component, OnInit, ElementRef} from 'angular2/core';
 import {FORM_DIRECTIVES, FormBuilder, NgFor, NgFormModel} from 'angular2/common';
-import {BackendServices} from '../services/backend.service';
-import {Service} from '../domain/service';
+import {BackendServices} from '../../services/backend.service';
+import {Service} from '../../domain/service';
 import {ROUTER_DIRECTIVES, RouteParams, Router} from "angular2/router";
 
 //import {BundlesService} from '../services/bundles.service';
@@ -12,7 +12,7 @@ declare var jQuery:any;
     selector: 'services',
     directives: [FORM_DIRECTIVES, NgFor, NgFormModel],
     providers: [BackendServices],
-    templateUrl: 'app/html/services.template.html',
+    templateUrl: 'app/html/services/services.template.html',
     //styleUrls:  ['app/js/datatables.css']
 })
 export class ServicesComponent implements OnInit {

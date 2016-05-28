@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/common', 'angular2/router', 'angular2/http', '../services/backend.service', '../components/tabs', '../components/tab'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/common', 'angular2/router', 'angular2/http', '../../services/backend.service', '../../components/tabs', '../../components/tab', '../../pipes/newline.pipe', '../../pipes/values.pipe'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', 'angular
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, router_1, http_1, backend_service_1, tabs_1, tab_1;
+    var core_1, common_1, router_1, http_1, backend_service_1, tabs_1, tab_1, newline_pipe_1, values_pipe_1;
     var BundleComponent;
     return {
         setters:[
@@ -34,6 +34,12 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', 'angular
             },
             function (tab_1_1) {
                 tab_1 = tab_1_1;
+            },
+            function (newline_pipe_1_1) {
+                newline_pipe_1 = newline_pipe_1_1;
+            },
+            function (values_pipe_1_1) {
+                values_pipe_1 = values_pipe_1_1;
             }],
         execute: function() {
             BundleComponent = (function () {
@@ -52,15 +58,25 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', 'angular
                         .subscribe(function (res) {
                         _this.bundle = res;
                         _this.isLoading = false;
-                        console.log(res);
+                        console.log("BundleDetails: " + res.manifestHeaders);
+                        //this.bundle.setManifestHeaders(this.objToStrMap(res.manifestHeaders));
                     });
+                };
+                BundleComponent.prototype.objToStrMap = function (obj) {
+                    var strMap = new Map();
+                    for (var _i = 0, _a = Object.keys(obj); _i < _a.length; _i++) {
+                        var k = _a[_i];
+                        strMap.set(k, obj[k]);
+                    }
+                    return strMap;
                 };
                 BundleComponent = __decorate([
                     core_1.Component({
                         selector: 'bundle',
                         directives: [common_1.FORM_DIRECTIVES, common_1.NgFor, common_1.NgFormModel, tabs_1.Tabs, tab_1.Tab],
                         providers: [backend_service_1.BackendServices, http_1.HTTP_PROVIDERS],
-                        templateUrl: 'app/html/bundle.template.html',
+                        pipes: [newline_pipe_1.NewlinePipe, values_pipe_1.ValuesPipe],
+                        templateUrl: 'app/html/bundles/bundle.template.html',
                     }), 
                     __metadata('design:paramtypes', [router_1.RouteParams, backend_service_1.BackendServices])
                 ], BundleComponent);

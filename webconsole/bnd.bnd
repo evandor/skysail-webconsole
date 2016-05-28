@@ -7,6 +7,7 @@ Bundle-Description: An OSGi webconsole to inspect a running framework
 Bundle-Activator: io.skysail.webconsole.AgentActivator
 
 Private-Package: \
+	io.skysail.webconsole.log,\
 	io.skysail.webconsole,\
 	io.skysail.webconsole.services,\
 	io.skysail.webconsole.entities,\
@@ -14,7 +15,8 @@ Private-Package: \
 	io.skysail.webconsole.events,\
 	io.skysail.webconsole.server,\
 	io.skysail.webconsole.server.handler,\
-	io.skysail.webconsole.snapshots
+	io.skysail.webconsole.snapshots,\
+	io.skysail.webconsole.utils
 
 Include-Resource: libs=libs
 
@@ -48,6 +50,7 @@ Export-Package: \
 Import-Package: \
     !javax.validation.*,\
     !javax.xml.*,\
+    !javax.inject.*,\
 	!org.codehaus.*,\
 	!org.joda.convert.*,\
 	*

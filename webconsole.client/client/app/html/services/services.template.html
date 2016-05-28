@@ -9,8 +9,8 @@
     </tr>
   </thead>
   <tr *ngFor="#service of services">
-    <td (click)="onSelect(service)" style="cursor: pointer;">{{service.id}}</td>
-    <td>{{service.objectClass}}</td>
+    <td (click)="onSelect(service)" style="cursor: pointer; color:#000066;">{{service.id}}</td>
+    <td (click)="onSelect(service)" style="cursor: pointer; color:#000066;">{{service.objectClass}}</td>
     <td>{{service.pid}}</td>
     <td>{{service.ranking}}</td>
   </tr>

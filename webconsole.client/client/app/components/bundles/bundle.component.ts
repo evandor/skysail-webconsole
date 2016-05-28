@@ -3,16 +3,20 @@ import {FORM_DIRECTIVES, FormBuilder, NgFor, NgFormModel} from 'angular2/common'
 import {RouteParams} from 'angular2/router';
 import {HTTP_PROVIDERS} from 'angular2/http';
 
-import {BackendServices} from '../services/backend.service';
-import {Bundle} from '../domain/bundle';
-import {Tabs} from '../components/tabs';
-import {Tab} from '../components/tab';
+import {BackendServices} from '../../services/backend.service';
+import {Bundle} from '../../domain/bundle';
+import {Tabs} from '../../components/tabs';
+import {Tab} from '../../components/tab';
+
+import {NewlinePipe} from '../../pipes/newline.pipe';
+import {ValuesPipe} from '../../pipes/values.pipe';
 
 @Component({
     selector: 'bundle',
     directives: [FORM_DIRECTIVES, NgFor, NgFormModel,Tabs, Tab],
     providers: [BackendServices, HTTP_PROVIDERS],
-    templateUrl: 'app/html/bundle.template.html',
+    pipes: [NewlinePipe, ValuesPipe],
+    templateUrl: 'app/html/bundles/bundle.template.html',
     //styleUrls:  ['app/js/datatables.css']
 })
 export class BundleComponent implements OnInit {
@@ -33,8 +37,17 @@ export class BundleComponent implements OnInit {
             .subscribe(res => {
                 this.bundle = res;
                 this.isLoading = false;
-                console.log(res);
+                console.log("BundleDetails: " + res.manifestHeaders);
+                //this.bundle.setManifestHeaders(this.objToStrMap(res.manifestHeaders));
             }
-            );
+        );
+    }
+    
+    objToStrMap(obj) {
+        let strMap = new Map();
+        for (let k of Object.keys(obj)) {
+            strMap.set(k, obj[k]);
+        }
+        return strMap;
     }
 }

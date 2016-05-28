@@ -1,3 +1,6 @@
+import {ExportPackage} from '../domain/exportPackage';
+import {ManifestHeader} from '../domain/manifestHeader';
+
 export interface Bundle {
     id: string;
     symbolicName: string;
@@ -11,4 +14,6 @@ export interface Bundle {
     state: string;
     vendor: string;
     version: string;
+    exportPackage: ExportPackage;
+    manifestHeaders: ManifestHeader;
 }

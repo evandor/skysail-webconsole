@@ -13,6 +13,7 @@ import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 
 import fi.iki.elonen.NanoHTTPD.IHTTPSession;
+import fi.iki.elonen.NanoHTTPD.Method;
 import fi.iki.elonen.NanoHTTPD.Response;
 import io.skysail.webconsole.server.handler.BundleHandler;
 import io.skysail.webconsole.test.TestUtils;
@@ -31,6 +32,7 @@ public class BundleHandlerTest  {
 		bundleContext = Mockito.mock(BundleContext.class);
 		bundleHandler = new BundleHandler(bundleContext);
 		session = Mockito.mock(IHTTPSession.class);
+		Mockito.when(session.getMethod()).thenReturn(Method.GET);
 	}
 
 	@Test

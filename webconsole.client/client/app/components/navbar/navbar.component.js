@@ -1,4 +1,4 @@
-System.register(["angular2/core", "angular2/router", '../../services/auth.service'], function(exports_1, context_1) {
+System.register(["angular2/core", "angular2/router", '../../services/backend.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(["angular2/core", "angular2/router", '../../services/auth.servic
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, auth_service_1;
+    var core_1, router_1, backend_service_1;
     var Navbar;
     return {
         setters:[
@@ -20,31 +20,36 @@ System.register(["angular2/core", "angular2/router", '../../services/auth.servic
             function (router_1_1) {
                 router_1 = router_1_1;
             },
-            function (auth_service_1_1) {
-                auth_service_1 = auth_service_1_1;
+            function (backend_service_1_1) {
+                backend_service_1 = backend_service_1_1;
             }],
         execute: function() {
             Navbar = (function () {
-                function Navbar(router, authService) {
+                function Navbar(router, _backend) {
                     this.router = router;
-                    this.authService = authService;
+                    this._backend = _backend;
+                    _backend.setBaseUrl('http://localhost:2002/');
                 }
+                Navbar.prototype.onSubmit = function () {
+                    var _this = this;
+                    this._backend.createSnapshot().subscribe(function (res) { return _this.res = res; });
+                };
                 Object.defineProperty(Navbar.prototype, "authenticated", {
                     get: function () {
-                        return this.authService.isAuthenticated();
+                        return true; //this.authService.isAuthenticated();
                     },
                     enumerable: true,
                     configurable: true
                 });
                 Navbar.prototype.doLogin = function () {
-                    this.authService.doLogin();
+                    //this.authService.doLogin();
                 };
                 Navbar.prototype.doLogout = function () {
-                    this.authService.doLogout();
+                    //this.authService.doLogout();
                 };
                 Object.defineProperty(Navbar.prototype, "userName", {
                     get: function () {
-                        return this.authService.getUserName();
+                        return "admin"; //this.authService.getUserName();
                     },
                     enumerable: true,
                     configurable: true
@@ -60,11 +65,11 @@ System.register(["angular2/core", "angular2/router", '../../services/auth.servic
                     core_1.Component({
                         selector: 'navbar',
                         directives: [router_1.ROUTER_DIRECTIVES],
-                        providers: [],
+                        providers: [backend_service_1.BackendServices],
                         pipes: [],
                         templateUrl: 'app/html/navbar.template.html'
                     }), 
-                    __metadata('design:paramtypes', [router_1.Router, auth_service_1.AuthService])
+                    __metadata('design:paramtypes', [router_1.Router, backend_service_1.BackendServices])
                 ], Navbar);
                 return Navbar;
             }());

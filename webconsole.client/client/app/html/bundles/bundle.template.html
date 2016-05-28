@@ -10,7 +10,7 @@
 <table class="table">
   <thead>
     <tr>
-      <th width='200px;'>Key</th>
+      <th width='270px;'>Key</th>
       <th>Value</th>
     </tr>
   </thead>
@@ -53,5 +53,18 @@
   <tr>
     <th>Vendor</th>
     <td>{{bundle.vendor}}</td>
+  </tr>
+  <tr>
+    <th>Exported Packages:</th>
+    <td>
+      <p *ngFor="#pkg of bundle.exportPackage">{{pkg.pkgName}} [{{pkg.version}}]</p>
+    </td>
+  </tr>
+  <tr>
+    <th>Manifest Headers</th>
+    <td>
+      <!--<div *ng F or="#value of bundle.manifestHeaders | values"> </div>-->
+      <p *ngFor="#h of bundle.manifestHeaders"><b>{{h.key}}</b>: {{h.value}}</p>
+    </td>
   </tr>
 </table>

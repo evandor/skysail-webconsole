@@ -16,6 +16,7 @@ import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceReference;
 
 import fi.iki.elonen.NanoHTTPD.IHTTPSession;
+import fi.iki.elonen.NanoHTTPD.Method;
 import fi.iki.elonen.NanoHTTPD.Response;
 import io.skysail.webconsole.server.handler.ServiceHandler;
 import io.skysail.webconsole.test.TestUtils;
@@ -35,7 +36,7 @@ public class ServiceHandlerTest {
 		bundleContext = Mockito.mock(BundleContext.class);
 		serviceHandler = new ServiceHandler(bundleContext);
 		session = Mockito.mock(IHTTPSession.class);
-
+		Mockito.when(session.getMethod()).thenReturn(Method.GET);
 	}
 
 	@Test

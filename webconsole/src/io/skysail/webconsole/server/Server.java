@@ -14,12 +14,16 @@ import io.skysail.webconsole.server.handler.BundleHandler;
 import io.skysail.webconsole.server.handler.BundleListenerHandler;
 import io.skysail.webconsole.server.handler.BundlesHandler;
 import io.skysail.webconsole.server.handler.FrameworkListenerHandler;
+import io.skysail.webconsole.server.handler.LogsHandler;
 import io.skysail.webconsole.server.handler.ServiceHandler;
 import io.skysail.webconsole.server.handler.ServiceListenerHandler;
 import io.skysail.webconsole.server.handler.ServicesHandler;
+import io.skysail.webconsole.server.handler.SnapshotsHandler;
 import io.skysail.webconsole.server.handler.StaticFilesHandler;
 import io.skysail.webconsole.server.handler.VersionHandler;
+import io.skysail.webconsole.services.LogService;
 import io.skysail.webconsole.services.OsgiService;
+import io.skysail.webconsole.services.SnapshotsService;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -38,6 +42,10 @@ public class Server extends NanoHTTPD {
     private ServicesHandler servicesHandler;
     private ServiceHandler serviceHandler;
 
+    private SnapshotsHandler snapshotsHandler;
+
+    private LogsHandler logsHandler;
+
     private ServiceListenerHandler serviceListenerHandler;
     private BundleListenerHandler bundleListenerHandler;
     private FrameworkListenerHandler frameworkListenerHandler;
@@ -46,12 +54,18 @@ public class Server extends NanoHTTPD {
 
 	private OsgiService osgiService;
 
+	private SnapshotsService snapshotsService;
+
+	private LogService logService;
+
 
     public Server(BundleContext bundleContext) throws IOException {
         super(2002);
         start(NanoHTTPD.SOCKET_READ_TIMEOUT, false);
 
         osgiService = new OsgiService(bundleContext);
+        snapshotsService = new SnapshotsService(osgiService);
+        logService = new LogService(bundleContext);
 
         bundleListener = new AgentBundleListener(bundleContext);
         serviceListener = new AgentServiceListener(bundleContext);
@@ -59,6 +73,8 @@ public class Server extends NanoHTTPD {
 
         bundlesHandler = new BundlesHandler(osgiService);
         servicesHandler = new ServicesHandler(osgiService);
+        snapshotsHandler = new SnapshotsHandler(snapshotsService);
+        logsHandler = new LogsHandler(logService);
 
         bundleHandler = new BundleHandler(bundleContext);
         serviceHandler = new ServiceHandler(bundleContext);
@@ -81,7 +97,10 @@ public class Server extends NanoHTTPD {
      */
     @Override
     public Response serve(IHTTPSession session) {
-        log.info("processing uri '{}'", session.getUri());
+        log.info("processing {} on uri '{}'", session.getMethod(), session.getUri());
+        if (session.getMethod().equals(Method.POST) && "/backend/snapshots/".equals(session.getUri())) {
+        	return snapshotsHandler.handle(session);
+        }
 
         if ("/backend/bundles".equals(session.getUri())) {
             return bundlesHandler.handle(session);
@@ -95,6 +114,14 @@ public class Server extends NanoHTTPD {
         }
         if (session.getUri().startsWith("/backend/services/")) {
             return serviceHandler.handle(session);
+        }
+
+        if ("/backend/snapshots".equals(session.getUri())) {
+            return snapshotsHandler.handle(session);
+        }
+
+        if ("/backend/logs".equals(session.getUri())) {
+            return logsHandler.handle(session);
         }
 
         if ("/backend/bundlelistener".equals(session.getUri())) {

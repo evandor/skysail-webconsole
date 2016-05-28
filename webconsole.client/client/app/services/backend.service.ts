@@ -4,6 +4,7 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import {Bundle} from '../domain/bundle';
 import {Service} from '../domain/service';
+import {Snapshot} from '../domain/snapshot';
 
 @Injectable()
 export class BackendServices {
@@ -41,6 +42,17 @@ export class BackendServices {
     getService(id) : Observable<Service> {
         return this._http.get(this._baseUrl + 'backend/services/' + id)
             .map(res => res.json());
+    }
+    
+    getSnapshots() : Observable<Snapshot[]> {
+        return this._http.get(this._baseUrl + 'backend/snapshots')
+            .map(res => res.json());
+    }
+
+    createSnapshot() {
+        return this._http.post(this._baseUrl + 'backend/snapshots/', JSON.stringify("create"))
+            //.map(res => res.json())
+            ;
     }
 
     getVersion() {

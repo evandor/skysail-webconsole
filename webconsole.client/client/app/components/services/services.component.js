@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/common', "angular2/router", '../services/backend.service'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/common', '../../services/backend.service', "angular2/router"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,8 +10,8 @@ System.register(['angular2/core', 'angular2/common', "angular2/router", '../serv
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, router_1, backend_service_1;
-    var BundlesComponent;
+    var core_1, common_1, backend_service_1, router_1;
+    var ServicesComponent;
     return {
         setters:[
             function (core_1_1) {
@@ -20,41 +20,43 @@ System.register(['angular2/core', 'angular2/common', "angular2/router", '../serv
             function (common_1_1) {
                 common_1 = common_1_1;
             },
-            function (router_1_1) {
-                router_1 = router_1_1;
-            },
             function (backend_service_1_1) {
                 backend_service_1 = backend_service_1_1;
+            },
+            function (router_1_1) {
+                router_1 = router_1_1;
             }],
         execute: function() {
-            BundlesComponent = (function () {
-                function BundlesComponent(router, _backend) {
+            ServicesComponent = (function () {
+                function ServicesComponent(router, _backend) {
                     this.router = router;
                     this._backend = _backend;
                     _backend.setBaseUrl('http://localhost:2002/');
                 }
-                BundlesComponent.prototype.onSelect = function (bundle) {
-                    this.router.navigate(['Bundle', { id: bundle.id }]);
+                ServicesComponent.prototype.onSelect = function (service) {
+                    this.router.navigate(['Service', { id: service.id }]);
                 };
-                BundlesComponent.prototype.ngOnInit = function () {
+                ServicesComponent.prototype.ngOnInit = function () {
                     var _this = this;
-                    console.log("oninit bundlesservice called!");
-                    this._backend.getBundles()
-                        .subscribe(function (res) { return _this.bundles = res; });
+                    console.log("oninit services called!");
+                    this._backend.getServices()
+                        .subscribe(function (res) {
+                        _this.services = res;
+                    });
                 };
-                BundlesComponent = __decorate([
+                ServicesComponent = __decorate([
                     core_1.Component({
-                        selector: 'bundles',
-                        directives: [common_1.FORM_DIRECTIVES, router_1.ROUTER_DIRECTIVES, common_1.NgFor, common_1.NgFormModel],
+                        selector: 'services',
+                        directives: [common_1.FORM_DIRECTIVES, common_1.NgFor, common_1.NgFormModel],
                         providers: [backend_service_1.BackendServices],
-                        templateUrl: 'app/html/bundles.template.html',
+                        templateUrl: 'app/html/services/services.template.html',
                     }), 
                     __metadata('design:paramtypes', [router_1.Router, backend_service_1.BackendServices])
-                ], BundlesComponent);
-                return BundlesComponent;
+                ], ServicesComponent);
+                return ServicesComponent;
             }());
-            exports_1("BundlesComponent", BundlesComponent);
+            exports_1("ServicesComponent", ServicesComponent);
         }
     }
 });
-//# sourceMappingURL=bundles.component.js.map
+//# sourceMappingURL=services.component.js.map

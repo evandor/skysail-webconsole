@@ -2,8 +2,8 @@ import {Component, OnInit,ElementRef} from 'angular2/core';
 import {FORM_DIRECTIVES, FormBuilder, NgFor, NgFormModel} from 'angular2/common';
 import {ROUTER_DIRECTIVES, RouteParams, Router} from "angular2/router";
 
-import {BackendServices} from '../services/backend.service';
-import {Bundle} from '../domain/bundle';
+import {BackendServices} from '../../services/backend.service';
+import {Bundle} from '../../domain/bundle';
 
 declare var jQuery:any;
 
@@ -11,7 +11,7 @@ declare var jQuery:any;
     selector: 'bundles',
     directives: [FORM_DIRECTIVES, ROUTER_DIRECTIVES, NgFor, NgFormModel],
     providers: [BackendServices],
-    templateUrl: 'app/html/bundles.template.html',
+    templateUrl: 'app/html/bundles/bundles.template.html',
     //styleUrls:  ['app/js/datatables.css']
 })
 export class BundlesComponent implements OnInit {
