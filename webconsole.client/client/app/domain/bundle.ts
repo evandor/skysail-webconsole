@@ -1,7 +1,7 @@
 import {ExportPackage} from '../domain/exportPackage';
 import {ManifestHeader} from '../domain/manifestHeader';
 
-export interface Bundle {
+export class Bundle {
     id: string;
     symbolicName: string;
     bundleClasspath: string;

@@ -13,6 +13,7 @@ import io.skysail.webconsole.listener.AgentServiceListener;
 import io.skysail.webconsole.server.handler.BundleHandler;
 import io.skysail.webconsole.server.handler.BundleListenerHandler;
 import io.skysail.webconsole.server.handler.BundlesHandler;
+import io.skysail.webconsole.server.handler.FrameworkHandler;
 import io.skysail.webconsole.server.handler.FrameworkListenerHandler;
 import io.skysail.webconsole.server.handler.LogsHandler;
 import io.skysail.webconsole.server.handler.ServiceHandler;
@@ -38,6 +39,7 @@ public class Server extends NanoHTTPD {
 
     private BundlesHandler bundlesHandler;
     private BundleHandler bundleHandler;
+    private FrameworkHandler frameworkHandler;
 
     private ServicesHandler servicesHandler;
     private ServiceHandler serviceHandler;
@@ -75,6 +77,7 @@ public class Server extends NanoHTTPD {
         servicesHandler = new ServicesHandler(osgiService);
         snapshotsHandler = new SnapshotsHandler(snapshotsService);
         logsHandler = new LogsHandler(logService);
+        frameworkHandler = new FrameworkHandler(bundleContext);
 
         bundleHandler = new BundleHandler(bundleContext);
         serviceHandler = new ServiceHandler(bundleContext);
@@ -98,8 +101,15 @@ public class Server extends NanoHTTPD {
     @Override
     public Response serve(IHTTPSession session) {
         log.info("processing {} on uri '{}'", session.getMethod(), session.getUri());
+
+        // --- POSTS ---------------------------------
         if (session.getMethod().equals(Method.POST) && "/backend/snapshots/".equals(session.getUri())) {
         	return snapshotsHandler.handle(session);
+        }
+
+        // --- GETS ----------------------------------
+        if ("/backend/framework".equals(session.getUri())) {
+            return frameworkHandler.handle(session);
         }
 
         if ("/backend/bundles".equals(session.getUri())) {

@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', './components/footer.component', './components/bundles/bundles.component', './components/bundles/bundle.component', './components/services/services.component', './components/services/service.component', './components/snapshots/snapshots.component', './components/navbar/navbar.component'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', './components/framework.component', './components/footer.component', './components/bundles/bundles.component', './components/bundles/bundle.component', './components/logs.component', './components/services/services.component', './components/services/service.component', './components/snapshots/snapshots.component', './components/help.component', './components/navbar/navbar.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', './components/footer.compon
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, footer_component_1, bundles_component_1, bundle_component_1, services_component_1, service_component_1, snapshots_component_1, navbar_component_1;
+    var core_1, router_1, framework_component_1, footer_component_1, bundles_component_1, bundle_component_1, logs_component_1, services_component_1, service_component_1, snapshots_component_1, help_component_1, navbar_component_1;
     var AppComponent;
     return {
         setters:[
@@ -19,6 +19,9 @@ System.register(['angular2/core', 'angular2/router', './components/footer.compon
             },
             function (router_1_1) {
                 router_1 = router_1_1;
+            },
+            function (framework_component_1_1) {
+                framework_component_1 = framework_component_1_1;
             },
             function (footer_component_1_1) {
                 footer_component_1 = footer_component_1_1;
@@ -29,6 +32,9 @@ System.register(['angular2/core', 'angular2/router', './components/footer.compon
             function (bundle_component_1_1) {
                 bundle_component_1 = bundle_component_1_1;
             },
+            function (logs_component_1_1) {
+                logs_component_1 = logs_component_1_1;
+            },
             function (services_component_1_1) {
                 services_component_1 = services_component_1_1;
             },
@@ -37,6 +43,9 @@ System.register(['angular2/core', 'angular2/router', './components/footer.compon
             },
             function (snapshots_component_1_1) {
                 snapshots_component_1 = snapshots_component_1_1;
+            },
+            function (help_component_1_1) {
+                help_component_1 = help_component_1_1;
             },
             function (navbar_component_1_1) {
                 navbar_component_1 = navbar_component_1_1;
@@ -47,11 +56,14 @@ System.register(['angular2/core', 'angular2/router', './components/footer.compon
                 }
                 AppComponent = __decorate([
                     router_1.RouteConfig([
+                        { path: '/framework', as: 'Framework', component: framework_component_1.FrameworkComponent },
                         { path: '/bundles', as: 'Bundles', component: bundles_component_1.BundlesComponent, useAsDefault: true },
                         { path: '/bundles/:id', as: 'Bundle', component: bundle_component_1.BundleComponent },
                         { path: '/services', as: 'Services', component: services_component_1.ServicesComponent },
                         { path: '/services/:id', as: 'Service', component: service_component_1.ServiceComponent },
-                        { path: '/snapshots', as: 'Snapshots', component: snapshots_component_1.SnapshotsComponent }
+                        { path: '/logs', as: 'Logs', component: logs_component_1.LogsComponent },
+                        { path: '/snapshots', as: 'Snapshots', component: snapshots_component_1.SnapshotsComponent },
+                        { path: '/help', as: 'Help', component: help_component_1.HelpComponent }
                     ]),
                     core_1.Component({
                         selector: 'my-app',

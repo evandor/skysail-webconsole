@@ -1,4 +1,4 @@
-<h1>Details of Service <i>{{service.id}}</i>:</h1>
+<h1><span class="glyphicon glyphicon-play-circle" aria-hidden="true" style="color: orange"></span> Details of Service <i>{{service.id}}</i></h1>
 
 <div *ngIf="isLoading">loading...</div>
 
@@ -14,8 +14,10 @@
         <td>{{service.id}}</td>
     </tr>
     <tr>
-        <th>Object Class</th>
-        <td>{{service.objectClass}}</td>
+        <th><span class="glyphicon glyphicon-cog" aria-hidden="true" style="color: gray"></span> Object Class</th>
+        <td>
+            {{service.objectClass}}
+        </td>
     </tr>
     <tr>
         <th>PID</th>
@@ -27,14 +29,31 @@
     </tr>
     <tr>
         <th>Properties</th>
-        <td>{{service.properties}}</td>
+        <td>
+            <ul>
+                <li *ngFor="#property of properties"><b>{{property.key}}</b>: {{property.value}}</li>                
+            </ul>
+        </td>
     </tr>
     <tr>
-        <th>Bundle</th>
-        <td>{{service.bundle}}</td>
+        <th><span class="glyphicon glyphicon-th-large" aria-hidden="true" style="color: green"></span> Bundle</th>
+        <td (click)="onSelect(service.bundle)" style="cursor: pointer; color:#337ab7;">
+            {{service.bundle.symbolicName}} [{{service.bundle.version}}] (#{{service.bundle.id}})
+        </td>
     </tr>
     <tr>
         <th>Using Bundles</th>
-        <td>{{service.usingBundles}}</td>
+        <td>
+            <ul>
+                <li (click)="onSelect(usingBundle)" style="cursor: pointer; color:#337ab7;" *ngFor="#usingBundle of usingBundles">
+                    <span class="glyphicon glyphicon-th-large" aria-hidden="true" style="color: green"></span> 
+                    {{usingBundle.symbolicName}} [{{usingBundle.version}}] (#{{usingBundle.id}})
+               </li>                
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <th>Links</th>
+        <td><a href='http://localhost:2002/backend/services/{{service.id}}'>Raw</a></td>
     </tr>
 </table>

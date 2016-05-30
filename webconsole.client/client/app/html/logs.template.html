@@ -1,0 +1,21 @@
+<h1>Logs</h1>
+<table class="table" width='100%'>
+  <thead>
+    <tr>
+      <th>Received</th>
+      <th>Level</th>
+      <th>Message</th>
+      <th>Service</th>
+      <th>Bundle</th>
+      <th>Exception</th>
+    </tr>
+  </thead>
+  <tr *ngFor="#log of logs">
+    <td>{{log.time}}</td>
+    <td>{{log.level}}</td>
+    <td>{{log.message}}</td>
+    <td (click)="onSelectService(log.service)" style="cursor: pointer; color:#000066;">{{log.service?.objectClass}}</td>
+    <td>{{log.bundle?.id}}</td>
+    <td>{{log.exception}}</td>
+  </tr>
+</table>

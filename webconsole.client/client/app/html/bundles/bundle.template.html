@@ -1,11 +1,11 @@
-<h1>Details of Bundle <i>{{bundle.symbolicName}}</i>:</h1>
+<h1><span class="glyphicon glyphicon-th-large" aria-hidden="true" style="color: green"></span> Details of Bundle <i>{{bundle.symbolicName}}</i>:</h1>
 
 <div *ngIf="isLoading">loading...</div>
 
-<!--<tabs> not working yet, redirects 
+<tabs> not working yet, redirects 
   <tab [tabTitle]="'Tab 1'">Tab 1 Content</tab>
   <tab tabTitle="Tab 2">Tab 2 Content</tab>
-</tabs>-->
+</tabs>
 
 <table class="table">
   <thead>
@@ -55,7 +55,7 @@
     <td>{{bundle.vendor}}</td>
   </tr>
   <tr>
-    <th>Exported Packages:</th>
+    <th><span class="glyphicon glyphicon-modal-window" aria-hidden="true" style="color: blue"></span> Exported Packages:</th>
     <td>
       <p *ngFor="#pkg of bundle.exportPackage">{{pkg.pkgName}} [{{pkg.version}}]</p>
     </td>

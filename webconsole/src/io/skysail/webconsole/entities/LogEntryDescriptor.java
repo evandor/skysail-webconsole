@@ -8,14 +8,20 @@ import lombok.Getter;
 @Getter
 public class LogEntryDescriptor {
 
-	private BundleDescriptor bundleDescriptor;
-	private String message;
+	private long time;
 	private String level;
+	private String message;
+	private ServiceDescriptor service;
+	private BundleDescriptor bundleDescriptor;
+	private String exception;
 
 	public LogEntryDescriptor(LogEntry entry) {
-		message = entry.getMessage();
+		time = entry.getTime();
 		level = mapLevel(entry.getLevel());
-		bundleDescriptor = new BundleDescriptor(entry.getBundle());
+		message = entry.getMessage();
+		service = entry.getServiceReference() != null ? new ServiceDescriptor(entry.getServiceReference()) : null;
+		bundleDescriptor = entry.getBundle() != null ? new BundleDescriptor(entry.getBundle()) : null;
+		exception = entry.getException() != null ? entry.getException().toString() : "";
 	}
 
 	private String mapLevel(int level) {

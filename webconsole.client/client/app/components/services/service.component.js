@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/common', 'angular2/router', 'angular2/http', '../../services/backend.service', '../../components/tabs', '../../components/tab'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/common', 'angular2/http', "angular2/router", '../../services/backend.service', '../../domain/keyValue', '../../domain/service', '../../components/tabs', '../../components/tab', '../../pipes/derp.pipe'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', 'angular
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, router_1, http_1, backend_service_1, tabs_1, tab_1;
+    var core_1, common_1, http_1, router_1, backend_service_1, keyValue_1, service_1, tabs_1, tab_1, derp_pipe_1;
     var ServiceComponent;
     return {
         setters:[
@@ -20,36 +20,57 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', 'angular
             function (common_1_1) {
                 common_1 = common_1_1;
             },
-            function (router_1_1) {
-                router_1 = router_1_1;
-            },
             function (http_1_1) {
                 http_1 = http_1_1;
             },
+            function (router_1_1) {
+                router_1 = router_1_1;
+            },
             function (backend_service_1_1) {
                 backend_service_1 = backend_service_1_1;
+            },
+            function (keyValue_1_1) {
+                keyValue_1 = keyValue_1_1;
+            },
+            function (service_1_1) {
+                service_1 = service_1_1;
             },
             function (tabs_1_1) {
                 tabs_1 = tabs_1_1;
             },
             function (tab_1_1) {
                 tab_1 = tab_1_1;
+            },
+            function (derp_pipe_1_1) {
+                derp_pipe_1 = derp_pipe_1_1;
             }],
         execute: function() {
             ServiceComponent = (function () {
-                function ServiceComponent(_routeParams, _backend) {
+                function ServiceComponent(router, _routeParams, _backend) {
+                    this.router = router;
                     this._routeParams = _routeParams;
                     this._backend = _backend;
-                    this.service = {};
                     this.isLoading = true;
+                    this.service = new service_1.Service();
+                    this.properties = [];
+                    this.usingBundles = [];
                     _backend.setBaseUrl('http://localhost:2002/');
                 }
+                ServiceComponent.prototype.onSelect = function (bundle) {
+                    this.router.navigate(['Bundle', { id: bundle.id }]);
+                };
                 ServiceComponent.prototype.ngOnInit = function () {
                     var _this = this;
                     var id = this._routeParams.get('id');
                     this._backend.getService(id)
                         .subscribe(function (res) {
                         _this.service = res;
+                        var props = res.properties;
+                        for (var key in props) {
+                            _this.properties.push(new keyValue_1.KeyValue(key, props[key]));
+                        }
+                        ;
+                        _this.usingBundles = res.usingBundles;
                         _this.isLoading = false;
                     });
                 };
@@ -57,10 +78,11 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', 'angular
                     core_1.Component({
                         selector: 'service',
                         directives: [common_1.FORM_DIRECTIVES, common_1.NgFor, common_1.NgFormModel, tabs_1.Tabs, tab_1.Tab],
+                        pipes: [derp_pipe_1.DerpPipe],
                         providers: [backend_service_1.BackendServices, http_1.HTTP_PROVIDERS],
                         templateUrl: 'app/html/services/service.template.html'
                     }), 
-                    __metadata('design:paramtypes', [router_1.RouteParams, backend_service_1.BackendServices])
+                    __metadata('design:paramtypes', [router_1.Router, router_1.RouteParams, backend_service_1.BackendServices])
                 ], ServiceComponent);
                 return ServiceComponent;
             }());

@@ -36,6 +36,10 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map'], fun
                     return this._http.get(this._baseUrl + path, { headers: headers })
                         .map(function (res) { return res.json(); });
                 };
+                BackendServices.prototype.getFramework = function () {
+                    return this._http.get(this._baseUrl + 'backend/framework')
+                        .map(function (res) { return res.json(); });
+                };
                 BackendServices.prototype.getBundles = function () {
                     return this._http.get(this._baseUrl + 'backend/bundles')
                         .map(function (res) { return res.json(); });
@@ -50,6 +54,10 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map'], fun
                 };
                 BackendServices.prototype.getService = function (id) {
                     return this._http.get(this._baseUrl + 'backend/services/' + id)
+                        .map(function (res) { return res.json(); });
+                };
+                BackendServices.prototype.getLogs = function () {
+                    return this._http.get(this._baseUrl + 'backend/logs')
                         .map(function (res) { return res.json(); });
                 };
                 BackendServices.prototype.getSnapshots = function () {
