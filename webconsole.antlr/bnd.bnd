@@ -1,0 +1,5 @@
+Include-Resource: libs=libs
+
+-buildpath: \
+	libs/antlr4-4.5.3.jar;version=file,\
+	slf4j.api;version=1.7
