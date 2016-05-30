@@ -18,16 +18,30 @@ just started, needs serious polishing, internally and visually... - just a prove
 
 ![screenshot](http://jenkins.twentyeleven.de/job/skysail-webconsole/ws/webconsole/etc/docs/screenshot.png)
 
+# Demo
+
+coming soon...
+
 # Limitations
 
 * currently, the internal server will always start on port 2002.
 * please be aware that there is no security concept applied yet
 
-# Features
+# Features List
 
-* Bundles overview
-* Bundle details
-* Services overview
+| Category      | Feature                  | State / in Version |
+| ------------- | ------------------------ | ------------------ |
+| Bundles       |                          |                    |
+|               | Bundles Overview         | 0.1.1              |
+|               | Bundle Detail Overview   | 0.1.1              |
+|               | Bundle Exported Packages | planned for 0.1.2  |
+|               | Bundle Imported Packages | planned for 0.1.3  |
+|               | Bundle Manifest View     | planned for 0.1.3  |
+| Services      |                          |                    |
+|               | Services Overview        | 0.1.1              |
+|               | Service Detail Overview  | planned for 0.1.2  |
+| Logs          |                          |                    |
+|               | Overview                 | planned for 0.1.1  |
 
 # Try it
 
