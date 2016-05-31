@@ -10,6 +10,7 @@
 
 -runbundles: \
     webconsole;version=latest,\
+    webconsole.antlr;version=latest,\
     org.apache.felix.log;version=latest,\
     ch.qos.logback.classic;version='[1.0.0,1.0.1)',\
     ch.qos.logback.core;version='[1.0.0,1.0.1)',\

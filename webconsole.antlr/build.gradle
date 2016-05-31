@@ -1,0 +1,24 @@
+buildscript {
+    repositories {
+        maven {
+            name 'JFrog OSS snapshot repo'
+            url  'https://oss.jfrog.org/oss-snapshot-local/'
+        }
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'me.champeau.gradle:antlr4-gradle-plugin:0.1'
+    }
+}
+
+repositories {
+   jcenter()
+}
+
+apply plugin: 'me.champeau.gradle.antlr4'
+
+antlr4 {
+   output = file('src/gen/java/io/skysail/webconsole/antlr')
+   extraArgs = ['-package', 'io.skysail.webconsole.antlr']
+}

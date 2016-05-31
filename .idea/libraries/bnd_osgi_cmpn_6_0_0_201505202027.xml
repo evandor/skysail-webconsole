@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="bnd:osgi.cmpn:6.0.0.201505202027">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.bnd/shacache/shas/A3A5269424E5EA6488D30DEDCE8FABCA11EFBC3D/osgi.cmpn-6.0.0.201505202027.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.bnd/shacache/shas/A3A5269424E5EA6488D30DEDCE8FABCA11EFBC3D/osgi.cmpn-6.0.0.201505202027.jar!/OSGI-OPT/src" />
+    </SOURCES>
+  </library>
+</component>

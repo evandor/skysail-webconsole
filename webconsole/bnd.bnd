@@ -28,7 +28,8 @@ Include-Resource: libs=libs
     libs/picocontainer-2.15.jar;version=file,\
     libs/gson-2.6.2.jar;version=file,\
     libs/joda-time-2.9.3.jar;version=file,\
-    webconsole.client;version='[0.1.1,0.1.2)',\
+    webconsole.antlr;version=latest,\
+    webconsole.client;version='[0.1.0,0.1.1)',\
     ${osgi},\
     ${testlibs},\
     ${fasterxml},\

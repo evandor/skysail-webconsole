@@ -1,0 +1,14 @@
+Bundle-Name: SKYSAIL :: webconsole :: antlr
+
+Bundle-Version: 0.1.0.${tstamp}
+
+Include-Resource: libs=libs
+
+src=src/gen/java
+
+-buildpath: \
+	libs/antlr4-4.5.3.jar;version=file,\
+	slf4j.api;version=1.7
+	
+Export-Package: io.skysail.webconsole.antlr,\
+	org.antlr.v4.runtime.*

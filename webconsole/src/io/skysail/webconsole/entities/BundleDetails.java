@@ -10,7 +10,9 @@ import java.util.stream.Collectors;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.Constants;
 
-import io.skysail.webconsole.utils.HeaderUtils;
+import io.skysail.webconsole.antlr.ExportPackageLexer;
+import io.skysail.webconsole.antlr.ExportPackageParser;
+import io.skysail.webconsole.antlr.ExportPackageParser.RContext;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -34,28 +36,30 @@ public class BundleDetails extends BundleDescriptor {
 
 	public BundleDetails(Bundle bundle) {
 		super(bundle);
-		Dictionary<?, ?> headers = bundle.getHeaders(null);
 		this.location = bundle.getLocation();
 		this.lastModification = bundle.getLastModified();
-		this.docUrl = (String) headers.get(Constants.BUNDLE_DOCURL);
-		this.vendor = (String) headers.get(Constants.BUNDLE_VENDOR);
-		this.copyright = (String) headers.get(Constants.BUNDLE_COPYRIGHT);
-		this.description = (String) headers.get(Constants.BUNDLE_DESCRIPTION);
-		this.bundleClasspath = (String) headers.get(Constants.BUNDLE_CLASSPATH);
-		//this.exportService = (String) headers.get(Constants.EXPORT_SERVICE);
-		this.exportPackage = getExportedPackages(headers);
-		this.manifestHeaders = dump(headers);
-		this.startLevel = 0;
+		this.startLevel = 0; // TODO
+
+		Dictionary<?, ?> headers = bundle.getHeaders(null);
+		if (headers != null) {
+			this.docUrl = (String) headers.get(Constants.BUNDLE_DOCURL);
+			this.vendor = (String) headers.get(Constants.BUNDLE_VENDOR);
+			this.copyright = (String) headers.get(Constants.BUNDLE_COPYRIGHT);
+			this.description = (String) headers.get(Constants.BUNDLE_DESCRIPTION);
+			this.bundleClasspath = (String) headers.get(Constants.BUNDLE_CLASSPATH);
+			this.exportPackage = getExportedPackages(headers);
+			this.manifestHeaders = dump(headers);
+		}
 	}
 
 	private List<ManifestHeader> dump(Dictionary<?, ?> headers) {
 		List<ManifestHeader> result = new ArrayList<>();
 		Enumeration<?> keys = headers.keys();
-		while(keys.hasMoreElements()) {
+		while (keys.hasMoreElements()) {
 			String key = (String) keys.nextElement();
-			result.add(new ManifestHeader(key,  (String) headers.get(key)));
+			result.add(new ManifestHeader(key, (String) headers.get(key)));
 		}
-		return result.stream().sorted((e1,e2) -> e1.getKey().compareTo(e2.getKey())).collect(Collectors.toList());
+		return result.stream().sorted((e1, e2) -> e1.getKey().compareTo(e2.getKey())).collect(Collectors.toList());
 	}
 
 	private List<ExportPackage> getExportedPackages(Dictionary<?, ?> headers) {
@@ -63,10 +67,29 @@ public class BundleDetails extends BundleDescriptor {
 		if (rawValue == null || rawValue.trim().length() == 0) {
 			return Collections.emptyList();
 		}
-		List<ExportPackage> exportedPackages = HeaderUtils.parseExportPackage(rawValue);
-		return exportedPackages.stream() // NOSONAR
-				.sorted((p1,p2) -> p1.getPkgName().compareTo(p2.getPkgName()))
-				.collect(Collectors.toList());
+
+		ExportPackageParser parser = parse(rawValue);
+		RContext tree = parser.r();
+		System.out.println(tree.toStringTree(parser));
+
+		List<ExportPackage> result = new ArrayList<>();
+		ExportPackageVisitor exportPackageVisitor = new ExportPackageVisitor(result);
+		exportPackageVisitor.visit(tree);
+
+		return result;
+
+		// List<ExportPackage> exportedPackages =
+		// HeaderUtils.parseExportPackage(rawValue);
+		// return exportedPackages.stream() // NOSONAR
+		// .sorted((p1,p2) -> p1.getPkgName().compareTo(p2.getPkgName()))
+		// .collect(Collectors.toList());
+	}
+
+	private ExportPackageParser parse(String inputString) {
+		CharStream input = new ANTLRInputStream(inputString);
+		ExportPackageLexer lexer = new ExportPackageLexer(input);
+		CommonTokenStream tokens = new CommonTokenStream(lexer);
+		return new ExportPackageParser(tokens);
 	}
 
 }
