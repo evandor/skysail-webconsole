@@ -7,6 +7,7 @@ import java.util.Enumeration;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.antlr.v4.runtime.CommonTokenStream;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.Constants;
 
@@ -86,7 +87,7 @@ public class BundleDetails extends BundleDescriptor {
 	}
 
 	private ExportPackageParser parse(String inputString) {
-		CharStream input = new ANTLRInputStream(inputString);
+		org.antlr.v4.runtime.CharStream input = new org.antlr.v4.runtime.ANTLRInputStream(inputString);
 		ExportPackageLexer lexer = new ExportPackageLexer(input);
 		CommonTokenStream tokens = new CommonTokenStream(lexer);
 		return new ExportPackageParser(tokens);
