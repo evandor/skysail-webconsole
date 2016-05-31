@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/skysail-webconsole.iml" filepath="$PROJECT_DIR$/skysail-webconsole.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webconsole/webconsole.iml" filepath="$PROJECT_DIR$/webconsole/webconsole.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webconsole.antlr/webconsole.antlr.iml" filepath="$PROJECT_DIR$/webconsole.antlr/webconsole.antlr.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webconsole.client/webconsole.client.iml" filepath="$PROJECT_DIR$/webconsole.client/webconsole.client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webconsole.it/webconsole.it.iml" filepath="$PROJECT_DIR$/webconsole.it/webconsole.it.iml" />
+    </modules>
+  </component>
+</project>

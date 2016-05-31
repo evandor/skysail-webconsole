@@ -19,6 +19,6 @@ repositories {
 apply plugin: 'me.champeau.gradle.antlr4'
 
 antlr4 {
-   output = file('build/generated-src/io/skysail/webconsole/antlr')
+   output = file('src/gen/java/io/skysail/webconsole/antlr')
    extraArgs = ['-package', 'io.skysail.webconsole.antlr']
 }

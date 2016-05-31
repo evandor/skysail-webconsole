@@ -20,7 +20,7 @@ public class BundleDescriptor {
     public BundleDescriptor(Bundle bundle) {
         id = Long.toString(bundle.getBundleId());
         symbolicName = bundle.getSymbolicName();
-        version = bundle.getVersion().toString();
+        version = bundle.getVersion() != null ? bundle.getVersion().toString() : "0.0.0";
         state = translate(bundle.getState());
     }
 

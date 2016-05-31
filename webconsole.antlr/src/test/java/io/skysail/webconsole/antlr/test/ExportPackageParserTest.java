@@ -1,6 +1,6 @@
 package io.skysail.webconsole.antlr.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CharStream;
@@ -54,7 +54,15 @@ public class ExportPackageParserTest {
 	}
 	
 	@Test
-	public void testPackageWithUses() {
+	public void testPackageWithSingleUsesWithoutBrackets() {
+		ExportPackageParser parser = parse("jackson.core;uses:=com.fasterxml.jackson.core.format");
+		RContext tree = parser.r();
+		assertTrue(parser.getNumberOfSyntaxErrors() == 0);
+		System.out.println(tree.toStringTree(parser)); // print LISP-style tree
+	}
+
+	@Test
+	public void testPackageWithMultipleUses() {
 		ExportPackageParser parser = parse("jackson.core;uses:=\"com.fasterxml.jackson.core.format,com.fasterxml.jackson.core.io\"");
 		RContext tree = parser.r();
 		assertTrue(parser.getNumberOfSyntaxErrors() == 0);

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="bnd:osgi.core:6.0.0.201403061837">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.bnd/shacache/shas/0C49ACDC9AC62CF69EE49CB6F1905B4FDB79EA5C/osgi.core-6.0.0.201403061837.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.bnd/shacache/shas/0C49ACDC9AC62CF69EE49CB6F1905B4FDB79EA5C/osgi.core-6.0.0.201403061837.jar!/OSGI-OPT/src" />
+    </SOURCES>
+  </library>
+</component>

@@ -9,11 +9,13 @@ packageNames : packageName ( ';' packageName )* ;
 
 packageName : uniqueName ;
 
-parameter: version | uses ;
+parameter: version | uses | mandatory ;
 
 version : 'version="' v '"' | 'version=' v ;
 
-uses  : 'uses:="' + usedPackages + '"' ;
+uses  : 'uses:=' + ( packageName | '"' + usedPackages+ '"' ) ;
+
+mandatory : 'mandatory:=' + ( packageName | '"' + usedPackages+ '"' ) ;
 
 usedPackages : packageName ( ',' packageName)* ;
 
