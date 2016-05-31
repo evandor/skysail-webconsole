@@ -30,6 +30,7 @@ public class BundleDetails extends BundleDescriptor {
 	private String bundleClasspath;
 	private List<ExportPackage> exportPackage = new ArrayList<>();
 	private List<ManifestHeader> manifestHeaders = new ArrayList<>();
+	private String exportService;
 
 	public BundleDetails(Bundle bundle) {
 		super(bundle);
@@ -41,6 +42,7 @@ public class BundleDetails extends BundleDescriptor {
 		this.copyright = (String) headers.get(Constants.BUNDLE_COPYRIGHT);
 		this.description = (String) headers.get(Constants.BUNDLE_DESCRIPTION);
 		this.bundleClasspath = (String) headers.get(Constants.BUNDLE_CLASSPATH);
+		//this.exportService = (String) headers.get(Constants.EXPORT_SERVICE);
 		this.exportPackage = getExportedPackages(headers);
 		this.manifestHeaders = dump(headers);
 		this.startLevel = 0;

@@ -13,15 +13,15 @@
         </tr>
       </thead>
       <tr>
-        <th>ID</th>
+        <th><span title="">ID</span></th>
         <td>{{bundle.id}}</td>
       </tr>
       <tr>
-        <th>Symbolic Name</th>
+        <th><span title="Manifest header identifying the bundle's symbolic name.">Symbolic Name</span></th>
         <td>{{bundle.symbolicName}}</td>
       </tr>
       <tr>
-        <th>Version</th>
+        <th><span title="Manifest header identifying the bundle's version.">Version</span></th>
         <td>{{bundle.version}}</td>
       </tr>
       <tr>
@@ -29,12 +29,16 @@
         <td>{{bundle.description}}</td>
       </tr>
       <tr>
-        <th>DocUrl</th>
+        <th><span title="Manifest header identifying the bundle's documentation URL, from which further information about the bundle may be obtained.">DocUrl</span></th>
         <td>{{bundle.docUrl}}</td>
       </tr>
       <tr>
         <th>Last Modification</th>
         <td>{{bundle.lastModification}}</td>
+      </tr>
+      <tr>
+        <th>Bundle Classpath</th>
+        <td>{{bundle.bundleClasspath}}</td>
       </tr>
       <tr>
         <th>Location</th>
@@ -67,6 +71,24 @@
         <th><span class="glyphicon glyphicon-modal-window" aria-hidden="true" style="color: blue"></span> Exported Packages:</th>
         <td>
           <p *ngFor="#pkg of bundle.exportPackage">{{pkg.pkgName}} [{{pkg.version}}]</p>
+        </td>
+      </tr>
+    </table>
+  </tab>
+
+  <tab tabTitle="Export Service">
+    <table class="table">
+      <thead>
+        <tr>
+          <th width='270px;'>Key</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tr>
+        <th>Manifest Headers</th>
+        <td>
+          <!--<div *ng F or="#value of bundle.manifestHeaders | values"> </div>-->
+          <p *ngFor="#h of bundle.manifestHeaders"><b>{{h.key}}</b>: {{h.value}}</p>
         </td>
       </tr>
     </table>

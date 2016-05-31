@@ -13,10 +13,11 @@ export class BackendServices {
 
     private _baseUrl = '';
 
-    constructor(private _http: Http) { }
+    constructor(private _http: Http, private _window: Window) { }
 
     setBaseUrl(baseUrl) {
-        this._baseUrl = baseUrl;
+        var hostname = this._window.location.hostname;
+        this._baseUrl = "http://" + hostname + ":2002/";//baseUrl;
     }
 
     get(path) {

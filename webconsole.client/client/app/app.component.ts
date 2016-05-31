@@ -12,6 +12,7 @@ import {SnapshotsComponent} from './components/snapshots/snapshots.component';
 import {HelpComponent} from './components/help.component';
 
 import {Navbar} from './components/navbar/navbar.component';
+import {Breadcrumbs} from './components/navbar/breadcrumbs.component';
 
 @RouteConfig([
     { path: '/framework',    as: 'Framework', component: FrameworkComponent },
@@ -26,6 +27,6 @@ import {Navbar} from './components/navbar/navbar.component';
 @Component({
     selector: 'my-app',
     templateUrl: 'app/html/app.template.html',
-    directives: [RouterOutlet,RouterLink, FooterComponent,Navbar]
+    directives: [RouterOutlet,RouterLink, FooterComponent,Navbar,Breadcrumbs]
 })
 export class AppComponent { }

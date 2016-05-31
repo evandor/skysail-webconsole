@@ -25,6 +25,17 @@ export class BundlesComponent implements OnInit {
     onSelect(bundle: Bundle) {
         this.router.navigate( ['Bundle', { id: bundle.id }]  );
     }
+    
+    getStateClass(bundle: Bundle) {
+        switch (bundle.state) {
+            case "ACTIVE":
+                return "label label-success";
+            case "INSTALLED":
+                return "label label-warning";
+            default:
+                return "label label-danger";
+        }
+    }
 
     ngOnInit() {
         console.log("oninit bundlesservice called!");

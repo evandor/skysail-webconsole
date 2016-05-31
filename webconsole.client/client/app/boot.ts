@@ -7,4 +7,6 @@ import {CookieService} from './services/cookies.service'
 import {AuthService} from './services/auth.service'
 import {WindowService} from './services/window.service'
 
-bootstrap(AppComponent,[CookieService, AuthService, WindowService, ROUTER_PROVIDERS, HTTP_PROVIDERS]);
+import {provide} from 'angular2/core';
+
+bootstrap(AppComponent,[CookieService, AuthService, WindowService, ROUTER_PROVIDERS, HTTP_PROVIDERS, provide(Window, {useValue: window})]);
