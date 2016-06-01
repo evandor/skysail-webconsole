@@ -21,7 +21,7 @@ import {ValuesPipe} from '../../pipes/values.pipe';
 })
 export class BundleComponent implements OnInit {
 
-    bundle = {};
+    bundle: Bundle = new Bundle();
     
     isLoading = true;
 
@@ -41,6 +41,10 @@ export class BundleComponent implements OnInit {
                 //this.bundle.setManifestHeaders(this.objToStrMap(res.manifestHeaders));
             }
         );
+    }
+    
+    exportedPackagesTitle() {
+        return "Exported Packages (" + this.bundle.exportPackage.length + ")";
     }
     
     objToStrMap(obj) {

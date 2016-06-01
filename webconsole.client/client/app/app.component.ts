@@ -8,8 +8,9 @@ import {BundleComponent} from './components/bundles/bundle.component';
 import {LogsComponent} from './components/logs.component';
 import {ServicesComponent} from './components/services/services.component';
 import {ServiceComponent} from './components/services/service.component';
-import {SnapshotsComponent} from './components/snapshots/snapshots.component';
 import {HelpComponent} from './components/help.component';
+import {SnapshotsComponent} from './components/snapshots/snapshots.component';
+import {BarGraph} from './components/graph.component';
 
 import {Navbar} from './components/navbar/navbar.component';
 
@@ -20,12 +21,19 @@ import {Navbar} from './components/navbar/navbar.component';
     { path: '/services',     as: 'Services',  component: ServicesComponent },
     { path: '/services/:id', as: 'Service',   component: ServiceComponent },
     { path: '/logs',         as: 'Logs',      component: LogsComponent },
+   // { path: '/graph',        as: 'Graph',     component: GraphComponent },
     { path: '/snapshots',    as: 'Snapshots', component: SnapshotsComponent },
-    { path: '/help',         as: 'Help', component: HelpComponent }
+    { path: '/help',         as: 'Help',      component: HelpComponent }
 ])
 @Component({
     selector: 'my-app',
     templateUrl: 'app/html/app.template.html',
-    directives: [RouterOutlet,RouterLink, FooterComponent,Navbar]
+    directives: [RouterOutlet,RouterLink, FooterComponent, Navbar, BarGraph]
 })
-export class AppComponent { }
+export class AppComponent {
+    
+    graphData: Array<number>;
+    constructor() {
+        this.graphData = [10,20,30,40,60];
+    }
+ }

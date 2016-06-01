@@ -82,6 +82,7 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="module" module-name="webconsole.antlr" />
     <orderEntry type="library" name="bnd:webconsole.client:0.1.0.201605250943" level="project" />
     <orderEntry type="library" name="bnd:osgi.core:6.0.0.201403061837" level="project" />
     <orderEntry type="library" name="bnd:org.osgi.util.function:1.0.0.201505202023" level="project" />

@@ -21,6 +21,7 @@ import {Tabs} from './tabs';
 export class Tab {
   title: string;
   active = this.active || false;
+  elementCount = null;
   
   constructor(tabs: Tabs){
     

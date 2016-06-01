@@ -14,6 +14,6 @@ export class Bundle {
     state: string;
     vendor: string;
     version: string;
-    exportPackage: ExportPackage;
+    exportPackage: ExportPackage[] = [];
     manifestHeaders: ManifestHeader;
 }

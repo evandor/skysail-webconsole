@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/common', 'angular2/router', 'angular2/http', '../../services/backend.service', '../../components/tabs', '../../components/tab', '../../pipes/newline.pipe', '../../pipes/values.pipe'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/common', 'angular2/router', 'angular2/http', '../../services/backend.service', '../../domain/bundle', '../../components/tabs', '../../components/tab', '../../pipes/newline.pipe', '../../pipes/values.pipe'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', 'angular
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, router_1, http_1, backend_service_1, tabs_1, tab_1, newline_pipe_1, values_pipe_1;
+    var core_1, common_1, router_1, http_1, backend_service_1, bundle_1, tabs_1, tab_1, newline_pipe_1, values_pipe_1;
     var BundleComponent;
     return {
         setters:[
@@ -29,6 +29,9 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', 'angular
             function (backend_service_1_1) {
                 backend_service_1 = backend_service_1_1;
             },
+            function (bundle_1_1) {
+                bundle_1 = bundle_1_1;
+            },
             function (tabs_1_1) {
                 tabs_1 = tabs_1_1;
             },
@@ -46,7 +49,7 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', 'angular
                 function BundleComponent(_routeParams, _backend) {
                     this._routeParams = _routeParams;
                     this._backend = _backend;
-                    this.bundle = {};
+                    this.bundle = new bundle_1.Bundle();
                     this.isLoading = true;
                     _backend.setBaseUrl('http://localhost:2002/');
                 }
@@ -61,6 +64,9 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', 'angular
                         console.log("BundleDetails: " + res.manifestHeaders);
                         //this.bundle.setManifestHeaders(this.objToStrMap(res.manifestHeaders));
                     });
+                };
+                BundleComponent.prototype.exportedPackagesTitle = function () {
+                    return "Exported Packages (" + this.bundle.exportPackage.length + ")";
                 };
                 BundleComponent.prototype.objToStrMap = function (obj) {
                     var strMap = new Map();
