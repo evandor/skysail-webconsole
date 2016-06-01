@@ -23,12 +23,14 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map'], fun
             function (_1) {}],
         execute: function() {
             BackendServices = (function () {
-                function BackendServices(_http) {
+                function BackendServices(_http, _window) {
                     this._http = _http;
+                    this._window = _window;
                     this._baseUrl = '';
                 }
                 BackendServices.prototype.setBaseUrl = function (baseUrl) {
-                    this._baseUrl = baseUrl;
+                    var hostname = this._window.location.hostname;
+                    this._baseUrl = "http://" + hostname + ":2002/"; //baseUrl;
                 };
                 BackendServices.prototype.get = function (path) {
                     var headers = new http_1.Headers();
@@ -73,7 +75,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map'], fun
                 };
                 BackendServices = __decorate([
                     core_1.Injectable(), 
-                    __metadata('design:paramtypes', [http_1.Http])
+                    __metadata('design:paramtypes', [http_1.Http, Window])
                 ], BackendServices);
                 return BackendServices;
             }());

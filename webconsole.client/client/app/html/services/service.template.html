@@ -5,29 +5,35 @@
 <table class="table">
     <thead>
         <tr>
+            <th width='40px;'>&nbsp;</th>
             <th width='200px;'>Key</th>
             <th>Value</th>
         </tr>
     </thead>
     <tr>
+        <th>&nbsp;</th>
         <th>ID</th>
         <td>{{service.id}}</td>
     </tr>
     <tr>
-        <th><span class="glyphicon glyphicon-cog" aria-hidden="true" style="color: gray"></span> Object Class</th>
+        <th><span class="glyphicon glyphicon-cog" aria-hidden="true" style="color: gray"></span></th>
+        <th>Object Class</th>
         <td>
             {{service.objectClass}}
         </td>
     </tr>
     <tr>
+        <th>&nbsp;</th>
         <th>PID</th>
         <td>{{service.pid}}</td>
     </tr>
     <tr>
+        <th>&nbsp;</th>
         <th>Ranking</th>
         <td>{{service.ranking}}</td>
     </tr>
     <tr>
+        <th>&nbsp;</th>
         <th>Properties</th>
         <td>
             <ul>
@@ -36,12 +42,14 @@
         </td>
     </tr>
     <tr>
-        <th><span class="glyphicon glyphicon-th-large" aria-hidden="true" style="color: green"></span> Bundle</th>
+        <th><span class="glyphicon glyphicon-th-large" aria-hidden="true" style="color: green"></span></th>
+        <th>Bundle</th>
         <td (click)="onSelect(service.bundle)" style="cursor: pointer; color:#337ab7;">
             {{service.bundle.symbolicName}} [{{service.bundle.version}}] (#{{service.bundle.id}})
         </td>
     </tr>
     <tr>
+        <th>&nbsp;</th>
         <th>Using Bundles</th>
         <td>
             <ul>
@@ -53,6 +61,7 @@
         </td>
     </tr>
     <tr>
+        <th>&nbsp;</th>
         <th>Links</th>
         <td><a href='http://localhost:2002/backend/services/{{service.id}}'>Raw</a></td>
     </tr>

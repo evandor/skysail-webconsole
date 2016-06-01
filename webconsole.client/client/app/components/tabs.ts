@@ -7,7 +7,7 @@ import { Tab } from './tab';
     template: `
     <ul class="nav nav-tabs">
       <li *ngFor="#tab of tabs" (click)="selectTab(tab)" [class.active]="tab.active">
-        <a>{{tab.title}} <span class="badge">{{tab.elementCount}}</span></a>
+        <a class="clickable">{{tab.title}} <span class="badge">{{tab.elementCount}}</span></a>
       </li>
     </ul>
     <ng-content></ng-content>

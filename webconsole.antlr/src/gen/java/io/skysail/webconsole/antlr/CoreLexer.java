@@ -1,4 +1,4 @@
-// Generated from C:\git\skysail-webconsole\webconsole.antlr\src\main\antlr4\Core.g4 by ANTLR 4.2.2
+// Generated from /Users/carsten/git/skysail-webconsole/webconsole.antlr/src/main/antlr4/core.g4 by ANTLR 4.2.2
 package io.skysail.webconsole.antlr;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
@@ -35,7 +35,7 @@ public class CoreLexer extends Lexer {
 	}
 
 	@Override
-	public String getGrammarFileName() { return "Core.g4"; }
+	public String getGrammarFileName() { return "core.g4"; }
 
 	@Override
 	public String[] getTokenNames() { return tokenNames; }

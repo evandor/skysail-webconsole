@@ -1,4 +1,4 @@
-<h1><span class="glyphicon glyphicon-th-large" aria-hidden="true" style="color: green"></span> Bundles</h1>
+<h2><span class="glyphicon glyphicon-th-large" aria-hidden="true" style="color: green"></span> Bundles</h2>
 <table class="table" width='100%'>
   <thead>
     <tr>
@@ -12,6 +12,6 @@
     <td>{{bundle.id}}</td>
     <td (click)="onSelect(bundle)" style="cursor: pointer; color:#000066;">{{bundle.symbolicName}}</td>
     <td>{{bundle.version}}</td>
-    <td>{{bundle.state}}</td>
+    <td><span [class]="getStateClass(bundle)">{{bundle.state}}</span></td>
   </tr>
 </table>

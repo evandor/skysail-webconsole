@@ -89,6 +89,8 @@ public class Server extends NanoHTTPD {
         Bundle clientBundle = Arrays.stream(bundleContext.getBundles())
 				.filter(b -> b.getSymbolicName().equals(WEBCONSOLE_CLIENT)).findFirst().orElse(bundleContext.getBundle());
 
+        log.info("using client bundle '{}' [{}]", clientBundle.getSymbolicName(), clientBundle.getVersion());
+
         versionHandler = new VersionHandler(clientBundle);
         staticFilesHandler = new StaticFilesHandler(clientBundle);
 

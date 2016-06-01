@@ -67,7 +67,7 @@ System.register(["angular2/core", "angular2/router", '../../services/backend.ser
                         directives: [router_1.ROUTER_DIRECTIVES],
                         providers: [backend_service_1.BackendServices],
                         pipes: [],
-                        templateUrl: 'app/html/navbar.template.html'
+                        templateUrl: 'app/html/navbar/navbar.template.html'
                     }), 
                     __metadata('design:paramtypes', [router_1.Router, backend_service_1.BackendServices])
                 ], Navbar);

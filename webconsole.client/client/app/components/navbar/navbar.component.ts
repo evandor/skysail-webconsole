@@ -8,7 +8,7 @@ import {BackendServices} from '../../services/backend.service';
     directives: [ROUTER_DIRECTIVES],
     providers: [BackendServices],
     pipes: [],
-    templateUrl: 'app/html/navbar.template.html'
+    templateUrl: 'app/html/navbar/navbar.template.html'
 })
 export class Navbar {
     

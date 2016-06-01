@@ -36,6 +36,16 @@ System.register(['angular2/core', 'angular2/common', "angular2/router", '../../s
                 BundlesComponent.prototype.onSelect = function (bundle) {
                     this.router.navigate(['Bundle', { id: bundle.id }]);
                 };
+                BundlesComponent.prototype.getStateClass = function (bundle) {
+                    switch (bundle.state) {
+                        case "ACTIVE":
+                            return "label label-success";
+                        case "INSTALLED":
+                            return "label label-warning";
+                        default:
+                            return "label label-danger";
+                    }
+                };
                 BundlesComponent.prototype.ngOnInit = function () {
                     var _this = this;
                     console.log("oninit bundlesservice called!");

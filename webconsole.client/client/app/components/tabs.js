@@ -45,7 +45,11 @@ System.register(['angular2/core', 'angular2/common'], function(exports_1, contex
                 Tabs = __decorate([
                     core_1.Component({
                         selector: 'tabs',
+<<<<<<< HEAD
                         template: "\n    <ul class=\"nav nav-tabs\">\n      <li *ngFor=\"#tab of tabs\" (click)=\"selectTab(tab)\" [class.active]=\"tab.active\">\n        <a>{{tab.title}} <span class=\"badge\">{{tab.elementCount}}</span></a>\n      </li>\n    </ul>\n    <ng-content></ng-content>\n  ",
+=======
+                        template: "\n    <ul class=\"nav nav-tabs\">\n      <li *ngFor=\"#tab of tabs\" (click)=\"selectTab(tab)\" [class.active]=\"tab.active\">\n        <a class=\"clickable\">{{tab.title}}</a>\n      </li>\n    </ul>\n    <ng-content></ng-content>\n  ",
+>>>>>>> 98f4a84dd94fd22dbaacb1f406c483291e0c9fa3
                         directives: [common_1.NgFor]
                     }), 
                     __metadata('design:paramtypes', [])

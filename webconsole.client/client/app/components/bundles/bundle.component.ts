@@ -26,7 +26,7 @@ export class BundleComponent implements OnInit {
     isLoading = true;
 
     constructor(private _routeParams:RouteParams, private _backend: BackendServices) {
-         _backend.setBaseUrl('http://localhost:2002/');
+       _backend.setBaseUrl('http://localhost:2002/');
     }
 
     ngOnInit() {
