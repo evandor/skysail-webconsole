@@ -1,0 +1,96 @@
+grammar Osgi6;
+
+DIGIT : [0-9] ;
+
+ALPHA : [a-zA-Z] ;
+
+alphanum : ALPHA | DIGIT;
+
+number : DIGIT+ ;
+
+//token : ( alphanum | '_' | '-' )+ ;
+
+extended : ( alphanum | '_' | '-' | '.' )+ ;
+
+argument : extended ;// | quotedString ;
+
+fragment
+QuotedString
+    : '"' ( ~[\u000D\u000A\u0000]{Character.isJavaIdentifierPart(_input.LA(-1))}? | '\"' | '\\' )* '"' ;
+
+//parameter : directive | attribute ;
+
+directive : extended ':=' argument ;
+
+attribute : extended '=' argument ;
+
+
+// ===============================================
+// Versions
+
+// -----------------------------------------------
+// simple versions:
+
+version : major( '.' minor ( '.' micro ( '.' qualifier )? )? )? ;
+
+major       : number ;
+minor       : number ;
+micro       : number ;
+
+qualifier   : ( alphanum | '_' | '-' )+ ;
+
+// ===============================================
+// Packages
+
+// -----------------------------------------------
+// Export-Package:
+
+
+exportPackage : export (',' export)* ;
+
+
+//number : DIGIT+ ;
+
+//token : ( alphanum | '_' | '-' )+ ;
+
+export
+    : packageNames (';'parameter )*
+    ;
+
+packageNames : packageName ( ';' packageName )* ;
+
+
+packageName : uniqueName ;
+
+
+uniqueName : ID ( '.' ID )* ;
+
+parameter : directive | attribute ;
+
+ID
+	:	[a-zA-Z$_] //JavaLetterOrDigit *
+	;
+
+fragment
+JavaLetter
+	:	[a-zA-Z$_] // these are the "java letters" below 0x7F
+	|	// covers all characters above 0x7F which are not a surrogate
+		~[\u0000-\u007F\uD800-\uDBFF]
+		{Character.isJavaIdentifierStart(_input.LA(-1))}?
+	|	// covers UTF-16 surrogate pairs encodings for U+10000 to U+10FFFF
+		[\uD800-\uDBFF] [\uDC00-\uDFFF]
+		{Character.isJavaIdentifierStart(Character.toCodePoint((char)_input.LA(-2), (char)_input.LA(-1)))}?
+	;
+
+fragment
+JavaLetterOrDigit
+	:	[a-zA-Z0-9$_] // these are the "java letters or digits" below 0x7F
+	|	// covers all characters above 0x7F which are not a surrogate
+		~[\u0000-\u007F\uD800-\uDBFF]
+		{Character.isJavaIdentifierPart(_input.LA(-1))}?
+	|	// covers UTF-16 surrogate pairs encodings for U+10000 to U+10FFFF
+		[\uD800-\uDBFF] [\uDC00-\uDFFF]
+		{Character.isJavaIdentifierPart(Character.toCodePoint((char)_input.LA(-2), (char)_input.LA(-1)))}?
+	;
+
+WS      : [ \t\r\n]+ -> skip ;

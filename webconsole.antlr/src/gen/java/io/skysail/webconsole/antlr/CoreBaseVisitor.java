@@ -1,6 +1,5 @@
-// Generated from C:\git\skysail-webconsole\webconsole.antlr\src\main\antlr4\Core.g4 by ANTLR 4.2.2
+// Generated from /Users/carsten/git/skysail-webconsole/webconsole.antlr/src/main/antlr4/io/skysail/webconsole/antlr/Core.g4 by ANTLR 4.5.3
 package io.skysail.webconsole.antlr;
-import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
 /**
@@ -18,21 +17,19 @@ public class CoreBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements C
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitAlphanum(@NotNull CoreParser.AlphanumContext ctx) { return visitChildren(ctx); }
-
+	@Override public T visitAlphanum(CoreParser.AlphanumContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitNumber(@NotNull CoreParser.NumberContext ctx) { return visitChildren(ctx); }
-
+	@Override public T visitNumber(CoreParser.NumberContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitToken(@NotNull CoreParser.TokenContext ctx) { return visitChildren(ctx); }
+	@Override public T visitExtended(CoreParser.ExtendedContext ctx) { return visitChildren(ctx); }
 }

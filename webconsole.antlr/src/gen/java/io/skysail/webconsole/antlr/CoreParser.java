@@ -1,4 +1,4 @@
-// Generated from C:\git\skysail-webconsole\webconsole.antlr\src\main\antlr4\Core.g4 by ANTLR 4.2.2
+// Generated from /Users/carsten/git/skysail-webconsole/webconsole.antlr/src/main/antlr4/io/skysail/webconsole/antlr/Core.g4 by ANTLR 4.5.3
 package io.skysail.webconsole.antlr;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
@@ -11,25 +11,60 @@ import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class CoreParser extends Parser {
+	static { RuntimeMetaData.checkVersion("4.5.3", RuntimeMetaData.VERSION); }
+
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__1=1, T__0=2, DIGIT=3, ALPHA=4;
-	public static final String[] tokenNames = {
-		"<INVALID>", "'_'", "'-'", "DIGIT", "ALPHA"
-	};
+		T__0=1, T__1=2, T__2=3, DIGIT=4, ALPHA=5;
 	public static final int
-		RULE_alphanum = 0, RULE_number = 1, RULE_token = 2;
+		RULE_alphanum = 0, RULE_number = 1, RULE_extended = 2;
 	public static final String[] ruleNames = {
-		"alphanum", "number", "token"
+		"alphanum", "number", "extended"
 	};
+
+	private static final String[] _LITERAL_NAMES = {
+		null, "'_'", "'-'", "'.'"
+	};
+	private static final String[] _SYMBOLIC_NAMES = {
+		null, null, null, null, "DIGIT", "ALPHA"
+	};
+	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
+
+	/**
+	 * @deprecated Use {@link #VOCABULARY} instead.
+	 */
+	@Deprecated
+	public static final String[] tokenNames;
+	static {
+		tokenNames = new String[_SYMBOLIC_NAMES.length];
+		for (int i = 0; i < tokenNames.length; i++) {
+			tokenNames[i] = VOCABULARY.getLiteralName(i);
+			if (tokenNames[i] == null) {
+				tokenNames[i] = VOCABULARY.getSymbolicName(i);
+			}
+
+			if (tokenNames[i] == null) {
+				tokenNames[i] = "<INVALID>";
+			}
+		}
+	}
+
+	@Override
+	@Deprecated
+	public String[] getTokenNames() {
+		return tokenNames;
+	}
+
+	@Override
+
+	public Vocabulary getVocabulary() {
+		return VOCABULARY;
+	}
 
 	@Override
 	public String getGrammarFileName() { return "Core.g4"; }
-
-	@Override
-	public String[] getTokenNames() { return tokenNames; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }
@@ -45,8 +80,8 @@ public class CoreParser extends Parser {
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 	public static class AlphanumContext extends ParserRuleContext {
-		public TerminalNode DIGIT() { return getToken(CoreParser.DIGIT, 0); }
 		public TerminalNode ALPHA() { return getToken(CoreParser.ALPHA, 0); }
+		public TerminalNode DIGIT() { return getToken(CoreParser.DIGIT, 0); }
 		public AlphanumContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -77,8 +112,9 @@ public class CoreParser extends Parser {
 			_la = _input.LA(1);
 			if ( !(_la==DIGIT || _la==ALPHA) ) {
 			_errHandler.recoverInline(this);
+			} else {
+				consume();
 			}
-			consume();
 			}
 		}
 		catch (RecognitionException re) {
@@ -93,10 +129,10 @@ public class CoreParser extends Parser {
 	}
 
 	public static class NumberContext extends ParserRuleContext {
+		public List<TerminalNode> DIGIT() { return getTokens(CoreParser.DIGIT); }
 		public TerminalNode DIGIT(int i) {
 			return getToken(CoreParser.DIGIT, i);
 		}
-		public List<TerminalNode> DIGIT() { return getTokens(CoreParser.DIGIT); }
 		public NumberContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -129,7 +165,8 @@ public class CoreParser extends Parser {
 			do {
 				{
 				{
-				setState(8); match(DIGIT);
+				setState(8);
+				match(DIGIT);
 				}
 				}
 				setState(11); 
@@ -149,70 +186,79 @@ public class CoreParser extends Parser {
 		return _localctx;
 	}
 
-	public static class TokenContext extends ParserRuleContext {
+	public static class ExtendedContext extends ParserRuleContext {
 		public List<AlphanumContext> alphanum() {
 			return getRuleContexts(AlphanumContext.class);
 		}
 		public AlphanumContext alphanum(int i) {
 			return getRuleContext(AlphanumContext.class,i);
 		}
-		public TokenContext(ParserRuleContext parent, int invokingState) {
+		public ExtendedContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_token; }
+		@Override public int getRuleIndex() { return RULE_extended; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CoreListener ) ((CoreListener)listener).enterToken(this);
+			if ( listener instanceof CoreListener ) ((CoreListener)listener).enterExtended(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CoreListener ) ((CoreListener)listener).exitToken(this);
+			if ( listener instanceof CoreListener ) ((CoreListener)listener).exitExtended(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CoreVisitor ) return ((CoreVisitor<? extends T>)visitor).visitToken(this);
+			if ( visitor instanceof CoreVisitor ) return ((CoreVisitor<? extends T>)visitor).visitExtended(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
-	public final TokenContext token() throws RecognitionException {
-		TokenContext _localctx = new TokenContext(_ctx, getState());
-		enterRule(_localctx, 4, RULE_token);
+	public final ExtendedContext extended() throws RecognitionException {
+		ExtendedContext _localctx = new ExtendedContext(_ctx, getState());
+		enterRule(_localctx, 4, RULE_extended);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(16); 
+			setState(17); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
-				setState(16);
+				setState(17);
 				switch (_input.LA(1)) {
 				case DIGIT:
 				case ALPHA:
 					{
-					setState(13); alphanum();
+					setState(13);
+					alphanum();
 					}
 					break;
-				case 1:
+				case T__0:
 					{
-					setState(14); match(1);
+					setState(14);
+					match(T__0);
 					}
 					break;
-				case 2:
+				case T__1:
 					{
-					setState(15); match(2);
+					setState(15);
+					match(T__1);
+					}
+					break;
+				case T__2:
+					{
+					setState(16);
+					match(T__2);
 					}
 					break;
 				default:
 					throw new NoViableAltException(this);
 				}
 				}
-				setState(18); 
+				setState(19); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << 1) | (1L << 2) | (1L << DIGIT) | (1L << ALPHA))) != 0) );
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << T__1) | (1L << T__2) | (1L << DIGIT) | (1L << ALPHA))) != 0) );
 			}
 		}
 		catch (RecognitionException re) {
@@ -227,13 +273,14 @@ public class CoreParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\6\27\4\2\t\2\4\3"+
-		"\t\3\4\4\t\4\3\2\3\2\3\3\6\3\f\n\3\r\3\16\3\r\3\4\3\4\3\4\6\4\23\n\4\r"+
-		"\4\16\4\24\3\4\2\2\5\2\4\6\2\3\3\2\5\6\27\2\b\3\2\2\2\4\13\3\2\2\2\6\22"+
-		"\3\2\2\2\b\t\t\2\2\2\t\3\3\2\2\2\n\f\7\5\2\2\13\n\3\2\2\2\f\r\3\2\2\2"+
-		"\r\13\3\2\2\2\r\16\3\2\2\2\16\5\3\2\2\2\17\23\5\2\2\2\20\23\7\3\2\2\21"+
-		"\23\7\4\2\2\22\17\3\2\2\2\22\20\3\2\2\2\22\21\3\2\2\2\23\24\3\2\2\2\24"+
-		"\22\3\2\2\2\24\25\3\2\2\2\25\7\3\2\2\2\5\r\22\24";
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\7\30\4\2\t\2\4\3"+
+		"\t\3\4\4\t\4\3\2\3\2\3\3\6\3\f\n\3\r\3\16\3\r\3\4\3\4\3\4\3\4\6\4\24\n"+
+		"\4\r\4\16\4\25\3\4\2\2\5\2\4\6\2\3\3\2\6\7\31\2\b\3\2\2\2\4\13\3\2\2\2"+
+		"\6\23\3\2\2\2\b\t\t\2\2\2\t\3\3\2\2\2\n\f\7\6\2\2\13\n\3\2\2\2\f\r\3\2"+
+		"\2\2\r\13\3\2\2\2\r\16\3\2\2\2\16\5\3\2\2\2\17\24\5\2\2\2\20\24\7\3\2"+
+		"\2\21\24\7\4\2\2\22\24\7\5\2\2\23\17\3\2\2\2\23\20\3\2\2\2\23\21\3\2\2"+
+		"\2\23\22\3\2\2\2\24\25\3\2\2\2\25\23\3\2\2\2\25\26\3\2\2\2\26\7\3\2\2"+
+		"\2\5\r\23\25";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

@@ -1,24 +1,33 @@
-buildscript {
-    repositories {
-        maven {
-            name 'JFrog OSS snapshot repo'
-            url  'https://oss.jfrog.org/oss-snapshot-local/'
-        }
-        jcenter()
-    }
-
-    dependencies {
-        classpath 'me.champeau.gradle:antlr4-gradle-plugin:0.1'
-    }
-}
-
 repositories {
-   jcenter()
+    mavenCentral()
 }
 
-apply plugin: 'me.champeau.gradle.antlr4'
+buildscript {
+  repositories {
+    jcenter()
+  }
+  dependencies {
+    classpath group:'ch.raffael.gradlePlugins.antlr4', name:'gradle-antlr4-plugin', version:'1.0'
+  }
+}
+
+apply plugin:'ch.raffael.antlr4'
 
 antlr4 {
-   output = file('src/gen/java/io/skysail/webconsole/antlr')
-   extraArgs = ['-package', 'io.skysail.webconsole.antlr']
+
+  // The version of the ANTLR tool to use; you can mix these using the runtimePackage argument
+  version = '4.5.3'
+
+  // what to generate
+  listener = true
+  visitor = true
+
+  // what package to find the runtime classes in; best used with preshadow
+  runtimePackage = 'org.antlr.v4.runtime'
+
+  // where to put the generated classes
+  destination =  file("$projectDir/src/gen/java")
+
+  // where to put intermediate files
+  //generateDir = "$buildDir/antlr4/gen"
 }

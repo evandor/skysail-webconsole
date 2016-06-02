@@ -1,4 +1,4 @@
-// Generated from /Users/carsten/git/skysail-webconsole/webconsole.antlr/src/main/antlr4/ArrayInit.g4 by ANTLR 4.2.2
+// Generated from /Users/carsten/git/skysail-webconsole/webconsole.antlr/src/main/antlr4/io/skysail/webconsole/antlr/ArrayInit.g4 by ANTLR 4.5.3
 package io.skysail.webconsole.antlr;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
@@ -11,25 +11,60 @@ import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class ArrayInitParser extends Parser {
+	static { RuntimeMetaData.checkVersion("4.5.3", RuntimeMetaData.VERSION); }
+
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__2=1, T__1=2, T__0=3, INT=4, WS=5;
-	public static final String[] tokenNames = {
-		"<INVALID>", "'{'", "','", "'}'", "INT", "WS"
-	};
+		T__0=1, T__1=2, T__2=3, INT=4, WS=5;
 	public static final int
 		RULE_init = 0, RULE_value = 1;
 	public static final String[] ruleNames = {
 		"init", "value"
 	};
 
-	@Override
-	public String getGrammarFileName() { return "ArrayInit.g4"; }
+	private static final String[] _LITERAL_NAMES = {
+		null, "'{'", "','", "'}'"
+	};
+	private static final String[] _SYMBOLIC_NAMES = {
+		null, null, null, null, "INT", "WS"
+	};
+	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
+
+	/**
+	 * @deprecated Use {@link #VOCABULARY} instead.
+	 */
+	@Deprecated
+	public static final String[] tokenNames;
+	static {
+		tokenNames = new String[_SYMBOLIC_NAMES.length];
+		for (int i = 0; i < tokenNames.length; i++) {
+			tokenNames[i] = VOCABULARY.getLiteralName(i);
+			if (tokenNames[i] == null) {
+				tokenNames[i] = VOCABULARY.getSymbolicName(i);
+			}
+
+			if (tokenNames[i] == null) {
+				tokenNames[i] = "<INVALID>";
+			}
+		}
+	}
 
 	@Override
-	public String[] getTokenNames() { return tokenNames; }
+	@Deprecated
+	public String[] getTokenNames() {
+		return tokenNames;
+	}
+
+	@Override
+
+	public Vocabulary getVocabulary() {
+		return VOCABULARY;
+	}
+
+	@Override
+	public String getGrammarFileName() { return "ArrayInit.g4"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }
@@ -77,23 +112,28 @@ public class ArrayInitParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(4); match(1);
-			setState(5); value();
+			setState(4);
+			match(T__0);
+			setState(5);
+			value();
 			setState(10);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (_la==2) {
+			while (_la==T__1) {
 				{
 				{
-				setState(6); match(2);
-				setState(7); value();
+				setState(6);
+				match(T__1);
+				setState(7);
+				value();
 				}
 				}
 				setState(12);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(13); match(3);
+			setState(13);
+			match(T__2);
 			}
 		}
 		catch (RecognitionException re) {
@@ -137,16 +177,18 @@ public class ArrayInitParser extends Parser {
 		try {
 			setState(17);
 			switch (_input.LA(1)) {
-			case 1:
+			case T__0:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(15); init();
+				setState(15);
+				init();
 				}
 				break;
 			case INT:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(16); match(INT);
+				setState(16);
+				match(INT);
 				}
 				break;
 			default:

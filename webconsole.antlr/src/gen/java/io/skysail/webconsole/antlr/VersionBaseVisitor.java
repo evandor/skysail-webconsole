@@ -1,6 +1,5 @@
-// Generated from /Users/carsten/git/skysail-webconsole/webconsole.antlr/src/main/antlr4/Version.g4 by ANTLR 4.2.2
+// Generated from /Users/carsten/git/skysail-webconsole/webconsole.antlr/src/main/antlr4/io/skysail/webconsole/antlr/Version.g4 by ANTLR 4.5.3
 package io.skysail.webconsole.antlr;
-import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
 /**
@@ -18,61 +17,40 @@ public class VersionBaseVisitor<T> extends AbstractParseTreeVisitor<T> implement
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitAlphanum(@NotNull VersionParser.AlphanumContext ctx) { return visitChildren(ctx); }
-
+	@Override public T visitNumber(VersionParser.NumberContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitNumber(@NotNull VersionParser.NumberContext ctx) { return visitChildren(ctx); }
-
+	@Override public T visitVersion(VersionParser.VersionContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitMajor(@NotNull VersionParser.MajorContext ctx) { return visitChildren(ctx); }
-
+	@Override public T visitMajor(VersionParser.MajorContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitMinor(@NotNull VersionParser.MinorContext ctx) { return visitChildren(ctx); }
-
+	@Override public T visitMinor(VersionParser.MinorContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitMicro(@NotNull VersionParser.MicroContext ctx) { return visitChildren(ctx); }
-
+	@Override public T visitMicro(VersionParser.MicroContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitV(@NotNull VersionParser.VContext ctx) { return visitChildren(ctx); }
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitQualifier(@NotNull VersionParser.QualifierContext ctx) { return visitChildren(ctx); }
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitToken(@NotNull VersionParser.TokenContext ctx) { return visitChildren(ctx); }
+	@Override public T visitQualifier(VersionParser.QualifierContext ctx) { return visitChildren(ctx); }
 }

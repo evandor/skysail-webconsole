@@ -1,6 +1,5 @@
-// Generated from /Users/carsten/git/skysail-webconsole/webconsole.antlr/src/main/antlr4/ArrayInit.g4 by ANTLR 4.2.2
+// Generated from /Users/carsten/git/skysail-webconsole/webconsole.antlr/src/main/antlr4/io/skysail/webconsole/antlr/ArrayInit.g4 by ANTLR 4.5.3
 package io.skysail.webconsole.antlr;
-import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
@@ -16,12 +15,11 @@ public interface ArrayInitVisitor<T> extends ParseTreeVisitor<T> {
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitInit(@NotNull ArrayInitParser.InitContext ctx);
-
+	T visitInit(ArrayInitParser.InitContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link ArrayInitParser#value}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitValue(@NotNull ArrayInitParser.ValueContext ctx);
+	T visitValue(ArrayInitParser.ValueContext ctx);
 }

@@ -1,0 +1,25 @@
+grammar Core;
+
+DIGIT : [0-9] ;
+
+ALPHA : [a-zA-Z] ;
+
+alphanum : ALPHA | DIGIT;
+
+number : DIGIT+ ;
+
+//token : ( alphanum | '_' | '-' )+ ;
+
+extended : ( alphanum | '_' | '-' | '.' )+ ;
+
+argument : extended ;// | quotedString ;
+
+fragment
+QuotedString
+    : '"' ( ~[\u000D\u000A\u0000]{Character.isJavaIdentifierPart(_input.LA(-1))}? | '\"' | '\\' )* '"' ;
+
+//parameter : directive | attribute ;
+
+directive : extended ':=' argument ;
+
+attribute : extended '=' argument ;
