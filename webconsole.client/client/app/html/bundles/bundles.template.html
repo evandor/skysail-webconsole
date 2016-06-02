@@ -6,6 +6,7 @@
       <th>SymbolicName</th>
       <th>Version</th>
       <th>Status</th>
+      <th>Size (KB)</th>
     </tr>
   </thead>
   <tr *ngFor="#bundle of bundles">
@@ -13,5 +14,6 @@
     <td (click)="onSelect(bundle)" style="cursor: pointer; color:#000066;">{{bundle.symbolicName}}</td>
     <td>{{bundle.version}}</td>
     <td><span [class]="getStateClass(bundle)">{{bundle.state}}</span></td>
+    <td>{{bundle.size}}</td>
   </tr>
 </table>

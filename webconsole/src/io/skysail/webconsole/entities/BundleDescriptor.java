@@ -1,12 +1,16 @@
 package io.skysail.webconsole.entities;
 
+import java.io.File;
+
 import org.osgi.framework.Bundle;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 
 @Getter
 @Setter
+@Slf4j
 public class BundleDescriptor {
 
     private String id;
@@ -17,11 +21,24 @@ public class BundleDescriptor {
 
     private String state;
 
+    private long size;
+
     public BundleDescriptor(Bundle bundle) {
         id = Long.toString(bundle.getBundleId());
         symbolicName = bundle.getSymbolicName();
         version = bundle.getVersion() != null ? bundle.getVersion().toString() : "0.0.0";
         state = translate(bundle.getState());
+        String location = bundle.getLocation();
+        if (location != null) {
+            if (location.startsWith("reference:file:")) {
+                String filename = location.substring("reference:file:".length());
+                this.size = new File(filename).length() / 1024;
+            } else {
+                log.info("could not determine file size of {}", location);
+            }
+        } else {
+            log.info("could not determine file size for bundle {}", bundle.getSymbolicName());
+        }
     }
 
     private String translate(int bundleState) { // NOSONAR

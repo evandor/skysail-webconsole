@@ -12,6 +12,7 @@ export class Bundle {
     location: string;
     startLevel: number;
     state: string;
+    size: number;
     vendor: string;
     version: string;
     exportPackage: ExportPackage[] = [];
