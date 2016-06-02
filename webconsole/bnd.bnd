@@ -25,12 +25,13 @@ Include-Resource: libs=libs
     libs/jackson-core-2.5.1.jar;version=file,\
     libs/jackson-databind-2.5.1.jar;version=file,\
     libs/nanohttpd-webserver-2.3.0.jar;version=file,\
+    libs/nanohttpd-websocket-2.3.0.jar;version=file,\
     libs/javers-core-2.0.0-RC1.jar;version=file,\
     libs/picocontainer-2.15.jar;version=file,\
     libs/gson-2.6.2.jar;version=file,\
     libs/joda-time-2.9.3.jar;version=file,\
-    webconsole.antlr;version=latest,\
-    webconsole.client;version='[0.1.0,0.1.1)',\
+    webconsole.antlr;version='[0.1.0,0.1.1)',\
+    webconsole.client;version='[0.1.2,0.1.3)',\
     ${osgi},\
     ${testlibs},\
     ${fasterxml},\
@@ -47,6 +48,8 @@ Export-Package: \
     org.osgi.util.function.*,\
     org.javers.*,\
     org.joda.time.*,\
+    io.skysail.webconsole.antlr.*,\
+    org.antlr.v4.runtime.*,\
     client.*
     
 Import-Package: \

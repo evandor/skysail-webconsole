@@ -1,5 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<repository increment="1464623699000" name="Release" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+<repository increment="1464855985764" name="Release" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="webconsole.antlr"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="0.1.0.201606020812"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="4268e851d0431c91bbf15e107448ef0bc964a9ec9113987130fbd1d5739a71a5"/>
+      <attribute name="url" value="webconsole.antlr/webconsole.antlr-0.1.0.jar"/>
+      <attribute name="size" type="Long" value="1735129"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="webconsole.antlr"/>
+      <attribute name="bundle-version" type="Version" value="0.1.0.201606020812"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="webconsole.antlr"/>
+      <attribute name="bundle-version" type="Version" value="0.1.0.201606020812"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="io.skysail.webconsole.antlr"/>
+      <attribute name="version" type="Version" value="0.1.0"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.antlr"/>
+      <attribute name="bundle-version" type="Version" value="0.1.0.201606020812"/>
+      <directive name="uses" value="org.antlr.v4.runtime,org.antlr.v4.runtime.atn,org.antlr.v4.runtime.dfa,org.antlr.v4.runtime.tree"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.antlr.v4.runtime"/>
+      <attribute name="version" type="Version" value="0.1.0"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.antlr"/>
+      <attribute name="bundle-version" type="Version" value="0.1.0.201606020812"/>
+      <directive name="uses" value="org.antlr.v4.runtime.atn,org.antlr.v4.runtime.dfa,org.antlr.v4.runtime.misc,org.antlr.v4.runtime.tree,org.antlr.v4.runtime.tree.pattern"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.antlr.v4.runtime.atn"/>
+      <attribute name="version" type="Version" value="0.1.0"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.antlr"/>
+      <attribute name="bundle-version" type="Version" value="0.1.0.201606020812"/>
+      <directive name="uses" value="org.antlr.v4.runtime,org.antlr.v4.runtime.dfa,org.antlr.v4.runtime.misc"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.antlr.v4.runtime.dfa"/>
+      <attribute name="version" type="Version" value="0.1.0"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.antlr"/>
+      <attribute name="bundle-version" type="Version" value="0.1.0.201606020812"/>
+      <directive name="uses" value="org.antlr.v4.runtime,org.antlr.v4.runtime.atn"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.antlr.v4.runtime.misc"/>
+      <attribute name="version" type="Version" value="0.1.0"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.antlr"/>
+      <attribute name="bundle-version" type="Version" value="0.1.0.201606020812"/>
+      <directive name="uses" value="org.antlr.v4.runtime"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.antlr.v4.runtime.tree"/>
+      <attribute name="version" type="Version" value="0.1.0"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.antlr"/>
+      <attribute name="bundle-version" type="Version" value="0.1.0.201606020812"/>
+      <directive name="uses" value="org.antlr.v4.runtime,org.antlr.v4.runtime.misc"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.antlr.v4.runtime.tree.pattern"/>
+      <attribute name="version" type="Version" value="0.1.0"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.antlr"/>
+      <attribute name="bundle-version" type="Version" value="0.1.0.201606020812"/>
+      <directive name="uses" value="org.antlr.v4.runtime,org.antlr.v4.runtime.misc,org.antlr.v4.runtime.tree"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.antlr.v4.runtime.tree.xpath"/>
+      <attribute name="version" type="Version" value="0.1.0"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.antlr"/>
+      <attribute name="bundle-version" type="Version" value="0.1.0.201606020812"/>
+      <directive name="uses" value="org.antlr.v4.runtime,org.antlr.v4.runtime.atn,org.antlr.v4.runtime.dfa,org.antlr.v4.runtime.tree"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.antlr.v4.runtime)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.antlr.v4.runtime.atn)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.antlr.v4.runtime.dfa)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.antlr.v4.runtime.misc)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.antlr.v4.runtime.tree)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.antlr.v4.runtime.tree.pattern)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.antlr.v4.runtime.tree.xpath)"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
+    </requirement>
+  </resource>
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="webconsole.client"/>
@@ -40,6 +141,27 @@
     <capability namespace="osgi.wiring.host">
       <attribute name="osgi.wiring.host" value="webconsole.client"/>
       <attribute name="bundle-version" type="Version" value="0.1.1.201605301541"/>
+    </capability>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="webconsole.client"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="0.1.2.201606020826"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="fc308d1417821ae9a0249c41c7cf13d5f1abd25874b0f2344685264eb1df262e"/>
+      <attribute name="url" value="webconsole.client/webconsole.client-0.1.2.jar"/>
+      <attribute name="size" type="Long" value="27830205"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="webconsole.client"/>
+      <attribute name="bundle-version" type="Version" value="0.1.2.201606020826"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="webconsole.client"/>
+      <attribute name="bundle-version" type="Version" value="0.1.2.201606020826"/>
     </capability>
   </resource>
   <resource>

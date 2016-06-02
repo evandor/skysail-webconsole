@@ -15,6 +15,8 @@ import {BarGraph} from './components/graph.component';
 import {Navbar} from './components/navbar/navbar.component';
 import {Breadcrumbs} from './components/navbar/breadcrumbs.component';
 
+import {TimerWebsocketComponent} from './components/websockets/timerWS.component'
+
 @RouteConfig([
     { path: '/framework',    as: 'Framework', component: FrameworkComponent },
     { path: '/bundles',      as: 'Bundles',   component: BundlesComponent, useAsDefault: true },
@@ -29,7 +31,7 @@ import {Breadcrumbs} from './components/navbar/breadcrumbs.component';
 @Component({
     selector: 'my-app',
     templateUrl: 'app/html/app.template.html',
-    directives: [RouterOutlet,RouterLink, FooterComponent,Navbar,Breadcrumbs, BarGraph]
+    directives: [RouterOutlet,RouterLink, FooterComponent,Navbar,Breadcrumbs, BarGraph,TimerWebsocketComponent]
 })
 export class AppComponent {
     

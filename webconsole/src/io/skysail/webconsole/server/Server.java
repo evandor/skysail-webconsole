@@ -2,11 +2,14 @@ package io.skysail.webconsole.server;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 
 import fi.iki.elonen.NanoHTTPD;
+import fi.iki.elonen.NanoWSD.WebSocket;
 import io.skysail.webconsole.listener.AgentBundleListener;
 import io.skysail.webconsole.listener.AgentFrameworkListener;
 import io.skysail.webconsole.listener.AgentServiceListener;
@@ -94,6 +97,27 @@ public class Server extends NanoHTTPD {
         versionHandler = new VersionHandler(clientBundle);
         staticFilesHandler = new StaticFilesHandler(clientBundle);
 
+        SocketWorker socketWorker = new SocketWorker(8088);
+        socketWorker.start();
+        
+        TimerTask timerTask = new TimerTask() {
+			
+			@Override
+			public void run() {
+				WebSocket webSocket = socketWorker.getWebSocket();
+				if (webSocket != null) {
+					try {
+						webSocket.send("payload");
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+				
+			}
+		};
+		Timer timer = new Timer(true);
+        timer.scheduleAtFixedRate(timerTask, 1000, 10*1000);
+        System.out.println(socketWorker);
     }
 
     /**
