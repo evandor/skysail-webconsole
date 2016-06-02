@@ -1,4 +1,4 @@
-System.register(['angular2/core', './tabs'], function(exports_1, context_1) {
+System.register(['angular2/core'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,39 +10,39 @@ System.register(['angular2/core', './tabs'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, tabs_1;
-    var Tab;
+    var core_1;
+    var BarGraph;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
-            },
-            function (tabs_1_1) {
-                tabs_1 = tabs_1_1;
             }],
         execute: function() {
-            Tab = (function () {
-                function Tab(tabs) {
-                    this.active = this.active || false;
-                    this.elementCount = null;
-                    tabs.addTab(this);
+            //import {Inject} from 'angular2/di';
+            //import * as d3 from 'd3';
+            /*@Directive({
+                selector: 'barGraph',
+                //lifecycle:  [ OnChange ],
+                host: {
+                    '(change)': 'onChange()'
                 }
-                Tab = __decorate([
+                properties: ['data']
+            })*/
+            BarGraph = (function () {
+                function BarGraph() {
+                }
+                BarGraph = __decorate([
+                    // onChange
                     core_1.Component({
-                        selector: 'tab',
-                        inputs: [
-                            'title:tabTitle',
-                            'active'
-                        ],
-                        styles: ["\n    .pane{\n      padding: 1em;\n    }\n  "],
-                        template: "\n    <div [hidden]=\"!active\" class=\"pane\">\n      <ng-content></ng-content>\n    </div>\n  "
+                        selector: 'barGraph',
+                        template: 'hi'
                     }), 
-                    __metadata('design:paramtypes', [tabs_1.Tabs])
-                ], Tab);
-                return Tab;
+                    __metadata('design:paramtypes', [])
+                ], BarGraph);
+                return BarGraph;
             }());
-            exports_1("Tab", Tab);
+            exports_1("BarGraph", BarGraph);
         }
     }
 });
-//# sourceMappingURL=tab.js.map
+//# sourceMappingURL=graph.component.js.map

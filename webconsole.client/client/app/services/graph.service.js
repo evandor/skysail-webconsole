@@ -11,37 +11,25 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var TabComponent;
+    var GraphService;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            TabComponent = (function () {
-                function TabComponent() {
-                    this.active = false;
+            GraphService = (function () {
+                function GraphService() {
+                    this.data = [1, 2, 3];
                 }
-                __decorate([
-                    core_1.Input('tabTitle'), 
-                    __metadata('design:type', String)
-                ], TabComponent.prototype, "title", void 0);
-                __decorate([
-                    core_1.Input(), 
-                    __metadata('design:type', Object)
-                ], TabComponent.prototype, "active", void 0);
-                TabComponent = __decorate([
-                    core_1.Component({
-                        selector: 'tabNotWorking',
-                        styles: ["\n    .pane{\n      padding: 1em;\n    }\n  "],
-                        template: "\n    <div [hidden]=\"!active\" class=\"pane\">\n      <ng-content></ng-content>\n    </div>\n  "
-                    }), 
+                GraphService = __decorate([
+                    core_1.Component({}), 
                     __metadata('design:paramtypes', [])
-                ], TabComponent);
-                return TabComponent;
+                ], GraphService);
+                return GraphService;
             }());
-            exports_1("TabComponent", TabComponent);
+            exports_1("GraphService", GraphService);
         }
     }
 });
-//# sourceMappingURL=tab.component.js.map
+//# sourceMappingURL=graph.service.js.map

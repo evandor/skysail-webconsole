@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+System.register(['angular2/core', 'angular2/router', './components/framework.component', './components/footer.component', './components/bundles/bundles.component', './components/bundles/bundle.component', './components/logs.component', './components/services/services.component', './components/services/service.component', './components/help.component', './components/snapshots/snapshots.component', './components/graph.component', './components/navbar/navbar.component'], function(exports_1, context_1) {
+=======
 System.register(['angular2/core', 'angular2/router', './components/framework.component', './components/footer.component', './components/bundles/bundles.component', './components/bundles/bundle.component', './components/logs.component', './components/services/services.component', './components/services/service.component', './components/snapshots/snapshots.component', './components/help.component', './components/navbar/navbar.component', './components/navbar/breadcrumbs.component'], function(exports_1, context_1) {
+>>>>>>> 98f4a84dd94fd22dbaacb1f406c483291e0c9fa3
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +14,11 @@ System.register(['angular2/core', 'angular2/router', './components/framework.com
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
+<<<<<<< HEAD
+    var core_1, router_1, framework_component_1, footer_component_1, bundles_component_1, bundle_component_1, logs_component_1, services_component_1, service_component_1, help_component_1, snapshots_component_1, graph_component_1, navbar_component_1;
+=======
     var core_1, router_1, framework_component_1, footer_component_1, bundles_component_1, bundle_component_1, logs_component_1, services_component_1, service_component_1, snapshots_component_1, help_component_1, navbar_component_1, breadcrumbs_component_1;
+>>>>>>> 98f4a84dd94fd22dbaacb1f406c483291e0c9fa3
     var AppComponent;
     return {
         setters:[
@@ -41,11 +49,14 @@ System.register(['angular2/core', 'angular2/router', './components/framework.com
             function (service_component_1_1) {
                 service_component_1 = service_component_1_1;
             },
+            function (help_component_1_1) {
+                help_component_1 = help_component_1_1;
+            },
             function (snapshots_component_1_1) {
                 snapshots_component_1 = snapshots_component_1_1;
             },
-            function (help_component_1_1) {
-                help_component_1 = help_component_1_1;
+            function (graph_component_1_1) {
+                graph_component_1 = graph_component_1_1;
             },
             function (navbar_component_1_1) {
                 navbar_component_1 = navbar_component_1_1;
@@ -56,6 +67,7 @@ System.register(['angular2/core', 'angular2/router', './components/framework.com
         execute: function() {
             AppComponent = (function () {
                 function AppComponent() {
+                    this.graphData = [10, 20, 30, 40, 60];
                 }
                 AppComponent = __decorate([
                     router_1.RouteConfig([
@@ -65,13 +77,18 @@ System.register(['angular2/core', 'angular2/router', './components/framework.com
                         { path: '/services', as: 'Services', component: services_component_1.ServicesComponent },
                         { path: '/services/:id', as: 'Service', component: service_component_1.ServiceComponent },
                         { path: '/logs', as: 'Logs', component: logs_component_1.LogsComponent },
+                        // { path: '/graph',        as: 'Graph',     component: GraphComponent },
                         { path: '/snapshots', as: 'Snapshots', component: snapshots_component_1.SnapshotsComponent },
                         { path: '/help', as: 'Help', component: help_component_1.HelpComponent }
                     ]),
                     core_1.Component({
                         selector: 'my-app',
                         templateUrl: 'app/html/app.template.html',
+<<<<<<< HEAD
+                        directives: [router_1.RouterOutlet, router_1.RouterLink, footer_component_1.FooterComponent, navbar_component_1.Navbar, graph_component_1.BarGraph]
+=======
                         directives: [router_1.RouterOutlet, router_1.RouterLink, footer_component_1.FooterComponent, navbar_component_1.Navbar, breadcrumbs_component_1.Breadcrumbs]
+>>>>>>> 98f4a84dd94fd22dbaacb1f406c483291e0c9fa3
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
