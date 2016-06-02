@@ -6,7 +6,6 @@ import java.util.Dictionary;
 import java.util.Hashtable;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.Mockito;
 import org.osgi.framework.Bundle;
@@ -62,23 +61,21 @@ public class BundleDetailsTest {
     }
 
     @Test
-    @Ignore
     public void package_with_usesDirective_is_parsed() {
         theHeaders.put(Constants.EXPORT_PACKAGE, "io.com;uses:=\"a.b,c.d\"");
         BundleDetails bundleDetails = new BundleDetails(bundle);
         assertTrue(bundleDetails.getExportPackage().size() == 1);
         assertTrue(bundleDetails.getExportPackage().get(0).getPkgName().equals("io.com"));
-        assertTrue(bundleDetails.getExportPackage().get(0).getUses().equals("a.b,c.d"));
+        assertTrue(bundleDetails.getExportPackage().get(0).getUses().equals("\"a.b,c.d\""));
     }
 
     @Test
-    @Ignore
     public void multiple_packageExpressions_with_versions_are_parsed_and_sorted() {
         theHeaders.put(Constants.EXPORT_PACKAGE, "io.com;version=1.3,com.io;version=\"3.2\"");
         BundleDetails bundleDetails = new BundleDetails(bundle);
         assertTrue(bundleDetails.getExportPackage().size() == 2);
         assertTrue(bundleDetails.getExportPackage().get(0).getPkgName().equals("com.io"));
-        assertTrue(bundleDetails.getExportPackage().get(0).getVersion().equals("3.2"));
+        assertTrue(bundleDetails.getExportPackage().get(0).getVersion().equals("\"3.2\""));
         assertTrue(bundleDetails.getExportPackage().get(1).getPkgName().equals("io.com"));
         assertTrue(bundleDetails.getExportPackage().get(1).getVersion().equals("1.3"));
     }

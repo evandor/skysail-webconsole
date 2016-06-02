@@ -1,4 +1,4 @@
-// Generated from C:\git\skysail-webconsole\webconsole.antlr\src\main\antlr4\io\skysail\webconsole\antlr\ExportPackage.g4 by ANTLR 4.5.3
+// Generated from /Users/carsten/git/skysail-webconsole/webconsole.antlr/src/main/antlr4/io/skysail/webconsole/antlr/ExportPackage.g4 by ANTLR 4.5.3
 package io.skysail.webconsole.antlr;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
@@ -93,8 +93,6 @@ public class ExportPackageLexer extends Lexer {
 	@Override
 	public boolean sempred(RuleContext _localctx, int ruleIndex, int predIndex) {
 		switch (ruleIndex) {
-		case 4:
-			return QuotedString_sempred((RuleContext)_localctx, predIndex);
 		case 7:
 			return JavaLetter_sempred((RuleContext)_localctx, predIndex);
 		case 8:
@@ -102,65 +100,57 @@ public class ExportPackageLexer extends Lexer {
 		}
 		return true;
 	}
-	private boolean QuotedString_sempred(RuleContext _localctx, int predIndex) {
-		switch (predIndex) {
-		case 0:
-			return Character.isJavaIdentifierPart(_input.LA(-1));
-		}
-		return true;
-	}
 	private boolean JavaLetter_sempred(RuleContext _localctx, int predIndex) {
 		switch (predIndex) {
-		case 1:
+		case 0:
 			return Character.isJavaIdentifierStart(_input.LA(-1));
-		case 2:
+		case 1:
 			return Character.isJavaIdentifierStart(Character.toCodePoint((char)_input.LA(-2), (char)_input.LA(-1)));
 		}
 		return true;
 	}
 	private boolean JavaLetterOrDigit_sempred(RuleContext _localctx, int predIndex) {
 		switch (predIndex) {
-		case 3:
+		case 2:
 			return Character.isJavaIdentifierPart(_input.LA(-1));
-		case 4:
+		case 3:
 			return Character.isJavaIdentifierPart(Character.toCodePoint((char)_input.LA(-2), (char)_input.LA(-1)));
 		}
 		return true;
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\2\16r\b\1\4\2\t\2\4"+
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\2\16p\b\1\4\2\t\2\4"+
 		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
 		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\3\2\3\2\3\3\3\3\3\4"+
-		"\3\4\3\4\3\4\3\4\3\4\3\5\3\5\3\5\3\5\3\6\3\6\3\6\3\6\7\6\64\n\6\f\6\16"+
-		"\6\67\13\6\3\6\3\6\3\7\3\7\3\7\7\7>\n\7\f\7\16\7A\13\7\3\b\3\b\7\bE\n"+
-		"\b\f\b\16\bH\13\b\3\t\3\t\3\t\3\t\3\t\3\t\5\tP\n\t\3\n\3\n\3\n\3\n\3\n"+
-		"\3\n\5\nX\n\n\3\13\3\13\6\13\\\n\13\r\13\16\13]\3\f\3\f\5\fb\n\f\3\r\3"+
-		"\r\3\16\3\16\3\17\3\17\5\17j\n\17\3\20\6\20m\n\20\r\20\16\20n\3\20\3\20"+
-		"\2\2\21\3\3\5\4\7\5\t\6\13\2\r\7\17\b\21\2\23\2\25\t\27\n\31\13\33\f\35"+
-		"\r\37\16\3\2\r\5\2\2\2\f\f\17\17\4\2$$^^\6\2&&C\\aac|\4\2\2\u0081\ud802"+
-		"\udc01\3\2\ud802\udc01\3\2\udc02\ue001\7\2&&\62;C\\aac|\4\2/\60aa\4\2"+
-		"C\\c|\3\2\62;\5\2\13\f\16\17\"\"{\2\3\3\2\2\2\2\5\3\2\2\2\2\7\3\2\2\2"+
-		"\2\t\3\2\2\2\2\r\3\2\2\2\2\17\3\2\2\2\2\25\3\2\2\2\2\27\3\2\2\2\2\31\3"+
-		"\2\2\2\2\33\3\2\2\2\2\35\3\2\2\2\2\37\3\2\2\2\3!\3\2\2\2\5#\3\2\2\2\7"+
-		"%\3\2\2\2\t+\3\2\2\2\13/\3\2\2\2\r:\3\2\2\2\17B\3\2\2\2\21O\3\2\2\2\23"+
-		"W\3\2\2\2\25[\3\2\2\2\27a\3\2\2\2\31c\3\2\2\2\33e\3\2\2\2\35i\3\2\2\2"+
-		"\37l\3\2\2\2!\"\7.\2\2\"\4\3\2\2\2#$\7=\2\2$\6\3\2\2\2%&\5\25\13\2&\'"+
-		"\7<\2\2\'(\7?\2\2()\3\2\2\2)*\5\35\17\2*\b\3\2\2\2+,\5\25\13\2,-\7?\2"+
-		"\2-.\5\35\17\2.\n\3\2\2\2/\65\7$\2\2\60\61\n\2\2\2\61\64\6\6\2\2\62\64"+
-		"\t\3\2\2\63\60\3\2\2\2\63\62\3\2\2\2\64\67\3\2\2\2\65\63\3\2\2\2\65\66"+
-		"\3\2\2\2\668\3\2\2\2\67\65\3\2\2\289\7$\2\29\f\3\2\2\2:?\5\17\b\2;<\7"+
-		"\60\2\2<>\5\17\b\2=;\3\2\2\2>A\3\2\2\2?=\3\2\2\2?@\3\2\2\2@\16\3\2\2\2"+
-		"A?\3\2\2\2BF\5\21\t\2CE\5\23\n\2DC\3\2\2\2EH\3\2\2\2FD\3\2\2\2FG\3\2\2"+
-		"\2G\20\3\2\2\2HF\3\2\2\2IP\t\4\2\2JK\n\5\2\2KP\6\t\3\2LM\t\6\2\2MN\t\7"+
-		"\2\2NP\6\t\4\2OI\3\2\2\2OJ\3\2\2\2OL\3\2\2\2P\22\3\2\2\2QX\t\b\2\2RS\n"+
-		"\5\2\2SX\6\n\5\2TU\t\6\2\2UV\t\7\2\2VX\6\n\6\2WQ\3\2\2\2WR\3\2\2\2WT\3"+
-		"\2\2\2X\24\3\2\2\2Y\\\5\27\f\2Z\\\t\t\2\2[Y\3\2\2\2[Z\3\2\2\2\\]\3\2\2"+
-		"\2][\3\2\2\2]^\3\2\2\2^\26\3\2\2\2_b\5\31\r\2`b\5\33\16\2a_\3\2\2\2a`"+
-		"\3\2\2\2b\30\3\2\2\2cd\t\n\2\2d\32\3\2\2\2ef\t\13\2\2f\34\3\2\2\2gj\5"+
-		"\25\13\2hj\5\13\6\2ig\3\2\2\2ih\3\2\2\2j\36\3\2\2\2km\t\f\2\2lk\3\2\2"+
-		"\2mn\3\2\2\2nl\3\2\2\2no\3\2\2\2op\3\2\2\2pq\b\20\2\2q \3\2\2\2\16\2\63"+
-		"\65?FOW[]ain\3\b\2\2";
+		"\3\4\3\4\3\4\3\4\3\4\3\5\3\5\3\5\3\5\3\6\3\6\7\6\62\n\6\f\6\16\6\65\13"+
+		"\6\3\6\3\6\3\7\3\7\3\7\7\7<\n\7\f\7\16\7?\13\7\3\b\3\b\7\bC\n\b\f\b\16"+
+		"\bF\13\b\3\t\3\t\3\t\3\t\3\t\3\t\5\tN\n\t\3\n\3\n\3\n\3\n\3\n\3\n\5\n"+
+		"V\n\n\3\13\3\13\6\13Z\n\13\r\13\16\13[\3\f\3\f\5\f`\n\f\3\r\3\r\3\16\3"+
+		"\16\3\17\3\17\5\17h\n\17\3\20\6\20k\n\20\r\20\16\20l\3\20\3\20\2\2\21"+
+		"\3\3\5\4\7\5\t\6\13\2\r\7\17\b\21\2\23\2\25\t\27\n\31\13\33\f\35\r\37"+
+		"\16\3\2\f\3\2$$\6\2&&C\\aac|\4\2\2\u0081\ud802\udc01\3\2\ud802\udc01\3"+
+		"\2\udc02\ue001\7\2&&\62;C\\aac|\4\2/\60aa\4\2C\\c|\3\2\62;\5\2\13\f\16"+
+		"\17\"\"x\2\3\3\2\2\2\2\5\3\2\2\2\2\7\3\2\2\2\2\t\3\2\2\2\2\r\3\2\2\2\2"+
+		"\17\3\2\2\2\2\25\3\2\2\2\2\27\3\2\2\2\2\31\3\2\2\2\2\33\3\2\2\2\2\35\3"+
+		"\2\2\2\2\37\3\2\2\2\3!\3\2\2\2\5#\3\2\2\2\7%\3\2\2\2\t+\3\2\2\2\13/\3"+
+		"\2\2\2\r8\3\2\2\2\17@\3\2\2\2\21M\3\2\2\2\23U\3\2\2\2\25Y\3\2\2\2\27_"+
+		"\3\2\2\2\31a\3\2\2\2\33c\3\2\2\2\35g\3\2\2\2\37j\3\2\2\2!\"\7.\2\2\"\4"+
+		"\3\2\2\2#$\7=\2\2$\6\3\2\2\2%&\5\25\13\2&\'\7<\2\2\'(\7?\2\2()\3\2\2\2"+
+		")*\5\35\17\2*\b\3\2\2\2+,\5\25\13\2,-\7?\2\2-.\5\35\17\2.\n\3\2\2\2/\63"+
+		"\7$\2\2\60\62\n\2\2\2\61\60\3\2\2\2\62\65\3\2\2\2\63\61\3\2\2\2\63\64"+
+		"\3\2\2\2\64\66\3\2\2\2\65\63\3\2\2\2\66\67\7$\2\2\67\f\3\2\2\28=\5\17"+
+		"\b\29:\7\60\2\2:<\5\17\b\2;9\3\2\2\2<?\3\2\2\2=;\3\2\2\2=>\3\2\2\2>\16"+
+		"\3\2\2\2?=\3\2\2\2@D\5\21\t\2AC\5\23\n\2BA\3\2\2\2CF\3\2\2\2DB\3\2\2\2"+
+		"DE\3\2\2\2E\20\3\2\2\2FD\3\2\2\2GN\t\3\2\2HI\n\4\2\2IN\6\t\2\2JK\t\5\2"+
+		"\2KL\t\6\2\2LN\6\t\3\2MG\3\2\2\2MH\3\2\2\2MJ\3\2\2\2N\22\3\2\2\2OV\t\7"+
+		"\2\2PQ\n\4\2\2QV\6\n\4\2RS\t\5\2\2ST\t\6\2\2TV\6\n\5\2UO\3\2\2\2UP\3\2"+
+		"\2\2UR\3\2\2\2V\24\3\2\2\2WZ\5\27\f\2XZ\t\b\2\2YW\3\2\2\2YX\3\2\2\2Z["+
+		"\3\2\2\2[Y\3\2\2\2[\\\3\2\2\2\\\26\3\2\2\2]`\5\31\r\2^`\5\33\16\2_]\3"+
+		"\2\2\2_^\3\2\2\2`\30\3\2\2\2ab\t\t\2\2b\32\3\2\2\2cd\t\n\2\2d\34\3\2\2"+
+		"\2eh\5\25\13\2fh\5\13\6\2ge\3\2\2\2gf\3\2\2\2h\36\3\2\2\2ik\t\13\2\2j"+
+		"i\3\2\2\2kl\3\2\2\2lj\3\2\2\2lm\3\2\2\2mn\3\2\2\2no\b\20\2\2o \3\2\2\2"+
+		"\r\2\63=DMUY[_gl\3\b\2\2";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

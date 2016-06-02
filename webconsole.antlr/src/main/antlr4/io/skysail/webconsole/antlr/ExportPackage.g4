@@ -24,12 +24,9 @@ Directive : Extended ':=' Argument ; // -> pushMode(PARAMETER) ;
 
 Attribute : Extended '=' Argument ; //-> pushMode(PARAMETER);
 
-
-
 fragment
 QuotedString
-    : '"' ( ~[\u000D\u000A\u0000]{Character.isJavaIdentifierPart(_input.LA(-1))}? | '\"' | '\\' )* '"' ;
-
+    : '"' ~["]* '"' ;
 
 UniqueName : Ident ( '.' Ident )* ;
 

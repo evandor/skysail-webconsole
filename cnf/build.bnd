@@ -35,7 +35,12 @@
 -plugin.6.Skysail-Release: \
     aQute.bnd.deployer.repository.FixedIndexedRepo;  \
         name=Public Skysail Release Repository; \
-        locations=https://raw.githubusercontent.com/evandor/skysail/master/cnf/releaserepo/index.xml
+        locations=https://raw.githubusercontent.com/evandor/skysail/master/cnf/releaserepo/index.xml;
+
+-plugin.7.Bndtools-Hub: \
+    aQute.bnd.deployer.repository.FixedIndexedRepo; \
+        name=Bndtools Hub; \
+        locations=https://raw.githubusercontent.com/bndtools/bundle-hub/master/index.xml.gz;
 
 #-plugin.6.Non-OSGi: \
 #    aQute.lib.deployer.FileRepo; \

@@ -32,7 +32,10 @@ public class BundleDescriptor {
         if (location != null) {
             if (location.startsWith("reference:file:")) {
                 String filename = location.substring("reference:file:".length());
-                this.size = new File(filename).length() / 1024;
+                this.size = new File(filename.replace("%25", "%")).length() / 1024;
+                if (this.size == 0) {
+                    log.info("could not determine file size of '{}'", filename.replace("%25","%"));
+                }
             } else {
                 log.info("could not determine file size of {}", location);
             }
