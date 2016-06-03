@@ -1,5 +1,5 @@
 import {Component} from 'angular2/core';
-import {$WebSocket} from 'angular2-websocket/angular2-websocket'
+//import {$WebSocket} from 'angular2-websocket/angular2-websocket'
 
 @Component({
     selector: 'timerwebsocket',
@@ -17,8 +17,8 @@ export class TimerWebsocketComponent {
     }
 
     subscribe($event) {
-        console.log("trying to subscribe to ws");
-        this.ws = new $WebSocket("ws://localhost:8088");
+        console.log("trying to subscribe to ws...");
+        /*this.ws = new $WebSocket("ws://localhost:8088");
         this.ws.send("Hello");
         this.ws.getDataStream().subscribe(
             res => {
@@ -28,6 +28,6 @@ export class TimerWebsocketComponent {
             },
             function (e) { console.log('Error: ' + e.message); },
             function () { console.log('Completed'); }
-        );
+        );*/
     }
 }

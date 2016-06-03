@@ -1,22 +1,18 @@
 import {OnInit} from 'angular2/core';
 import {Component, Directive, View, Attribute, ElementRef} from 'angular2/core'; // onChange
 //import {Inject} from 'angular2/di';
-//import * as d3 from 'd3';
+import * as d3 from 'd3';
 
-/*@Directive({
+@Directive({
     selector: 'barGraph',
     //lifecycle:  [ OnChange ],
     host: {
         '(change)': 'onChange()'
-    }
+    },
     properties: ['data']
-})*/
-@Component({
-    selector: 'barGraph',
-    template: 'hi'
 })
 export class BarGraph {
-   /* data: Array<number>;
+    data: Array<number>;
     divs: any;
     constructor(
         private elementRef: ElementRef,
@@ -26,7 +22,7 @@ export class BarGraph {
         var el: any = elementRef.nativeElement;
         var graph: any = d3.select(el);
 
-        this.divs = graph.
+       /* this.divs = graph.
             append('div').
             attr({
                 'class': 'chart'
@@ -35,7 +31,7 @@ export class BarGraph {
                 'width': width + 'px',
                 'height': height + 'px',
             }).
-            selectAll('div');
+            selectAll('div');*/
     }
 
     render(newValue) {
@@ -47,10 +43,8 @@ export class BarGraph {
             .text(d => d + '%');
 
     }
-    
-    
 
     onChange() {
         this.render(this.data);
-    }*/
+    }
 }

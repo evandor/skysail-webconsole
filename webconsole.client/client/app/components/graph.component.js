@@ -1,4 +1,4 @@
-System.register(['angular2/core'], function(exports_1, context_1) {
+System.register(['angular2/core', 'd3'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,34 +10,59 @@ System.register(['angular2/core'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var __param = (this && this.__param) || function (paramIndex, decorator) {
+        return function (target, key) { decorator(target, key, paramIndex); }
+    };
+    var core_1, d3;
     var BarGraph;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (d3_1) {
+                d3 = d3_1;
             }],
         execute: function() {
-            //import {Inject} from 'angular2/di';
-            //import * as d3 from 'd3';
-            /*@Directive({
-                selector: 'barGraph',
-                //lifecycle:  [ OnChange ],
-                host: {
-                    '(change)': 'onChange()'
-                }
-                properties: ['data']
-            })*/
             BarGraph = (function () {
-                function BarGraph() {
+                function BarGraph(elementRef, width, height) {
+                    this.elementRef = elementRef;
+                    var el = elementRef.nativeElement;
+                    var graph = d3.select(el);
+                    /* this.divs = graph.
+                         append('div').
+                         attr({
+                             'class': 'chart'
+                         }).
+                         style({
+                             'width': width + 'px',
+                             'height': height + 'px',
+                         }).
+                         selectAll('div');*/
                 }
+                BarGraph.prototype.render = function (newValue) {
+                    if (!newValue)
+                        return;
+                    this.divs.data(newValue).enter().append('div')
+                        .transition().ease('elastic')
+                        .style('width', function (d) { return d + '%'; })
+                        .text(function (d) { return d + '%'; });
+                };
+                BarGraph.prototype.onChange = function () {
+                    this.render(this.data);
+                };
                 BarGraph = __decorate([
-                    // onChange
-                    core_1.Component({
+                    core_1.Directive({
                         selector: 'barGraph',
-                        template: 'hi'
-                    }), 
-                    __metadata('design:paramtypes', [])
+                        //lifecycle:  [ OnChange ],
+                        host: {
+                            '(change)': 'onChange()'
+                        },
+                        properties: ['data']
+                    }),
+                    __param(1, core_1.Attribute('width')),
+                    __param(2, core_1.Attribute('height')), 
+                    __metadata('design:paramtypes', [core_1.ElementRef, String, String])
                 ], BarGraph);
                 return BarGraph;
             }());
