@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'd3'], function(exports_1, context_1) {
+System.register(['angular2/core'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -13,22 +13,21 @@ System.register(['angular2/core', 'd3'], function(exports_1, context_1) {
     var __param = (this && this.__param) || function (paramIndex, decorator) {
         return function (target, key) { decorator(target, key, paramIndex); }
     };
-    var core_1, d3;
+    var core_1;
     var BarGraph;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
-            },
-            function (d3_1) {
-                d3 = d3_1;
             }],
         execute: function() {
+            //import {Inject} from 'angular2/di';
+            //import * as d3 from 'd3';
             BarGraph = (function () {
                 function BarGraph(elementRef, width, height) {
                     this.elementRef = elementRef;
                     var el = elementRef.nativeElement;
-                    var graph = d3.select(el);
+                    //var graph: any = d3.select(el);
                     /* this.divs = graph.
                          append('div').
                          attr({
@@ -52,6 +51,7 @@ System.register(['angular2/core', 'd3'], function(exports_1, context_1) {
                     this.render(this.data);
                 };
                 BarGraph = __decorate([
+                    // onChange
                     core_1.Directive({
                         selector: 'barGraph',
                         //lifecycle:  [ OnChange ],
