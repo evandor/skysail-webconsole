@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "concurrently": "^2.0.0",
+    "jspm": "^0.16.36",
     "lite-server": "^2.1.0",
     "typescript": "^1.7.5"
   }
