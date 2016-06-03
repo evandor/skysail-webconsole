@@ -80,5 +80,14 @@ public class BundleDetailsTest {
         assertTrue(bundleDetails.getExportPackage().get(1).getVersion().equals("1.3"));
     }
 
+    @Test
+    public void package_with_mandatoryDirective_is_parsed() {
+        theHeaders.put(Constants.EXPORT_PACKAGE, "io.com;mandatory:=\"this,that\"");
+        BundleDetails bundleDetails = new BundleDetails(bundle);
+        assertTrue(bundleDetails.getExportPackage().size() == 1);
+        assertTrue(bundleDetails.getExportPackage().get(0).getPkgName().equals("io.com"));
+        assertTrue(bundleDetails.getExportPackage().get(0).getMandatory().equals("\"this,that\""));
+    }
+
     // "org.osgi.service.log;uses:=\"org.osgi.framework\";version=\"1.3\",io.skysail;version=0.4.0"
 }

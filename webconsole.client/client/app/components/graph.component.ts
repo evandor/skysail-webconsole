@@ -1,7 +1,9 @@
 import {OnInit} from 'angular2/core';
 import {Component, Directive, View, Attribute, ElementRef} from 'angular2/core'; // onChange
 //import {Inject} from 'angular2/di';
-//import * as d3 from 'd3';
+//import * as d3 from 'd3/index';
+
+declare var d3:any;
 
 @Directive({
     selector: 'barGraph',
@@ -14,12 +16,15 @@ import {Component, Directive, View, Attribute, ElementRef} from 'angular2/core';
 export class BarGraph {
     data: Array<number>;
     divs: any;
+    
     constructor(
         private elementRef: ElementRef,
         @Attribute('width') width: string,
         @Attribute('height') height: string) {
 
         var el: any = elementRef.nativeElement;
+        //this.elementRef.nativeElement.find('#example');
+        
         //var graph: any = d3.select(el);
 
        /* this.divs = graph.

@@ -1,37 +1,43 @@
 <html>
 
-  <head>
-    <base href="/" />
-    <title>Skysail Webconsole</title>
+<head>
+  <base href="/" />
+  <title>Skysail Webconsole</title>
 
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
-    <!--<link ref="stylesheet" type="text/css" href="/app/css/webconsole.css">-->
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+  <!--<link ref="stylesheet" type="text/css" href="/app/css/webconsole.css">-->
+
+  <style>
+    .clickable {
+      cursor: pointer;
+      color: #000066;
+    }
     
-    <style>
-      .clickable {
-        cursor: pointer; 
-        color:#000066;
-      }
-    </style>
+    .ellipses {
+      overflow: hidden;
+      /*white-space: nowrap;*/
+      text-overflow: ellipsis;
+    }
+  </style>
 
-    <!-- 1. Load libraries -->
-    <!-- IE required polyfills, in this exact order -->
-    <script src="node_modules/es6-shim/es6-shim.min.js"></script>
-    <script src="node_modules/systemjs/dist/system-polyfills.js"></script>
+  <!-- 1. Load libraries -->
+  <!-- IE required polyfills, in this exact order -->
+  <script src="node_modules/es6-shim/es6-shim.min.js"></script>
+  <script src="node_modules/systemjs/dist/system-polyfills.js"></script>
 
-    <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
-    <script src="node_modules/systemjs/dist/system.src.js"></script>
-    <script src="node_modules/rxjs/bundles/Rx.js"></script>
-    <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
-    <script src="node_modules/angular2/bundles/router.dev.js"></script>
-    <script src="node_modules/angular2/bundles/http.dev.js"></script>
-    
-    <!--<script src="app/js/d3.min.js"></script>-->
-    <script src="node_modules/d3/d3.min.js"></script>
+  <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
+  <script src="node_modules/systemjs/dist/system.src.js"></script>
+  <script src="node_modules/rxjs/bundles/Rx.js"></script>
+  <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+  <script src="node_modules/angular2/bundles/router.dev.js"></script>
+  <script src="node_modules/angular2/bundles/http.dev.js"></script>
 
-    <!-- 2. Configure SystemJS -->
-    <script>
-      System.config({
+  <!--<script src="app/js/d3.min.js"></script>-->
+  <script src="node_modules/d3/d3.min.js"></script>
+
+  <!-- 2. Configure SystemJS -->
+  <script>
+    System.config({
         packages: {        
           app: {
             format: 'register',
@@ -40,12 +46,12 @@
         }
       });
       System.import('app/boot').then(null, console.error.bind(console));
-    </script>
+  </script>
 
-  </head>
+</head>
 
-  <body>
-    <my-app></my-app>
-  </body>
+<body>
+  <my-app></my-app>
+</body>
 
 </html>

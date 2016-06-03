@@ -24,11 +24,11 @@
         <th><span title="Manifest header identifying the bundle's version.">Version</span></th>
         <td>{{bundle.version}}</td>
       </tr>
-      <tr>
+      <tr *ngIf="bundle.description">
         <th>Description</th>
         <td>{{bundle.description}}</td>
       </tr>
-      <tr>
+      <tr *ngIf="bundle.docUrl">
         <th><span title="Manifest header identifying the bundle's documentation URL, from which further information about the bundle may be obtained.">DocUrl</span></th>
         <td>{{bundle.docUrl}}</td>
       </tr>
@@ -36,13 +36,13 @@
         <th>Last Modification</th>
         <td>{{bundle.lastModification}}</td>
       </tr>
-      <tr>
+      <tr *ngIf="bundle.bundleClasspath">
         <th>Bundle Classpath</th>
         <td>{{bundle.bundleClasspath}}</td>
       </tr>
       <tr>
         <th>Location</th>
-        <td>{{bundle.location}}</td>
+        <td class="ellipses">{{bundle.location}}</td>
       </tr>
       <tr>
         <th>Start Level</th>
@@ -52,7 +52,7 @@
         <th>State</th>
         <td>{{bundle.state}}</td>
       </tr>
-      <tr>
+      <tr *ngIf="bundle.vendor">
         <th>Vendor</th>
         <td>{{bundle.vendor}}</td>
       </tr>
@@ -70,7 +70,9 @@
       <tr>
         <th><span class="glyphicon glyphicon-modal-window" aria-hidden="true" style="color: blue"></span> Exported Packages:</th>
         <td>
-          <p *ngFor="#pkg of bundle.exportPackage">{{pkg.pkgName}} [{{pkg.version}}]</p>
+          <div *ngFor="#pkg of bundle.exportPackage">
+            <span>{{pkg.pkgName}} [{{pkg.version}}]</span><span>{{pkg.mandatory}}</span>
+          </div>
         </td>
       </tr>
     </table>
@@ -85,10 +87,8 @@
         </tr>
       </thead>
       <tr>
-        <th>Manifest Headers</th>
+        <th>Tobe done</th>
         <td>
-          <!--<div *ng F or="#value of bundle.manifestHeaders | values"> </div>-->
-          <p *ngFor="#h of bundle.manifestHeaders"><b>{{h.key}}</b>: {{h.value}}</p>
         </td>
       </tr>
     </table>
