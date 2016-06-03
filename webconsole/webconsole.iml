@@ -47,6 +47,15 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
+      <library name="nanohttpd-websocket-2.3.0.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/libs/nanohttpd-websocket-2.3.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
       <library name="javers-core-2.0.0-RC1.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/libs/javers-core-2.0.0-RC1.jar!/" />
@@ -83,7 +92,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module" module-name="webconsole.antlr" />
-    <orderEntry type="library" name="bnd:webconsole.client:0.1.0.201605250943" level="project" />
+    <orderEntry type="library" name="bnd:webconsole.client:0.1.2.201606020826" level="project" />
     <orderEntry type="library" name="bnd:osgi.core:6.0.0.201403061837" level="project" />
     <orderEntry type="library" name="bnd:org.osgi.util.function:1.0.0.201505202023" level="project" />
     <orderEntry type="library" name="bnd:org.osgi.util.promise:1.0.0.201505202023" level="project" />
@@ -105,6 +114,6 @@
     <orderEntry type="library" name="bnd:classmate:1.0.0" level="project" />
     <orderEntry type="library" name="bnd:stax2-api:3.1.4" level="project" />
     <orderEntry type="library" name="bnd:lombok:1.16.2" level="project" />
-    <orderEntry type="library" name="bnd:slf4j.api:1.7.21" level="project" />
+    <orderEntry type="library" name="bnd:slf4j.api:1.7.7" level="project" />
   </component>
 </module>

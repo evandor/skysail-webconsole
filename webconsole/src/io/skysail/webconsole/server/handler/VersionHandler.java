@@ -16,7 +16,7 @@ public class VersionHandler extends AbstractHttpHandler { // NOSONAR
 
 	@Override
     String getResponse(IHTTPSession session) throws JsonProcessingException {
-    	return clientBundle.getVersion().toString();
+    	return clientBundle.getSymbolicName() + " [" +clientBundle.getVersion().toString() + "]";
     }
 
 

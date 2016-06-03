@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="bnd:org.objenesis:2.1.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.bnd/cache/https%3A%2F%2Fraw.githubusercontent.com%2Fbndtools%2Fbundle-hub%2Fmaster%2Forg.objenesis/org.objenesis-2.1.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

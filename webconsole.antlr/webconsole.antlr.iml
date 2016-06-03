@@ -28,6 +28,6 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="bnd:slf4j.api:1.7.21" level="project" />
+    <orderEntry type="library" name="bnd:slf4j.api:1.7.7" level="project" />
   </component>
 </module>

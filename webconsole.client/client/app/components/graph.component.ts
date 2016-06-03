@@ -1,9 +1,7 @@
 import {OnInit} from 'angular2/core';
 import {Component, Directive, View, Attribute, ElementRef} from 'angular2/core'; // onChange
 //import {Inject} from 'angular2/di';
-//import * as d3 from 'd3/index';
-
-declare var d3:any;
+import * as d3 from 'd3/index';
 
 @Directive({
     selector: 'barGraph',

@@ -22,14 +22,21 @@ System.register(['angular2/core', '../services/backend.service'], function(expor
             }],
         execute: function() {
             FooterComponent = (function () {
-                function FooterComponent(_backend) {
+                function FooterComponent(_backend, _window) {
                     this._backend = _backend;
+                    this._window = _window;
                     _backend.setBaseUrl('http://localhost:2002/');
                 }
                 FooterComponent.prototype.ngOnInit = function () {
                     var _this = this;
-                    this._backend.getVersion()
-                        .subscribe(function (res) { return _this.version = res; });
+                    var port = this._window.location.port;
+                    if (port == "2002") {
+                        this._backend.getVersion()
+                            .subscribe(function (res) { return _this.version = res; });
+                    }
+                    else {
+                        this.version = "latest";
+                    }
                 };
                 FooterComponent = __decorate([
                     core_1.Component({
@@ -37,7 +44,7 @@ System.register(['angular2/core', '../services/backend.service'], function(expor
                         providers: [backend_service_1.BackendServices],
                         template: '<p><small>client: {{version}}</small></p>'
                     }), 
-                    __metadata('design:paramtypes', [backend_service_1.BackendServices])
+                    __metadata('design:paramtypes', [backend_service_1.BackendServices, Window])
                 ], FooterComponent);
                 return FooterComponent;
             }());
