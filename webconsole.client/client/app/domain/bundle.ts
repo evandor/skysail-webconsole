@@ -1,5 +1,7 @@
 import {ExportPackage} from '../domain/exportPackage';
+import {ImportPackage} from '../domain/importPackage';
 import {ManifestHeader} from '../domain/manifestHeader';
+import {WireDescriptor} from '../domain/wireDescriptor';
 
 export class Bundle {
     id: string;
@@ -16,5 +18,7 @@ export class Bundle {
     vendor: string;
     version: string;
     exportPackage: ExportPackage[] = [];
+    importPackage: ImportPackage[] = [];
     manifestHeaders: ManifestHeader;
+    wireDescriptor: WireDescriptor;
 }

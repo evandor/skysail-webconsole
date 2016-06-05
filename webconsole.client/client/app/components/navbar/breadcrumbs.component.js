@@ -1,4 +1,4 @@
-System.register(["angular2/core", "angular2/router"], function(exports_1, context_1) {
+System.register(["angular2/core", "angular2/router", 'angular2/common', '../../services/breadcrumbs.service', '../navbar/breadcrumb'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(["angular2/core", "angular2/router"], function(exports_1, contex
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1;
+    var core_1, router_1, common_1, breadcrumbs_service_1, breadcrumb_1;
     var Breadcrumbs;
     return {
         setters:[
@@ -19,18 +19,48 @@ System.register(["angular2/core", "angular2/router"], function(exports_1, contex
             },
             function (router_1_1) {
                 router_1 = router_1_1;
+            },
+            function (common_1_1) {
+                common_1 = common_1_1;
+            },
+            function (breadcrumbs_service_1_1) {
+                breadcrumbs_service_1 = breadcrumbs_service_1_1;
+            },
+            function (breadcrumb_1_1) {
+                breadcrumb_1 = breadcrumb_1_1;
             }],
         execute: function() {
             Breadcrumbs = (function () {
-                function Breadcrumbs() {
+                function Breadcrumbs(router, _breadcrumbsService) {
+                    var _this = this;
+                    this.router = router;
+                    this._breadcrumbsService = _breadcrumbsService;
+                    this.router.subscribe(function (val) {
+                        _breadcrumbsService.clear();
+                        _breadcrumbsService.add(new breadcrumb_1.Breadcrumb(['Bundles'], '<span class="glyphicon glyphicon-home" aria-hidden="true"></span>'));
+                        if (val.startsWith("bundles")) {
+                            _breadcrumbsService.add(new breadcrumb_1.Breadcrumb(['Bundles'], 'Bundles'));
+                        }
+                        else if (val.startsWith("services")) {
+                            _breadcrumbsService.add(new breadcrumb_1.Breadcrumb(['Services'], 'Services'));
+                        }
+                        else if (val == "logs") {
+                            _breadcrumbsService.add(new breadcrumb_1.Breadcrumb(['Logs'], 'Logs'));
+                        }
+                        else {
+                            console.log(val);
+                        }
+                        _this.breadcrumbs = _breadcrumbsService.getBreadcrumbs();
+                    });
                 }
                 Breadcrumbs = __decorate([
                     core_1.Component({
                         selector: 'breadcrumbs',
-                        directives: [router_1.ROUTER_DIRECTIVES],
+                        directives: [router_1.ROUTER_DIRECTIVES, common_1.NgFor, common_1.NgFormModel],
+                        providers: [breadcrumbs_service_1.BreadcrumbsService],
                         templateUrl: 'app/html/navbar/breadcrumbs.template.html'
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [router_1.Router, breadcrumbs_service_1.BreadcrumbsService])
                 ], Breadcrumbs);
                 return Breadcrumbs;
             }());

@@ -7,6 +7,8 @@ import java.util.TimerTask;
 
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
+import org.osgi.framework.ServiceReference;
+import org.osgi.service.resolver.Resolver;
 
 import fi.iki.elonen.NanoHTTPD;
 import fi.iki.elonen.NanoWSD.WebSocket;
@@ -63,9 +65,12 @@ public class Server extends NanoHTTPD {
 
 	private LogService logService;
 
+    private ServiceReference<Resolver> resolverReference;
 
-    public Server(BundleContext bundleContext) throws IOException {
+
+    public Server(BundleContext bundleContext, ServiceReference<Resolver> resolverReference) throws IOException {
         super(2002);
+        this.resolverReference = resolverReference;
         start(NanoHTTPD.SOCKET_READ_TIMEOUT, false);
 
         osgiService = new OsgiService(bundleContext);
@@ -82,7 +87,7 @@ public class Server extends NanoHTTPD {
         logsHandler = new LogsHandler(logService);
         frameworkHandler = new FrameworkHandler(bundleContext);
 
-        bundleHandler = new BundleHandler(bundleContext);
+        bundleHandler = new BundleHandler(bundleContext, osgiService);
         serviceHandler = new ServiceHandler(bundleContext);
 
         bundleListenerHandler = new BundleListenerHandler(bundleListener);
@@ -99,9 +104,9 @@ public class Server extends NanoHTTPD {
 
         SocketWorker socketWorker = new SocketWorker(8088);
         socketWorker.start();
-        
+
         TimerTask timerTask = new TimerTask() {
-			
+
 			@Override
 			public void run() {
 				WebSocket webSocket = socketWorker.getWebSocket();
@@ -112,7 +117,7 @@ public class Server extends NanoHTTPD {
 						e.printStackTrace();
 					}
 				}
-				
+
 			}
 		};
 		Timer timer = new Timer(true);

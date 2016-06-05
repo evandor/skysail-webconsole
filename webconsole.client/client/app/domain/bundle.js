@@ -8,6 +8,7 @@ System.register([], function(exports_1, context_1) {
             Bundle = (function () {
                 function Bundle() {
                     this.exportPackage = [];
+                    this.importPackage = [];
                 }
                 return Bundle;
             }());

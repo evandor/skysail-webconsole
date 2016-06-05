@@ -1,35 +1,24 @@
 package io.skysail.webconsole.entities;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 @Getter
+@Setter
 @ToString
-public class ExportPackage {
+public class ExportPackage extends PackageDescriptor {
 
-    private String pkgName;
-
-    @Setter
-    private String version;
-
-    @Setter
     private String uses;
-
-    @Setter
-    private String mandatory, include, exclude;
-
-    private Map<String,String> additionalAttributes = new HashMap<>();
+    private String version;
+    private String mandatory;
+    private String include;
+    private String exclude;
 
     public ExportPackage(String pkgName) {
-        this.pkgName = pkgName;
+        super(pkgName);
     }
 
-    public void addAdditionalAttributes(String key, String value) {
-        this.additionalAttributes .put(key,value);
-    }
+
 
 }

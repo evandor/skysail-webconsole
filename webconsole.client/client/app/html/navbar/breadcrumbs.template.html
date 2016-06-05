@@ -1,5 +1,4 @@
-<ol class="breadcrumb" style="margin-top:-18px; padding-left:143px;">
-  <li><a href="/">Home</a></li>
-  <li><a [routerLink]="['Bundles']">Bundles</a></li>
+<ol class="breadcrumb">
+  <li *ngFor="#breadcrumb of breadcrumbs"><a [routerLink]="breadcrumb.link" [innerHtml]='breadcrumb.title'></a></li>
   <li class="active">Data</li>
 </ol>

@@ -53,7 +53,7 @@ public class ExportPackageVisitor extends ExportPackageBaseVisitor<Void> {
             } else if ("include".equals(directive[0])) {
                 currentExportPackages.stream().forEach(cep -> cep.setInclude(directive[1]));
             } else {
-                log.warn("unknown directive");
+                log.warn("unknown directive {}", directive[0]);
             }
         } else if (ctx.Attribute() != null) {
             String[] attribute = ctx.Attribute().getText().split("=");

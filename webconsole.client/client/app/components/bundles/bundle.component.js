@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/common', 'angular2/router', 'angular2/http', '../../services/backend.service', '../../domain/bundle', '../../components/tabs', '../../components/tab', '../../pipes/newline.pipe', '../../pipes/values.pipe'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/common', 'angular2/router', 'angular2/http', '../../services/backend.service', '../../domain/bundle', '../../components/tabs', '../../components/tab', '../../domain/keyValue', '../../pipes/newline.pipe', '../../pipes/values.pipe'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', 'angular
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, router_1, http_1, backend_service_1, bundle_1, tabs_1, tab_1, newline_pipe_1, values_pipe_1;
+    var core_1, common_1, router_1, http_1, backend_service_1, bundle_1, tabs_1, tab_1, keyValue_1, newline_pipe_1, values_pipe_1;
     var BundleComponent;
     return {
         setters:[
@@ -38,6 +38,9 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', 'angular
             function (tab_1_1) {
                 tab_1 = tab_1_1;
             },
+            function (keyValue_1_1) {
+                keyValue_1 = keyValue_1_1;
+            },
             function (newline_pipe_1_1) {
                 newline_pipe_1 = newline_pipe_1_1;
             },
@@ -50,6 +53,7 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', 'angular
                     this._routeParams = _routeParams;
                     this._backend = _backend;
                     this.bundle = new bundle_1.Bundle();
+                    this.capabilities = [];
                     this.isLoading = true;
                     _backend.setBaseUrl('http://localhost:2002/');
                 }
@@ -60,13 +64,29 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', 'angular
                     this._backend.getBundle(id)
                         .subscribe(function (res) {
                         _this.bundle = res;
+                        var props = res.wireDescriptor.capabilities;
+                        for (var key in props) {
+                            if (key == "attributes") {
+                                var attributes = props[key];
+                                var attributeMap;
+                                for (var attribute in attributes) {
+                                    attributeMap.push(new keyValue_1.KeyValue(attribute, attributes[attribute]));
+                                }
+                                _this.capabilities.push(new keyValue_1.KeyValue(key, attributeMap));
+                            }
+                            else {
+                                _this.capabilities.push(new keyValue_1.KeyValue(key, props[key]));
+                            }
+                        }
+                        ;
                         _this.isLoading = false;
-                        console.log("BundleDetails: " + res.manifestHeaders);
-                        //this.bundle.setManifestHeaders(this.objToStrMap(res.manifestHeaders));
                     });
                 };
                 BundleComponent.prototype.exportedPackagesTitle = function () {
                     return "Exported Packages (" + this.bundle.exportPackage.length + ")";
+                };
+                BundleComponent.prototype.importedPackagesTitle = function () {
+                    return "Imported Packages (" + this.bundle.importPackage.length + ")";
                 };
                 BundleComponent.prototype.objToStrMap = function (obj) {
                     var strMap = new Map();

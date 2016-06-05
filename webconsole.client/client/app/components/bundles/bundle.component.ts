@@ -8,6 +8,8 @@ import {Bundle} from '../../domain/bundle';
 import {Tabs} from '../../components/tabs';
 import {Tab} from '../../components/tab';
 
+import {KeyValue} from '../../domain/keyValue';
+
 import {NewlinePipe} from '../../pipes/newline.pipe';
 import {ValuesPipe} from '../../pipes/values.pipe';
 
@@ -23,6 +25,8 @@ export class BundleComponent implements OnInit {
 
     bundle: Bundle = new Bundle();
     
+    capabilities: KeyValue[] = [];
+    
     isLoading = true;
 
     constructor(private _routeParams:RouteParams, private _backend: BackendServices) {
@@ -36,15 +40,30 @@ export class BundleComponent implements OnInit {
         this._backend.getBundle(id)
             .subscribe(res => {
                 this.bundle = res;
+                var props = <Map<string,string>>res.wireDescriptor.capabilities;
+                for (var key in props) {
+                    if (key == "attributes") {
+                        var attributes = <Map<string,string>>props[key];
+                        var attributeMap: KeyValue[];
+                        for (var attribute in attributes) {
+                            attributeMap.push(new KeyValue(attribute, attributes[attribute]));
+                        }
+                        this.capabilities.push(new KeyValue(key,attributeMap));
+                    } else {
+                        this.capabilities.push(new KeyValue(key,props[key]));
+                    }
+                };
                 this.isLoading = false;
-                console.log("BundleDetails: " + res.manifestHeaders);
-                //this.bundle.setManifestHeaders(this.objToStrMap(res.manifestHeaders));
             }
         );
     }
     
     exportedPackagesTitle() {
         return "Exported Packages (" + this.bundle.exportPackage.length + ")";
+    }
+
+    importedPackagesTitle() {
+        return "Imported Packages (" + this.bundle.importPackage.length + ")";
     }
     
     objToStrMap(obj) {

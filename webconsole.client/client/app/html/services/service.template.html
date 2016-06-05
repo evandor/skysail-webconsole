@@ -22,12 +22,12 @@
             {{service.objectClass}}
         </td>
     </tr>
-    <tr>
+    <tr *ngIf="service.pid">
         <th>&nbsp;</th>
         <th>PID</th>
         <td>{{service.pid}}</td>
     </tr>
-    <tr>
+    <tr *ngIf="service.ranking">
         <th>&nbsp;</th>
         <th>Ranking</th>
         <td>{{service.ranking}}</td>

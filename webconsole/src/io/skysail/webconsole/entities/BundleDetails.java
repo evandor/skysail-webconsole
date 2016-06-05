@@ -10,11 +10,16 @@ import java.util.stream.Collectors;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.Constants;
+import org.osgi.framework.wiring.BundleWiring;
 
 import io.skysail.webconsole.antlr.ExportPackageLexer;
 import io.skysail.webconsole.antlr.ExportPackageParser;
 import io.skysail.webconsole.antlr.ExportPackageParser.ExportPackageContext;
+import io.skysail.webconsole.antlr.ImportPackageLexer;
+import io.skysail.webconsole.antlr.ImportPackageParser;
+import io.skysail.webconsole.antlr.ImportPackageParser.ImportPackageContext;
 import io.skysail.webconsole.entities.antlr.ExportPackageVisitor;
+import io.skysail.webconsole.entities.antlr.ImportPackageVisitor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -33,8 +38,10 @@ public class BundleDetails extends BundleDescriptor {
     private Integer startLevel;
     private String bundleClasspath;
     private List<ExportPackage> exportPackage = new ArrayList<>();
+    private List<ImportPackage> importPackage = new ArrayList<>();
     private List<ManifestHeader> manifestHeaders = new ArrayList<>();
     private String exportService;
+    private WireDescriptor wireDescriptor;
 
     public BundleDetails(Bundle bundle) {
         super(bundle);
@@ -50,8 +57,11 @@ public class BundleDetails extends BundleDescriptor {
             this.description = (String) headers.get(Constants.BUNDLE_DESCRIPTION);
             this.bundleClasspath = (String) headers.get(Constants.BUNDLE_CLASSPATH);
             this.exportPackage = getExportedPackages(headers);
+            this.importPackage = getImportedPackages(headers);
             this.manifestHeaders = dump(headers);
         }
+
+        wireDescriptor = new WireDescriptor(bundle.adapt(BundleWiring.class));
     }
 
     private List<ManifestHeader> dump(Dictionary<?, ?> headers) {
@@ -64,30 +74,50 @@ public class BundleDetails extends BundleDescriptor {
         return result.stream().sorted((e1, e2) -> e1.getKey().compareTo(e2.getKey())).collect(Collectors.toList());
     }
 
-    private List<ExportPackage> getExportedPackages(Dictionary<?, ?> headers) {
-        String rawValue = (String) headers.get(Constants.EXPORT_PACKAGE);
+    private List<ImportPackage> getImportedPackages(Dictionary<?, ?> headers) {
+        String rawValue = (String) headers.get(Constants.IMPORT_PACKAGE);
         if (rawValue == null || rawValue.trim().length() == 0) {
             return Collections.emptyList();
         }
 
-        ExportPackageParser parser = parse(rawValue);
-        ExportPackageContext tree = parser.exportPackage();
-        System.out.println(tree.toStringTree(parser));
+        ImportPackageParser parser = parseImport(rawValue);
+        ImportPackageContext tree = parser.importPackage();
 
-        List<ExportPackage> result = new ArrayList<>();
-        ExportPackageVisitor exportPackageVisitor = new ExportPackageVisitor(result);
-        exportPackageVisitor.visit(tree);
+        List<ImportPackage> result = new ArrayList<>();
+        ImportPackageVisitor importPackageVisitor = new ImportPackageVisitor(result);
+        importPackageVisitor.visit(tree);
 
         return result.stream() // NOSONAR
                 .sorted((p1, p2) -> p1.getPkgName().compareTo(p2.getPkgName()))
                 .collect(Collectors.toList());
     }
 
-    private ExportPackageParser parse(String inputString) {
+    private List<ExportPackage> getExportedPackages(Dictionary<?, ?> headers) {
+        String rawValue = (String) headers.get(Constants.EXPORT_PACKAGE);
+        if (rawValue == null || rawValue.trim().length() == 0) {
+            return Collections.emptyList();
+        }
+
+        ExportPackageParser parser = parseExport(rawValue);
+        ExportPackageContext tree = parser.exportPackage();
+
+        List<ExportPackage> result = new ArrayList<>();
+        ExportPackageVisitor packageVisitor = new ExportPackageVisitor(result);
+        packageVisitor.visit(tree);
+
+        return result.stream() // NOSONAR
+                .sorted((p1, p2) -> p1.getPkgName().compareTo(p2.getPkgName()))
+                .collect(Collectors.toList());
+    }
+
+    private ImportPackageParser parseImport(String inputString) {
         org.antlr.v4.runtime.CharStream input = new org.antlr.v4.runtime.ANTLRInputStream(inputString);
-        ExportPackageLexer lexer = new ExportPackageLexer(input);
-        CommonTokenStream tokens = new CommonTokenStream(lexer);
-        return new ExportPackageParser(tokens);
+        return new ImportPackageParser(new CommonTokenStream(new ImportPackageLexer(input)));
+    }
+
+    private ExportPackageParser parseExport(String inputString) {
+        org.antlr.v4.runtime.CharStream input = new org.antlr.v4.runtime.ANTLRInputStream(inputString);
+        return new ExportPackageParser(new CommonTokenStream(new ExportPackageLexer(input)));
     }
 
 }

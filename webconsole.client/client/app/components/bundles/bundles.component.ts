@@ -3,6 +3,8 @@ import {FORM_DIRECTIVES, FormBuilder, NgFor, NgFormModel} from 'angular2/common'
 import {ROUTER_DIRECTIVES, RouteParams, Router} from "angular2/router";
 
 import {BackendServices} from '../../services/backend.service';
+import {BreadcrumbsService} from '../../services/breadcrumbs.service';
+import {Breadcrumb} from '../../components/navbar/breadcrumb';
 import {Bundle} from '../../domain/bundle';
 
 declare var jQuery:any;
@@ -10,7 +12,7 @@ declare var jQuery:any;
 @Component({
     selector: 'bundles',
     directives: [FORM_DIRECTIVES, ROUTER_DIRECTIVES, NgFor, NgFormModel],
-    providers: [BackendServices],
+    providers: [BackendServices, BreadcrumbsService],
     templateUrl: 'app/html/bundles/bundles.template.html',
     //styleUrls:  ['app/js/datatables.css']
 })
@@ -18,12 +20,13 @@ export class BundlesComponent implements OnInit {
 
     bundles: Bundle[];
 
-    constructor(private router: Router, private _backend: BackendServices) {
+    constructor(private router: Router, private _backend: BackendServices, private _breadcrumbService: BreadcrumbsService) {
         _backend.setBaseUrl('http://localhost:2002/');
     }
 
     onSelect(bundle: Bundle) {
         this.router.navigate( ['Bundle', { id: bundle.id }]  );
+        this._breadcrumbService.add(new Breadcrumb(['Bundle'], "hier"));
     }
     
     getStateClass(bundle: Bundle) {
