@@ -4,6 +4,7 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 import {Bundle} from '../domain/bundle';
+import {ExportPackage} from '../domain/exportPackage';
 import {LogEntry} from '../domain/logEntry';
 import {Service} from '../domain/service';
 import {Snapshot} from '../domain/snapshot';
@@ -49,6 +50,11 @@ export class BackendServices {
 
     getService(id): Observable<Service> {
         return this._http.get(this._baseUrl + 'backend/services/' + id)
+            .map(res => res.json());
+    }
+
+    getPackages(): Observable<ExportPackage[]> {
+        return this._http.get(this._baseUrl + 'backend/packages')
             .map(res => res.json());
     }
 

@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/common', "angular2/router", '../../services/backend.service', '../../services/breadcrumbs.service', '../../components/navbar/breadcrumb', '../../pipes/bundlesFilter.pipe'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/common', "angular2/router", '../services/backend.service', '../services/breadcrumbs.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,8 +10,8 @@ System.register(['angular2/core', 'angular2/common', "angular2/router", '../../s
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, router_1, backend_service_1, breadcrumbs_service_1, breadcrumb_1, bundlesFilter_pipe_1;
-    var BundlesComponent;
+    var core_1, common_1, router_1, backend_service_1, breadcrumbs_service_1;
+    var PackagesComponent;
     return {
         setters:[
             function (core_1_1) {
@@ -28,56 +28,34 @@ System.register(['angular2/core', 'angular2/common', "angular2/router", '../../s
             },
             function (breadcrumbs_service_1_1) {
                 breadcrumbs_service_1 = breadcrumbs_service_1_1;
-            },
-            function (breadcrumb_1_1) {
-                breadcrumb_1 = breadcrumb_1_1;
-            },
-            function (bundlesFilter_pipe_1_1) {
-                bundlesFilter_pipe_1 = bundlesFilter_pipe_1_1;
             }],
         execute: function() {
-            BundlesComponent = (function () {
-                function BundlesComponent(router, _backend, _breadcrumbService) {
+            PackagesComponent = (function () {
+                function PackagesComponent(router, _backend, _breadcrumbService) {
                     this.router = router;
                     this._backend = _backend;
                     this._breadcrumbService = _breadcrumbService;
                     this.searchId = "";
                     _backend.setBaseUrl('http://localhost:2002/');
                 }
-                BundlesComponent.prototype.onSelect = function (bundle) {
-                    this.router.navigate(['Bundle', { id: bundle.id }]);
-                    this._breadcrumbService.add(new breadcrumb_1.Breadcrumb(['Bundle'], "hier"));
-                };
-                BundlesComponent.prototype.getStateClass = function (bundle) {
-                    switch (bundle.state) {
-                        case "ACTIVE":
-                            return "label label-success";
-                        case "INSTALLED":
-                            return "label label-warning";
-                        default:
-                            return "label label-danger";
-                    }
-                };
-                BundlesComponent.prototype.ngOnInit = function () {
+                PackagesComponent.prototype.ngOnInit = function () {
                     var _this = this;
-                    console.log("oninit bundlesservice called!");
-                    this._backend.getBundles()
-                        .subscribe(function (res) { return _this.bundles = res; });
+                    this._backend.getPackages()
+                        .subscribe(function (res) { return _this.packages = res; });
                 };
-                BundlesComponent = __decorate([
+                PackagesComponent = __decorate([
                     core_1.Component({
-                        selector: 'bundles',
+                        selector: 'packages',
                         directives: [common_1.FORM_DIRECTIVES, router_1.ROUTER_DIRECTIVES, common_1.NgFor, common_1.NgFormModel],
                         providers: [backend_service_1.BackendServices, breadcrumbs_service_1.BreadcrumbsService],
-                        templateUrl: 'app/html/bundles/bundles.template.html',
-                        pipes: [bundlesFilter_pipe_1.BundlesFilter]
+                        templateUrl: 'app/html/packages.template.html'
                     }), 
                     __metadata('design:paramtypes', [router_1.Router, backend_service_1.BackendServices, breadcrumbs_service_1.BreadcrumbsService])
-                ], BundlesComponent);
-                return BundlesComponent;
+                ], PackagesComponent);
+                return PackagesComponent;
             }());
-            exports_1("BundlesComponent", BundlesComponent);
+            exports_1("PackagesComponent", PackagesComponent);
         }
     }
 });
-//# sourceMappingURL=bundles.component.js.map
+//# sourceMappingURL=packages.component.js.map

@@ -56,7 +56,7 @@ public class BundleHandlerTest {
         Response response = bundleHandler.handle(session);
 
         assertThat(response.getStatus().getDescription(), is("200 OK"));
-        assertThat(response.getMimeType().toString(), is("text/html"));
+        assertThat(response.getMimeType().toString(), is("application/json"));
         String responseAsText = TestUtils.convertStreamToString(response.getData());
         assertThat(responseAsText, containsString("\"version\":\"0.1.0\""));
         assertThat(responseAsText, containsString("\"id\":\"0\""));

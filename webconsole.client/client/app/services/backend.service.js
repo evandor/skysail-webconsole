@@ -58,6 +58,10 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map'], fun
                     return this._http.get(this._baseUrl + 'backend/services/' + id)
                         .map(function (res) { return res.json(); });
                 };
+                BackendServices.prototype.getPackages = function () {
+                    return this._http.get(this._baseUrl + 'backend/packages')
+                        .map(function (res) { return res.json(); });
+                };
                 BackendServices.prototype.getLogs = function () {
                     return this._http.get(this._baseUrl + 'backend/logs')
                         .map(function (res) { return res.json(); });

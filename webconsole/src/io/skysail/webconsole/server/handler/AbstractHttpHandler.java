@@ -45,7 +45,7 @@ public abstract class AbstractHttpHandler {
             	} else {
             		throw new UnsupportedOperationException();
             	}
-            	r =  NanoHTTPD.newFixedLengthResponse(Status.OK, NanoHTTPD.MIME_HTML, msg);
+            	r =  NanoHTTPD.newFixedLengthResponse(Status.OK, getMimeType(), msg);
             } catch (IOException e) {
                 log.error(e.getMessage(), e);
                 return fi.iki.elonen.NanoHTTPD.newFixedLengthResponse(Status.INTERNAL_ERROR, NanoHTTPD.MIME_HTML,

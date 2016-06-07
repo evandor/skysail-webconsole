@@ -44,6 +44,9 @@ System.register(["angular2/core", "angular2/router", 'angular2/common', '../../s
                         else if (val.startsWith("services")) {
                             _breadcrumbsService.add(new breadcrumb_1.Breadcrumb(['Services'], 'Services'));
                         }
+                        else if (val.startsWith("packages")) {
+                            _breadcrumbsService.add(new breadcrumb_1.Breadcrumb(['Packages'], 'Packages'));
+                        }
                         else if (val == "logs") {
                             _breadcrumbsService.add(new breadcrumb_1.Breadcrumb(['Logs'], 'Logs'));
                         }

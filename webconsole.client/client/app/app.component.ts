@@ -8,6 +8,7 @@ import {BundleComponent} from './components/bundles/bundle.component';
 import {LogsComponent} from './components/logs.component';
 import {ServicesComponent} from './components/services/services.component';
 import {ServiceComponent} from './components/services/service.component';
+import {PackagesComponent} from './components/packages.component'
 import {HelpComponent} from './components/help.component';
 import {SnapshotsComponent} from './components/snapshots/snapshots.component';
 import {BarGraph} from './components/graph.component';
@@ -23,6 +24,7 @@ import {TimerWebsocketComponent} from './components/websockets/timerWS.component
     { path: '/bundles/:id',  as: 'Bundle',    component: BundleComponent },
     { path: '/services',     as: 'Services',  component: ServicesComponent },
     { path: '/services/:id', as: 'Service',   component: ServiceComponent },
+    { path: '/packages',     as: 'Packages',  component: PackagesComponent },
     { path: '/logs',         as: 'Logs',      component: LogsComponent },
    // { path: '/graph',        as: 'Graph',     component: GraphComponent },
     { path: '/snapshots',    as: 'Snapshots', component: SnapshotsComponent },

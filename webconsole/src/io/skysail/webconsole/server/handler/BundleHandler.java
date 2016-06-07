@@ -49,6 +49,7 @@ public class BundleHandler extends AbstractHttpHandler { // NOSONAR
                     if (importPkg.isPresent()) {
                         if (isSatisfied(importPkg.get(), export)) {
                             candidates.put(export.getName(), export);
+                            importPkg.get().addCandidate(export);
                         }
                     }
                 });

@@ -25,6 +25,8 @@ export class Breadcrumbs {
                 _breadcrumbsService.add(new Breadcrumb(['Bundles'], 'Bundles'));
             } else if (val.startsWith("services")) {
                 _breadcrumbsService.add(new Breadcrumb(['Services'], 'Services'));
+            } else if (val.startsWith("packages")) {
+                _breadcrumbsService.add(new Breadcrumb(['Packages'], 'Packages'));
             } else if (val == "logs") {
                 _breadcrumbsService.add(new Breadcrumb(['Logs'], 'Logs'));
             } else {

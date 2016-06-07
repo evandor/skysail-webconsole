@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', './components/framework.component', './components/footer.component', './components/bundles/bundles.component', './components/bundles/bundle.component', './components/logs.component', './components/services/services.component', './components/services/service.component', './components/help.component', './components/snapshots/snapshots.component', './components/graph.component', './components/navbar/navbar.component', './components/navbar/breadcrumbs.component', './components/websockets/timerWS.component'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', './components/framework.component', './components/footer.component', './components/bundles/bundles.component', './components/bundles/bundle.component', './components/logs.component', './components/services/services.component', './components/services/service.component', './components/packages.component', './components/help.component', './components/snapshots/snapshots.component', './components/graph.component', './components/navbar/navbar.component', './components/navbar/breadcrumbs.component', './components/websockets/timerWS.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', './components/framework.com
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, framework_component_1, footer_component_1, bundles_component_1, bundle_component_1, logs_component_1, services_component_1, service_component_1, help_component_1, snapshots_component_1, graph_component_1, navbar_component_1, breadcrumbs_component_1, timerWS_component_1;
+    var core_1, router_1, framework_component_1, footer_component_1, bundles_component_1, bundle_component_1, logs_component_1, services_component_1, service_component_1, packages_component_1, help_component_1, snapshots_component_1, graph_component_1, navbar_component_1, breadcrumbs_component_1, timerWS_component_1;
     var AppComponent;
     return {
         setters:[
@@ -40,6 +40,9 @@ System.register(['angular2/core', 'angular2/router', './components/framework.com
             },
             function (service_component_1_1) {
                 service_component_1 = service_component_1_1;
+            },
+            function (packages_component_1_1) {
+                packages_component_1 = packages_component_1_1;
             },
             function (help_component_1_1) {
                 help_component_1 = help_component_1_1;
@@ -71,6 +74,7 @@ System.register(['angular2/core', 'angular2/router', './components/framework.com
                         { path: '/bundles/:id', as: 'Bundle', component: bundle_component_1.BundleComponent },
                         { path: '/services', as: 'Services', component: services_component_1.ServicesComponent },
                         { path: '/services/:id', as: 'Service', component: service_component_1.ServiceComponent },
+                        { path: '/packages', as: 'Packages', component: packages_component_1.PackagesComponent },
                         { path: '/logs', as: 'Logs', component: logs_component_1.LogsComponent },
                         // { path: '/graph',        as: 'Graph',     component: GraphComponent },
                         { path: '/snapshots', as: 'Snapshots', component: snapshots_component_1.SnapshotsComponent },

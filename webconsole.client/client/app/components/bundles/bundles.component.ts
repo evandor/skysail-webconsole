@@ -7,6 +7,8 @@ import {BreadcrumbsService} from '../../services/breadcrumbs.service';
 import {Breadcrumb} from '../../components/navbar/breadcrumb';
 import {Bundle} from '../../domain/bundle';
 
+import {BundlesFilter} from '../../pipes/bundlesFilter.pipe'
+
 declare var jQuery:any;
 
 @Component({
@@ -14,11 +16,14 @@ declare var jQuery:any;
     directives: [FORM_DIRECTIVES, ROUTER_DIRECTIVES, NgFor, NgFormModel],
     providers: [BackendServices, BreadcrumbsService],
     templateUrl: 'app/html/bundles/bundles.template.html',
+    pipes: [BundlesFilter]
     //styleUrls:  ['app/js/datatables.css']
 })
 export class BundlesComponent implements OnInit {
 
     bundles: Bundle[];
+    
+    searchId: string = "";
 
     constructor(private router: Router, private _backend: BackendServices, private _breadcrumbService: BreadcrumbsService) {
         _backend.setBaseUrl('http://localhost:2002/');

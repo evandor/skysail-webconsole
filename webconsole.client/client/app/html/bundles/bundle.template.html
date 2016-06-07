@@ -77,8 +77,8 @@
       </tr>
     </table>
   </tab>
-  
-   <tab [tabTitle]="importedPackagesTitle()">
+
+  <tab [tabTitle]="importedPackagesTitle()">
     <table class="table">
       <thead>
         <tr>
@@ -87,19 +87,27 @@
           <th>Satiesfied by</th>
         </tr>
       </thead>
-      <tr>
-        <th><span class="glyphicon glyphicon-log-in" aria-hidden="true" style="color: blue"></span> Imported Packages:</th>
+      <tr *ngFor="#pkg of bundle.importPackage">
+        <th><span class="glyphicon glyphicon-log-in" aria-hidden="true" style="color: blue"></span> :</th>
         <td>
-          <div *ngFor="#pkg of bundle.importPackage">
+          <div>
             <span>{{pkg.pkgName}} {{pkg.versionRange}} {{pkg.resolution}}</span>
           </div>
         </td>
-        <td>?</td>
+        <td> 
+          <div *ngFor="#candidate of pkg.packageResolvingCandidates">
+            {{candidate.name}} [{{candidate.version}}]    
+          </div>
+        </td>        
       </tr>
     </table>
   </tab>
 
-   <tab tabTitle="Capabilities">
+  <tab tabTitle="Capabilities">
+    <span *ngIf="bundle.wireDescriptor?.alerts">
+      <div *ngFor="#alert of bundle.wireDescriptor?.alerts" class="alert alert-{{alert.level}}" role="alert">{{alert.message}}</div>
+    </span>  
+    
     <table class="table">
       <thead>
         <tr>
@@ -118,8 +126,11 @@
       </tr>
     </table>
   </tab>
-  
+
   <tab tabTitle="Requirements">
+    <span *ngIf="bundle.wireDescriptor?.alerts">
+      <div *ngFor="#alert of bundle.wireDescriptor?.alerts" class="alert alert-{{alert.level}}" role="alert">{{alert.message}}</div>
+    </span>  
     <table class="table">
       <thead>
         <tr>

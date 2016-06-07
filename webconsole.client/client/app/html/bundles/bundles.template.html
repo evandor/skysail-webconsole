@@ -9,7 +9,19 @@
       <th>Size (KB)</th>
     </tr>
   </thead>
-  <tr *ngFor="#bundle of bundles">
+  <!--<tr>
+    <td><input type="text" name="search_id" size="4"/></td>
+    <td><input type="text" name="search_name" size="40" [(ngModel)]="searchName"/></td>
+    <td><input type="text" name="search_version" size="12"/></td>
+    <td>
+       <select>
+         <option name="search_state" value="">All</option>       
+         <option name="search_state" value="Active">Active</option>       
+       </select>  
+    </td>
+    <td>&nbsp;</td>
+  </tr> -->
+  <tr *ngFor="#bundle of bundles"> <!--bundlesFilter:searchName-->
     <td>{{bundle.id}}</td>
     <td (click)="onSelect(bundle)" style="cursor: pointer; color:#000066;">{{bundle.symbolicName}}</td>
     <td>{{bundle.version}}</td>

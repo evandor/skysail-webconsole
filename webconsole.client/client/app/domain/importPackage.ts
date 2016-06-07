@@ -1,3 +1,5 @@
+import {PackageResolvingCandidate} from '../domain/packageResolvingCandidate';
+
 export interface ImportPackage {
     pkgName: string;
     version: string;
@@ -5,4 +7,5 @@ export interface ImportPackage {
     versionRange: string;
     bundleSymbolicName: string;
     bundleVersion: string;
+    packageResolvingCandidate: PackageResolvingCandidate[];
 }

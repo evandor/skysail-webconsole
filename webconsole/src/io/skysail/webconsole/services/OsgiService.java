@@ -13,6 +13,8 @@ import org.osgi.framework.ServiceReference;
 import org.osgi.util.tracker.ServiceTracker;
 
 import io.skysail.webconsole.entities.BundleDescriptor;
+import io.skysail.webconsole.entities.BundleDetails;
+import io.skysail.webconsole.entities.ExportPackage;
 import io.skysail.webconsole.entities.ServiceDescriptor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -53,6 +55,19 @@ public class OsgiService {
             log.error(e.getMessage(), e);
         }
         return Collections.emptyList();
+    }
+
+    public List<ExportPackage> getPackageDescriptors() {
+        if (bundleContext == null) {
+            log.warn("bundleContext not available");
+            return Collections.emptyList();
+        }
+        return Arrays.stream(bundleContext.getBundles()) // NOSONAR
+                .map(b -> new BundleDetails(b))
+                .map(b -> b.getExportPackage())
+                .flatMap(b -> b.stream())
+                .sorted((p1,p2) -> p1.getPkgName().compareTo(p2.getPkgName()))
+                .collect(Collectors.toList());
     }
 
     public final Object getService(String serviceName) {
