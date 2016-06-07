@@ -1,6 +1,6 @@
 Bundle-Name: SKYSAIL :: webconsole :: it
 
-Bundle-Version: 0.1.1.${tstamp}
+Bundle-Version: 0.1.2.${tstamp}
 
 Bundle-Description: webconsole integration tests
 
