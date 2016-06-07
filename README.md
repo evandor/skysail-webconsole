@@ -20,7 +20,6 @@ just started, needs serious polishing, internally and visually... - just a prove
 
 # Demo
 
-[I'm an inline-style link with title](https://www.google.com "Google's Homepage")
 [this link](http://85.25.22.126:2002/index.html) should be working most of the time.
 
 # Limitations
