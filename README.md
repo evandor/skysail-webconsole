@@ -20,7 +20,7 @@ just started, needs serious polishing, internally and visually... - just a prove
 
 # Demo
 
-coming soon...
+![this link](85.25.22.126:2002/index.html) should be working most of the time.
 
 # Limitations
 
