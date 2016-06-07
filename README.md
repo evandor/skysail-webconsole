@@ -16,7 +16,7 @@ just started, needs serious polishing, internally and visually... - just a prove
 
 # Screenshot
 
-![screenshot](http://jenkins.twentyeleven.de/job/skysail-webconsole/ws/webconsole/etc/docs/webconsole_0.3.0)
+![screenshot](http://jenkins.twentyeleven.de/job/skysail-webconsole/ws/webconsole/etc/docs/webconsole_0.3.0.png)
 
 # Demo
 
