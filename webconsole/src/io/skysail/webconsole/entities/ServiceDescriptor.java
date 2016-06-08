@@ -21,11 +21,14 @@ public class ServiceDescriptor {
 
 	private String ranking;
 
+	private BundleDescriptor bundle;
+
 	public ServiceDescriptor(ServiceReference<?> ref) {
 		id = Long.toString((Long)ref.getProperty(Constants.SERVICE_ID));
 		objectClass = Arrays.stream((String[])ref.getProperty(Constants.OBJECTCLASS)).collect(Collectors.joining(", "));
 		pid = (String)ref.getProperty(Constants.SERVICE_PID);
 		ranking = ref.getProperty(Constants.SERVICE_RANKING) != null ? ref.getProperty(Constants.SERVICE_RANKING).toString() : "";
+		this.bundle = new BundleDescriptor(ref.getBundle());
 	}
 
 

@@ -2,6 +2,7 @@ import {Component, OnInit, ElementRef} from 'angular2/core';
 import {FORM_DIRECTIVES, FormBuilder, NgFor, NgFormModel} from 'angular2/common';
 import {BackendServices} from '../../services/backend.service';
 import {Service} from '../../domain/service';
+import {Bundle} from '../../domain/bundle';
 import {ROUTER_DIRECTIVES, RouteParams, Router} from "angular2/router";
 
 //import {BundlesService} from '../services/bundles.service';
@@ -25,6 +26,10 @@ export class ServicesComponent implements OnInit {
     
     onSelect(service: Service) {
         this.router.navigate( ['Service', { id: service.id }]  );
+    }
+    
+    onSelectBundle(bundle: Bundle) {
+        this.router.navigate( ['Bundle', { id: bundle.id }]  );
     }
 
     ngOnInit() {

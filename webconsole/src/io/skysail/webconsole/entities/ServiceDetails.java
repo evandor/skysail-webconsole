@@ -17,15 +17,12 @@ import lombok.Setter;
 @Setter
 public class ServiceDetails extends ServiceDescriptor {
 
-	private BundleDescriptor bundle;
-
 	private Map<String,Object> properties;
 
 	private List<BundleDescriptor> usingBundles;
 
 	public ServiceDetails(ServiceReference<?> service) {
 		super(service);
-		this.bundle = new BundleDescriptor(service.getBundle());
 		this.properties = Arrays.stream(service.getPropertyKeys())
 			.filter(key -> !key.equals(Constants.SERVICE_ID) && !key.equals(Constants.OBJECTCLASS))
 			.filter(key -> service.getProperty(key) != null)

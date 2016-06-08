@@ -36,6 +36,9 @@ System.register(['angular2/core', 'angular2/common', '../../services/backend.ser
                 ServicesComponent.prototype.onSelect = function (service) {
                     this.router.navigate(['Service', { id: service.id }]);
                 };
+                ServicesComponent.prototype.onSelectBundle = function (bundle) {
+                    this.router.navigate(['Bundle', { id: bundle.id }]);
+                };
                 ServicesComponent.prototype.ngOnInit = function () {
                     var _this = this;
                     console.log("oninit services called!");
