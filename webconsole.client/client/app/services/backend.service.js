@@ -50,6 +50,10 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map'], fun
                     return this._http.get(this._baseUrl + 'backend/bundles/' + id)
                         .map(function (res) { return res.json(); });
                 };
+                BackendServices.prototype.getBundleServices = function (id) {
+                    return this._http.get(this._baseUrl + 'backend/bundles/' + id + "/services")
+                        .map(function (res) { return res.json(); });
+                };
                 BackendServices.prototype.getServices = function () {
                     return this._http.get(this._baseUrl + 'backend/services')
                         .map(function (res) { return res.json(); });

@@ -150,6 +150,9 @@ public class Server extends NanoHTTPD {
         if ("/backend/bundles".equals(session.getUri())) {
             return bundlesHandler.handle(session);
         }
+        if (session.getUri().startsWith("/backend/bundles/") && session.getUri().endsWith("/services")) {
+            return servicesHandler.handle(session);
+        }
         if (session.getUri().startsWith("/backend/bundles/")) {
             return bundleHandler.handle(session);
         }

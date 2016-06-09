@@ -26,14 +26,43 @@ System.register(["angular2/core", "angular2/router", '../../services/backend.ser
         execute: function() {
             Navbar = (function () {
                 function Navbar(router, _backend) {
+                    var _this = this;
                     this.router = router;
                     this._backend = _backend;
+                    this.currentMenuItem = "Bundles";
                     _backend.setBaseUrl('http://localhost:2002/');
+                    this.router.subscribe(function (val) {
+                        console.log("Hier: " + val + "/" + _this.currentMenuItem);
+                        if (val.startsWith("bundles")) {
+                            _this.currentMenuItem = "Bundles";
+                        }
+                        else if (val.startsWith("services")) {
+                            _this.currentMenuItem = "Services";
+                        }
+                        else if (val.startsWith("packages")) {
+                            _this.currentMenuItem = "Packages";
+                        }
+                        else if (val == "logs") {
+                            _this.currentMenuItem = "Logs";
+                        }
+                        else if (val == "help") {
+                            _this.currentMenuItem = "Help";
+                        }
+                        else {
+                            _this.currentMenuItem = "Bundles";
+                        }
+                    });
                 }
                 Navbar.prototype.getBundlesMenuTitle = function () {
                     var bundlesCount;
                     //this._backend.getBundles().subscribe(res => bundlesCount = res.length);
                     return "Bundles"; //(" + bundlesCount + ")";
+                };
+                Navbar.prototype.checkActive = function (menuItem) {
+                    if (menuItem == this.currentMenuItem) {
+                        return "active";
+                    }
+                    return "";
                 };
                 Navbar.prototype.onSubmit = function () {
                     var _this = this;

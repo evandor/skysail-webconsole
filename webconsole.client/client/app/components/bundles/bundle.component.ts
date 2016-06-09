@@ -54,6 +54,13 @@ export class BundleComponent implements OnInit {
                         this.capabilities.push(new KeyValue(key,props[key]));
                     }
                 };
+                
+                this._backend.getBundleServices(this.bundle.id)
+                    .subscribe(serviceRes => {
+                        console.log("Hier: " + serviceRes);
+                    });
+                
+                
                 this.isLoading = false;
             }
         );

@@ -79,6 +79,10 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', 'angular
                             }
                         }
                         ;
+                        _this._backend.getBundleServices(_this.bundle.id)
+                            .subscribe(function (serviceRes) {
+                            console.log("Hier: " + serviceRes);
+                        });
                         _this.isLoading = false;
                     });
                 };

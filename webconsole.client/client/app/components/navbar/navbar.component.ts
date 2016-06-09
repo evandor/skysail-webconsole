@@ -14,15 +14,41 @@ export class Navbar {
 
     res;
 
+    currentMenuItem: string = "Bundles";
 
     constructor(private router: Router, private _backend: BackendServices) {
         _backend.setBaseUrl('http://localhost:2002/');
+        
+        this.router.subscribe(val => {
+            console.log("Hier: " + val + "/" + this.currentMenuItem);
+
+            if (val.startsWith("bundles")) {
+                this.currentMenuItem = "Bundles";
+            } else if (val.startsWith("services")) {
+                this.currentMenuItem = "Services";
+            } else if (val.startsWith("packages")) {
+                this.currentMenuItem = "Packages";
+            } else if (val == "logs") {
+                this.currentMenuItem = "Logs";
+            } else if (val == "help") {
+                this.currentMenuItem = "Help";
+            } else {
+                this.currentMenuItem = "Bundles";
+            }
+        });
     }
 
     getBundlesMenuTitle() {
         var bundlesCount: number;
         //this._backend.getBundles().subscribe(res => bundlesCount = res.length);
         return "Bundles";//(" + bundlesCount + ")";
+    }
+    
+    checkActive(menuItem: string) {
+        if (menuItem == this.currentMenuItem) {
+            return "active";
+        }
+        return "";
     }
 
     onSubmit() {
