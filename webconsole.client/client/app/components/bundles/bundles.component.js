@@ -62,7 +62,13 @@ System.register(['angular2/core', 'angular2/common', "angular2/router", '../../s
                     var _this = this;
                     console.log("oninit bundlesservice called!");
                     this._backend.getBundles()
-                        .subscribe(function (res) { return _this.bundles = res; });
+                        .subscribe(function (res) {
+                        _this.bundles = res;
+                        (function (err) { return _this.logError(err); });
+                    });
+                };
+                BundlesComponent.prototype.logError = function (err) {
+                    console.error('There was an error: ' + err);
                 };
                 BundlesComponent = __decorate([
                     core_1.Component({

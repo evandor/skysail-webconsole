@@ -9,6 +9,7 @@ import {Tabs} from '../../components/tabs';
 import {Tab} from '../../components/tab';
 
 import {KeyValue} from '../../domain/keyValue';
+import {ImportPackage} from '../../domain/importPackage';
 
 import {NewlinePipe} from '../../pipes/newline.pipe';
 import {ValuesPipe} from '../../pipes/values.pipe';
@@ -66,6 +67,13 @@ export class BundleComponent implements OnInit {
         return "Imported Packages (" + this.bundle.importPackage.length + ")";
     }
     
+     getImportPackageClass(pkg: ImportPackage) {
+         if (pkg.packageResolvingCandidate !=  null && pkg.packageResolvingCandidate.length == 0) {
+             return "label label-success";
+         }
+        return "";
+    }
+
     objToStrMap(obj) {
         let strMap = new Map();
         for (let k of Object.keys(obj)) {

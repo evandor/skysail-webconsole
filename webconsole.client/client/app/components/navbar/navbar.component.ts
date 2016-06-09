@@ -11,11 +11,18 @@ import {BackendServices} from '../../services/backend.service';
     templateUrl: 'app/html/navbar/navbar.template.html'
 })
 export class Navbar {
-    
+
     res;
-    
-    constructor(private router: Router, private _backend: BackendServices) { 
-         _backend.setBaseUrl('http://localhost:2002/');
+
+
+    constructor(private router: Router, private _backend: BackendServices) {
+        _backend.setBaseUrl('http://localhost:2002/');
+    }
+
+    getBundlesMenuTitle() {
+        var bundlesCount: number;
+        //this._backend.getBundles().subscribe(res => bundlesCount = res.length);
+        return "Bundles";//(" + bundlesCount + ")";
     }
 
     onSubmit() {
@@ -23,7 +30,7 @@ export class Navbar {
     }
 
     get authenticated() {
-        return  true;//this.authService.isAuthenticated();
+        return true;//this.authService.isAuthenticated();
     }
 
     doLogin() {

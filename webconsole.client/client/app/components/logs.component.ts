@@ -7,12 +7,15 @@ import {BackendServices} from '../services/backend.service';
 import {LogEntry} from '../domain/logEntry';
 import {Service} from '../domain/service';
 
+import {MaxLengthPipe} from '../pipes/maxLength.pipe';
+
 declare var jQuery:any;
 
 @Component({
     selector: 'logs',
     directives: [FORM_DIRECTIVES, ROUTER_DIRECTIVES, NgFor, NgFormModel],
     providers: [BackendServices],
+    pipes: [MaxLengthPipe],
     templateUrl: 'app/html/logs.template.html'
 })
 export class LogsComponent implements OnInit {

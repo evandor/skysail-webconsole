@@ -30,6 +30,11 @@ System.register(["angular2/core", "angular2/router", '../../services/backend.ser
                     this._backend = _backend;
                     _backend.setBaseUrl('http://localhost:2002/');
                 }
+                Navbar.prototype.getBundlesMenuTitle = function () {
+                    var bundlesCount;
+                    //this._backend.getBundles().subscribe(res => bundlesCount = res.length);
+                    return "Bundles"; //(" + bundlesCount + ")";
+                };
                 Navbar.prototype.onSubmit = function () {
                     var _this = this;
                     this._backend.createSnapshot().subscribe(function (res) { return _this.res = res; });

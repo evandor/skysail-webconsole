@@ -1,4 +1,4 @@
-import {Component, OnInit,ElementRef} from 'angular2/core';
+import {Component, OnInit, ElementRef} from 'angular2/core';
 import {FORM_DIRECTIVES, FormBuilder, NgFor, NgFormModel} from 'angular2/common';
 import {ROUTER_DIRECTIVES, RouteParams, Router} from "angular2/router";
 
@@ -9,7 +9,7 @@ import {Bundle} from '../../domain/bundle';
 
 import {BundlesFilter} from '../../pipes/bundlesFilter.pipe'
 
-declare var jQuery:any;
+declare var jQuery: any;
 
 @Component({
     selector: 'bundles',
@@ -22,7 +22,7 @@ declare var jQuery:any;
 export class BundlesComponent implements OnInit {
 
     bundles: Bundle[];
-    
+
     searchId: string = "";
 
     constructor(private router: Router, private _backend: BackendServices, private _breadcrumbService: BreadcrumbsService) {
@@ -30,10 +30,10 @@ export class BundlesComponent implements OnInit {
     }
 
     onSelect(bundle: Bundle) {
-        this.router.navigate( ['Bundle', { id: bundle.id }]  );
+        this.router.navigate(['Bundle', { id: bundle.id }]);
         this._breadcrumbService.add(new Breadcrumb(['Bundle'], "hier"));
     }
-    
+
     getStateClass(bundle: Bundle) {
         switch (bundle.state) {
             case "ACTIVE":
@@ -48,7 +48,14 @@ export class BundlesComponent implements OnInit {
     ngOnInit() {
         console.log("oninit bundlesservice called!");
         this._backend.getBundles()
-            .subscribe(res => this.bundles = res);
+            .subscribe(res => {
+                this.bundles = res;
+                err => this.logError(err);
+            });
+    }
+
+    logError(err) {
+        console.error('There was an error: ' + err);
     }
 
 

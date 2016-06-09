@@ -88,6 +88,12 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', 'angular
                 BundleComponent.prototype.importedPackagesTitle = function () {
                     return "Imported Packages (" + this.bundle.importPackage.length + ")";
                 };
+                BundleComponent.prototype.getImportPackageClass = function (pkg) {
+                    if (pkg.packageResolvingCandidate != null && pkg.packageResolvingCandidate.length == 0) {
+                        return "label label-success";
+                    }
+                    return "";
+                };
                 BundleComponent.prototype.objToStrMap = function (obj) {
                     var strMap = new Map();
                     for (var _i = 0, _a = Object.keys(obj); _i < _a.length; _i++) {
