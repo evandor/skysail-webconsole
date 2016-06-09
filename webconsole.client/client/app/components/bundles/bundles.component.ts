@@ -7,6 +7,7 @@ import {BreadcrumbsService} from '../../services/breadcrumbs.service';
 import {Breadcrumb} from '../../components/navbar/breadcrumb';
 import {Bundle} from '../../domain/bundle';
 
+import {BundleStatePipe} from '../../pipes/bundleState.pipe';
 import {BundlesFilter} from '../../pipes/bundlesFilter.pipe'
 
 declare var jQuery: any;
@@ -16,7 +17,7 @@ declare var jQuery: any;
     directives: [FORM_DIRECTIVES, ROUTER_DIRECTIVES, NgFor, NgFormModel],
     providers: [BackendServices, BreadcrumbsService],
     templateUrl: 'app/html/bundles/bundles.template.html',
-    pipes: [BundlesFilter]
+    pipes: [BundlesFilter, BundleStatePipe]
     //styleUrls:  ['app/js/datatables.css']
 })
 export class BundlesComponent implements OnInit {
@@ -32,17 +33,6 @@ export class BundlesComponent implements OnInit {
     onSelect(bundle: Bundle) {
         this.router.navigate(['Bundle', { id: bundle.id }]);
         this._breadcrumbService.add(new Breadcrumb(['Bundle'], "hier"));
-    }
-
-    getStateClass(bundle: Bundle) {
-        switch (bundle.state) {
-            case "ACTIVE":
-                return "label label-success";
-            case "INSTALLED":
-                return "label label-warning";
-            default:
-                return "label label-danger";
-        }
     }
 
     ngOnInit() {

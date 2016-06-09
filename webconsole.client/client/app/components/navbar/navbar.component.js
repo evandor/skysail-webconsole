@@ -32,7 +32,6 @@ System.register(["angular2/core", "angular2/router", '../../services/backend.ser
                     this.currentMenuItem = "Bundles";
                     _backend.setBaseUrl('http://localhost:2002/');
                     this.router.subscribe(function (val) {
-                        console.log("Hier: " + val + "/" + _this.currentMenuItem);
                         if (val.startsWith("bundles")) {
                             _this.currentMenuItem = "Bundles";
                         }

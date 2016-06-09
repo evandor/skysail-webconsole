@@ -25,7 +25,7 @@
     <td>{{bundle.id}}</td>
     <td (click)="onSelect(bundle)" style="cursor: pointer; color:#000066;">{{bundle.symbolicName}}</td>
     <td>{{bundle.version}}</td>
-    <td><span [class]="getStateClass(bundle)">{{bundle.state}}</span></td>
+    <td [innerHtml]="bundle.state | bundleState"></td>
     <td>{{bundle.size}}</td>
   </tr>
 </table>

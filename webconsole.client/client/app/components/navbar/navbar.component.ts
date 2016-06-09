@@ -20,8 +20,6 @@ export class Navbar {
         _backend.setBaseUrl('http://localhost:2002/');
         
         this.router.subscribe(val => {
-            console.log("Hier: " + val + "/" + this.currentMenuItem);
-
             if (val.startsWith("bundles")) {
                 this.currentMenuItem = "Bundles";
             } else if (val.startsWith("services")) {

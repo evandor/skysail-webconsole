@@ -34,7 +34,7 @@
       </tr>
       <tr>
         <th>Last Modification</th>
-        <td>{{bundle.lastModification}}</td>
+        <td>{{bundle.lastModification | date:'medium'}}</td>
       </tr>
       <tr *ngIf="bundle.bundleClasspath">
         <th>Bundle Classpath</th>
@@ -50,7 +50,7 @@
       </tr>
       <tr>
         <th>State</th>
-        <td>{{bundle.state}}</td>
+        <td [innerHTML]="bundle.state | bundleState"></td>
       </tr>
       <tr *ngIf="bundle.vendor">
         <th>Vendor</th>
@@ -89,7 +89,7 @@
         </tr>
       </thead>
       <tr *ngFor="#pkg of bundle.importPackage">
-        <td [class]="getImportPackageClass(pkg)"><span class="glyphicon glyphicon-log-in" aria-hidden="true" style="color: blue"></span>&nbsp;&nbsp;{{pkg.pkgName}}</td>
+        <td [class]="getImportPackageClass(pkg)"><span class="glyphicon glyphicon-log-in" aria-hidden="true" style="color: blue"></span>&nbsp;&nbsp;<b>{{pkg.pkgName}}</b></td>
         <td>{{pkg.versionRange}}</td>
         <td>
           <div>
@@ -152,17 +152,18 @@
     </table>
   </tab>
 
-  <tab tabTitle="Export Service">
+  <tab tabTitle="Provided Service(s)">
     <table class="table">
       <thead>
         <tr>
-          <th width='270px;'>Key</th>
-          <th>Value</th>
+          <th width='70px;'>Service ID</th>
+          <th>Service</th>
         </tr>
       </thead>
-      <tr>
-        <th>Tobe done</th>
-        <td>
+      <tr *ngFor="#service of bundle.providedServices">
+        <td>{{service.id}}</td>
+        <td (click)="onSelectService(service)" style="cursor: pointer; color:#000066;">
+          {{service.objectClass}}
         </td>
       </tr>
     </table>

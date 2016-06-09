@@ -17,6 +17,7 @@ import io.skysail.webconsole.listener.AgentFrameworkListener;
 import io.skysail.webconsole.listener.AgentServiceListener;
 import io.skysail.webconsole.server.handler.BundleHandler;
 import io.skysail.webconsole.server.handler.BundleListenerHandler;
+import io.skysail.webconsole.server.handler.BundleServicesHandler;
 import io.skysail.webconsole.server.handler.BundlesHandler;
 import io.skysail.webconsole.server.handler.FrameworkHandler;
 import io.skysail.webconsole.server.handler.FrameworkListenerHandler;
@@ -35,6 +36,8 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class Server extends NanoHTTPD {
+
+	private static final String BACKEND_BUNDLES = "/backend/bundles/";
 
 	private static final String WEBCONSOLE_CLIENT = "webconsole.client";
 
@@ -70,6 +73,8 @@ public class Server extends NanoHTTPD {
 
     private ServiceReference<Resolver> resolverReference;
 
+	private BundleServicesHandler bundleServicesHandler;
+
 
     public Server(BundleContext bundleContext, ServiceReference<Resolver> resolverReference) throws IOException {
         super(2002);
@@ -85,6 +90,7 @@ public class Server extends NanoHTTPD {
         frameworkListener = new AgentFrameworkListener(bundleContext);
 
         bundlesHandler = new BundlesHandler(osgiService);
+        bundleServicesHandler = new BundleServicesHandler(osgiService);
         servicesHandler = new ServicesHandler(osgiService);
         packagesHandler = new PackagesHandler(osgiService);
         snapshotsHandler = new SnapshotsHandler(snapshotsService);
@@ -150,10 +156,10 @@ public class Server extends NanoHTTPD {
         if ("/backend/bundles".equals(session.getUri())) {
             return bundlesHandler.handle(session);
         }
-        if (session.getUri().startsWith("/backend/bundles/") && session.getUri().endsWith("/services")) {
-            return servicesHandler.handle(session);
+        if (session.getUri().startsWith(BACKEND_BUNDLES) && session.getUri().endsWith("/services")) {
+            return bundleServicesHandler.handle(session);
         }
-        if (session.getUri().startsWith("/backend/bundles/")) {
+        if (session.getUri().startsWith(BACKEND_BUNDLES)) {
             return bundleHandler.handle(session);
         }
 

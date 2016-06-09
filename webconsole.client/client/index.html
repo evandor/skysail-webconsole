@@ -8,7 +8,7 @@
   <!--<link ref="stylesheet" type="text/css" href="/app/css/webconsole.css">-->
 
   <style>
-    * {
+    unused_replace_with_* {
       font-size: 13px;
       line-height: 1.0;
     }
@@ -43,6 +43,9 @@
   <!-- 2. Configure SystemJS -->
   <script>
     System.config({
+        map: {
+          'angular2-websocket': 'node_modules/angular2-websocket'
+        },
         packages: {        
           app: {
             format: 'register',

@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/common', 'angular2/router', 'angular2/http', '../../services/backend.service', '../../domain/bundle', '../../components/tabs', '../../components/tab', '../../domain/keyValue', '../../pipes/newline.pipe', '../../pipes/values.pipe'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/common', "angular2/router", 'angular2/http', '../../services/backend.service', '../../domain/bundle', '../../components/tabs', '../../components/tab', '../../domain/keyValue', '../../pipes/newline.pipe', '../../pipes/values.pipe', '../../pipes/bundleState.pipe'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', 'angular
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, router_1, http_1, backend_service_1, bundle_1, tabs_1, tab_1, keyValue_1, newline_pipe_1, values_pipe_1;
+    var core_1, common_1, router_1, http_1, backend_service_1, bundle_1, tabs_1, tab_1, keyValue_1, newline_pipe_1, values_pipe_1, bundleState_pipe_1;
     var BundleComponent;
     return {
         setters:[
@@ -46,12 +46,16 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', 'angular
             },
             function (values_pipe_1_1) {
                 values_pipe_1 = values_pipe_1_1;
+            },
+            function (bundleState_pipe_1_1) {
+                bundleState_pipe_1 = bundleState_pipe_1_1;
             }],
         execute: function() {
             BundleComponent = (function () {
-                function BundleComponent(_routeParams, _backend) {
+                function BundleComponent(_routeParams, _backend, _router) {
                     this._routeParams = _routeParams;
                     this._backend = _backend;
+                    this._router = _router;
                     this.bundle = new bundle_1.Bundle();
                     this.capabilities = [];
                     this.isLoading = true;
@@ -81,7 +85,7 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', 'angular
                         ;
                         _this._backend.getBundleServices(_this.bundle.id)
                             .subscribe(function (serviceRes) {
-                            console.log("Hier: " + serviceRes);
+                            _this.bundle.providedServices = serviceRes;
                         });
                         _this.isLoading = false;
                     });
@@ -98,6 +102,10 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', 'angular
                     }
                     return "";
                 };
+                BundleComponent.prototype.onSelectService = function (service) {
+                    this._router.navigate(['Service', { id: service.id }]);
+                    //this._breadcrumbService.add(new Breadcrumb(['Bundle'], "hier"));
+                };
                 BundleComponent.prototype.objToStrMap = function (obj) {
                     var strMap = new Map();
                     for (var _i = 0, _a = Object.keys(obj); _i < _a.length; _i++) {
@@ -111,10 +119,10 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', 'angular
                         selector: 'bundle',
                         directives: [common_1.FORM_DIRECTIVES, common_1.NgFor, common_1.NgFormModel, tabs_1.Tabs, tab_1.Tab],
                         providers: [backend_service_1.BackendServices, http_1.HTTP_PROVIDERS],
-                        pipes: [newline_pipe_1.NewlinePipe, values_pipe_1.ValuesPipe],
+                        pipes: [newline_pipe_1.NewlinePipe, values_pipe_1.ValuesPipe, bundleState_pipe_1.BundleStatePipe],
                         templateUrl: 'app/html/bundles/bundle.template.html',
                     }), 
-                    __metadata('design:paramtypes', [router_1.RouteParams, backend_service_1.BackendServices])
+                    __metadata('design:paramtypes', [router_1.RouteParams, backend_service_1.BackendServices, router_1.Router])
                 ], BundleComponent);
                 return BundleComponent;
             }());

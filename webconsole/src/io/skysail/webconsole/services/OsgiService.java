@@ -56,6 +56,11 @@ public class OsgiService {
         }
         return Collections.emptyList();
     }
+    
+	public List<ServiceDescriptor> getBundleServiceDescriptors(String bundleId) {
+		return getServiceDescriptors().stream().filter(sd -> sd.getBundle().getId().equals(bundleId)).collect(Collectors.toList());
+	}
+
 
     public List<ExportPackage> getPackageDescriptors() {
         if (bundleContext == null) {
@@ -82,5 +87,6 @@ public class OsgiService {
         }
         return serviceTracker.getService();
     }
+
 
 }

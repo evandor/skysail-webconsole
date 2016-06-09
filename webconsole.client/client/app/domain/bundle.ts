@@ -1,5 +1,6 @@
 import {ExportPackage} from '../domain/exportPackage';
 import {ImportPackage} from '../domain/importPackage';
+import {Service} from '../domain/service';
 import {ManifestHeader} from '../domain/manifestHeader';
 import {WireDescriptor} from '../domain/wireDescriptor';
 
@@ -21,4 +22,5 @@ export class Bundle {
     importPackage: ImportPackage[] = [];
     manifestHeaders: ManifestHeader;
     wireDescriptor: WireDescriptor;
+    providedServices: Service[] = [];
 }
