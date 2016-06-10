@@ -94,11 +94,19 @@ System.register(['angular2/core', 'angular2/common', "angular2/router", 'angular
                     return "Exported Packages (" + this.bundle.exportPackage.length + ")";
                 };
                 BundleComponent.prototype.importedPackagesTitle = function () {
+                    //                return "<span class='glyphicon glyphicon-log-in' aria-hidden='true' style='color: blue'> Imported Packages (" + this.bundle.importPackage.length + ")";
                     return "Imported Packages (" + this.bundle.importPackage.length + ")";
                 };
+                BundleComponent.prototype.providedServicesTitle = function () {
+                    var providedServicesCount = 0;
+                    if (this.bundle.providedServices != null) {
+                        providedServicesCount = this.bundle.providedServices.length;
+                    }
+                    return "Provided Services (" + providedServicesCount + ")";
+                };
                 BundleComponent.prototype.getImportPackageClass = function (pkg) {
-                    if (pkg.packageResolvingCandidate != null && pkg.packageResolvingCandidate.length == 0) {
-                        return "label label-success";
+                    if (pkg.packageResolvingCandidates && pkg.packageResolvingCandidates.length == 0 && pkg.resolution == "MANDATORY") {
+                        return "problem";
                     }
                     return "";
                 };

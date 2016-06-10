@@ -8,11 +8,6 @@
   <!--<link ref="stylesheet" type="text/css" href="/app/css/webconsole.css">-->
 
   <style>
-    unused_replace_with_* {
-      font-size: 13px;
-      line-height: 1.0;
-    }
-    
     .clickable {
       cursor: pointer;
       color: #000066;
@@ -23,6 +18,11 @@
       /*white-space: nowrap;*/
       text-overflow: ellipsis;
     }
+    
+    .problem {
+      color: #FF0000;
+    }
+
   </style>
 
   <!-- 1. Load libraries -->
@@ -36,25 +36,18 @@
   <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
   <script src="node_modules/angular2/bundles/router.dev.js"></script>
   <script src="node_modules/angular2/bundles/http.dev.js"></script>
+  
+  <script src="node_modules/angular2/bundles/http.dev.js"></script>
+  
 
   <!--<script src="app/js/d3.min.js"></script>-->
   <script src="node_modules/d3/d3.min.js"></script>
 
   <!-- 2. Configure SystemJS -->
-  <script>
-    System.config({
-        map: {
-          'angular2-websocket': 'node_modules/angular2-websocket'
-        },
-        packages: {        
-          app: {
-            format: 'register',
-            defaultExtension: 'js'
-          }
-        }
-      });
-      System.import('app/boot').then(null, console.error.bind(console));
-  </script>
+    <script src="systemjs.config.js"></script>
+    <script>
+      System.import('app/boot').catch(function(err){ console.error(err); });
+    </script>
 
 </head>
 

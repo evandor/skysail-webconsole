@@ -1,4 +1,4 @@
-import {Component, OnInit,ElementRef} from 'angular2/core';
+import {Component, OnInit, ElementRef} from 'angular2/core';
 import {FORM_DIRECTIVES, FormBuilder, NgFor, NgFormModel} from 'angular2/common';
 import {ROUTER_DIRECTIVES, RouteParams, Router} from "angular2/router";
 
@@ -8,7 +8,7 @@ import {Breadcrumb} from '../components/navbar/breadcrumb';
 import {Bundle} from '../domain/bundle';
 import {ExportPackage} from '../domain/exportPackage'
 
-declare var jQuery:any;
+declare var jQuery: any;
 
 @Component({
     selector: 'packages',
@@ -17,18 +17,27 @@ declare var jQuery:any;
     templateUrl: 'app/html/packages.template.html'
 })
 export class PackagesComponent implements OnInit {
-    
-     packages: ExportPackage[];
-    
+
+    packages: ExportPackage[];
+
     searchId: string = "";
+
+    isLoading = true;
 
     constructor(private router: Router, private _backend: BackendServices, private _breadcrumbService: BreadcrumbsService) {
         _backend.setBaseUrl('http://localhost:2002/');
     }
 
+    onSelectBundle(bundle: Bundle) {
+        this.router.navigate(['Bundle', { id: bundle.id }]);
+    }
+
     ngOnInit() {
         this._backend.getPackages()
-            .subscribe(res => this.packages = res);
+            .subscribe(res => {
+                this.packages = res;
+                this.isLoading = false;
+            });
     }
 
 }

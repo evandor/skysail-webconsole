@@ -56,7 +56,7 @@ public class BundleDetails extends BundleDescriptor {
             this.copyright = (String) headers.get(Constants.BUNDLE_COPYRIGHT);
             this.description = (String) headers.get(Constants.BUNDLE_DESCRIPTION);
             this.bundleClasspath = (String) headers.get(Constants.BUNDLE_CLASSPATH);
-            this.exportPackage = getExportedPackages(headers);
+            this.exportPackage = getExportedPackages(bundle, headers);
             this.importPackage = getImportedPackages(headers);
             this.manifestHeaders = dump(headers);
         }
@@ -92,7 +92,7 @@ public class BundleDetails extends BundleDescriptor {
                 .collect(Collectors.toList());
     }
 
-    private List<ExportPackage> getExportedPackages(Dictionary<?, ?> headers) {
+    private List<ExportPackage> getExportedPackages(Bundle bundle, Dictionary<?, ?> headers) {
         String rawValue = (String) headers.get(Constants.EXPORT_PACKAGE);
         if (rawValue == null || rawValue.trim().length() == 0) {
             return Collections.emptyList();
@@ -104,6 +104,8 @@ public class BundleDetails extends BundleDescriptor {
         List<ExportPackage> result = new ArrayList<>();
         ExportPackageVisitor packageVisitor = new ExportPackageVisitor(result);
         packageVisitor.visit(tree);
+
+        result.stream().forEach(pkg -> pkg.setExportingBundle(new BundleDescriptor(bundle)));
 
         return result.stream() // NOSONAR
                 .sorted((p1, p2) -> p1.getPkgName().compareTo(p2.getPkgName()))

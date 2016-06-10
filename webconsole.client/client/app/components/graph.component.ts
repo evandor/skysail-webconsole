@@ -23,7 +23,7 @@ export class BarGraph {
         var el: any = elementRef.nativeElement;
         //this.elementRef.nativeElement.find('#example');
         
-        //var graph: any = d3.select(el);
+       // var graph: any = d3.select(el);
 
        /* this.divs = graph.
             append('div').

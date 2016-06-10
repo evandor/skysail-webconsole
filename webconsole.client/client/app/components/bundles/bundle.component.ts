@@ -73,12 +73,21 @@ export class BundleComponent implements OnInit {
     }
 
     importedPackagesTitle() {
+        //                return "<span class='glyphicon glyphicon-log-in' aria-hidden='true' style='color: blue'> Imported Packages (" + this.bundle.importPackage.length + ")";
         return "Imported Packages (" + this.bundle.importPackage.length + ")";
     }
 
+    providedServicesTitle() {
+        var providedServicesCount = 0;
+        if (this.bundle.providedServices != null) {
+            providedServicesCount = this.bundle.providedServices.length;
+        }
+        return "Provided Services (" + providedServicesCount + ")";
+    }
+
     getImportPackageClass(pkg: ImportPackage) {
-        if (pkg.packageResolvingCandidate != null && pkg.packageResolvingCandidate.length == 0) {
-            return "label label-success";
+        if (pkg.packageResolvingCandidates && pkg.packageResolvingCandidates.length == 0 && pkg.resolution == "MANDATORY") {
+            return "problem";
         }
         return "";
     }

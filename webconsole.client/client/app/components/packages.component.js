@@ -36,12 +36,19 @@ System.register(['angular2/core', 'angular2/common', "angular2/router", '../serv
                     this._backend = _backend;
                     this._breadcrumbService = _breadcrumbService;
                     this.searchId = "";
+                    this.isLoading = true;
                     _backend.setBaseUrl('http://localhost:2002/');
                 }
+                PackagesComponent.prototype.onSelectBundle = function (bundle) {
+                    this.router.navigate(['Bundle', { id: bundle.id }]);
+                };
                 PackagesComponent.prototype.ngOnInit = function () {
                     var _this = this;
                     this._backend.getPackages()
-                        .subscribe(function (res) { return _this.packages = res; });
+                        .subscribe(function (res) {
+                        _this.packages = res;
+                        _this.isLoading = false;
+                    });
                 };
                 PackagesComponent = __decorate([
                     core_1.Component({

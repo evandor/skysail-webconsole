@@ -89,7 +89,9 @@
         </tr>
       </thead>
       <tr *ngFor="#pkg of bundle.importPackage">
-        <td [class]="getImportPackageClass(pkg)"><span class="glyphicon glyphicon-log-in" aria-hidden="true" style="color: blue"></span>&nbsp;&nbsp;<b>{{pkg.pkgName}}</b></td>
+        <td [class]="getImportPackageClass(pkg)">
+          <span class="glyphicon glyphicon-log-in" aria-hidden="true" style="color: blue"></span>&nbsp;&nbsp;<b>{{pkg.pkgName}}</b>
+        </td>
         <td>{{pkg.versionRange}}</td>
         <td>
           <div>
@@ -152,7 +154,7 @@
     </table>
   </tab>
 
-  <tab tabTitle="Provided Service(s)">
+  <tab [tabTitle]="providedServicesTitle()">
     <table class="table">
       <thead>
         <tr>

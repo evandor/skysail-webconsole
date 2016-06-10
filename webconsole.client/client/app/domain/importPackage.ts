@@ -7,5 +7,5 @@ export interface ImportPackage {
     versionRange: string;
     bundleSymbolicName: string;
     bundleVersion: string;
-    packageResolvingCandidate: PackageResolvingCandidate[];
+    packageResolvingCandidates: PackageResolvingCandidate[];
 }

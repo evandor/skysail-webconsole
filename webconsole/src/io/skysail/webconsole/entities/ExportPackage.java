@@ -15,10 +15,11 @@ public class ExportPackage extends PackageDescriptor {
     private String include;
     private String exclude;
 
+    private BundleDescriptor exportingBundle;
+
     public ExportPackage(String pkgName) {
         super(pkgName);
     }
-
 
 
 }

@@ -26,7 +26,7 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                     this.elementRef = elementRef;
                     var el = elementRef.nativeElement;
                     //this.elementRef.nativeElement.find('#example');
-                    //var graph: any = d3.select(el);
+                    // var graph: any = d3.select(el);
                     /* this.divs = graph.
                          append('div').
                          attr({

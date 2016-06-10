@@ -18,16 +18,17 @@ export class TimerWebsocketComponent {
 
     subscribe($event) {
         console.log("trying to subscribe to ws...");
-        this.ws = new $WebSocket("ws://localhost:8088");
+        /*this.ws = new $WebSocket("ws://localhost:8088");
         this.ws.send("Hello");
         this.ws.getDataStream().subscribe(
             res => {
-                var count = JSON.parse(res.data).value;
-                console.log('Got: ' + count);
-                this.counter = count;
+                console.log(res);
+                //var count = JSON.parse(res.data).value;
+                //console.log('Got: ' + count);
+                //this.counter = count;
             },
             function (e) { console.log('Error: ' + e.message); },
             function () { console.log('Completed'); }
-        );
+        );*/
     }
 }
