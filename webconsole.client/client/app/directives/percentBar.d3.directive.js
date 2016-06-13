@@ -36,7 +36,6 @@ System.register(['angular2/core', 'd3'], function(exports_1, context_1) {
                         .text(function (d) { return d; });
                 };
                 PercentBarDirective.prototype.ngOnInit = function () {
-                    console.log("oninit called!");
                     this.render();
                 };
                 __decorate([
@@ -57,8 +56,7 @@ System.register(['angular2/core', 'd3'], function(exports_1, context_1) {
                 ], PercentBarDirective.prototype, "id", void 0);
                 PercentBarDirective = __decorate([
                     core_1.Directive({
-                        selector: "[d3PercentBar]",
-                        properties: ['theData: data', 'maxValue']
+                        selector: "[d3PercentBar]"
                     }), 
                     __metadata('design:paramtypes', [core_1.ElementRef])
                 ], PercentBarDirective);

@@ -3,8 +3,7 @@ import {Component, Directive, ElementRef, Input, OnInit} from 'angular2/core'
 import * as d3 from 'd3';
 
 @Directive({
-    selector: "[d3PercentBar]",
-    properties: ['theData: data', 'maxValue']
+    selector: "[d3PercentBar]"
 })
 export class PercentBarDirective implements OnInit {
 
@@ -28,7 +27,6 @@ export class PercentBarDirective implements OnInit {
     }
 
     ngOnInit() {
-        console.log("oninit called!");
         this.render();
     }
 
