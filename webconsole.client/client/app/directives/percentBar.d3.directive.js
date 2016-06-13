@@ -27,11 +27,8 @@ System.register(['angular2/core', 'd3'], function(exports_1, context_1) {
                     this.data = [];
                 }
                 PercentBarDirective.prototype.render = function () {
-                    console.log("rendering: " + this.id + "/" + this.value + "/" + this.maxValue + "/" + this.maxWidth);
                     this.data.push(Number(this.value) / Number(this.maxValue) * Number(this.maxWidth));
-                    console.log(this._el.nativeElement);
-                    var el = this._el.nativeElement;
-                    d3.select(el)
+                    d3.select(this._el.nativeElement)
                         .selectAll("div")
                         .data(this.data)
                         .enter().append("div")

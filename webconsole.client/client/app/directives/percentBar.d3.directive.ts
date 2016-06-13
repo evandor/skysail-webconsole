@@ -15,15 +15,11 @@ export class PercentBarDirective implements OnInit {
 
     data: Array<number> = [];
 
-     constructor(private _el: ElementRef) {}
+    constructor(private _el: ElementRef) { }
 
     render() {
-        console.log("rendering: " +this.id + "/" + this.value+ "/" + this.maxValue+ "/" + this.maxWidth);
         this.data.push(Number(this.value) / Number(this.maxValue) * Number(this.maxWidth));
-        console.log(this._el.nativeElement);
-
-        var el: any = this._el.nativeElement; 
-        d3.select(el)
+        d3.select(this._el.nativeElement)
             .selectAll("div")
             .data(this.data)
             .enter().append("div")
