@@ -11,4 +11,7 @@ import {WindowService} from './services/window.service'
 
 import {provide} from 'angular2/core';
 
+import 'jquery';
+import 'semantic';
+
 bootstrap(AppComponent,[CookieService, AuthService, WindowService, ROUTER_PROVIDERS, HTTP_PROVIDERS, provide(Window, {useValue: window})]);

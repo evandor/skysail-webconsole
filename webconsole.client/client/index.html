@@ -22,7 +22,15 @@
     .problem {
       color: #FF0000;
     }
-
+    
+    .chart div {
+      font: 10px sans-serif;
+      background-color: steelblue;
+      text-align: right;
+      padding: 3px;
+      margin: 1px;
+      color: white;
+    }
   </style>
 
   <!-- 1. Load libraries -->
@@ -36,18 +44,14 @@
   <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
   <script src="node_modules/angular2/bundles/router.dev.js"></script>
   <script src="node_modules/angular2/bundles/http.dev.js"></script>
-  
-  <script src="node_modules/angular2/bundles/http.dev.js"></script>
-  
 
-  <!--<script src="app/js/d3.min.js"></script>-->
-  <script src="node_modules/d3/d3.min.js"></script>
+  <script src="node_modules/angular2/bundles/http.dev.js"></script>
 
   <!-- 2. Configure SystemJS -->
-    <script src="systemjs.config.js"></script>
-    <script>
-      System.import('app/boot').catch(function(err){ console.error(err); });
-    </script>
+  <script src="systemjs.config.js"></script>
+  <script>
+    System.import('app/boot').catch(function(err){ console.error(err); });
+  </script>
 
 </head>
 

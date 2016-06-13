@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', './components/framework.component', './components/footer.component', './components/bundles/bundles.component', './components/bundles/bundle.component', './components/logs.component', './components/services/services.component', './components/services/service.component', './components/packages.component', './components/help.component', './components/snapshots/snapshots.component', './components/graph.component', './components/navbar/navbar.component', './components/navbar/breadcrumbs.component', './components/websockets/timerWS.component'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', './components/framework.component', './components/footer.component', './components/bundles/bundles.component', './components/bundles/bundle.component', './components/logs.component', './components/services/services.component', './components/services/service.component', './components/packages.component', './components/help.component', './components/snapshots/snapshots.component', './components/graph.component', './components/navbar/navbar.component', './components/navbar/breadcrumbs.component', './components/websockets/timerWS.component', './directives/dropdown.directive', './directives/d3.directive', './directives/percentBar.d3.directive'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', './components/framework.com
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, framework_component_1, footer_component_1, bundles_component_1, bundle_component_1, logs_component_1, services_component_1, service_component_1, packages_component_1, help_component_1, snapshots_component_1, graph_component_1, navbar_component_1, breadcrumbs_component_1, timerWS_component_1;
+    var core_1, router_1, framework_component_1, footer_component_1, bundles_component_1, bundle_component_1, logs_component_1, services_component_1, service_component_1, packages_component_1, help_component_1, snapshots_component_1, graph_component_1, navbar_component_1, breadcrumbs_component_1, timerWS_component_1, dropdown_directive_1, d3_directive_1, percentBar_d3_directive_1;
     var AppComponent;
     return {
         setters:[
@@ -61,11 +61,23 @@ System.register(['angular2/core', 'angular2/router', './components/framework.com
             },
             function (timerWS_component_1_1) {
                 timerWS_component_1 = timerWS_component_1_1;
+            },
+            function (dropdown_directive_1_1) {
+                dropdown_directive_1 = dropdown_directive_1_1;
+            },
+            function (d3_directive_1_1) {
+                d3_directive_1 = d3_directive_1_1;
+            },
+            function (percentBar_d3_directive_1_1) {
+                percentBar_d3_directive_1 = percentBar_d3_directive_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
                 function AppComponent() {
+                    this.name = "Ringo";
+                    this.names = ["John", "Paul", "George", "Ringo"];
                     this.graphData = [10, 20, 30, 40, 60];
+                    this.data = [4, 8, 15, 16, 23, 42];
                 }
                 AppComponent = __decorate([
                     router_1.RouteConfig([
@@ -83,7 +95,7 @@ System.register(['angular2/core', 'angular2/router', './components/framework.com
                     core_1.Component({
                         selector: 'my-app',
                         templateUrl: 'app/html/app.template.html',
-                        directives: [router_1.RouterOutlet, router_1.RouterLink, footer_component_1.FooterComponent, navbar_component_1.Navbar, breadcrumbs_component_1.Breadcrumbs, graph_component_1.BarGraph, timerWS_component_1.TimerWebsocketComponent]
+                        directives: [router_1.RouterOutlet, router_1.RouterLink, footer_component_1.FooterComponent, navbar_component_1.Navbar, breadcrumbs_component_1.Breadcrumbs, graph_component_1.BarGraph, timerWS_component_1.TimerWebsocketComponent, dropdown_directive_1.SMDropdown, d3_directive_1.D3Directive, percentBar_d3_directive_1.PercentBarDirective]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);

@@ -10,13 +10,14 @@
     'angular2-in-memory-web-api': 'node_modules/angular2-in-memory-web-api',
     'rxjs':                       'node_modules/rxjs',
     'angular2-websocket':         'node_modules/angular2-websocket',
-    //'d3':                         'typings/modules/d3'
+    'jquery' :                    'https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js',
+    'semantic' :                  'https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.js',
+    'd3':                         'https://d3js.org/d3.v3.min.js'
   };
   // packages tells the System loader how to load when no filename and/or no extension
   var packages = {
     'app':                        { main: 'main.js',  defaultExtension: 'js' },
     'rxjs':                       { defaultExtension: 'js' },
-    //'d3':                         { defaultExtension: 'js' },
     'angular2-websocket':         { defaultExtension: 'js' },
     'angular2-in-memory-web-api': { main: 'index.js', defaultExtension: 'js' },
   };

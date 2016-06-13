@@ -1,7 +1,7 @@
 import {OnInit} from 'angular2/core';
 import {Component, Directive, View, Attribute, ElementRef} from 'angular2/core'; // onChange
 //import {Inject} from 'angular2/di';
-import * as d3 from 'd3/index';
+//import * as d3 from 'd3/index';
 
 @Directive({
     selector: 'barGraph',
@@ -20,12 +20,12 @@ export class BarGraph {
         @Attribute('width') width: string,
         @Attribute('height') height: string) {
 
+       console.log("hier");
         var el: any = elementRef.nativeElement;
         //this.elementRef.nativeElement.find('#example');
         
-       // var graph: any = d3.select(el);
-
-       /* this.divs = graph.
+       /*var graph: any = d3.select(el);
+       this.divs = graph.
             append('div').
             attr({
                 'class': 'chart'

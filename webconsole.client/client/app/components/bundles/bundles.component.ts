@@ -10,21 +10,27 @@ import {Bundle} from '../../domain/bundle';
 import {BundleStatePipe} from '../../pipes/bundleState.pipe';
 import {BundlesFilter} from '../../pipes/bundlesFilter.pipe'
 
+import {PercentBarDirective} from '../../directives/percentBar.d3.directive'
+
+
 declare var jQuery: any;
 
 @Component({
     selector: 'bundles',
-    directives: [FORM_DIRECTIVES, ROUTER_DIRECTIVES, NgFor, NgFormModel],
+    directives: [FORM_DIRECTIVES, ROUTER_DIRECTIVES, NgFor, NgFormModel,PercentBarDirective],
     providers: [BackendServices, BreadcrumbsService],
     templateUrl: 'app/html/bundles/bundles.template.html',
     pipes: [BundlesFilter, BundleStatePipe]
-    //styleUrls:  ['app/js/datatables.css']
 })
 export class BundlesComponent implements OnInit {
 
     bundles: Bundle[];
 
     searchId: string = "";
+    
+    value: number;
+    maxSize: number = 0;
+    size: number;
 
     constructor(private router: Router, private _backend: BackendServices, private _breadcrumbService: BreadcrumbsService) {
         _backend.setBaseUrl('http://localhost:2002/');
@@ -36,11 +42,15 @@ export class BundlesComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log("oninit bundlesservice called!");
         this._backend.getBundles()
             .subscribe(res => {
                 this.bundles = res;
                 err => this.logError(err);
+                this.bundles.forEach(bundle => {
+                    if (bundle.size > this.maxSize) {
+                        this.maxSize = bundle.size;
+                    }
+                });
             });
     }
 
@@ -48,6 +58,14 @@ export class BundlesComponent implements OnInit {
         console.error('There was an error: ' + err);
     }
 
-
+    getPercentChartSpanId(id: string) {
+        return "chartSpanId_" + id;
+    }
+    
+    setData(value, max, size) {
+        this.value = value;
+        this.max = max;
+        this.size = size;
+    }
 
 }

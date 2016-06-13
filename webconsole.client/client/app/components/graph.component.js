@@ -21,13 +21,16 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
+            //import {Inject} from 'angular2/di';
+            //import * as d3 from 'd3/index';
             BarGraph = (function () {
                 function BarGraph(elementRef, width, height) {
                     this.elementRef = elementRef;
+                    console.log("hier");
                     var el = elementRef.nativeElement;
                     //this.elementRef.nativeElement.find('#example');
-                    // var graph: any = d3.select(el);
-                    /* this.divs = graph.
+                    /*var graph: any = d3.select(el);
+                    this.divs = graph.
                          append('div').
                          attr({
                              'class': 'chart'
@@ -50,6 +53,7 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                     this.render(this.data);
                 };
                 BarGraph = __decorate([
+                    // onChange
                     core_1.Directive({
                         selector: 'barGraph',
                         //lifecycle:  [ OnChange ],
