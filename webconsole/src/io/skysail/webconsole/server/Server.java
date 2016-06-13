@@ -112,7 +112,7 @@ public class Server extends NanoHTTPD {
         versionHandler = new VersionHandler(clientBundle);
         staticFilesHandler = new StaticFilesHandler(clientBundle);
 
-        SocketWorker socketWorker = new SocketWorker(8088);
+       /* SocketWorker socketWorker = new SocketWorker(8088);
         socketWorker.start();
 
         TimerTask timerTask = new TimerTask() {
@@ -132,7 +132,7 @@ public class Server extends NanoHTTPD {
 		};
 		Timer timer = new Timer(true);
         timer.scheduleAtFixedRate(timerTask, 1000, 10*1000);
-        System.out.println(socketWorker);
+        System.out.println(socketWorker);*/
     }
 
     /**

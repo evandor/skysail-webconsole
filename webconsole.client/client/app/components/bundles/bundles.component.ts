@@ -6,18 +6,21 @@ import {BackendServices} from '../../services/backend.service';
 import {BreadcrumbsService} from '../../services/breadcrumbs.service';
 import {Breadcrumb} from '../../components/navbar/breadcrumb';
 import {Bundle} from '../../domain/bundle';
+import {Tabs} from '../../components/tabs';
+import {Tab} from '../../components/tab';
 
 import {BundleStatePipe} from '../../pipes/bundleState.pipe';
 import {BundlesFilter} from '../../pipes/bundlesFilter.pipe'
 
 import {PercentBarDirective} from '../../directives/percentBar.d3.directive'
+import {AdjacencyDirective} from '../../directives/adjacency.directive'
 
 
 declare var jQuery: any;
 
 @Component({
     selector: 'bundles',
-    directives: [FORM_DIRECTIVES, ROUTER_DIRECTIVES, NgFor, NgFormModel,PercentBarDirective],
+    directives: [FORM_DIRECTIVES, ROUTER_DIRECTIVES, NgFor, NgFormModel,PercentBarDirective, Tabs, Tab, AdjacencyDirective],
     providers: [BackendServices, BreadcrumbsService],
     templateUrl: 'app/html/bundles/bundles.template.html',
     pipes: [BundlesFilter, BundleStatePipe]
