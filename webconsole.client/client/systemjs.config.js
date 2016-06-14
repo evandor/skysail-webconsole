@@ -12,7 +12,7 @@
     'angular2-websocket':         'node_modules/angular2-websocket',
     'jquery' :                    'https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js',
     'semantic' :                  'https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.js',
-    'd3':                         'https://d3js.org/d3.v3.min.js'
+    'd3':                         'node_modules/d3/d3.min.js' //https://d3js.org/d3.v3.min.js'
   };
   // packages tells the System loader how to load when no filename and/or no extension
   var packages = {

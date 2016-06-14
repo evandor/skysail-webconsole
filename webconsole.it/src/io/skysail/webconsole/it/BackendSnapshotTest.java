@@ -3,6 +3,7 @@ package io.skysail.webconsole.it;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,9 +12,9 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
 
 @RunWith(MockitoJUnitRunner.class)
-public class BackendBundlesTest {
+public class BackendSnapshotTest {
 
-    private final BundleContext context = FrameworkUtil.getBundle(BackendBundlesTest.class).getBundleContext();
+    private final BundleContext context = FrameworkUtil.getBundle(BackendSnapshotTest.class).getBundleContext();
     private Browser browser;
 
     @Before
@@ -21,15 +22,14 @@ public class BackendBundlesTest {
         browser = new Browser();
     }
 
+    @After
+    public void after() {
+        // TODO add test clear up here
+    }
+
     @Test
-    public void webconsole_bundle_is_running() {
+    public void testExample() {
         assertThat(context.getBundle(1).getSymbolicName(), is("webconsole"));
-        assertThat(context.getBundle(1).getState(), is(32));
     }
 
-    @Test
-    public void testName() {
-        String bundlesJson = browser.getBundles();
-
-    }
 }

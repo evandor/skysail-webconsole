@@ -40,6 +40,17 @@ public class OsgiService {
                 .collect(Collectors.toList());
     }
 
+    public List<BundleDetails> getBundleDetails() {
+        if (bundleContext == null) {
+            log.warn("bundleContext not available");
+            return Collections.emptyList();
+        }
+        return Arrays.stream(bundleContext.getBundles()) // NOSONAR
+                .map(b -> new BundleDetails(b))
+                .sorted((b1, b2) -> Integer.valueOf(b1.getId()).compareTo(Integer.valueOf(b2.getId())))
+                .collect(Collectors.toList());
+    }
+
     public List<ServiceDescriptor> getServiceDescriptors() {
         if (bundleContext == null) {
             log.warn("bundleContext not available");
@@ -56,7 +67,7 @@ public class OsgiService {
         }
         return Collections.emptyList();
     }
-    
+
 	public List<ServiceDescriptor> getBundleServiceDescriptors(String bundleId) {
 		return getServiceDescriptors().stream().filter(sd -> sd.getBundle().getId().equals(bundleId)).collect(Collectors.toList());
 	}

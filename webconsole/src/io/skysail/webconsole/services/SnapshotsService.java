@@ -19,7 +19,7 @@ public class SnapshotsService {
 	}
 
 	public List<SnapshotDescriptor> getSnapshots() {
-		return snapshots.getSnapshots().stream().map(s -> new SnapshotDescriptor(s)).collect(Collectors.toList());
+		return snapshots.getSnapshots().values().stream().map(s -> new SnapshotDescriptor(s)).collect(Collectors.toList());
 	}
 
 }

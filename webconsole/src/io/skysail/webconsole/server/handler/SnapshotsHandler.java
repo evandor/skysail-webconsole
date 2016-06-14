@@ -23,7 +23,7 @@ public class SnapshotsHandler extends AbstractHttpHandler { // NOSONAR
 	}
 
 	@Override
-	protected String post(IHTTPSession session) throws JsonProcessingException {
+	protected synchronized String post(IHTTPSession session) throws JsonProcessingException {
 		snapshotsService.createSnapshot();
 		return "done";
 	}
