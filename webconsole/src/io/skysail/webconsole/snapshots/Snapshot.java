@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import io.skysail.webconsole.entities.BundleDetails;
 import io.skysail.webconsole.entities.ServiceDescriptor;
+import io.skysail.webconsole.entities.bundles.BundleSnapshot;
 import io.skysail.webconsole.services.OsgiService;
 import lombok.Getter;
 import lombok.NonNull;
@@ -16,8 +16,8 @@ public class Snapshot {
     private long id;
     private String title;
 
-    private List<BundleDetails> bundles = new ArrayList<>();
-    private List<ServiceDescriptor> services;
+    private List<BundleSnapshot> bundles = new ArrayList<>();
+    private List<ServiceDescriptor> services = new ArrayList<>();
     private OsgiService osgiService;
 
     private long timestamp;
@@ -36,8 +36,8 @@ public class Snapshot {
         } else {
             this.title = title;
         }
-        bundles = osgiService.getBundleDetails();
-        services = osgiService.getServiceDescriptors();
+        bundles = osgiService.getBundleSnapshots();
+        //services = osgiService.getServiceDescriptors();
     }
 
 }

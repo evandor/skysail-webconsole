@@ -7,6 +7,8 @@ Bundle-Description: An OSGi webconsole to inspect a running framework
 Bundle-Activator: io.skysail.webconsole.AgentActivator
 
 Private-Package: \
+	io.skysail.webconsole.entities.packages,\
+	io.skysail.webconsole.entities.bundles,\
 	io.skysail.webconsole.ui,\
 	io.skysail.webconsole.entities.antlr,\
 	io.skysail.webconsole.log,\

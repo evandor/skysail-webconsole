@@ -1,4 +1,4 @@
-package io.skysail.webconsole.entities;
+package io.skysail.webconsole.entities.bundles;
 
 import java.io.File;
 
@@ -14,13 +14,9 @@ import lombok.extern.slf4j.Slf4j;
 public class BundleDescriptor {
 
     private String id;
-
     private String symbolicName;
-
     private String version;
-
     private String state;
-
     private long size;
 
     public BundleDescriptor(Bundle bundle) {

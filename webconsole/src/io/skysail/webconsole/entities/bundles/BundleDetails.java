@@ -1,4 +1,4 @@
-package io.skysail.webconsole.entities;
+package io.skysail.webconsole.entities.bundles;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,8 +18,12 @@ import io.skysail.webconsole.antlr.ExportPackageParser.ExportPackageContext;
 import io.skysail.webconsole.antlr.ImportPackageLexer;
 import io.skysail.webconsole.antlr.ImportPackageParser;
 import io.skysail.webconsole.antlr.ImportPackageParser.ImportPackageContext;
+import io.skysail.webconsole.entities.ManifestHeader;
+import io.skysail.webconsole.entities.WireDescriptor;
 import io.skysail.webconsole.entities.antlr.ExportPackageVisitor;
 import io.skysail.webconsole.entities.antlr.ImportPackageVisitor;
+import io.skysail.webconsole.entities.packages.ExportPackage;
+import io.skysail.webconsole.entities.packages.ImportPackage;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

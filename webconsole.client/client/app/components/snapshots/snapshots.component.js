@@ -33,9 +33,6 @@ System.register(['angular2/core', 'angular2/common', "angular2/router", '../../s
                     this._backend = _backend;
                     _backend.setBaseUrl('http://localhost:2002/');
                 }
-                /*onSelect(bundle: Bundle) {
-                    this.router.navigate( ['Bundle', { id: bundle.id }]  );
-                }*/
                 SnapshotsComponent.prototype.ngOnInit = function () {
                     var _this = this;
                     this._backend.getSnapshots()

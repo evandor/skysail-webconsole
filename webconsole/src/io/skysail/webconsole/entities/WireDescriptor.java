@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.osgi.framework.wiring.BundleWiring;
+import org.osgi.resource.dto.WireDTO;
 
 import io.skysail.webconsole.ui.Alert;
 import io.skysail.webconsole.ui.Alert.Level;
@@ -33,6 +34,11 @@ public class WireDescriptor {
                 .map(req -> new Requirement(req))
                 .sorted((r1,r2) -> r1.getNamespace().compareTo(r2.getNamespace()))
                 .collect(Collectors.toList());
+        
+        wiring.getProvidedWires(null).stream()
+        	.map(wire -> new Wire(wire))
+        	//.sorted((r1,r2) -> r1.getNamespace().compareTo(r2.getNamespace()))
+        	.collect(Collectors.toList());
     }
 
 }

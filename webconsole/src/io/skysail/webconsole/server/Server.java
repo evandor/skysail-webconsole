@@ -133,6 +133,8 @@ public class Server extends NanoHTTPD {
 		Timer timer = new Timer(true);
         timer.scheduleAtFixedRate(timerTask, 1000, 10*1000);
         System.out.println(socketWorker);*/
+        
+        snapshotsService.createSnapshot();
     }
 
     /**
@@ -177,6 +179,9 @@ public class Server extends NanoHTTPD {
         if ("/backend/snapshots".equals(session.getUri())) {
             return snapshotsHandler.handle(session);
         }
+        if ("/backend/snapshotdetails".equals(session.getUri())) {
+            return snapshotsHandler.handle(session);
+        }
 
         if ("/backend/logs".equals(session.getUri())) {
             return logsHandler.handle(session);
@@ -201,4 +206,8 @@ public class Server extends NanoHTTPD {
         }
         return staticFilesHandler.handle(session);
     }
+
+	public void createSnapshot() {
+		this.snapshotsService.createSnapshot();
+	}
 }

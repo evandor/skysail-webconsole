@@ -15,8 +15,8 @@ import org.osgi.service.packageadmin.PackageAdmin;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import fi.iki.elonen.NanoHTTPD.IHTTPSession;
-import io.skysail.webconsole.entities.BundleDetails;
-import io.skysail.webconsole.entities.ImportPackage;
+import io.skysail.webconsole.entities.bundles.BundleDetails;
+import io.skysail.webconsole.entities.packages.ImportPackage;
 import io.skysail.webconsole.services.OsgiService;
 
 public class BundleHandler extends AbstractHttpHandler { // NOSONAR
@@ -54,7 +54,6 @@ public class BundleHandler extends AbstractHttpHandler { // NOSONAR
                     }
                 });
             }
-            System.out.println(candidates);
         }
 
         return mapper.writeValueAsString(bundleDetails);

@@ -20,6 +20,7 @@ public class Requirement {
         attributes = req.getAttributes().keySet().stream().map(key -> key + ": " + req.getAttributes().get(key)).collect(Collectors.toList());
         directives = req.getDirectives().keySet().stream().map(key -> key + ":= " + req.getDirectives().get(key)).collect(Collectors.toList());
         resource = req.getResource().toString();
+        //System.out.println(req.getRevision());
     }
 
 }

@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.osgi.framework.Constants;
 import org.osgi.framework.ServiceReference;
 
+import io.skysail.webconsole.entities.bundles.BundleDescriptor;
 import lombok.Getter;
 import lombok.Setter;
 

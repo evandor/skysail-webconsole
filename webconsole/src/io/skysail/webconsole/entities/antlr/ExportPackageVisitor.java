@@ -8,7 +8,7 @@ import io.skysail.webconsole.antlr.ExportPackageParser.ExportContext;
 import io.skysail.webconsole.antlr.ExportPackageParser.ExportPackageContext;
 import io.skysail.webconsole.antlr.ExportPackageParser.PackageNameContext;
 import io.skysail.webconsole.antlr.ExportPackageParser.ParameterContext;
-import io.skysail.webconsole.entities.ExportPackage;
+import io.skysail.webconsole.entities.packages.ExportPackage;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

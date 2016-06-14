@@ -6,13 +6,16 @@ import lombok.Getter;
 @Getter
 public class SnapshotDescriptor {
 
-	private String title;
-
-	private int bundleCount;
+	protected long id;
+	protected String title;
+	protected int bundleCount;
+	protected int serviceCount;
 
 	public SnapshotDescriptor(Snapshot s) {
+		this.id = s.getId();
 		this.title = s.getTitle();
 		this.bundleCount = s.getBundles().size();
+		this.serviceCount = s.getServices().size();
 	}
 
 }

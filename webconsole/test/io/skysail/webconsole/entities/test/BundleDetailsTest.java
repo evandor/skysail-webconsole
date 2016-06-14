@@ -11,7 +11,7 @@ import org.mockito.Mockito;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.Constants;
 
-import io.skysail.webconsole.entities.BundleDetails;
+import io.skysail.webconsole.entities.bundles.BundleDetails;
 
 public class BundleDetailsTest {
 

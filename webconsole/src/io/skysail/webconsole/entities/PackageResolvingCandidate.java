@@ -2,6 +2,7 @@ package io.skysail.webconsole.entities;
 
 import org.osgi.service.packageadmin.ExportedPackage;
 
+import io.skysail.webconsole.entities.bundles.BundleDescriptor;
 import lombok.Getter;
 
 @Getter

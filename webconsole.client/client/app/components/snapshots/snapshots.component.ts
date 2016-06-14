@@ -21,10 +21,6 @@ export class SnapshotsComponent implements OnInit {
         _backend.setBaseUrl('http://localhost:2002/');
     }
 
-    /*onSelect(bundle: Bundle) {
-        this.router.navigate( ['Bundle', { id: bundle.id }]  );
-    }*/
-
     ngOnInit() {
         this._backend.getSnapshots()
             .subscribe(res => this.snapshots = res);

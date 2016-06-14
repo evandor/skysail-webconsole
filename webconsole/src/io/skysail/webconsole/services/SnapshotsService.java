@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import io.skysail.webconsole.entities.SnapshotDescriptor;
+import io.skysail.webconsole.entities.SnapshotDetails;
 import io.skysail.webconsole.snapshots.Snapshots;
 
 public class SnapshotsService {
@@ -18,8 +19,12 @@ public class SnapshotsService {
 		snapshots.createSnapshot(null);
 	}
 
-	public List<SnapshotDescriptor> getSnapshots() {
+	public List<SnapshotDescriptor> getSnapshotDescriptors() {
 		return snapshots.getSnapshots().values().stream().map(s -> new SnapshotDescriptor(s)).collect(Collectors.toList());
+	}
+
+	public List<SnapshotDetails> getSnapshotDetails() {
+		return snapshots.getSnapshots().values().stream().map(s -> new SnapshotDetails(s)).collect(Collectors.toList());
 	}
 
 }

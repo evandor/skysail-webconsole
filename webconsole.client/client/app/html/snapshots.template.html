@@ -4,10 +4,12 @@
     <tr>
       <th>Title</th>
       <th>#Bundles</th>
+      <th>#Services</th>
     </tr>
   </thead>
   <tr *ngFor="#snapshot of snapshots">
     <td>{{snapshot.title}}</td>
     <td>{{snapshot.bundleCount}}</td>
+    <td>{{snapshot.serviceCount}}</td>
   </tr>
 </table>
