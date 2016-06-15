@@ -117,6 +117,9 @@ export class AdjacencyDirective implements OnInit {
     }
 
     ngOnInit() {
+
+        this._backend.getLatestSnapshot()
+
         this._backend.getBundles()
             .subscribe(res => {
                 res.forEach(bundle => {

@@ -122,6 +122,7 @@ System.register(['angular2/core', '../services/backend.service', 'd3'], function
                 };
                 AdjacencyDirective.prototype.ngOnInit = function () {
                     var _this = this;
+                    this._backend.getLatestSnapshot();
                     this._backend.getBundles()
                         .subscribe(function (res) {
                         res.forEach(function (bundle) {
