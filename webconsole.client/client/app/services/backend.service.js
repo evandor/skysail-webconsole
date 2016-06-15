@@ -74,6 +74,10 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map'], fun
                     return this._http.get(this._baseUrl + 'backend/snapshots')
                         .map(function (res) { return res.json(); });
                 };
+                BackendServices.prototype.getNewestSnapshot = function () {
+                    return this._http.get(this._baseUrl + 'backend/snapshots/newest')
+                        .map(function (res) { return res.json(); });
+                };
                 BackendServices.prototype.createSnapshot = function () {
                     return this._http.post(this._baseUrl + 'backend/snapshots/', JSON.stringify("create"));
                 };

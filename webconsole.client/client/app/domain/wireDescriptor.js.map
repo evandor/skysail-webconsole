@@ -1,1 +1,1 @@
-{"version":3,"file":"wireDescriptor.js","sourceRoot":"","sources":["wireDescriptor.ts"],"names":[],"mappings":";;;;;;;YAEA;gBAAA;gBAIA,CAAC;gBAAD,qBAAC;YAAD,CAAC,AAJD,IAIC;YAJD,2CAIC,CAAA"}
+{"version":3,"file":"wireDescriptor.js","sourceRoot":"","sources":["wireDescriptor.ts"],"names":[],"mappings":";;;;;;;YAIA;gBAAA;oBAII,kBAAa,GAAgB,EAAE,CAAC;oBAChC,kBAAa,GAAgB,EAAE,CAAC;gBACpC,CAAC;gBAAD,qBAAC;YAAD,CAAC,AAND,IAMC;YAND,2CAMC,CAAA"}

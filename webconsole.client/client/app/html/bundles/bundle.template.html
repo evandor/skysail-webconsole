@@ -85,7 +85,7 @@
           <th width='270px;'>Package</th>
           <th>Version Range</th>
           <th>Resolution</th>
-          <th>Satiesfied by</th>
+          <th>Satiesfied by (Candidates)</th>
         </tr>
       </thead>
       <tr *ngFor="#pkg of bundle.importPackage">
@@ -100,7 +100,8 @@
         </td>
         <td> 
           <div *ngFor="#candidate of pkg.packageResolvingCandidates">
-            {{candidate.name}} [{{candidate.version}}]    
+            <span *ngIf="candidate.exportingBundle.id == bundle.id">self</span>
+            <span *ngIf="candidate.exportingBundle.id != bundle.id">Bundle {{candidate.exportingBundle.id}}: packageVersion {{candidate.version}} </span>
           </div>
         </td>        
       </tr>
@@ -150,6 +151,45 @@
             <div>{{requirement.directives}}</div>
           </div>
         </td>
+      </tr>
+    </table>
+  </tab>
+
+  <tab tabTitle="Wiring">
+    <span *ngIf="bundle.wireDescriptor?.alerts">
+      <div *ngFor="#alert of bundle.wireDescriptor?.alerts" class="alert alert-{{alert.level}}" role="alert">{{alert.message}}</div>
+    </span>  
+    
+    <table class="table">
+      <thead>
+        <tr>
+          <th width='270px;'>Key</th>
+          <th>Providing Bundle</th>
+          <th>Requirement</th>
+          <th>Capability</th>
+        </tr>
+      </thead>
+      <tr *ngFor="#requiredWire of bundle.wireDescriptor?.requiredWires">
+        <th><span class="glyphicon glyphicon-log-out" aria-hidden="true" style="color: blue"></span> Required Wire:</th>
+        <td (click)="onSelectBundle(requiredWire.providerBundleId)" style="cursor: pointer; color:#000066;">{{requiredWire.providerBundleId}} </td>
+        <td>
+            <div>{{requiredWire.requirement | json}}</div>
+        </td>
+        <td>{{requiredWire.capability | json}}</td>
+      </tr>
+        <tr>
+          <th width='270px;'>Key</th>
+          <th>Requiring Bundle</th>
+          <th>Requirement</th>
+          <th>Capability</th>
+        </tr>
+      <tr *ngFor="#providedWire of bundle.wireDescriptor?.providedWires">
+        <th><span class="glyphicon glyphicon-log-out" aria-hidden="true" style="color: blue"></span> Provided Wire:</th>
+        <td (click)="onSelectBundle(providedWire.requirerBundleId)" style="cursor: pointer; color:#000066;">{{providedWire.requirerBundleId}} </td>
+        <td>
+            <div>{{providedWire.requirement | json }}</div>
+        </td>
+        <td>{{providedWire.capability | json}}</td>
       </tr>
     </table>
   </tab>

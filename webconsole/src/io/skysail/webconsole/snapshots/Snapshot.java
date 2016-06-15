@@ -37,7 +37,7 @@ public class Snapshot {
             this.title = title;
         }
         bundles = osgiService.getBundleSnapshots();
-        //services = osgiService.getServiceDescriptors();
+        services = osgiService.getServiceDescriptors();
     }
 
 }

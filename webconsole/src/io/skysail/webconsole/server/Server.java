@@ -2,8 +2,6 @@ package io.skysail.webconsole.server;
 
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
@@ -11,7 +9,6 @@ import org.osgi.framework.ServiceReference;
 import org.osgi.service.resolver.Resolver;
 
 import fi.iki.elonen.NanoHTTPD;
-import fi.iki.elonen.NanoWSD.WebSocket;
 import io.skysail.webconsole.listener.AgentBundleListener;
 import io.skysail.webconsole.listener.AgentFrameworkListener;
 import io.skysail.webconsole.listener.AgentServiceListener;
@@ -26,6 +23,7 @@ import io.skysail.webconsole.server.handler.PackagesHandler;
 import io.skysail.webconsole.server.handler.ServiceHandler;
 import io.skysail.webconsole.server.handler.ServiceListenerHandler;
 import io.skysail.webconsole.server.handler.ServicesHandler;
+import io.skysail.webconsole.server.handler.SnapshotHandler;
 import io.skysail.webconsole.server.handler.SnapshotsHandler;
 import io.skysail.webconsole.server.handler.StaticFilesHandler;
 import io.skysail.webconsole.server.handler.VersionHandler;
@@ -56,6 +54,7 @@ public class Server extends NanoHTTPD {
     private PackagesHandler packagesHandler;
 
     private SnapshotsHandler snapshotsHandler;
+    private SnapshotHandler snapshotHandler;
 
     private LogsHandler logsHandler;
 
@@ -93,7 +92,10 @@ public class Server extends NanoHTTPD {
         bundleServicesHandler = new BundleServicesHandler(osgiService);
         servicesHandler = new ServicesHandler(osgiService);
         packagesHandler = new PackagesHandler(osgiService);
+
         snapshotsHandler = new SnapshotsHandler(snapshotsService);
+        snapshotHandler = new SnapshotHandler(snapshotsService);
+
         logsHandler = new LogsHandler(logService);
         frameworkHandler = new FrameworkHandler(bundleContext);
 
@@ -133,7 +135,7 @@ public class Server extends NanoHTTPD {
 		Timer timer = new Timer(true);
         timer.scheduleAtFixedRate(timerTask, 1000, 10*1000);
         System.out.println(socketWorker);*/
-        
+
         snapshotsService.createSnapshot();
     }
 
@@ -178,6 +180,9 @@ public class Server extends NanoHTTPD {
 
         if ("/backend/snapshots".equals(session.getUri())) {
             return snapshotsHandler.handle(session);
+        }
+        if (session.getUri().startsWith("/backend/snapshotdetails/")) {
+            return snapshotHandler.handle(session);
         }
         if ("/backend/snapshotdetails".equals(session.getUri())) {
             return snapshotsHandler.handle(session);

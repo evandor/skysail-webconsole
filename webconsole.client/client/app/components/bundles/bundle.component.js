@@ -114,6 +114,9 @@ System.register(['angular2/core', 'angular2/common', "angular2/router", 'angular
                     this._router.navigate(['Service', { id: service.id }]);
                     //this._breadcrumbService.add(new Breadcrumb(['Bundle'], "hier"));
                 };
+                BundleComponent.prototype.onSelectBundle = function (id) {
+                    this._router.navigate(['Bundle', { id: id }]);
+                };
                 BundleComponent.prototype.objToStrMap = function (obj) {
                     var strMap = new Map();
                     for (var _i = 0, _a = Object.keys(obj); _i < _a.length; _i++) {

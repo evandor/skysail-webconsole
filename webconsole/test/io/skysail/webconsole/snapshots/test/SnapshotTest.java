@@ -12,33 +12,33 @@ import org.osgi.framework.Bundle;
 import org.osgi.framework.ServiceReference;
 
 import io.skysail.webconsole.entities.ServiceDescriptor;
-import io.skysail.webconsole.entities.bundles.BundleDescriptor;
+import io.skysail.webconsole.entities.bundles.BundleSnapshot;
 import io.skysail.webconsole.services.OsgiService;
 import io.skysail.webconsole.snapshots.Snapshot;
 import io.skysail.webconsole.test.TestUtils;
 
 public class SnapshotTest {
 
-	private Bundle mockedBundle = TestUtils.mockBundle(0L,"name", "0.1.0");
-	private ServiceReference<?> mockedService = TestUtils.mockService(0L,mockedBundle);
+    private Bundle mockedBundle = TestUtils.mockBundle(0L, "name", "0.1.0");
+    private ServiceReference<?> mockedService = TestUtils.mockService(0L, mockedBundle);
 
-	@Test
-	public void provides_list_of_bundles() {
-		OsgiService osgiService = Mockito.mock(OsgiService.class);
-		List<BundleDescriptor> bundleDescriptors = Arrays.asList(new BundleDescriptor(mockedBundle));
+    @Test
+    public void provides_list_of_bundles() {
+        OsgiService osgiService = Mockito.mock(OsgiService.class);
+        List<BundleSnapshot> bundleDescriptors = Arrays.asList(new BundleSnapshot(mockedBundle));
 
-		Mockito.when(osgiService.getBundleDescriptors()).thenReturn(bundleDescriptors);
-		Snapshot snapshot = new Snapshot(osgiService, 1l, "title");
-		assertThat(snapshot.getBundles().size(),is(1));
-	}
+        Mockito.when(osgiService.getBundleSnapshots()).thenReturn(bundleDescriptors);
+        Snapshot snapshot = new Snapshot(osgiService, 1l, "title");
+        assertThat(snapshot.getBundles().size(), is(1));
+    }
 
-	@Test
-	public void provides_list_of_services() {
-		OsgiService osgiService = Mockito.mock(OsgiService.class);
-		List<ServiceDescriptor> serviceDescriptors = Arrays.asList(new ServiceDescriptor(mockedService));
+    @Test
+    public void provides_list_of_services() {
+        OsgiService osgiService = Mockito.mock(OsgiService.class);
+        List<ServiceDescriptor> serviceDescriptors = Arrays.asList(new ServiceDescriptor(mockedService));
 
-		Mockito.when(osgiService.getServiceDescriptors()).thenReturn(serviceDescriptors);
-		Snapshot snapshot = new Snapshot(osgiService, 1l, "title");
-		assertThat(snapshot.getServices().size(),is(1));
-	}
+        Mockito.when(osgiService.getServiceDescriptors()).thenReturn(serviceDescriptors);
+        Snapshot snapshot = new Snapshot(osgiService, 1l, "title");
+        assertThat(snapshot.getServices().size(), is(1));
+    }
 }

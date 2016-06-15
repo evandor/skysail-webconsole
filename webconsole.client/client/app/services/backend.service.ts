@@ -57,7 +57,7 @@ export class BackendServices {
         return this._http.get(this._baseUrl + 'backend/services/' + id)
             .map(res => res.json());
     }
-    
+
     getPackages(): Observable<ExportPackage[]> {
         return this._http.get(this._baseUrl + 'backend/packages')
             .map(res => res.json());
@@ -70,6 +70,11 @@ export class BackendServices {
 
     getSnapshots(): Observable<Snapshot[]> {
         return this._http.get(this._baseUrl + 'backend/snapshots')
+            .map(res => res.json());
+    }
+
+    getNewestSnapshot(): Observable<Snapshot> {
+        return this._http.get(this._baseUrl + 'backend/snapshots/newest')
             .map(res => res.json());
     }
 

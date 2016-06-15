@@ -97,6 +97,10 @@ export class BundleComponent implements OnInit {
         //this._breadcrumbService.add(new Breadcrumb(['Bundle'], "hier"));
     }
 
+    onSelectBundle(id: string) {
+        this._router.navigate(['Bundle', { id: id }]);
+    }
+
     objToStrMap(obj) {
         let strMap = new Map();
         for (let k of Object.keys(obj)) {

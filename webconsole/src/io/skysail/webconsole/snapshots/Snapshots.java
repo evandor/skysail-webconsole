@@ -11,7 +11,6 @@ import org.javers.core.JaversBuilder;
 import org.javers.core.diff.Diff;
 import org.javers.core.diff.changetype.ValueChange;
 
-import io.skysail.webconsole.entities.bundles.BundleDetails;
 import io.skysail.webconsole.entities.bundles.BundleSnapshot;
 import io.skysail.webconsole.services.OsgiService;
 import lombok.Getter;
@@ -48,6 +47,15 @@ public class Snapshots {
         Javers javers = JaversBuilder.javers().build();
         Diff diff = javers.compareCollections(first.getBundles(), second.getBundles(), BundleSnapshot.class);
         return diff.getChangesByType(ValueChange.class);
+    }
+
+    public Snapshot getSnapshot(String snapshotId) {
+        return snapshots.get(Long.parseLong(snapshotId));
+    }
+
+    public Snapshot getLatestSnapshot() {
+        Long snapshotId = snapshots.keySet().stream().max((k1,k2)-> k1.compareTo(k2)).orElse(0L);
+        return getSnapshot(snapshotId.toString());
     }
 
 }

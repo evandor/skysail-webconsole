@@ -7,6 +7,8 @@ System.register([], function(exports_1, context_1) {
         execute: function() {
             WireDescriptor = (function () {
                 function WireDescriptor() {
+                    this.providedWires = [];
+                    this.requiredWires = [];
                 }
                 return WireDescriptor;
             }());
