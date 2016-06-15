@@ -73,8 +73,8 @@ export class BackendServices {
             .map(res => res.json());
     }
 
-    getSnapshot(): Observable<Snapshot> {
-        return this._http.get(this._baseUrl + 'backend/snapshots/newest')
+    getLatestSnapshot(): Observable<Snapshot> {
+        return this._http.get(this._baseUrl + 'backend/snapshotdetails/latest')
             .map(res => res.json());
     }
 

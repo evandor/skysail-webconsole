@@ -1,6 +1,7 @@
 {
   "name": "skysail-webconsole-angular2-client",
   "globalDependencies": {
+    "es6-shim": "registry:dt/es6-shim#0.31.2+20160602141504",
     "jquery": "registry:dt/jquery#1.10.0+20160417213236",
     "underscore": "github:DefinitelyTyped/DefinitelyTyped/underscore/underscore.d.ts#e69fe60f2d6377ea4fae539493997b098f52cad1"
   },

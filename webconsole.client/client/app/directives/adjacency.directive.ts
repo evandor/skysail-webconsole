@@ -119,8 +119,29 @@ export class AdjacencyDirective implements OnInit {
     ngOnInit() {
 
         this._backend.getLatestSnapshot()
+            .subscribe(snapshot => {
+                snapshot.bundles.forEach(bundle => {
+                    this.nodes.push(new Node(bundle.id, 17, 500));
+                    var toCounter = new Map<string, number>();
+                    bundle.wireDescriptor.providedWires.forEach(wire => {
+                        var requirerId = wire.requirerBundleId;
+                        if (toCounter.has(requirerId)) {
+                            var old = toCounter.get(requirerId);
+                            toCounter.set(requirerId, old + 1);
+                        } else {
+                            toCounter.set(requirerId, 1);
+                        }
+                        toCounter.forEach((value, index, map) => {
+                            console.log(bundle.id + ": " + index + "/" + value);
+                            this.edges.push(new Edge(bundle.id, index, value));
+                        });
+                    });
 
-        this._backend.getBundles()
+                })
+                this.render();
+            });
+
+        /*this._backend.getBundles()
             .subscribe(res => {
                 res.forEach(bundle => {
                     this.nodes.push(new Node(bundle.id, 17, 500));
@@ -141,7 +162,7 @@ export class AdjacencyDirective implements OnInit {
                     }
                 });
                 this.render();
-            });
+            });*/
 
     }
 

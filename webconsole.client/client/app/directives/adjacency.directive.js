@@ -122,29 +122,50 @@ System.register(['angular2/core', '../services/backend.service', 'd3'], function
                 };
                 AdjacencyDirective.prototype.ngOnInit = function () {
                     var _this = this;
-                    this._backend.getLatestSnapshot();
-                    this._backend.getBundles()
-                        .subscribe(function (res) {
-                        res.forEach(function (bundle) {
+                    this._backend.getLatestSnapshot()
+                        .subscribe(function (snapshot) {
+                        snapshot.bundles.forEach(function (bundle) {
                             _this.nodes.push(new Node(bundle.id, 17, 500));
-                            if (bundle.importPackage != null) {
-                                bundle.importPackage.forEach(function (importPackage) {
-                                    console.log("importPackage: " + importPackage);
-                                    var ids = Array();
-                                    if (importPackage != null) {
-                                        importPackage.packageResolvingCandidates.forEach(function (candiate) {
-                                            ids.push(candiate.exportingBundle.id);
-                                        });
-                                        ids.forEach(function (id) {
-                                            console.log("new Edge(" + bundle.id + ", " + id + ", 1)");
-                                            _this.edges.push(new Edge(bundle.id, id, 1));
-                                        });
-                                    }
+                            var toCounter = new Map();
+                            bundle.wireDescriptor.providedWires.forEach(function (wire) {
+                                var requirerId = wire.requirerBundleId;
+                                if (toCounter.has(requirerId)) {
+                                    var old = toCounter.get(requirerId);
+                                    toCounter.set(requirerId, old + 1);
+                                }
+                                else {
+                                    toCounter.set(requirerId, 1);
+                                }
+                                toCounter.forEach(function (value, index, map) {
+                                    console.log(bundle.id + ": " + index + "/" + value);
+                                    _this.edges.push(new Edge(bundle.id, index, value));
                                 });
-                            }
+                            });
                         });
                         _this.render();
                     });
+                    /*this._backend.getBundles()
+                        .subscribe(res => {
+                            res.forEach(bundle => {
+                                this.nodes.push(new Node(bundle.id, 17, 500));
+                                if (bundle.importPackage != null) {
+                                    bundle.importPackage.forEach(importPackage => {
+                                        console.log("importPackage: " + importPackage);
+                                        var ids = Array<string>();
+                                        if (importPackage != null) {
+                                            importPackage.packageResolvingCandidates.forEach(candiate => {
+                                                ids.push(candiate.exportingBundle.id);
+                                            });
+                                            ids.forEach(id => {
+                                                console.log("new Edge(" + bundle.id + ", " + id + ", 1)");
+                                                this.edges.push(new Edge(bundle.id, id, 1));
+                                            })
+                                        }
+                                    });
+                                }
+                            });
+                            this.render();
+                        });*/
                 };
                 AdjacencyDirective = __decorate([
                     core_1.Directive({
