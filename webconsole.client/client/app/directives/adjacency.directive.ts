@@ -105,8 +105,12 @@ export class AdjacencyDirective implements OnInit {
 
         this._backend.getLatestSnapshot()
             .subscribe(snapshot => {
+                var allNodes = Array<Node>();
                 snapshot.bundles.forEach(bundle => {
-                    this.nodes.push(new Node(bundle.id, 17, 500));
+                    if (bundle.id == "0") {
+                        return;
+                    }
+                    allNodes.push(new Node(bundle.id, 17, 500));
                     var toCounter = new Map<string, number>();
                     bundle.wireDescriptor.providedWires.forEach(wire => {
                         var requirerId = wire.requirerBundleId;
@@ -117,39 +121,30 @@ export class AdjacencyDirective implements OnInit {
                             toCounter.set(requirerId, 1);
                         }
                         toCounter.forEach((value, index, map) => {
-                            //console.log(bundle.id + ": " + index + "/" + value);
-                            this.edges.push(new Edge(bundle.id, index, value));
+                            if (index != "0") {
+                                console.log(bundle.id + ": " + index + "/" + value);
+                                this.edges.push(new Edge(bundle.id, index, value));
+                            }
                         });
                     });
-
+                })
+                allNodes.forEach(node => {
+                    if (this.getEdgeCount(node) > 0) {
+                        this.nodes.push(node);
+                    }
                 })
                 this.render();
             });
-
-        /*this._backend.getBundles()
-            .subscribe(res => {
-                res.forEach(bundle => {
-                    this.nodes.push(new Node(bundle.id, 17, 500));
-                    if (bundle.importPackage != null) {
-                        bundle.importPackage.forEach(importPackage => {
-                            console.log("importPackage: " + importPackage);
-                            var ids = Array<string>();
-                            if (importPackage != null) {
-                                importPackage.packageResolvingCandidates.forEach(candiate => {
-                                    ids.push(candiate.exportingBundle.id);
-                                });
-                                ids.forEach(id => {
-                                    console.log("new Edge(" + bundle.id + ", " + id + ", 1)");
-                                    this.edges.push(new Edge(bundle.id, id, 1));
-                                })
-                            }
-                        });
-                    }
-                });
-                this.render();
-            });*/
-
     }
+    
+    getEdgeCount(node: Node): number {
+        for (var e of this.edges) {
+            if (e.target == node.id || e.source == node.id) {
+                return 1;
+            }
+        }
+        return 0;
+    } 
 
 
 }

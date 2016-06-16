@@ -112,8 +112,12 @@ System.register(['angular2/core', '../services/backend.service', 'd3'], function
                     var _this = this;
                     this._backend.getLatestSnapshot()
                         .subscribe(function (snapshot) {
+                        var allNodes = Array();
                         snapshot.bundles.forEach(function (bundle) {
-                            _this.nodes.push(new Node(bundle.id, 17, 500));
+                            if (bundle.id == "0") {
+                                return;
+                            }
+                            allNodes.push(new Node(bundle.id, 17, 500));
                             var toCounter = new Map();
                             bundle.wireDescriptor.providedWires.forEach(function (wire) {
                                 var requirerId = wire.requirerBundleId;
@@ -125,35 +129,29 @@ System.register(['angular2/core', '../services/backend.service', 'd3'], function
                                     toCounter.set(requirerId, 1);
                                 }
                                 toCounter.forEach(function (value, index, map) {
-                                    //console.log(bundle.id + ": " + index + "/" + value);
-                                    _this.edges.push(new Edge(bundle.id, index, value));
+                                    if (index != "0") {
+                                        console.log(bundle.id + ": " + index + "/" + value);
+                                        _this.edges.push(new Edge(bundle.id, index, value));
+                                    }
                                 });
                             });
                         });
+                        allNodes.forEach(function (node) {
+                            if (_this.getEdgeCount(node) > 0) {
+                                _this.nodes.push(node);
+                            }
+                        });
                         _this.render();
                     });
-                    /*this._backend.getBundles()
-                        .subscribe(res => {
-                            res.forEach(bundle => {
-                                this.nodes.push(new Node(bundle.id, 17, 500));
-                                if (bundle.importPackage != null) {
-                                    bundle.importPackage.forEach(importPackage => {
-                                        console.log("importPackage: " + importPackage);
-                                        var ids = Array<string>();
-                                        if (importPackage != null) {
-                                            importPackage.packageResolvingCandidates.forEach(candiate => {
-                                                ids.push(candiate.exportingBundle.id);
-                                            });
-                                            ids.forEach(id => {
-                                                console.log("new Edge(" + bundle.id + ", " + id + ", 1)");
-                                                this.edges.push(new Edge(bundle.id, id, 1));
-                                            })
-                                        }
-                                    });
-                                }
-                            });
-                            this.render();
-                        });*/
+                };
+                AdjacencyDirective.prototype.getEdgeCount = function (node) {
+                    for (var _i = 0, _a = this.edges; _i < _a.length; _i++) {
+                        var e = _a[_i];
+                        if (e.target == node.id || e.source == node.id) {
+                            return 1;
+                        }
+                    }
+                    return 0;
                 };
                 AdjacencyDirective = __decorate([
                     core_1.Directive({
