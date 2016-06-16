@@ -171,7 +171,7 @@
       </thead>
       <tr *ngFor="#requiredWire of bundle.wireDescriptor?.requiredWires">
         <th><span class="glyphicon glyphicon-log-out" aria-hidden="true" style="color: blue"></span> Required Wire:</th>
-        <td (click)="onSelectBundle(requiredWire.providerBundleId)" style="cursor: pointer; color:#000066;">{{requiredWire.providerBundleId}} </td>
+        <td (click)="onSelectBundle(requiredWire.pid)" style="cursor: pointer; color:#000066;">{{requiredWire.pid}} </td>
         <td>
             <div>{{requiredWire.requirement | json}}</div>
         </td>
@@ -185,7 +185,7 @@
         </tr>
       <tr *ngFor="#providedWire of bundle.wireDescriptor?.providedWires">
         <th><span class="glyphicon glyphicon-log-out" aria-hidden="true" style="color: blue"></span> Provided Wire:</th>
-        <td (click)="onSelectBundle(providedWire.requirerBundleId)" style="cursor: pointer; color:#000066;">{{providedWire.requirerBundleId}} </td>
+        <td (click)="onSelectBundle(providedWire.rid)" style="cursor: pointer; color:#000066;">{{providedWire.rid}} </td>
         <td>
             <div>{{providedWire.requirement | json }}</div>
         </td>

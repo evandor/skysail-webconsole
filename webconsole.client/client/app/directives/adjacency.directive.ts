@@ -42,7 +42,10 @@ export class AdjacencyDirective implements OnInit {
     // data: Array<number> = [];
 
     edges = Array<Edge>();
-    nodes = Array<Node>();
+    //nodes = Array<Node>();
+    
+    rNodes = Array<Node>(); // requirererNodes
+    pNodes = Array<Node>(); // providerNodes
 
     constructor(private _el: ElementRef, private _backend: BackendServices) { }
 
@@ -53,11 +56,11 @@ export class AdjacencyDirective implements OnInit {
             edgeHash[id] = this.edges[x];
         };
         var matrix = [];
-        for (var a in this.nodes) {
-            for (var b in this.nodes) {
+        for (var a in this.pNodes) {
+            for (var b in this.rNodes) {
                 var grid =
                     {
-                        id: this.nodes[a].id + "-" + this.nodes[b].id,
+                        id: this.pNodes[a].id + "-" + this.rNodes[b].id,
                         x: b, y: a, weight: 0
                     };
                 if (edgeHash[grid.id]) {
@@ -80,9 +83,9 @@ export class AdjacencyDirective implements OnInit {
             .attr("x", function (d) { return d.x * 25 })
             .attr("y", function (d) { return d.y * 25 })
             .style("fill-opacity", function (d) { return d.weight * .2; })
-        var scaleSize = this.nodes.length * 25;
+        var scaleSize = this.pNodes.length * 25;
         var nameScale = d3.scale.ordinal()
-            .domain(this.nodes.map(function (el) { return el.id }))
+            .domain(this.pNodes.map(function (el) { return el.id }))
             .rangePoints([0, scaleSize], 1);
         var xAxis = d3.svg.axis()
             .scale(nameScale).orient("top").tickSize(4);
@@ -113,7 +116,7 @@ export class AdjacencyDirective implements OnInit {
                     allNodes.push(new Node(bundle.id, 17, 500));
                     var toCounter = new Map<string, number>();
                     bundle.wireDescriptor.providedWires.forEach(wire => {
-                        var requirerId = wire.requirerBundleId;
+                        var requirerId = wire.rid;
                         if (toCounter.has(requirerId)) {
                             var old = toCounter.get(requirerId);
                             toCounter.set(requirerId, old + 1);
@@ -122,7 +125,7 @@ export class AdjacencyDirective implements OnInit {
                         }
                         toCounter.forEach((value, index, map) => {
                             if (index != "0") {
-                                console.log(bundle.id + ": " + index + "/" + value);
+                               // console.log(bundle.id + ": " + index + "/" + value);
                                 this.edges.push(new Edge(bundle.id, index, value));
                             }
                         });
@@ -130,21 +133,47 @@ export class AdjacencyDirective implements OnInit {
                 })
                 allNodes.forEach(node => {
                     if (this.getEdgeCount(node) > 0) {
-                        this.nodes.push(node);
+                       // this.nodes.push(node);
+                    }
+                    if (this.hasRequirements(node)) {
+                        this.rNodes.push(node);
+                    }
+                    if (this.hasCapabilities(node)) {
+                        this.pNodes.push(node);
                     }
                 })
+                console.log(this.rNodes);
+                console.log(this.pNodes);
                 this.render();
             });
     }
     
+    hasRequirements(node: Node): boolean {
+        for (var e of this.edges) {
+            if (e.target == node.id) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+     hasCapabilities(node: Node): boolean {
+        for (var e of this.edges) {
+            if (e.source == node.id) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     getEdgeCount(node: Node): number {
         for (var e of this.edges) {
-            if (e.target == node.id || e.source == node.id) {
+            if (e.target == node.id) {
                 return 1;
             }
         }
-        return 0;
-    } 
+        return 1;
+    }
 
 
 }

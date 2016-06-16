@@ -1,6 +1,6 @@
 export class Wire {
-    providerBundleId: string;
-    requirerBundleId: string;
+    pid: string; // providerBundleId
+    rid: string; // requirerBundleId
     requirement: string;
     capability: string;
 }

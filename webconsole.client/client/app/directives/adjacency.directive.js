@@ -50,7 +50,9 @@ System.register(['angular2/core', '../services/backend.service', 'd3'], function
                      @Input('id') id: string;*/
                     // data: Array<number> = [];
                     this.edges = Array();
-                    this.nodes = Array();
+                    //nodes = Array<Node>();
+                    this.rNodes = Array(); // requirererNodes
+                    this.pNodes = Array(); // providerNodes
                 }
                 AdjacencyDirective.prototype.render = function () {
                     var edgeHash = {};
@@ -60,10 +62,10 @@ System.register(['angular2/core', '../services/backend.service', 'd3'], function
                     }
                     ;
                     var matrix = [];
-                    for (var a in this.nodes) {
-                        for (var b in this.nodes) {
+                    for (var a in this.pNodes) {
+                        for (var b in this.rNodes) {
                             var grid = {
-                                id: this.nodes[a].id + "-" + this.nodes[b].id,
+                                id: this.pNodes[a].id + "-" + this.rNodes[b].id,
                                 x: b, y: a, weight: 0
                             };
                             if (edgeHash[grid.id]) {
@@ -89,9 +91,9 @@ System.register(['angular2/core', '../services/backend.service', 'd3'], function
                         .attr("x", function (d) { return d.x * 25; })
                         .attr("y", function (d) { return d.y * 25; })
                         .style("fill-opacity", function (d) { return d.weight * .2; });
-                    var scaleSize = this.nodes.length * 25;
+                    var scaleSize = this.pNodes.length * 25;
                     var nameScale = d3.scale.ordinal()
-                        .domain(this.nodes.map(function (el) { return el.id; }))
+                        .domain(this.pNodes.map(function (el) { return el.id; }))
                         .rangePoints([0, scaleSize], 1);
                     var xAxis = d3.svg.axis()
                         .scale(nameScale).orient("top").tickSize(4);
@@ -120,7 +122,7 @@ System.register(['angular2/core', '../services/backend.service', 'd3'], function
                             allNodes.push(new Node(bundle.id, 17, 500));
                             var toCounter = new Map();
                             bundle.wireDescriptor.providedWires.forEach(function (wire) {
-                                var requirerId = wire.requirerBundleId;
+                                var requirerId = wire.rid;
                                 if (toCounter.has(requirerId)) {
                                     var old = toCounter.get(requirerId);
                                     toCounter.set(requirerId, old + 1);
@@ -130,7 +132,7 @@ System.register(['angular2/core', '../services/backend.service', 'd3'], function
                                 }
                                 toCounter.forEach(function (value, index, map) {
                                     if (index != "0") {
-                                        console.log(bundle.id + ": " + index + "/" + value);
+                                        // console.log(bundle.id + ": " + index + "/" + value);
                                         _this.edges.push(new Edge(bundle.id, index, value));
                                     }
                                 });
@@ -138,20 +140,45 @@ System.register(['angular2/core', '../services/backend.service', 'd3'], function
                         });
                         allNodes.forEach(function (node) {
                             if (_this.getEdgeCount(node) > 0) {
-                                _this.nodes.push(node);
+                            }
+                            if (_this.hasRequirements(node)) {
+                                _this.rNodes.push(node);
+                            }
+                            if (_this.hasCapabilities(node)) {
+                                _this.pNodes.push(node);
                             }
                         });
+                        console.log(_this.rNodes);
+                        console.log(_this.pNodes);
                         _this.render();
                     });
+                };
+                AdjacencyDirective.prototype.hasRequirements = function (node) {
+                    for (var _i = 0, _a = this.edges; _i < _a.length; _i++) {
+                        var e = _a[_i];
+                        if (e.target == node.id) {
+                            return true;
+                        }
+                    }
+                    return false;
+                };
+                AdjacencyDirective.prototype.hasCapabilities = function (node) {
+                    for (var _i = 0, _a = this.edges; _i < _a.length; _i++) {
+                        var e = _a[_i];
+                        if (e.source == node.id) {
+                            return true;
+                        }
+                    }
+                    return false;
                 };
                 AdjacencyDirective.prototype.getEdgeCount = function (node) {
                     for (var _i = 0, _a = this.edges; _i < _a.length; _i++) {
                         var e = _a[_i];
-                        if (e.target == node.id || e.source == node.id) {
+                        if (e.target == node.id) {
                             return 1;
                         }
                     }
-                    return 0;
+                    return 1;
                 };
                 AdjacencyDirective = __decorate([
                     core_1.Directive({
