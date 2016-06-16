@@ -34,7 +34,7 @@ Include-Resource: libs=libs
     libs/gson-2.6.2.jar;version=file,\
     libs/joda-time-2.9.3.jar;version=file,\
     webconsole.antlr;version='[0.2.0,0.2.1)',\
-    webconsole.client;version='[0.1.4,0.1.5)',\
+    webconsole.client;version='[0.1.9,0.1.10)',\
     ${osgi},\
     ${testlibs},\
     ${fasterxml},\

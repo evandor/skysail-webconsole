@@ -9,12 +9,12 @@ import lombok.ToString;
 @Getter
 public class WireSnapshot {
 
-    private long providerBundleId;
-    private long requirerBundleId;
+    private long pId; // provider bundle Id, abbreviated to make serialization smaller
+    private long rId; // requirer bundle Id
 
     public WireSnapshot(BundleWire wire) {
-        providerBundleId = wire.getProvider().getBundle().getBundleId();
-        requirerBundleId = wire.getRequirer().getBundle().getBundleId();
+        pId = wire.getProvider().getBundle().getBundleId();
+        rId = wire.getRequirer().getBundle().getBundleId();
     }
 
 }
