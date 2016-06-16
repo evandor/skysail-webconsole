@@ -53,18 +53,6 @@ System.register(['angular2/core', '../services/backend.service', 'd3'], function
                     this.nodes = Array();
                 }
                 AdjacencyDirective.prototype.render = function () {
-                    console.log("rendering");
-                    /*d3.select("svg")
-                        .append("line")
-                        .attr("x1", 20)
-                        .attr("y1", 20)
-                        .attr("x2", 400)
-                        .attr("y2", 400)
-                        .style("stroke", "black")
-                        .style("stroke-width", "2px");*/
-                    this.edges.push(new Edge('0', '1', 1));
-                    this.edges.push(new Edge('0', '2', 5));
-                    this.edges.push(new Edge('1', '2', 1));
                     var edgeHash = {};
                     for (var x in this.edges) {
                         var id = this.edges[x].source + "-" + this.edges[x].target;
@@ -137,7 +125,7 @@ System.register(['angular2/core', '../services/backend.service', 'd3'], function
                                     toCounter.set(requirerId, 1);
                                 }
                                 toCounter.forEach(function (value, index, map) {
-                                    console.log(bundle.id + ": " + index + "/" + value);
+                                    //console.log(bundle.id + ": " + index + "/" + value);
                                     _this.edges.push(new Edge(bundle.id, index, value));
                                 });
                             });

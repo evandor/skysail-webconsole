@@ -11,8 +11,8 @@ import lombok.Getter;
 @Getter
 public class WireDescriptorSnapshot {
 
-    private List<Wire> providedWires = new ArrayList<>();
-    private List<Wire> requiredWires = new ArrayList<>();
+    private List<WireSnapshot> providedWires = new ArrayList<>();
+    private List<WireSnapshot> requiredWires = new ArrayList<>();
 
     public WireDescriptorSnapshot(BundleWiring wiring) {
         if (wiring == null) {
@@ -20,13 +20,13 @@ public class WireDescriptorSnapshot {
         }
 
         providedWires = wiring.getProvidedWires(null).stream()
-                .map(wire -> new Wire(wire))
+                .map(wire -> new WireSnapshot(wire))
                 // .sorted((r1,r2) ->
                 // r1.getNamespace().compareTo(r2.getNamespace()))
                 .collect(Collectors.toList());
 
         requiredWires = wiring.getRequiredWires(null).stream()
-                .map(wire -> new Wire(wire))
+                .map(wire -> new WireSnapshot(wire))
                 // .sorted((r1,r2) ->
                 // r1.getNamespace().compareTo(r2.getNamespace()))
                 .collect(Collectors.toList());
