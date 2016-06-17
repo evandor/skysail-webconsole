@@ -84,13 +84,16 @@ export class AdjacencyDirective implements OnInit {
             .attr("y", function (d) { return d.y * 25 })
             .style("fill-opacity", function (d) { return d.weight * .2; })
         var scaleSize = this.pNodes.length * 25;
-        var nameScale = d3.scale.ordinal()
+        var pNameScale = d3.scale.ordinal()
             .domain(this.pNodes.map(function (el) { return el.id }))
             .rangePoints([0, scaleSize], 1);
+        var rNameScale = d3.scale.ordinal()
+            .domain(this.rNodes.map(function (el) { return el.id }))
+            .rangePoints([0, scaleSize], 1);
         var xAxis = d3.svg.axis()
-            .scale(nameScale).orient("top").tickSize(4);
+            .scale(rNameScale).orient("top").tickSize(4);
         var yAxis = d3.svg.axis()
-            .scale(nameScale).orient("left").tickSize(4);
+            .scale(pNameScale).orient("left").tickSize(4);
         d3.select("#adjacencyG").append("g").call(yAxis);
         d3.select("#adjacencyG").append("g").call(xAxis)
             .selectAll("text")

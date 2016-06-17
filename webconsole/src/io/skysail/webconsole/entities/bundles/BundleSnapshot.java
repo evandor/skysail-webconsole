@@ -3,7 +3,7 @@ package io.skysail.webconsole.entities.bundles;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.wiring.BundleWiring;
 
-import io.skysail.webconsole.entities.WireDescriptorSnapshot;
+import io.skysail.webconsole.entities.wires.WireDescriptorSnapshot;
 import lombok.Getter;
 import lombok.Setter;
 

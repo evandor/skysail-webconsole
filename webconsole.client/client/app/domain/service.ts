@@ -5,7 +5,8 @@ export class Service {
     objectClass: string;
     pid: string;
     ranking: number;
-    bundle: Bundle = new Bundle();
+    //bundle: Bundle = new Bundle();
+    bundleId: number;
     properties: Map<string, string>;
     usingBundles: {};
 

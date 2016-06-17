@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 import org.osgi.framework.Constants;
 import org.osgi.framework.ServiceReference;
 
-import io.skysail.webconsole.entities.bundles.BundleDescriptor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,14 +21,14 @@ public class ServiceDescriptor {
 
 	private String ranking;
 
-	private BundleDescriptor bundle;
+	private long bundleId;
 
 	public ServiceDescriptor(ServiceReference<?> ref) {
 		id = Long.toString((Long)ref.getProperty(Constants.SERVICE_ID));
 		objectClass = Arrays.stream((String[])ref.getProperty(Constants.OBJECTCLASS)).collect(Collectors.joining(", "));
 		pid = (String)ref.getProperty(Constants.SERVICE_PID);
 		ranking = ref.getProperty(Constants.SERVICE_RANKING) != null ? ref.getProperty(Constants.SERVICE_RANKING).toString() : "";
-		this.bundle = new BundleDescriptor(ref.getBundle());
+		this.bundleId = ref.getBundle().getBundleId();
 	}
 
 

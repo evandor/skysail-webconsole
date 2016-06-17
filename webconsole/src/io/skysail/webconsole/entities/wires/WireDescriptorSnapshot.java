@@ -1,4 +1,4 @@
-package io.skysail.webconsole.entities;
+package io.skysail.webconsole.entities.wires;
 
 import java.util.ArrayList;
 import java.util.List;

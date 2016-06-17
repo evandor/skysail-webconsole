@@ -3,8 +3,8 @@ package io.skysail.webconsole.services;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import io.skysail.webconsole.entities.SnapshotDescriptor;
-import io.skysail.webconsole.entities.SnapshotDetails;
+import io.skysail.webconsole.entities.snapshots.SnapshotDescriptor;
+import io.skysail.webconsole.entities.snapshots.SnapshotDetails;
 import io.skysail.webconsole.snapshots.Snapshots;
 
 public class SnapshotsService {

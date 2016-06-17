@@ -1,4 +1,4 @@
-package io.skysail.webconsole.entities;
+package io.skysail.webconsole.entities.snapshots;
 
 import io.skysail.webconsole.snapshots.Snapshot;
 import lombok.Getter;

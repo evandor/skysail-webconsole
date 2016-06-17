@@ -1,7 +1,9 @@
-package io.skysail.webconsole.entities;
+package io.skysail.webconsole.entities.wires;
 
 import org.osgi.framework.wiring.BundleWire;
 
+import io.skysail.webconsole.entities.Capability;
+import io.skysail.webconsole.entities.Requirement;
 import lombok.Getter;
 import lombok.ToString;
 

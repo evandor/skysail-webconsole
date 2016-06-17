@@ -35,7 +35,7 @@ public class OsgiService {
     public List<BundleDescriptor> getBundleDescriptors() {
     	return getBundlesRepresentations(b -> new BundleDescriptor(b));
     }
-    
+
 	public List<BundleSnapshot> getBundleSnapshots() {
 		return getBundlesRepresentations(b -> new BundleSnapshot(b))
 				.stream().map(BundleSnapshot.class::cast).collect(Collectors.toList());
@@ -64,7 +64,8 @@ public class OsgiService {
     }
 
 	public List<ServiceDescriptor> getBundleServiceDescriptors(String bundleId) {
-		return getServiceDescriptors().stream().filter(sd -> sd.getBundle().getId().equals(bundleId)).collect(Collectors.toList());
+		Long bundleIdAsLong = Long.parseLong(bundleId);
+        return getServiceDescriptors().stream().filter(sd -> new Long(sd.getBundleId()).equals(bundleIdAsLong)).collect(Collectors.toList());
 	}
 
 
@@ -93,13 +94,13 @@ public class OsgiService {
         }
         return serviceTracker.getService();
     }
-    
+
     private List<BundleDescriptor> getBundlesRepresentations(Function<Bundle,? extends BundleDescriptor> mapper) {
         if (bundleContext == null) {
             log.warn("bundleContext not available");
             return Collections.emptyList();
         }
-        
+
 		return Arrays.stream(bundleContext.getBundles()) // NOSONAR
                 .map(mapper)
                 .sorted((b1, b2) -> Integer.valueOf(b1.getId()).compareTo(Integer.valueOf(b2.getId())))
@@ -107,6 +108,6 @@ public class OsgiService {
 	}
 
 
-	
+
 
 }

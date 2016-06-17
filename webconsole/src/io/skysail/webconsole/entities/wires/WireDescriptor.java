@@ -1,4 +1,4 @@
-package io.skysail.webconsole.entities;
+package io.skysail.webconsole.entities.wires;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,6 +6,8 @@ import java.util.stream.Collectors;
 
 import org.osgi.framework.wiring.BundleWiring;
 
+import io.skysail.webconsole.entities.Capability;
+import io.skysail.webconsole.entities.Requirement;
 import io.skysail.webconsole.ui.Alert;
 import io.skysail.webconsole.ui.Alert.Level;
 import lombok.Getter;

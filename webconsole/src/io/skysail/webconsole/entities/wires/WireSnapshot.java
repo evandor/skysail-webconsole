@@ -1,4 +1,4 @@
-package io.skysail.webconsole.entities;
+package io.skysail.webconsole.entities.wires;
 
 import org.osgi.framework.wiring.BundleWire;
 
