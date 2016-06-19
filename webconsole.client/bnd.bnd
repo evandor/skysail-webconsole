@@ -4,5 +4,5 @@ Bundle-Version: 0.1.10.${tstamp}
 
 Bundle-Description: An OSGi webconsole to inspect a running framework (angularjs client part)
 
-Include-Resource: client=client;recursive:=true;filter:=*.html|*.js|*.json|*.css|*.png|*.jpg|*.woff*
+Include-Resource: client=client/client;recursive:=true;filter:=*.html|*.js|*.json|*.css|*.png|*.jpg|*.woff*
 

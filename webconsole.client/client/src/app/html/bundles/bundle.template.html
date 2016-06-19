@@ -1,0 +1,232 @@
+<h1><span class="glyphicon glyphicon-th-large" aria-hidden="true" style="color: green"></span> Details of Bundle <i>{{bundle.symbolicName}}</i>:</h1>
+
+<div *ngIf="isLoading">loading...</div>
+
+<tabs>
+  <tab [tabTitle]="'Overview'">
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th width='270px;'>Key</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tr>
+        <th><span title="">ID</span></th>
+        <td>{{bundle.id}}</td>
+      </tr>
+      <tr>
+        <th><span title="Manifest header identifying the bundle's symbolic name.">Symbolic Name</span></th>
+        <td>{{bundle.symbolicName}}</td>
+      </tr>
+      <tr>
+        <th><span title="Manifest header identifying the bundle's version.">Version</span></th>
+        <td>{{bundle.version}}</td>
+      </tr>
+      <tr *ngIf="bundle.description">
+        <th>Description</th>
+        <td>{{bundle.description}}</td>
+      </tr>
+      <tr *ngIf="bundle.docUrl">
+        <th><span title="Manifest header identifying the bundle's documentation URL, from which further information about the bundle may be obtained.">DocUrl</span></th>
+        <td>{{bundle.docUrl}}</td>
+      </tr>
+      <tr>
+        <th>Last Modification</th>
+        <td>{{bundle.lastModification | date:'medium'}}</td>
+      </tr>
+      <tr *ngIf="bundle.bundleClasspath">
+        <th>Bundle Classpath</th>
+        <td>{{bundle.bundleClasspath}}</td>
+      </tr>
+      <tr>
+        <th>Location</th>
+        <td class="ellipses">{{bundle.location}}</td>
+      </tr>
+      <tr>
+        <th>Start Level</th>
+        <td>{{bundle.startLevel}}</td>
+      </tr>
+      <tr>
+        <th>State</th>
+        <td [innerHTML]="bundle.state | bundleState"></td>
+      </tr>
+      <tr *ngIf="bundle.vendor">
+        <th>Vendor</th>
+        <td>{{bundle.vendor}}</td>
+      </tr>
+    </table>
+  </tab>
+
+  <tab [tabTitle]="exportedPackagesTitle()">
+    <table class="table">
+      <thead>
+        <tr>
+          <th width='270px;'>Key</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tr>
+        <th><span class="glyphicon glyphicon-log-out" aria-hidden="true" style="color: blue"></span> Exported Packages:</th>
+        <td>
+          <div *ngFor="#pkg of bundle.exportPackage">
+            <span>{{pkg.pkgName}} [{{pkg.version}}]</span><span>{{pkg.mandatory}}</span>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </tab>
+
+  <tab [tabTitle]="importedPackagesTitle()">
+    <table class="table">
+      <thead>
+        <tr>
+          <th width='270px;'>Package</th>
+          <th>Version Range</th>
+          <th>Resolution</th>
+          <th>Satiesfied by (Candidates)</th>
+        </tr>
+      </thead>
+      <tr *ngFor="#pkg of bundle.importPackage">
+        <td [class]="getImportPackageClass(pkg)">
+          <span class="glyphicon glyphicon-log-in" aria-hidden="true" style="color: blue"></span>&nbsp;&nbsp;<b>{{pkg.pkgName}}</b>
+        </td>
+        <td>{{pkg.versionRange}}</td>
+        <td>
+          <div>
+            <span>{{pkg.resolution}}</span>
+          </div>
+        </td>
+        <td> 
+          <div *ngFor="#candidate of pkg.packageResolvingCandidates">
+            <span *ngIf="candidate.exportingBundle.id == bundle.id">self</span>
+            <span *ngIf="candidate.exportingBundle.id != bundle.id">Bundle {{candidate.exportingBundle.id}}: packageVersion {{candidate.version}} </span>
+          </div>
+        </td>        
+      </tr>
+    </table>
+  </tab>
+
+  <tab tabTitle="Capabilities">
+    <span *ngIf="bundle.wireDescriptor?.alerts">
+      <div *ngFor="#alert of bundle.wireDescriptor?.alerts" class="alert alert-{{alert.level}}" role="alert">{{alert.message}}</div>
+    </span>  
+    
+    <table class="table">
+      <thead>
+        <tr>
+          <th width='270px;'>Key</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tr *ngFor="#capability of bundle.wireDescriptor?.capabilities">
+        <th><span class="glyphicon glyphicon-log-out" aria-hidden="true" style="color: blue"></span> {{capability.namespace}}:</th>
+        <td>
+          <div>
+            <div>{{capability.attributes}}</div>
+            <div>{{capability.directives}}</div>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </tab>
+
+  <tab tabTitle="Requirements">
+    <span *ngIf="bundle.wireDescriptor?.alerts">
+      <div *ngFor="#alert of bundle.wireDescriptor?.alerts" class="alert alert-{{alert.level}}" role="alert">{{alert.message}}</div>
+    </span>  
+    <table class="table">
+      <thead>
+        <tr>
+          <th width='270px;'>Key</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tr *ngFor="#requirement of bundle.wireDescriptor?.requirements">
+        <th><span class="glyphicon glyphicon-log-in" aria-hidden="true" style="color: blue"></span> {{requirement.namespace}}:</th>
+        <td>
+          <div>
+            <div>{{requirement.attributes}}</div>
+            <div>{{requirement.directives}}</div>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </tab>
+
+  <tab tabTitle="Wiring">
+    <span *ngIf="bundle.wireDescriptor?.alerts">
+      <div *ngFor="#alert of bundle.wireDescriptor?.alerts" class="alert alert-{{alert.level}}" role="alert">{{alert.message}}</div>
+    </span>  
+    
+    <table class="table">
+      <thead>
+        <tr>
+          <th width='270px;'>Key</th>
+          <th>Providing Bundle</th>
+          <th>Requirement</th>
+          <th>Capability</th>
+        </tr>
+      </thead>
+      <tr *ngFor="#requiredWire of bundle.wireDescriptor?.requiredWires">
+        <th><span class="glyphicon glyphicon-log-out" aria-hidden="true" style="color: blue"></span> Required Wire:</th>
+        <td (click)="onSelectBundle(requiredWire.pid)" style="cursor: pointer; color:#000066;">{{requiredWire.pid}} </td>
+        <td>
+            <div>{{requiredWire.requirement | json}}</div>
+        </td>
+        <td>{{requiredWire.capability | json}}</td>
+      </tr>
+        <tr>
+          <th width='270px;'>Key</th>
+          <th>Requiring Bundle</th>
+          <th>Requirement</th>
+          <th>Capability</th>
+        </tr>
+      <tr *ngFor="#providedWire of bundle.wireDescriptor?.providedWires">
+        <th><span class="glyphicon glyphicon-log-out" aria-hidden="true" style="color: blue"></span> Provided Wire:</th>
+        <td (click)="onSelectBundle(providedWire.rid)" style="cursor: pointer; color:#000066;">{{providedWire.rid}} </td>
+        <td>
+            <div>{{providedWire.requirement | json }}</div>
+        </td>
+        <td>{{providedWire.capability | json}}</td>
+      </tr>
+    </table>
+  </tab>
+
+  <tab [tabTitle]="providedServicesTitle()">
+    <table class="table">
+      <thead>
+        <tr>
+          <th width='70px;'>Service ID</th>
+          <th>Service</th>
+        </tr>
+      </thead>
+      <tr *ngFor="#service of bundle.providedServices">
+        <td>{{service.id}}</td>
+        <td (click)="onSelectService(service)" style="cursor: pointer; color:#000066;">
+          {{service.objectClass}}
+        </td>
+      </tr>
+    </table>
+  </tab>
+
+  <tab tabTitle="Manifest">
+    <table class="table">
+      <thead>
+        <tr>
+          <th width='270px;'>Key</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tr>
+        <th>Manifest Headers</th>
+        <td>
+          <!--<div *ng F or="#value of bundle.manifestHeaders | values"> </div>-->
+          <p *ngFor="#h of bundle.manifestHeaders"><b>{{h.key}}</b>: {{h.value}}</p>
+        </td>
+      </tr>
+    </table>
+  </tab>
+
+</tabs>

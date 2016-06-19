@@ -1,0 +1,92 @@
+<html>
+
+<head>
+  <base href="/" />
+  <title>Skysail Webconsole</title>
+
+  <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css">
+  <!--<link ref="stylesheet" type="text/css" href="/app/css/webconsole.css">-->
+
+  <style>
+    .clickable {
+      cursor: pointer;
+      color: #000066;
+    }
+    
+    .ellipses {
+      overflow: hidden;
+      /*white-space: nowrap;*/
+      text-overflow: ellipsis;
+    }
+    
+    .problem {
+      color: #FF0000;
+    }
+    
+    .chart div {
+      font: 10px sans-serif;
+      background-color: steelblue;
+      text-align: right;
+      padding: 3px;
+      margin: 1px;
+      color: white;
+    }
+    
+    .grid {
+      stroke: black;
+      stroke-width: 1px;
+      fill: red;
+    }
+    
+    .arc {
+      stroke: black;
+      fill: none;
+    }
+    
+    .node {
+      fill: lightgray;
+      stroke: black;
+      stroke-width: 1px;
+    }
+    
+    circle.active {
+      fill: red;
+    }
+    
+    path.active {
+      stroke: red;
+    }
+  </style>
+
+
+    <!-- 1. Load libraries -->
+    <!-- Polyfill(s) for older browsers -->
+    <script src="lib/es6-shim/es6-shim.min.js"></script>
+
+  <!-- IE required polyfills, in this exact order 
+  <script src="node_modules/systemjs/dist/system-polyfills.js"></script>
+  <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>-->
+
+  <script src="lib/zone.js/dist/zone.js"></script>
+  <script src="lib/reflect-metadata/Reflect.js"></script>
+  <script src="lib/systemjs/dist/system.src.js"></script>
+
+<!--  <script src="node_modules/rxjs/bundles/Rx.js"></script>
+  <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+  <script src="node_modules/angular2/bundles/router.dev.js"></script>
+  <script src="node_modules/angular2/bundles/http.dev.js"></script>
+  -->
+
+  <!-- 2. Configure SystemJS -->
+  <script src="systemjs.config.js"></script>
+  <script>
+    System.import('app/boot').catch(function(err){ console.error(err); });
+  </script>
+
+</head>
+
+<body>
+  <my-app></my-app>
+</body>
+
+</html>
