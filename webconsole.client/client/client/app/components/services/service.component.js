@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/common', 'angular2/http', "angular2/router", '../../services/backend.service', '../../domain/keyValue', '../../domain/service', '../../components/tabs', '../../components/tab', '../../pipes/derp.pipe'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/common', '@angular/http', "@angular/router", '../../services/backend.service', '../../domain/keyValue', '../../domain/service', '../../components/tabs', '../../components/tab', '../../pipes/derp.pipe'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -61,7 +61,7 @@ System.register(['angular2/core', 'angular2/common', 'angular2/http', "angular2/
                 };
                 ServiceComponent.prototype.ngOnInit = function () {
                     var _this = this;
-                    var id = this._routeParams.get('id');
+                    var id = this._routeParams.getParam('id');
                     this._backend.getService(id)
                         .subscribe(function (res) {
                         _this.service = res;
@@ -82,7 +82,7 @@ System.register(['angular2/core', 'angular2/common', 'angular2/http', "angular2/
                         providers: [backend_service_1.BackendServices, http_1.HTTP_PROVIDERS],
                         templateUrl: 'app/html/services/service.template.html'
                     }), 
-                    __metadata('design:paramtypes', [router_1.Router, router_1.RouteParams, backend_service_1.BackendServices])
+                    __metadata('design:paramtypes', [router_1.Router, router_1.RouteSegment, backend_service_1.BackendServices])
                 ], ServiceComponent);
                 return ServiceComponent;
             }());
@@ -90,4 +90,5 @@ System.register(['angular2/core', 'angular2/common', 'angular2/http', "angular2/
         }
     }
 });
+
 //# sourceMappingURL=service.component.js.map

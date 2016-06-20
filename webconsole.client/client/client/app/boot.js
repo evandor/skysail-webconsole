@@ -1,14 +1,19 @@
-System.register(['@angular/platform-browser-dynamic', './app.component', '@angular/router', '@angular/http', './services/cookies.service', './services/auth.service', './services/window.service', '@angular/core'], function(exports_1, context_1) {
+/* Avoid: 'error TS2304: Cannot find name <type>' during compilation */
+///<reference path="../../typings/index.d.ts"/>
+System.register(["./app.component", "@angular/platform-browser-dynamic", "@angular/core", "@angular/router", '@angular/http', './services/window.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var platform_browser_dynamic_1, app_component_1, router_1, http_1, cookies_service_1, auth_service_1, window_service_1, core_1;
+    var app_component_1, platform_browser_dynamic_1, core_1, router_1, http_1, window_service_1;
     return {
         setters:[
+            function (app_component_1_1) {
+                app_component_1 = app_component_1_1;
+            },
             function (platform_browser_dynamic_1_1) {
                 platform_browser_dynamic_1 = platform_browser_dynamic_1_1;
             },
-            function (app_component_1_1) {
-                app_component_1 = app_component_1_1;
+            function (core_1_1) {
+                core_1 = core_1_1;
             },
             function (router_1_1) {
                 router_1 = router_1_1;
@@ -16,24 +21,18 @@ System.register(['@angular/platform-browser-dynamic', './app.component', '@angul
             function (http_1_1) {
                 http_1 = http_1_1;
             },
-            function (cookies_service_1_1) {
-                cookies_service_1 = cookies_service_1_1;
-            },
-            function (auth_service_1_1) {
-                auth_service_1 = auth_service_1_1;
-            },
             function (window_service_1_1) {
                 window_service_1 = window_service_1_1;
-            },
-            function (core_1_1) {
-                core_1 = core_1_1;
             }],
         execute: function() {
-            //import 'jquery';
-            //import 'semantic';
-            platform_browser_dynamic_1.bootstrap(app_component_1.AppComponent, [cookies_service_1.CookieService, auth_service_1.AuthService, window_service_1.WindowService, router_1.ROUTER_PROVIDERS, http_1.HTTP_PROVIDERS, core_1.provide(Window, { useValue: window })]);
+            platform_browser_dynamic_1.bootstrap(app_component_1.AppComponent, [
+                router_1.ROUTER_PROVIDERS, http_1.HTTP_PROVIDERS, window_service_1.WindowService,
+                //provide(LocationStrategy, {useClass: HashLocationStrategy}
+                core_1.provide(Window, { useValue: window })
+            ]);
         }
     }
 });
+//bootstrap(AppComponent,[CookieService, AuthService, WindowService, ROUTER_PROVIDERS, HTTP_PROVIDERS, provide(Window, {useValue: window})]); 
 
 //# sourceMappingURL=boot.js.map

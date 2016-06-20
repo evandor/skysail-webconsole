@@ -37,7 +37,7 @@
         <th>Properties</th>
         <td>
             <ul>
-                <li *ngFor="#property of properties"><b>{{property.key}}</b>: {{property.value}}</li>                
+                <li *ngFor="let property of properties"><b>{{property.key}}</b>: {{property.value}}</li>                
             </ul>
         </td>
     </tr>

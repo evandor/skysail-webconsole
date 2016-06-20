@@ -18,10 +18,10 @@ export class Breadcrumbs {
     breadcrumbs: Breadcrumb[];
     
     constructor(private router: Router, private _breadcrumbsService: BreadcrumbsService) {
-        this.router.subscribe(val => {
+        this.router.changes.subscribe(val => {
             _breadcrumbsService.clear();
             _breadcrumbsService.add(new Breadcrumb(['Bundles'], '<span class="glyphicon glyphicon-home" aria-hidden="true"></span>'));
-            if (val.startsWith("bundles")) {
+            /*if (val.startsWith("bundles")) {
                 _breadcrumbsService.add(new Breadcrumb(['Bundles'], 'Bundles'));
             } else if (val.startsWith("services")) {
                 _breadcrumbsService.add(new Breadcrumb(['Services'], 'Services'));
@@ -31,7 +31,8 @@ export class Breadcrumbs {
                 _breadcrumbsService.add(new Breadcrumb(['Logs'], 'Logs'));
             } else {
                 console.log(val);
-            }
+            }*/
+                console.log(val);
             this.breadcrumbs = _breadcrumbsService.getBreadcrumbs();
         });
     }

@@ -55,7 +55,8 @@ gulp.task("libs", () => {
             'rxjs/**',
             'zone.js/dist/**',
             '@angular/**',
-            'bootstrap/dist/**'
+            'bootstrap/dist/**',
+            'd3/**'
         ], {cwd: "node_modules/**"}) /* Glob required here. */
         .pipe(gulp.dest("client/lib"));
 });

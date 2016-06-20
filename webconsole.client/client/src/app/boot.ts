@@ -1,17 +1,18 @@
-import {bootstrap}    from '@angular/platform-browser-dynamic'
-import {AppComponent} from './app.component'
-import {ROUTER_PROVIDERS} from '@angular/router'
-import {HTTP_PROVIDERS} from '@angular/http'
+/* Avoid: 'error TS2304: Cannot find name <type>' during compilation */
+///<reference path="../../typings/index.d.ts"/>
 
-//import {GraphComponent} from './components/graph.component'
-
-import {CookieService} from './services/cookies.service'
-import {AuthService} from './services/auth.service'
+import {AppComponent} from "./app.component";
+import {bootstrap} from "@angular/platform-browser-dynamic";
+import {provide} from "@angular/core";
+import {LocationStrategy, HashLocationStrategy} from "@angular/common";
+import {ROUTER_PROVIDERS} from "@angular/router";
+import {HTTP_PROVIDERS} from '@angular/http';
 import {WindowService} from './services/window.service'
 
-import {provide} from '@angular/core';
+bootstrap(AppComponent, [
+    ROUTER_PROVIDERS,HTTP_PROVIDERS,WindowService,
+    //provide(LocationStrategy, {useClass: HashLocationStrategy}
+    provide(Window, {useValue: window})
+]);
 
-//import 'jquery';
-//import 'semantic';
-
-bootstrap(AppComponent,[CookieService, AuthService, WindowService, ROUTER_PROVIDERS, HTTP_PROVIDERS, provide(Window, {useValue: window})]);
+//bootstrap(AppComponent,[CookieService, AuthService, WindowService, ROUTER_PROVIDERS, HTTP_PROVIDERS, provide(Window, {useValue: window})]);
