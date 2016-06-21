@@ -70,7 +70,7 @@
       <tr>
         <th><span class="glyphicon glyphicon-log-out" aria-hidden="true" style="color: blue"></span> Exported Packages:</th>
         <td>
-          <div *ngFor="#pkg of bundle.exportPackage">
+          <div *ngFor="let pkg of bundle.exportPackage">
             <span>{{pkg.pkgName}} [{{pkg.version}}]</span><span>{{pkg.mandatory}}</span>
           </div>
         </td>
@@ -88,7 +88,7 @@
           <th>Satiesfied by (Candidates)</th>
         </tr>
       </thead>
-      <tr *ngFor="#pkg of bundle.importPackage">
+      <tr *ngFor="let pkg of bundle.importPackage">
         <td [class]="getImportPackageClass(pkg)">
           <span class="glyphicon glyphicon-log-in" aria-hidden="true" style="color: blue"></span>&nbsp;&nbsp;<b>{{pkg.pkgName}}</b>
         </td>
@@ -99,7 +99,7 @@
           </div>
         </td>
         <td> 
-          <div *ngFor="#candidate of pkg.packageResolvingCandidates">
+          <div *ngFor="let candidate of pkg.packageResolvingCandidates">
             <span *ngIf="candidate.exportingBundle.id == bundle.id">self</span>
             <span *ngIf="candidate.exportingBundle.id != bundle.id">Bundle {{candidate.exportingBundle.id}}: packageVersion {{candidate.version}} </span>
           </div>
@@ -110,7 +110,7 @@
 
   <tab tabTitle="Capabilities">
     <span *ngIf="bundle.wireDescriptor?.alerts">
-      <div *ngFor="#alert of bundle.wireDescriptor?.alerts" class="alert alert-{{alert.level}}" role="alert">{{alert.message}}</div>
+      <div *ngFor="let alert of bundle.wireDescriptor?.alerts" class="alert alert-{{alert.level}}" role="alert">{{alert.message}}</div>
     </span>  
     
     <table class="table">
@@ -120,7 +120,7 @@
           <th>Value</th>
         </tr>
       </thead>
-      <tr *ngFor="#capability of bundle.wireDescriptor?.capabilities">
+      <tr *ngFor="let capability of bundle.wireDescriptor?.capabilities">
         <th><span class="glyphicon glyphicon-log-out" aria-hidden="true" style="color: blue"></span> {{capability.namespace}}:</th>
         <td>
           <div>
@@ -134,7 +134,7 @@
 
   <tab tabTitle="Requirements">
     <span *ngIf="bundle.wireDescriptor?.alerts">
-      <div *ngFor="#alert of bundle.wireDescriptor?.alerts" class="alert alert-{{alert.level}}" role="alert">{{alert.message}}</div>
+      <div *ngFor="let alert of bundle.wireDescriptor?.alerts" class="alert alert-{{alert.level}}" role="alert">{{alert.message}}</div>
     </span>  
     <table class="table">
       <thead>
@@ -143,7 +143,7 @@
           <th>Value</th>
         </tr>
       </thead>
-      <tr *ngFor="#requirement of bundle.wireDescriptor?.requirements">
+      <tr *ngFor="let requirement of bundle.wireDescriptor?.requirements">
         <th><span class="glyphicon glyphicon-log-in" aria-hidden="true" style="color: blue"></span> {{requirement.namespace}}:</th>
         <td>
           <div>
@@ -157,7 +157,7 @@
 
   <tab tabTitle="Wiring">
     <span *ngIf="bundle.wireDescriptor?.alerts">
-      <div *ngFor="#alert of bundle.wireDescriptor?.alerts" class="alert alert-{{alert.level}}" role="alert">{{alert.message}}</div>
+      <div *ngFor="let alert of bundle.wireDescriptor?.alerts" class="alert alert-{{alert.level}}" role="alert">{{alert.message}}</div>
     </span>  
     
     <table class="table">
@@ -169,7 +169,7 @@
           <th>Capability</th>
         </tr>
       </thead>
-      <tr *ngFor="#requiredWire of bundle.wireDescriptor?.requiredWires">
+      <tr *ngFor="let requiredWire of bundle.wireDescriptor?.requiredWires">
         <th><span class="glyphicon glyphicon-log-out" aria-hidden="true" style="color: blue"></span> Required Wire:</th>
         <td (click)="onSelectBundle(requiredWire.pid)" style="cursor: pointer; color:#000066;">{{requiredWire.pid}} </td>
         <td>
@@ -183,7 +183,7 @@
           <th>Requirement</th>
           <th>Capability</th>
         </tr>
-      <tr *ngFor="#providedWire of bundle.wireDescriptor?.providedWires">
+      <tr *ngFor="let providedWire of bundle.wireDescriptor?.providedWires">
         <th><span class="glyphicon glyphicon-log-out" aria-hidden="true" style="color: blue"></span> Provided Wire:</th>
         <td (click)="onSelectBundle(providedWire.rid)" style="cursor: pointer; color:#000066;">{{providedWire.rid}} </td>
         <td>
@@ -202,7 +202,7 @@
           <th>Service</th>
         </tr>
       </thead>
-      <tr *ngFor="#service of bundle.providedServices">
+      <tr *ngFor="let service of bundle.providedServices">
         <td>{{service.id}}</td>
         <td (click)="onSelectService(service)" style="cursor: pointer; color:#000066;">
           {{service.objectClass}}
@@ -223,7 +223,7 @@
         <th>Manifest Headers</th>
         <td>
           <!--<div *ng F or="#value of bundle.manifestHeaders | values"> </div>-->
-          <p *ngFor="#h of bundle.manifestHeaders"><b>{{h.key}}</b>: {{h.value}}</p>
+          <p *ngFor="let h of bundle.manifestHeaders"><b>{{h.key}}</b>: {{h.value}}</p>
         </td>
       </tr>
     </table>

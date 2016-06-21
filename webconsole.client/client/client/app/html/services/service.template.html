@@ -53,7 +53,7 @@
         <th>Using Bundles</th>
         <td>
             <ul>
-                <li (click)="onSelect(usingBundle)" style="cursor: pointer; color:#337ab7;" *ngFor="#usingBundle of usingBundles">
+                <li (click)="onSelect(usingBundle)" style="cursor: pointer; color:#337ab7;" *ngFor="let usingBundle of usingBundles">
                     <span class="glyphicon glyphicon-th-large" aria-hidden="true" style="color: green"></span> 
                     {{usingBundle.symbolicName}} [{{usingBundle.version}}] (#{{usingBundle.id}})
                </li>                

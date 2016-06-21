@@ -10,7 +10,7 @@
       <th>Exception</th>
     </tr>
   </thead>
-  <tr *ngFor="#log of logs">
+  <tr *ngFor="let log of logs">
     <td style="width:120px;">{{log.time | date: 'dd MM yyyy hh:mm:ss'}}</td>
     <td>{{log.level}}</td>
     <td>{{log.message | maxLength:25}}</td>

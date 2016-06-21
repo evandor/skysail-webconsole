@@ -12,7 +12,7 @@ import {Tab} from '../../components/tab';
 import {BundleStatePipe} from '../../pipes/bundleState.pipe';
 import {BundlesFilter} from '../../pipes/bundlesFilter.pipe'
 
-//import {PercentBarDirective} from '../../directives/percentBar.d3.directive'
+import {PercentBarDirective} from '../../directives/percentBar.d3.directive'
 import {AdjacencyDirective} from '../../directives/adjacency.directive'
 
 
@@ -20,7 +20,7 @@ declare var jQuery: any;
 
 @Component({
     selector: 'bundles',
-    directives: [FORM_DIRECTIVES, ROUTER_DIRECTIVES, NgFor, NgFormModel, Tabs, Tab, AdjacencyDirective], //PercentBarDirective
+    directives: [FORM_DIRECTIVES, ROUTER_DIRECTIVES, NgFor, NgFormModel, Tabs, Tab, AdjacencyDirective,PercentBarDirective],
     providers: [BackendServices, BreadcrumbsService],
     templateUrl: 'app/html/bundles/bundles.template.html',
     pipes: [BundlesFilter, BundleStatePipe]
@@ -40,8 +40,8 @@ export class BundlesComponent implements OnInit {
     }
 
     onSelect(bundle: Bundle) {
-        this.router.navigate(['Bundle', { id: bundle.id }]);
-        this._breadcrumbService.add(new Breadcrumb(['Bundle'], "hier"));
+        this.router.navigate(['/bundles/' + bundle.id]);
+        this._breadcrumbService.add(new Breadcrumb(['bundle'], "hier"));
     }
 
     ngOnInit() {

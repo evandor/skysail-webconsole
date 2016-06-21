@@ -7,7 +7,7 @@
       <th>#Services</th>
     </tr>
   </thead>
-  <tr *ngFor="#snapshot of snapshots">
+  <tr *ngFor="let snapshot of snapshots">
     <td>{{snapshot.title}}</td>
     <td>{{snapshot.bundleCount}}</td>
     <td>{{snapshot.serviceCount}}</td>

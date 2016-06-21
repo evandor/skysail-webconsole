@@ -11,7 +11,7 @@
       <th>Exporting Bundle</th>
     </tr>
   </thead>
-  <tr *ngFor="#package of packages">
+  <tr *ngFor="let package of packages">
     <td style="max-width:400px;">{{package.pkgName}}</td>
     <td>{{package.version}}</td>
     <td>{{package.mandatory}}</td>

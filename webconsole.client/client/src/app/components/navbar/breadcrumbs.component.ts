@@ -18,21 +18,20 @@ export class Breadcrumbs {
     breadcrumbs: Breadcrumb[];
     
     constructor(private router: Router, private _breadcrumbsService: BreadcrumbsService) {
-        this.router.changes.subscribe(val => {
+        this.router.changes.subscribe(() => {
             _breadcrumbsService.clear();
-            _breadcrumbsService.add(new Breadcrumb(['Bundles'], '<span class="glyphicon glyphicon-home" aria-hidden="true"></span>'));
+            _breadcrumbsService.add(new Breadcrumb(['bundles'], '<span class="glyphicon glyphicon-home" aria-hidden="true"></span>'));
             /*if (val.startsWith("bundles")) {
-                _breadcrumbsService.add(new Breadcrumb(['Bundles'], 'Bundles'));
+                _breadcrumbsService.add(new Breadcrumb(['bundles'], 'Bundles'));
             } else if (val.startsWith("services")) {
-                _breadcrumbsService.add(new Breadcrumb(['Services'], 'Services'));
+                _breadcrumbsService.add(new Breadcrumb(['services'], 'Services'));
             } else if (val.startsWith("packages")) {
-                _breadcrumbsService.add(new Breadcrumb(['Packages'], 'Packages'));
+                _breadcrumbsService.add(new Breadcrumb(['packages'], 'Packages'));
             } else if (val == "logs") {
-                _breadcrumbsService.add(new Breadcrumb(['Logs'], 'Logs'));
+                _breadcrumbsService.add(new Breadcrumb(['logs'], 'Logs'));
             } else {
                 console.log(val);
             }*/
-                console.log(val);
             this.breadcrumbs = _breadcrumbsService.getBreadcrumbs();
         });
     }

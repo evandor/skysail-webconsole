@@ -9,7 +9,7 @@
       <th>Provider</th>
     </tr>
   </thead>
-  <tr *ngFor="#service of services">
+  <tr *ngFor="let service of services">
     <td (click)="onSelect(service)" class="clickable">{{service.id}}</td>
     <td (click)="onSelect(service)" class="clickable">{{service.objectClass}}</td>
     <td style="max-width:200px;">{{service.pid}}</td>

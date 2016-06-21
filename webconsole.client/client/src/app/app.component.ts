@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
-import {Routes, RouterOutletMap} from '@angular/router';
-
+import {ROUTER_DIRECTIVES, Routes, RouterOutletMap} from '@angular/router';
 import {FrameworkComponent} from './components/framework.component';
 import {FooterComponent} from './components/footer.component';
 import {BundlesComponent} from './components/bundles/bundles.component';
@@ -22,25 +21,25 @@ import {Breadcrumbs} from './components/navbar/breadcrumbs.component';
 import {PercentBarDirective} from './directives/percentBar.d3.directive'
 
 @Routes([
-    { path: '/framework', component: FrameworkComponent },
-    { path: '/bundles', component: BundlesComponent },
-    { path: '/bundles/:id', component: BundleComponent },
-    { path: '/services', component: ServicesComponent },
+    { path: '/framework',    component: FrameworkComponent },
+    { path: '/bundles',      component: BundlesComponent },
+    { path: '/bundles/:id',  component: BundleComponent },
+    { path: '/services',     component: ServicesComponent },
     { path: '/services/:id', component: ServiceComponent },
-    { path: '/packages', component: PackagesComponent },
-    { path: '/logs', component: LogsComponent },
+    { path: '/packages',     component: PackagesComponent },
+    { path: '/logs',         component: LogsComponent },
     // { path: '/graph',        as: 'Graph',     component: GraphComponent },
-    /*{ path: '/snapshots', component: SnapshotsComponent },
-    { path: '/help', component: HelpComponent }*/
+    { path: '/snapshots',    component: SnapshotsComponent },
+    { path: '/help',         component: HelpComponent }
 ])
 @Component({
     selector: 'my-app',
     templateUrl: 'app/html/app.template.html',
-    directives: [FooterComponent, Navbar, Breadcrumbs] //, RouterOutletMap, BarGraph, TimerWebsocketComponent, SMDropdown, D3Directive, PercentBarDirective]
+    directives: [ROUTER_DIRECTIVES, FooterComponent, Navbar, Breadcrumbs,PercentBarDirective] //, RouterOutletMap, BarGraph, TimerWebsocketComponent, SMDropdown, D3Directive]
 })
 export class AppComponent {
 
-    /*name: string = "Ringo";
+    name: string = "Ringo";
     names: string[] = ["John", "Paul", "George", "Ringo"];
 
     graphData: Array<number>;
@@ -49,5 +48,5 @@ export class AppComponent {
     constructor() {
         this.graphData = [10, 20, 30, 40, 60];
         this.data = [4, 8, 15, 16, 23, 42];
-    }*/
+    }
 }
