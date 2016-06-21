@@ -1,4 +1,4 @@
-System.register(["@angular/core", "@angular/router", '@angular/common', '../../services/breadcrumbs.service', '../navbar/breadcrumb'], function(exports_1, context_1) {
+System.register(["angular2/core", "angular2/router", 'angular2/common', '../../services/breadcrumbs.service', '../navbar/breadcrumb'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -35,21 +35,24 @@ System.register(["@angular/core", "@angular/router", '@angular/common', '../../s
                     var _this = this;
                     this.router = router;
                     this._breadcrumbsService = _breadcrumbsService;
-                    this.router.changes.subscribe(function (val) {
+                    this.router.subscribe(function (val) {
                         _breadcrumbsService.clear();
                         _breadcrumbsService.add(new breadcrumb_1.Breadcrumb(['Bundles'], '<span class="glyphicon glyphicon-home" aria-hidden="true"></span>'));
-                        /*if (val.startsWith("bundles")) {
-                            _breadcrumbsService.add(new Breadcrumb(['Bundles'], 'Bundles'));
-                        } else if (val.startsWith("services")) {
-                            _breadcrumbsService.add(new Breadcrumb(['Services'], 'Services'));
-                        } else if (val.startsWith("packages")) {
-                            _breadcrumbsService.add(new Breadcrumb(['Packages'], 'Packages'));
-                        } else if (val == "logs") {
-                            _breadcrumbsService.add(new Breadcrumb(['Logs'], 'Logs'));
-                        } else {
+                        if (val.startsWith("bundles")) {
+                            _breadcrumbsService.add(new breadcrumb_1.Breadcrumb(['Bundles'], 'Bundles'));
+                        }
+                        else if (val.startsWith("services")) {
+                            _breadcrumbsService.add(new breadcrumb_1.Breadcrumb(['Services'], 'Services'));
+                        }
+                        else if (val.startsWith("packages")) {
+                            _breadcrumbsService.add(new breadcrumb_1.Breadcrumb(['Packages'], 'Packages'));
+                        }
+                        else if (val == "logs") {
+                            _breadcrumbsService.add(new breadcrumb_1.Breadcrumb(['Logs'], 'Logs'));
+                        }
+                        else {
                             console.log(val);
-                        }*/
-                        console.log(val);
+                        }
                         _this.breadcrumbs = _breadcrumbsService.getBreadcrumbs();
                     });
                 }
@@ -68,5 +71,4 @@ System.register(["@angular/core", "@angular/router", '@angular/common', '../../s
         }
     }
 });
-
 //# sourceMappingURL=breadcrumbs.component.js.map

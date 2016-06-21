@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/common', "@angular/router", '@angular/http', '../../services/backend.service', '../../domain/bundle', '../../components/tabs', '../../components/tab', '../../domain/keyValue', '../../pipes/newline.pipe', '../../pipes/values.pipe', '../../pipes/bundleState.pipe'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/common', "angular2/router", 'angular2/http', '../../services/backend.service', '../../domain/bundle', '../../components/tabs', '../../components/tab', '../../domain/keyValue', '../../pipes/newline.pipe', '../../pipes/values.pipe', '../../pipes/bundleState.pipe'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -52,8 +52,8 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '@angula
             }],
         execute: function() {
             BundleComponent = (function () {
-                function BundleComponent(_routeSegment, _backend, _router) {
-                    this._routeSegment = _routeSegment;
+                function BundleComponent(_routeParams, _backend, _router) {
+                    this._routeParams = _routeParams;
                     this._backend = _backend;
                     this._router = _router;
                     this.bundle = new bundle_1.Bundle();
@@ -64,7 +64,7 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '@angula
                 BundleComponent.prototype.ngOnInit = function () {
                     var _this = this;
                     console.log("oninit bundlesservice called!");
-                    var id = this._routeSegment.getParam('id');
+                    var id = this._routeParams.get('id');
                     this._backend.getBundle(id)
                         .subscribe(function (res) {
                         _this.bundle = res;
@@ -133,7 +133,7 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '@angula
                         pipes: [newline_pipe_1.NewlinePipe, values_pipe_1.ValuesPipe, bundleState_pipe_1.BundleStatePipe],
                         templateUrl: 'app/html/bundles/bundle.template.html',
                     }), 
-                    __metadata('design:paramtypes', [router_1.RouteSegment, backend_service_1.BackendServices, router_1.Router])
+                    __metadata('design:paramtypes', [router_1.RouteParams, backend_service_1.BackendServices, router_1.Router])
                 ], BundleComponent);
                 return BundleComponent;
             }());
@@ -141,5 +141,4 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '@angula
         }
     }
 });
-
 //# sourceMappingURL=bundle.component.js.map

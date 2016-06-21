@@ -1,4 +1,4 @@
-System.register(['@angular/core', '../components/navbar/breadcrumb'], function(exports_1, context_1) {
+System.register(['angular2/core', '../components/navbar/breadcrumb'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -46,5 +46,4 @@ System.register(['@angular/core', '../components/navbar/breadcrumb'], function(e
         }
     }
 });
-
 //# sourceMappingURL=breadcrumbs.service.js.map
