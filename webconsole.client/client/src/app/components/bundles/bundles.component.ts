@@ -1,6 +1,6 @@
 import {Component, OnInit, ElementRef} from '@angular/core';
 import {FORM_DIRECTIVES, FormBuilder, NgFor, NgFormModel} from '@angular/common';
-import {ROUTER_DIRECTIVES, RouteSegment, Router} from "@angular/router";
+import {ROUTER_DIRECTIVES, RouteConfig, Router} from "@angular/router-deprecated";
 
 import {BackendServices} from '../../services/backend.service';
 import {BreadcrumbsService} from '../../services/breadcrumbs.service';
@@ -40,7 +40,7 @@ export class BundlesComponent implements OnInit {
     }
 
     onSelect(bundle: Bundle) {
-        this.router.navigate(['/bundles/' + bundle.id]);
+        this.router.navigate(['Bundle', { id: bundle.id }]);
         this._breadcrumbService.add(new Breadcrumb(['bundle'], "hier"));
     }
 

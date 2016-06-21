@@ -1,6 +1,6 @@
 import {Component, OnInit,ElementRef} from '@angular/core';
 import {FORM_DIRECTIVES, FormBuilder, NgFor, NgFormModel} from '@angular/common';
-import {ROUTER_DIRECTIVES, RouteSegment, Router} from "@angular/router";
+import {ROUTER_DIRECTIVES, RouteParams, Router} from "@angular/router-deprecated";
 
 import {BackendServices} from '../../services/backend.service';
 import {Snapshot} from '../../domain/snapshot';

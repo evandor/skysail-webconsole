@@ -10,8 +10,8 @@
     </tr>
   </thead>
   <tr *ngFor="let service of services">
-    <td (click)="onSelect(service)" class="clickable">{{service.id}}</td>
-    <td (click)="onSelect(service)" class="clickable">{{service.objectClass}}</td>
+    <td (click)="onSelect(service.id)" class="clickable">{{service.id}}</td>
+    <td (click)="onSelect(service.id)" class="clickable">{{service.objectClass}}</td>
     <td style="max-width:200px;">{{service.pid}}</td>
     <td>{{service.ranking}}</td>
     <td (click)="onSelectBundle(service.bundle)" class="clickable">{{service.bundle?.symbolicName}} [{{service.bundle?.version}}]</td>

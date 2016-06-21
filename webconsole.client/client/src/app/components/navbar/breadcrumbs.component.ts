@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {ROUTER_DIRECTIVES, Router} from "@angular/router";
+import {ROUTER_DIRECTIVES, Router} from "@angular/router-deprecated";
 import {FORM_DIRECTIVES, FormBuilder, NgFor, NgFormModel} from '@angular/common';
 
 import {BackendServices} from '../../services/backend.service';
@@ -18,9 +18,9 @@ export class Breadcrumbs {
     breadcrumbs: Breadcrumb[];
     
     constructor(private router: Router, private _breadcrumbsService: BreadcrumbsService) {
-        this.router.changes.subscribe(() => {
+        this.router.subscribe(() => {
             _breadcrumbsService.clear();
-            _breadcrumbsService.add(new Breadcrumb(['bundles'], '<span class="glyphicon glyphicon-home" aria-hidden="true"></span>'));
+            _breadcrumbsService.add(new Breadcrumb(['Bundles'], '<span class="glyphicon glyphicon-home" aria-hidden="true"></span>'));
             /*if (val.startsWith("bundles")) {
                 _breadcrumbsService.add(new Breadcrumb(['bundles'], 'Bundles'));
             } else if (val.startsWith("services")) {

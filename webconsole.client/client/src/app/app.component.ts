@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ROUTER_DIRECTIVES, Routes, RouterOutletMap} from '@angular/router';
+import {ROUTER_DIRECTIVES, RouteConfig, RouterOutlet} from '@angular/router-deprecated';
 import {FrameworkComponent} from './components/framework.component';
 import {FooterComponent} from './components/footer.component';
 import {BundlesComponent} from './components/bundles/bundles.component';
@@ -20,17 +20,17 @@ import {Breadcrumbs} from './components/navbar/breadcrumbs.component';
 //import {D3Directive} from './directives/d3.directive'
 import {PercentBarDirective} from './directives/percentBar.d3.directive'
 
-@Routes([
-    { path: '/framework',    component: FrameworkComponent },
-    { path: '/bundles',      component: BundlesComponent },
-    { path: '/bundles/:id',  component: BundleComponent },
-    { path: '/services',     component: ServicesComponent },
-    { path: '/services/:id', component: ServiceComponent },
-    { path: '/packages',     component: PackagesComponent },
-    { path: '/logs',         component: LogsComponent },
-    // { path: '/graph',        as: 'Graph',     component: GraphComponent },
-    { path: '/snapshots',    component: SnapshotsComponent },
-    { path: '/help',         component: HelpComponent }
+@RouteConfig([
+    { path: '/framework',    as: 'Framework', component: FrameworkComponent },
+    { path: '/bundles',      as: 'Bundles',   component: BundlesComponent, useAsDefault: true },
+    { path: '/bundles/:id',  as: 'Bundle',    component: BundleComponent },
+    { path: '/services',     as: 'Services',  component: ServicesComponent },
+    { path: '/services/:id', as: 'Service',   component: ServiceComponent },
+    { path: '/packages',     as: 'Packages',  component: PackagesComponent },
+    { path: '/logs',         as: 'Logs',      component: LogsComponent },
+   // { path: '/graph',        as: 'Graph',     component: GraphComponent },
+    { path: '/snapshots',    as: 'Snapshots', component: SnapshotsComponent },
+    { path: '/help',         as: 'Help',      component: HelpComponent }
 ])
 @Component({
     selector: 'my-app',

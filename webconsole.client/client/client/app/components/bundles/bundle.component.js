@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/common', "@angular/router", '@angular/http', '../../services/backend.service', '../../domain/bundle', '../../components/tabs', '../../components/tab', '../../domain/keyValue', '../../pipes/newline.pipe', '../../pipes/values.pipe', '../../pipes/bundleState.pipe'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/common', "@angular/router-deprecated", '@angular/http', '../../services/backend.service', '../../domain/bundle', '../../components/tabs', '../../components/tab', '../../domain/keyValue', '../../pipes/newline.pipe', '../../pipes/values.pipe', '../../pipes/bundleState.pipe'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '@angula
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, router_1, http_1, backend_service_1, bundle_1, tabs_1, tab_1, keyValue_1, newline_pipe_1, values_pipe_1, bundleState_pipe_1;
+    var core_1, common_1, router_deprecated_1, http_1, backend_service_1, bundle_1, tabs_1, tab_1, keyValue_1, newline_pipe_1, values_pipe_1, bundleState_pipe_1;
     var BundleComponent;
     return {
         setters:[
@@ -20,8 +20,8 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '@angula
             function (common_1_1) {
                 common_1 = common_1_1;
             },
-            function (router_1_1) {
-                router_1 = router_1_1;
+            function (router_deprecated_1_1) {
+                router_deprecated_1 = router_deprecated_1_1;
             },
             function (http_1_1) {
                 http_1 = http_1_1;
@@ -64,7 +64,7 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '@angula
                 BundleComponent.prototype.ngOnInit = function () {
                     var _this = this;
                     console.log("oninit bundlesservice called!");
-                    var id = this._routeSegment.getParam('id');
+                    var id = this._routeSegment.get('id');
                     this._backend.getBundle(id)
                         .subscribe(function (res) {
                         _this.bundle = res;
@@ -133,7 +133,7 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '@angula
                         pipes: [newline_pipe_1.NewlinePipe, values_pipe_1.ValuesPipe, bundleState_pipe_1.BundleStatePipe],
                         templateUrl: 'app/html/bundles/bundle.template.html',
                     }), 
-                    __metadata('design:paramtypes', [router_1.RouteSegment, backend_service_1.BackendServices, router_1.Router])
+                    __metadata('design:paramtypes', [router_deprecated_1.RouteParams, backend_service_1.BackendServices, router_deprecated_1.Router])
                 ], BundleComponent);
                 return BundleComponent;
             }());

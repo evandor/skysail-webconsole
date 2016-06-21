@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core'
-import {ROUTER_DIRECTIVES, Router} from "@angular/router";
+import {ROUTER_DIRECTIVES, Router} from "@angular/router-deprecated";
 
 /*import {Http, Headers, RequestOptions} from '@angular/http'
 import {Observable} from 'rxjs/Observable';

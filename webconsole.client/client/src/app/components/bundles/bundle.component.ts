@@ -1,6 +1,6 @@
 import {Component, OnInit, ElementRef} from '@angular/core';
 import {FORM_DIRECTIVES, FormBuilder, NgFor, NgFormModel} from '@angular/common';
-import {ROUTER_DIRECTIVES, RouteSegment, Router} from "@angular/router";
+import {ROUTER_DIRECTIVES, RouteParams, Router} from "@angular/router-deprecated";
 import {HTTP_PROVIDERS} from '@angular/http';
 
 import {BackendServices} from '../../services/backend.service';
@@ -32,13 +32,13 @@ export class BundleComponent implements OnInit {
 
     isLoading = true;
 
-    constructor(private _routeSegment: RouteSegment, private _backend: BackendServices, private _router: Router) {
+    constructor(private _routeSegment: RouteParams, private _backend: BackendServices, private _router: Router) {
         _backend.setBaseUrl('http://localhost:2002/');
     }
 
     ngOnInit() {
         console.log("oninit bundlesservice called!");
-        let id = this._routeSegment.getParam('id');
+        let id = this._routeSegment.get('id');
 
         this._backend.getBundle(id)
             .subscribe(res => {

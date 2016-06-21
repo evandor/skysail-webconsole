@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/common', "@angular/router", '../../services/backend.service'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/common', "@angular/router-deprecated", '../../services/backend.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '../../s
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, router_1, backend_service_1;
+    var core_1, common_1, router_deprecated_1, backend_service_1;
     var SnapshotsComponent;
     return {
         setters:[
@@ -20,8 +20,8 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '../../s
             function (common_1_1) {
                 common_1 = common_1_1;
             },
-            function (router_1_1) {
-                router_1 = router_1_1;
+            function (router_deprecated_1_1) {
+                router_deprecated_1 = router_deprecated_1_1;
             },
             function (backend_service_1_1) {
                 backend_service_1 = backend_service_1_1;
@@ -41,11 +41,11 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '../../s
                 SnapshotsComponent = __decorate([
                     core_1.Component({
                         selector: 'bundles',
-                        directives: [common_1.FORM_DIRECTIVES, router_1.ROUTER_DIRECTIVES, common_1.NgFor, common_1.NgFormModel],
+                        directives: [common_1.FORM_DIRECTIVES, router_deprecated_1.ROUTER_DIRECTIVES, common_1.NgFor, common_1.NgFormModel],
                         providers: [backend_service_1.BackendServices],
                         templateUrl: 'app/html/snapshots.template.html'
                     }), 
-                    __metadata('design:paramtypes', [router_1.Router, backend_service_1.BackendServices])
+                    __metadata('design:paramtypes', [router_deprecated_1.Router, backend_service_1.BackendServices])
                 ], SnapshotsComponent);
                 return SnapshotsComponent;
             }());

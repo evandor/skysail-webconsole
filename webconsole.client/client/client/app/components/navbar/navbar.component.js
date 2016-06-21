@@ -1,4 +1,4 @@
-System.register(["@angular/core", "@angular/router", '../../services/backend.service'], function(exports_1, context_1) {
+System.register(["@angular/core", "@angular/router-deprecated", '../../services/backend.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,15 +10,15 @@ System.register(["@angular/core", "@angular/router", '../../services/backend.ser
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, backend_service_1;
+    var core_1, router_deprecated_1, backend_service_1;
     var Navbar;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (router_1_1) {
-                router_1 = router_1_1;
+            function (router_deprecated_1_1) {
+                router_deprecated_1 = router_deprecated_1_1;
             },
             function (backend_service_1_1) {
                 backend_service_1 = backend_service_1_1;
@@ -91,12 +91,12 @@ System.register(["@angular/core", "@angular/router", '../../services/backend.ser
                 Navbar = __decorate([
                     core_1.Component({
                         selector: 'navbar',
-                        directives: [router_1.ROUTER_DIRECTIVES],
+                        directives: [router_deprecated_1.ROUTER_DIRECTIVES],
                         providers: [backend_service_1.BackendServices],
                         pipes: [],
                         templateUrl: 'app/html/navbar/navbar.template.html'
                     }), 
-                    __metadata('design:paramtypes', [router_1.Router, backend_service_1.BackendServices])
+                    __metadata('design:paramtypes', [router_deprecated_1.Router, backend_service_1.BackendServices])
                 ], Navbar);
                 return Navbar;
             }());

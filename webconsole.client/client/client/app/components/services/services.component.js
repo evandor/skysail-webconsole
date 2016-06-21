@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/common', '../../services/backend.service', "@angular/router"], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/common', '../../services/backend.service', "@angular/router-deprecated"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/common', '../../services/backend.ser
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, backend_service_1, router_1;
+    var core_1, common_1, backend_service_1, router_deprecated_1;
     var ServicesComponent;
     return {
         setters:[
@@ -23,8 +23,8 @@ System.register(['@angular/core', '@angular/common', '../../services/backend.ser
             function (backend_service_1_1) {
                 backend_service_1 = backend_service_1_1;
             },
-            function (router_1_1) {
-                router_1 = router_1_1;
+            function (router_deprecated_1_1) {
+                router_deprecated_1 = router_deprecated_1_1;
             }],
         execute: function() {
             ServicesComponent = (function () {
@@ -33,8 +33,8 @@ System.register(['@angular/core', '@angular/common', '../../services/backend.ser
                     this._backend = _backend;
                     _backend.setBaseUrl('http://localhost:2002/');
                 }
-                ServicesComponent.prototype.onSelect = function (service) {
-                    this.router.navigate(['Service', { id: service.id }]);
+                ServicesComponent.prototype.onSelect = function (serviceId) {
+                    this.router.navigate(['Service', { id: serviceId }]);
                 };
                 ServicesComponent.prototype.onSelectBundle = function (bundle) {
                     this.router.navigate(['Bundle', { id: bundle.id }]);
@@ -54,7 +54,7 @@ System.register(['@angular/core', '@angular/common', '../../services/backend.ser
                         providers: [backend_service_1.BackendServices],
                         templateUrl: 'app/html/services/services.template.html',
                     }), 
-                    __metadata('design:paramtypes', [router_1.Router, backend_service_1.BackendServices])
+                    __metadata('design:paramtypes', [router_deprecated_1.Router, backend_service_1.BackendServices])
                 ], ServicesComponent);
                 return ServicesComponent;
             }());
