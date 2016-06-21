@@ -1,4 +1,4 @@
-System.register(["angular2/core", "angular2/router", '../../services/backend.service'], function(exports_1, context_1) {
+System.register(["@angular/core", "@angular/router", '../../services/backend.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -26,31 +26,25 @@ System.register(["angular2/core", "angular2/router", '../../services/backend.ser
         execute: function() {
             Navbar = (function () {
                 function Navbar(router, _backend) {
-                    var _this = this;
                     this.router = router;
                     this._backend = _backend;
                     this.currentMenuItem = "Bundles";
                     _backend.setBaseUrl('http://localhost:2002/');
-                    this.router.subscribe(function (val) {
-                        if (val.startsWith("bundles")) {
-                            _this.currentMenuItem = "Bundles";
-                        }
-                        else if (val.startsWith("services")) {
-                            _this.currentMenuItem = "Services";
-                        }
-                        else if (val.startsWith("packages")) {
-                            _this.currentMenuItem = "Packages";
-                        }
-                        else if (val == "logs") {
-                            _this.currentMenuItem = "Logs";
-                        }
-                        else if (val == "help") {
-                            _this.currentMenuItem = "Help";
-                        }
-                        else {
-                            _this.currentMenuItem = "Bundles";
-                        }
-                    });
+                    /* this.router.subscribe(val => {
+                         if (val.startsWith("bundles")) {
+                             this.currentMenuItem = "Bundles";
+                         } else if (val.startsWith("services")) {
+                             this.currentMenuItem = "Services";
+                         } else if (val.startsWith("packages")) {
+                             this.currentMenuItem = "Packages";
+                         } else if (val == "logs") {
+                             this.currentMenuItem = "Logs";
+                         } else if (val == "help") {
+                             this.currentMenuItem = "Help";
+                         } else {
+                             this.currentMenuItem = "Bundles";
+                         }
+                     });*/
                 }
                 Navbar.prototype.getBundlesMenuTitle = function () {
                     var bundlesCount;
@@ -110,4 +104,5 @@ System.register(["angular2/core", "angular2/router", '../../services/backend.ser
         }
     }
 });
+
 //# sourceMappingURL=navbar.component.js.map

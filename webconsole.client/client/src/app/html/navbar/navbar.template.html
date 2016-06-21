@@ -14,11 +14,11 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li [class]="checkActive('Bundles')"><a [routerLink]="['Bundles']" [innerHtml]="getBundlesMenuTitle()"><span class="sr-only">(current)</span></a></li>
-                <li [class]="checkActive('Services')"><a [routerLink]="['Services']">Services <span class="sr-only">(current)</span></a></li>
-                <li [class]="checkActive('Packages')"><a [routerLink]="['Packages']">Packages <span class="sr-only">(current)</span></a></li>
-                <li [class]="checkActive('Logs')"><a [routerLink]="['Logs']">Logs <span class="sr-only">(current)</span></a></li>
-                <li [class]="checkActive('Help')"><a [routerLink]="['Help']">? <span class="sr-only">(current)</span></a></li>
+                <li [class]="checkActive('Bundles')"><a [routerLink]="['bundles']" [innerHtml]="getBundlesMenuTitle()"><span class="sr-only">(current)</span></a></li>
+                <li [class]="checkActive('Services')"><a [routerLink]="['services']">Services <span class="sr-only">(current)</span></a></li>
+                <li [class]="checkActive('Packages')"><a [routerLink]="['packages']">Packages <span class="sr-only">(current)</span></a></li>
+                <li [class]="checkActive('Logs')"><a [routerLink]="['logs']">Logs <span class="sr-only">(current)</span></a></li>
+                <li [class]="checkActive('Help')"><a [routerLink]="['help']">? <span class="sr-only">(current)</span></a></li>
                 <!--<li><a href="#">Link <span class="sr-only">(current)</span></a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>

@@ -18,7 +18,7 @@ export class BreadcrumbsService {
     constructor() {
         console.log("in breadcrumbsservice constructor");
         this.breadcrumbs = [];
-        this.breadcrumbs.push(new Breadcrumb(['Bundles'], '<span class="glyphicon glyphicon-home" aria-hidden="true"></span>'));
+        this.breadcrumbs.push(new Breadcrumb(['bundles'], '<span class="glyphicon glyphicon-home" aria-hidden="true"></span>'));
     }
     
     getBreadcrumbs() : Breadcrumb[] {
