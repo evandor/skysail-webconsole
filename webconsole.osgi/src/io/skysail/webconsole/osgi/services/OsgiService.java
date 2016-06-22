@@ -1,4 +1,4 @@
-package io.skysail.webconsole.services;
+package io.skysail.webconsole.osgi.services;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -12,17 +12,18 @@ import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceReference;
+import org.osgi.service.component.annotations.Component;
 import org.osgi.util.tracker.ServiceTracker;
 
-import io.skysail.webconsole.entities.ServiceDescriptor;
-import io.skysail.webconsole.entities.bundles.BundleDescriptor;
-import io.skysail.webconsole.entities.bundles.BundleDetails;
-import io.skysail.webconsole.entities.bundles.BundleSnapshot;
-import io.skysail.webconsole.entities.packages.ExportPackage;
+import io.skysail.webconsole.osgi.entities.ServiceDescriptor;
+import io.skysail.webconsole.osgi.entities.bundles.BundleDescriptor;
+import io.skysail.webconsole.osgi.entities.bundles.BundleDetails;
+import io.skysail.webconsole.osgi.entities.bundles.BundleSnapshot;
+import io.skysail.webconsole.osgi.entities.packages.ExportPackage;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@Deprecated // use webconsole.osgi OsgiService
+@Component(immediate = true, service = OsgiService.class)
 public class OsgiService {
 
     private final Map<String, ServiceTracker> services = new HashMap<>();

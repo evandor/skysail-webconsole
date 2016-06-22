@@ -28,6 +28,10 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+/**
+ * maximal OSGi bundle representation.
+ *
+ */
 @Getter
 @Setter
 @ToString(callSuper = true)
@@ -47,6 +51,9 @@ public class BundleDetails extends BundleDescriptor {
     private String exportService;
     private WireDescriptor wireDescriptor;
 
+    /**
+     * @param bundle an OSGi bundle
+     */
     public BundleDetails(Bundle bundle) {
         super(bundle);
         this.location = bundle.getLocation();

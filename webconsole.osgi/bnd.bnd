@@ -21,4 +21,5 @@ Private-Package: \
 	io.skysail.webconsole.osgi.entities.packages,\
 	io.skysail.webconsole.osgi.entities.snapshots,\
 	io.skysail.webconsole.osgi.entities.wires,\
-	io.skysail.webconsole.osgi.entities
+	io.skysail.webconsole.osgi.entities,\
+	io.skysail.webconsole.osgi.services

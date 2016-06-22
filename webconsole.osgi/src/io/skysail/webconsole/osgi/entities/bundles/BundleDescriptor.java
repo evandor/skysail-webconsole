@@ -8,6 +8,10 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * A minimal OSGi bundle representation.
+ *
+ */
 @Getter
 @Setter
 @Slf4j
@@ -19,6 +23,11 @@ public class BundleDescriptor {
     private String state;
     private long size;
 
+    /**
+     * Constructor taking an OSGi bundle.
+     *  
+     * @param bundle an OSGi bundle
+     */
     public BundleDescriptor(Bundle bundle) {
         id = Long.toString(bundle.getBundleId());
         symbolicName = bundle.getSymbolicName();
