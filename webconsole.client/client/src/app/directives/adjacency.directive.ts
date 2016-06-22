@@ -145,8 +145,6 @@ export class AdjacencyDirective implements OnInit {
                         this.pNodes.push(node);
                     }
                 })
-                console.log(this.rNodes);
-                console.log(this.pNodes);
                 this.render();
             });
     }

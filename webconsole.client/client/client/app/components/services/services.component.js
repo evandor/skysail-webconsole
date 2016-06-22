@@ -41,7 +41,6 @@ System.register(['@angular/core', '@angular/common', '../../services/backend.ser
                 };
                 ServicesComponent.prototype.ngOnInit = function () {
                     var _this = this;
-                    console.log("oninit services called!");
                     this._backend.getServices()
                         .subscribe(function (res) {
                         _this.services = res;

@@ -1,8 +1,15 @@
 {
   "_args": [
     [
-      "@angular/http@2.0.0-rc.1",
-      "C:\\git\\skysail-webconsole\\webconsole.client\\client"
+      {
+        "name": "@angular/http",
+        "raw": "@angular/http@2.0.0-rc.1",
+        "rawSpec": "2.0.0-rc.1",
+        "scope": "@angular",
+        "spec": "2.0.0-rc.1",
+        "type": "version"
+      },
+      "/Users/carsten/git/skysail-webconsole/webconsole.client/client"
     ]
   ],
   "_from": "@angular/http@2.0.0-rc.1",
@@ -32,11 +39,11 @@
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "http://registry.npmjs.org/@angular/http/-/http-2.0.0-rc.1.tgz",
+  "_resolved": "https://registry.npmjs.org/@angular/http/-/http-2.0.0-rc.1.tgz",
   "_shasum": "9be6485e74f4edbcdc856f04235d9b467fc6cdeb",
   "_shrinkwrap": null,
   "_spec": "@angular/http@2.0.0-rc.1",
-  "_where": "C:\\git\\skysail-webconsole\\webconsole.client\\client",
+  "_where": "/Users/carsten/git/skysail-webconsole/webconsole.client/client",
   "author": {
     "name": "angular"
   },

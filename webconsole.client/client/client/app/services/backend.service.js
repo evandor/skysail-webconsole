@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', '../services/config.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map'], fun
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1;
+    var core_1, http_1, config_service_1;
     var BackendServices;
     return {
         setters:[
@@ -20,17 +20,22 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map'], fun
             function (http_1_1) {
                 http_1 = http_1_1;
             },
-            function (_1) {}],
+            function (_1) {},
+            function (config_service_1_1) {
+                config_service_1 = config_service_1_1;
+            }],
         execute: function() {
             BackendServices = (function () {
-                function BackendServices(_http, _window) {
+                function BackendServices(_http, _window, _config) {
                     this._http = _http;
                     this._window = _window;
+                    this._config = _config;
                     this._baseUrl = '';
                 }
                 BackendServices.prototype.setBaseUrl = function (baseUrl) {
                     var hostname = this._window.location.hostname;
-                    this._baseUrl = "http://" + hostname + ":2002/"; //baseUrl;
+                    this._baseUrl = "http://" + this._config.host + ":" + this._config.port + "/"; //baseUrl;
+                    console.log("base url set to '" + this._baseUrl + "'");
                 };
                 BackendServices.prototype.get = function (path) {
                     var headers = new http_1.Headers();
@@ -87,7 +92,7 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map'], fun
                 };
                 BackendServices = __decorate([
                     core_1.Injectable(), 
-                    __metadata('design:paramtypes', [http_1.Http, Window])
+                    __metadata('design:paramtypes', [http_1.Http, Window, config_service_1.ConfigService])
                 ], BackendServices);
                 return BackendServices;
             }());

@@ -8,9 +8,10 @@ import {LocationStrategy, HashLocationStrategy} from "@angular/common";
 import {ROUTER_PROVIDERS} from "@angular/router-deprecated";
 import {HTTP_PROVIDERS} from '@angular/http';
 import {WindowService} from './services/window.service'
+import {ConfigService} from './services/config.service' 
 
 bootstrap(AppComponent, [
-    ROUTER_PROVIDERS,HTTP_PROVIDERS,WindowService,
+    ROUTER_PROVIDERS,HTTP_PROVIDERS,WindowService,ConfigService,
     //provide(LocationStrategy, {useClass: HashLocationStrategy}
     provide(Window, {useValue: window})
 ]);

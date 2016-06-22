@@ -151,8 +151,6 @@ System.register(['@angular/core', '../services/backend.service', 'd3'], function
                                 _this.pNodes.push(node);
                             }
                         });
-                        console.log(_this.rNodes);
-                        console.log(_this.pNodes);
                         _this.render();
                     });
                 };

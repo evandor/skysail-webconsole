@@ -1,8 +1,15 @@
 {
   "_args": [
     [
-      "@angular/router-deprecated@2.0.0-rc.1",
-      "C:\\git\\skysail-webconsole\\webconsole.client\\client"
+      {
+        "name": "@angular/router-deprecated",
+        "raw": "@angular/router-deprecated@2.0.0-rc.1",
+        "rawSpec": "2.0.0-rc.1",
+        "scope": "@angular",
+        "spec": "2.0.0-rc.1",
+        "type": "version"
+      },
+      "/Users/carsten/git/skysail-webconsole/webconsole.client/client"
     ]
   ],
   "_from": "@angular/router-deprecated@2.0.0-rc.1",
@@ -32,11 +39,11 @@
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "http://registry.npmjs.org/@angular/router-deprecated/-/router-deprecated-2.0.0-rc.1.tgz",
+  "_resolved": "https://registry.npmjs.org/@angular/router-deprecated/-/router-deprecated-2.0.0-rc.1.tgz",
   "_shasum": "d87e0ae97d62a9ecc63279ead33fbbd1476ea572",
   "_shrinkwrap": null,
   "_spec": "@angular/router-deprecated@2.0.0-rc.1",
-  "_where": "C:\\git\\skysail-webconsole\\webconsole.client\\client",
+  "_where": "/Users/carsten/git/skysail-webconsole/webconsole.client/client",
   "author": {
     "name": "angular"
   },

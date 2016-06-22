@@ -50,7 +50,6 @@ System.register(['@angular/core', '@angular/common', '@angular/router-deprecated
                         .subscribe(function (res) {
                         _this.framework = res;
                         _this.isLoading = false;
-                        console.log("Framework: " + _this.framework);
                         //this.bundle.setManifestHeaders(this.objToStrMap(res.manifestHeaders));
                     });
                 };

@@ -63,7 +63,6 @@ System.register(['@angular/core', '@angular/common', "@angular/router-deprecated
                 }
                 BundleComponent.prototype.ngOnInit = function () {
                     var _this = this;
-                    console.log("oninit bundlesservice called!");
                     var id = this._routeSegment.get('id');
                     this._backend.getBundle(id)
                         .subscribe(function (res) {

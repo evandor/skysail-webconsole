@@ -37,7 +37,6 @@ export class BundleComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log("oninit bundlesservice called!");
         let id = this._routeSegment.get('id');
 
         this._backend.getBundle(id)

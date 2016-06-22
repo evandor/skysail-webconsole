@@ -33,7 +33,6 @@ export class ServicesComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log("oninit services called!");
         this._backend.getServices()
             .subscribe(res => {
                 this.services = res;

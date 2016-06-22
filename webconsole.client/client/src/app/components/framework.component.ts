@@ -29,7 +29,6 @@ export class FrameworkComponent implements OnInit {
             .subscribe(res => {
                 this.framework = res;
                 this.isLoading = false;
-                console.log("Framework: " + this.framework);
                 //this.bundle.setManifestHeaders(this.objToStrMap(res.manifestHeaders));
             }
         );
