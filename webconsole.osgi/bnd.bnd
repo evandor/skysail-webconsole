@@ -1,6 +1,6 @@
 Bundle-Name: SKYSAIL :: webconsole :: osgi
 
-Bundle-Version: 0.1.0.${tstamp}
+Bundle-Version: 0.1.1.${tstamp}
 
 Bundle-Description: Core logic of the skysail webconsole project
 
@@ -23,3 +23,7 @@ Private-Package: \
 	io.skysail.webconsole.osgi.entities.wires,\
 	io.skysail.webconsole.osgi.entities,\
 	io.skysail.webconsole.osgi.services
+	
+Export-Package: \
+    io.skysail.webconsole.antlr.*,\
+    org.antlr.v4.runtime.*
