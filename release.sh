@@ -1,5 +1,5 @@
 echo "Bundle: $1"
-VERSION="grep Bundle-Version: $1/bnd.bnd | sed 's/Bundle-Version://' | sed 's/\.\${tstamp}//' | sed -e 's/^[[:space:]]*//'"
+VERSION=`grep Bundle-Version: $1/bnd.bnd | sed 's/Bundle-Version://' | sed 's/\.\${tstamp}//' | sed -e 's/^[[:space:]]*//'`
 echo "Version: $VERSION"
 
 git add -A
