@@ -15,11 +15,11 @@ import org.osgi.framework.ServiceReference;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.util.tracker.ServiceTracker;
 
-import io.skysail.webconsole.osgi.entities.ServiceDescriptor;
 import io.skysail.webconsole.osgi.entities.bundles.BundleDescriptor;
 import io.skysail.webconsole.osgi.entities.bundles.BundleDetails;
 import io.skysail.webconsole.osgi.entities.bundles.BundleSnapshot;
 import io.skysail.webconsole.osgi.entities.packages.ExportPackage;
+import io.skysail.webconsole.osgi.entities.services.ServiceDescriptor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

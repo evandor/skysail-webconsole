@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import io.skysail.webconsole.osgi.entities.bundles.BundleSnapshot;
+import io.skysail.webconsole.osgi.entities.services.ServiceDescriptor;
 import lombok.Getter;
 
 @Getter

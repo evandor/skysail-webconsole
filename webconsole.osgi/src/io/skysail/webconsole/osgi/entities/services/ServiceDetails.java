@@ -1,4 +1,4 @@
-package io.skysail.webconsole.osgi.entities;
+package io.skysail.webconsole.osgi.entities.services;
 
 import java.util.Arrays;
 import java.util.List;

@@ -11,14 +11,13 @@ Bundle-Description: Core logic of the skysail webconsole project
     ${testlibs},\
     ${fasterxml},\
     webconsole.antlr;version='[0.2.2,0.2.3)',\
-    skysail.api;version=latest,\
+    skysail.domain;version=latest,\
     lombok;version=1.16,\
     slf4j.api;version=1.7
     
 Private-Package: \
 	io.skysail.webconsole.osgi.entities.antlr,\
 	io.skysail.webconsole.osgi.entities.bundles,\
-	io.skysail.webconsole.osgi.entities.packages,\
 	io.skysail.webconsole.osgi.entities.snapshots,\
 	io.skysail.webconsole.osgi.entities.wires,\
 	io.skysail.webconsole.osgi.entities
@@ -27,4 +26,6 @@ Export-Package: \
 	io.skysail.webconsole.antlr.*,\
 	org.antlr.v4.runtime.*,\
 	io.skysail.webconsole.osgi.services,\
-	io.skysail.webconsole.osgi.entities.bundles
+	io.skysail.webconsole.osgi.entities.bundles,\
+	io.skysail.webconsole.osgi.entities.services,\
+	io.skysail.webconsole.osgi.entities.packages

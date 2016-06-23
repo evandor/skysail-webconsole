@@ -4,6 +4,7 @@ import java.io.File;
 
 import org.osgi.framework.Bundle;
 
+import io.skysail.domain.Identifiable;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -15,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 @Getter
 @Setter
 @Slf4j
-public class BundleDescriptor { // implements io.skysail.api.Identifiable {
+public class BundleDescriptor implements Identifiable {
 
     private String id;
     private String symbolicName;
@@ -25,7 +26,7 @@ public class BundleDescriptor { // implements io.skysail.api.Identifiable {
 
     /**
      * Constructor taking an OSGi bundle.
-     *  
+     *
      * @param bundle an OSGi bundle
      */
     public BundleDescriptor(Bundle bundle) {
