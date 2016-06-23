@@ -1,6 +1,6 @@
 Bundle-Name: SKYSAIL :: webconsole :: antlr
 
-Bundle-Version: 0.2.2.${tstamp}
+Bundle-Version: 0.2.3.${tstamp}
 
 Include-Resource: libs=libs
 
