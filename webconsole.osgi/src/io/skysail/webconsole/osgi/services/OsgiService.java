@@ -26,6 +26,8 @@ import lombok.extern.slf4j.Slf4j;
 @Component(immediate = true, service = OsgiService.class)
 public class OsgiService {
 
+    private static final String BUNDLE_CONTEXT_NOT_AVAILABLE = "bundleContext not available";
+
     private final Map<String, ServiceTracker> services = new HashMap<>();
 
     private BundleContext bundleContext;
@@ -50,7 +52,7 @@ public class OsgiService {
 
     public List<ServiceDescriptor> getServiceDescriptors() {
         if (bundleContext == null) {
-            log.warn("bundleContext not available");
+            log.warn(BUNDLE_CONTEXT_NOT_AVAILABLE);
             return Collections.emptyList();
         }
         try {
@@ -73,7 +75,7 @@ public class OsgiService {
 
     public List<ExportPackage> getPackageDescriptors() {
         if (bundleContext == null) {
-            log.warn("bundleContext not available");
+            log.warn(BUNDLE_CONTEXT_NOT_AVAILABLE);
             return Collections.emptyList();
         }
         return Arrays.stream(bundleContext.getBundles()) // NOSONAR
@@ -99,7 +101,7 @@ public class OsgiService {
 
     private List<BundleDescriptor> getBundlesRepresentations(Function<Bundle,? extends BundleDescriptor> mapper) {
         if (bundleContext == null) {
-            log.warn("bundleContext not available");
+            log.warn(BUNDLE_CONTEXT_NOT_AVAILABLE);
             return Collections.emptyList();
         }
 

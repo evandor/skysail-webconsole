@@ -24,7 +24,7 @@ public class ImportPackageVisitor extends ImportPackageBaseVisitor<Void> {
 
     @Override
     public Void visitImportPackage(ImportPackageContext ctx) {
-        ctx.importExpr().forEach(e -> visit(e));
+        ctx.importExpr().forEach(this::visit);
         return null;
     }
 
@@ -37,7 +37,7 @@ public class ImportPackageVisitor extends ImportPackageBaseVisitor<Void> {
             importedPackages.add(exportedPackage);
             currentImportedPackages.add(exportedPackage);
         });
-        ctx.parameter().stream().forEach(p -> visit(p));
+        ctx.parameter().stream().forEach(this::visit);
         return null;
     }
 
@@ -70,7 +70,7 @@ public class ImportPackageVisitor extends ImportPackageBaseVisitor<Void> {
     private Resolution parseResolution(String resolutionString) {
         try {
             return Resolution.valueOf(resolutionString.toUpperCase());
-        } catch (Exception e) {
+        } catch (Exception e) { // NOSONAR
             log.warn("could not parse resolution string '{}'", resolutionString);
             return Resolution.MANDATORY;
         }
