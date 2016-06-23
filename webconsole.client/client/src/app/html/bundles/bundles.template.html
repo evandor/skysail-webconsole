@@ -12,7 +12,7 @@
           <th>Size (KB)</th>
         </tr>
       </thead>
-      <!--<tr>
+      <tr>
     <td><input type="text" name="search_id" size="4"/></td>
     <td><input type="text" name="search_name" size="40" [(ngModel)]="searchName"/></td>
     <td><input type="text" name="search_version" size="12"/></td>
@@ -23,7 +23,7 @@
        </select>  
     </td>
     <td>&nbsp;</td>
-  </tr> -->
+  </tr>
       <tr *ngFor="let bundle of bundles">
         <!--bundlesFilter:searchName-->
         <td>{{bundle.id}}</td>
