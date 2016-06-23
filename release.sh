@@ -1,9 +1,11 @@
-echo "Bundle: $1"
-VERSION=`grep Bundle-Version: $1/bnd.bnd | sed 's/Bundle-Version://' | sed 's/\.\${tstamp}//' | sed -e 's/^[[:space:]]*//'`
-echo "Version: $VERSION"
+echo "Running release script"
+echo "=========================="
+echo ""
+echo "BUNDLE: $1"
+echo "VERSION: $2"
 
 git add -A
-git commit -m "new Release ${BUNDLE}-$VERSION"
+git commit -m "new Release $1-$2"
 
-echo "cp cnf/release/$1/$1-$VERSION.jar /home/carsten/tmp/bundles4release"
-cp cnf/release/$1/$1-$VERSION.jar /home/carsten/tmp/bundles4release
+echo "cp cnf/release/$1/$1-$2.jar /home/carsten/tmp/bundles4release"
+cp cnf/release/$1/$1-$2.jar /home/carsten/tmp/bundles4release
