@@ -15,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 @Getter
 @Setter
 @Slf4j
-public class BundleDescriptor {
+public class BundleDescriptor { // implements io.skysail.api.Identifiable {
 
     private String id;
     private String symbolicName;
