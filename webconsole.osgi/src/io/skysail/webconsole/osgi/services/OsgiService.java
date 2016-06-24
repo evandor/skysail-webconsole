@@ -12,7 +12,9 @@ import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceReference;
+import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.util.tracker.ServiceTracker;
 
 import io.skysail.webconsole.osgi.entities.bundles.BundleDescriptor;
@@ -32,8 +34,16 @@ public class OsgiService {
 
     private BundleContext bundleContext;
 
-    public OsgiService(BundleContext bundleContext) {
-        this.bundleContext = bundleContext;
+    @Activate
+    public void activate(BundleContext ctx) {
+        log.debug("activating {}", this.getClass().getName());
+        this.bundleContext = ctx;
+    }
+
+    @Deactivate
+    public void deactivate(BundleContext ctx) {
+        log.debug("deactivating {}", this.getClass().getName());
+        this.bundleContext = null;
     }
 
     public List<BundleDescriptor> getBundleDescriptors() {
