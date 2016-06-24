@@ -14,8 +14,8 @@ import org.junit.rules.ExpectedException;
 import org.mockito.Mockito;
 import org.osgi.framework.Bundle;
 
-import io.skysail.webconsole.entities.bundles.BundleSnapshot;
-import io.skysail.webconsole.services.OsgiService;
+import io.skysail.webconsole.osgi.entities.bundles.BundleSnapshot;
+import io.skysail.webconsole.osgi.services.OsgiService;
 import io.skysail.webconsole.snapshots.Snapshot;
 import io.skysail.webconsole.snapshots.Snapshots;
 import io.skysail.webconsole.test.TestUtils;

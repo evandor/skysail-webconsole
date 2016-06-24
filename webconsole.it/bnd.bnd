@@ -36,7 +36,8 @@ javac.target: 1.8
 # Other runtime dependencies should be added as necessary
 -runbundles: \
     webconsole;version=latest,\
-    webconsole.antlr;version=latest,\
+    webconsole.antlr;version=${webconsole.antlr.version},\
+    webconsole.osgi;version=${webconsole.osgi.version},\
     ${junit},\
     ${mockito},\
     ch.qos.logback.classic;version='[1.0.0,1.0.1)',\

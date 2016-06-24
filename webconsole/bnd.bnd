@@ -10,9 +10,7 @@ Private-Package: \
 	io.skysail.webconsole.entities.wires,\
 	io.skysail.webconsole.entities.snapshots,\
 	io.skysail.webconsole.entities.packages,\
-	io.skysail.webconsole.entities.bundles,\
 	io.skysail.webconsole.ui,\
-	io.skysail.webconsole.entities.antlr,\
 	io.skysail.webconsole.log,\
 	io.skysail.webconsole,\
 	io.skysail.webconsole.services,\
@@ -37,6 +35,7 @@ Include-Resource: libs=libs
     libs/joda-time-2.9.3.jar;version=file,\
     webconsole.antlr;version='[0.2.2,0.2.3)',\
     webconsole.client;version='[0.1.10,0.1.11)',\
+    webconsole.osgi;version=${webconsole.osgi.version},\
     ${osgi},\
     ${testlibs},\
     ${fasterxml},\

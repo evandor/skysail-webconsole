@@ -3,18 +3,18 @@ package io.skysail.webconsole.osgi.services;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import org.osgi.framework.Bundle;
+import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceReference;
-import org.osgi.service.component.annotations.Activate;
-import org.osgi.service.component.annotations.Component;
-import org.osgi.service.component.annotations.Deactivate;
+import org.osgi.framework.ServiceRegistration;
 import org.osgi.util.tracker.ServiceTracker;
 
 import io.skysail.webconsole.osgi.entities.bundles.BundleDescriptor;
@@ -25,8 +25,7 @@ import io.skysail.webconsole.osgi.entities.services.ServiceDescriptor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@Component(immediate = true, service = OsgiService.class)
-public class OsgiService {
+public class OsgiService implements BundleActivator {
 
     private static final String BUNDLE_CONTEXT_NOT_AVAILABLE = "bundleContext not available";
 
@@ -34,30 +33,34 @@ public class OsgiService {
 
     private BundleContext bundleContext;
 
-    @Activate
-    public void activate(BundleContext ctx) {
-        log.debug("activating {}", this.getClass().getName());
-        this.bundleContext = ctx;
+    private ServiceRegistration<OsgiService> registeredService;
+
+    @Override
+    public void start(BundleContext context) throws Exception {
+        log.debug("starting {}", this.getClass().getName());
+        this.bundleContext = context;
+        registeredService = context.registerService(OsgiService.class, this, new Hashtable<>());
     }
 
-    @Deactivate
-    public void deactivate(BundleContext ctx) {
-        log.debug("deactivating {}", this.getClass().getName());
+    @Override
+    public void stop(BundleContext context) throws Exception {
+        log.debug("stopping {}", this.getClass().getName());
         this.bundleContext = null;
+        registeredService = null;
     }
 
     public List<BundleDescriptor> getBundleDescriptors() {
-    	return getBundlesRepresentations(b -> new BundleDescriptor(b));
+        return getBundlesRepresentations(b -> new BundleDescriptor(b));
     }
 
-	public List<BundleSnapshot> getBundleSnapshots() {
-		return getBundlesRepresentations(b -> new BundleSnapshot(b))
-				.stream().map(BundleSnapshot.class::cast).collect(Collectors.toList());
-	}
+    public List<BundleSnapshot> getBundleSnapshots() {
+        return getBundlesRepresentations(b -> new BundleSnapshot(b))
+                .stream().map(BundleSnapshot.class::cast).collect(Collectors.toList());
+    }
 
     public List<BundleDetails> getBundleDetails() {
-    	return getBundlesRepresentations(b -> new BundleDetails(b))
-				.stream().map(BundleDetails.class::cast).collect(Collectors.toList());
+        return getBundlesRepresentations(b -> new BundleDetails(b))
+                .stream().map(BundleDetails.class::cast).collect(Collectors.toList());
     }
 
     public List<ServiceDescriptor> getServiceDescriptors() {
@@ -77,11 +80,11 @@ public class OsgiService {
         return Collections.emptyList();
     }
 
-	public List<ServiceDescriptor> getBundleServiceDescriptors(String bundleId) {
-		Long bundleIdAsLong = Long.parseLong(bundleId);
-        return getServiceDescriptors().stream().filter(sd -> new Long(sd.getBundleId()).equals(bundleIdAsLong)).collect(Collectors.toList());
-	}
-
+    public List<ServiceDescriptor> getBundleServiceDescriptors(String bundleId) {
+        Long bundleIdAsLong = Long.parseLong(bundleId);
+        return getServiceDescriptors().stream().filter(sd -> new Long(sd.getBundleId()).equals(bundleIdAsLong))
+                .collect(Collectors.toList());
+    }
 
     public List<ExportPackage> getPackageDescriptors() {
         if (bundleContext == null) {
@@ -92,7 +95,7 @@ public class OsgiService {
                 .map(b -> new BundleDetails(b))
                 .map(b -> b.getExportPackage())
                 .flatMap(b -> b.stream())
-                .sorted((p1,p2) -> p1.getPkgName().compareTo(p2.getPkgName()))
+                .sorted((p1, p2) -> p1.getPkgName().compareTo(p2.getPkgName()))
                 .collect(Collectors.toList());
     }
 
@@ -109,19 +112,16 @@ public class OsgiService {
         return serviceTracker.getService();
     }
 
-    private List<BundleDescriptor> getBundlesRepresentations(Function<Bundle,? extends BundleDescriptor> mapper) {
+    private List<BundleDescriptor> getBundlesRepresentations(Function<Bundle, ? extends BundleDescriptor> mapper) {
         if (bundleContext == null) {
             log.warn(BUNDLE_CONTEXT_NOT_AVAILABLE);
             return Collections.emptyList();
         }
 
-		return Arrays.stream(bundleContext.getBundles()) // NOSONAR
+        return Arrays.stream(bundleContext.getBundles()) // NOSONAR
                 .map(mapper)
                 .sorted((b1, b2) -> Integer.valueOf(b1.getId()).compareTo(Integer.valueOf(b2.getId())))
                 .collect(Collectors.toList());
-	}
-
-
-
+    }
 
 }

@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-import io.skysail.webconsole.entities.packages.ExportPackage;
+import io.skysail.webconsole.osgi.entities.packages.ExportPackage;
 import io.skysail.webconsole.utils.HeaderUtils;
 
 public class HeaderUtilsTest {

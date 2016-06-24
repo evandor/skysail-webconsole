@@ -7,7 +7,7 @@ import org.osgi.framework.ServiceReference;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import fi.iki.elonen.NanoHTTPD.IHTTPSession;
-import io.skysail.webconsole.entities.ServiceDetails;
+import io.skysail.webconsole.osgi.entities.services.ServiceDetails;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

@@ -15,9 +15,9 @@ import org.osgi.service.packageadmin.PackageAdmin;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import fi.iki.elonen.NanoHTTPD.IHTTPSession;
-import io.skysail.webconsole.entities.bundles.BundleDetails;
-import io.skysail.webconsole.entities.packages.ImportPackage;
-import io.skysail.webconsole.services.OsgiService;
+import io.skysail.webconsole.osgi.entities.bundles.BundleDetails;
+import io.skysail.webconsole.osgi.entities.packages.ImportPackage;
+import io.skysail.webconsole.osgi.services.OsgiService;
 
 public class BundleHandler extends AbstractHttpHandler { // NOSONAR
 

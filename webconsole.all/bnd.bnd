@@ -1,0 +1,64 @@
+Bundle-Name: SKYSAIL :: webconsole :: all
+
+Bundle-Version: 0.1.0.${tstamp}
+
+Bundle-Description: An OSGi webconsole to inspect a running framework
+
+Bundle-Activator: io.skysail.webconsole.AgentActivator
+
+Private-Package: \
+	io.skysail.webconsole.entities.snapshots,\
+	io.skysail.webconsole.entities.packages,\
+	io.skysail.webconsole.ui,\
+	io.skysail.webconsole.entities.antlr,\
+	io.skysail.webconsole.log,\
+	io.skysail.webconsole,\
+	io.skysail.webconsole.services,\
+	io.skysail.webconsole.entities,\
+	io.skysail.webconsole.listener,\
+	io.skysail.webconsole.events,\
+	io.skysail.webconsole.server,\
+	io.skysail.webconsole.server.handler,\
+	io.skysail.webconsole.snapshots,\
+	io.skysail.webconsole.utils
+
+-buildpath: \
+    webconsole;version=latest,\
+    webconsole.antlr;version='[0.2.2,0.2.3)',\
+    webconsole.client;version='[0.1.10,0.1.11)',\
+    webconsole.osgi;version=${webconsole.osgi.version},\
+    ${osgi},\
+    ${testlibs},\
+    ${fasterxml},\
+    lombok;version=1.16,\
+    slf4j.api;version=1.7
+
+Export-Package: \
+    com.fasterxml.jackson.*,\
+    com.google.gson.*,\
+    fi.iki.elonen.*,\
+    org.picocontainer.*,\
+    org.osgi.service.component.*,\
+    org.osgi.util.promise.*,\
+    org.osgi.util.function.*,\
+    org.javers.*,\
+    org.joda.time.*,\
+    io.skysail.webconsole.antlr.*,\
+    org.antlr.v4.runtime.*,\
+    client.*
+
+#    !client.node_modules.*,\
+    
+Import-Package: \
+    !javax.validation.*,\
+    !javax.xml.*,\
+    !javax.inject.*,\
+	!org.codehaus.*,\
+	!org.joda.convert.*,\
+	*
+
+#   !org.joda.*,\
+#    !com.google.gson.*,\
+
+#    !org.picocontainer.*,\
+

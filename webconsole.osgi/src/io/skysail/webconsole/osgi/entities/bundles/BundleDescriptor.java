@@ -12,17 +12,26 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * A minimal OSGi bundle representation.
  *
+ *[
+{
+"id": "0",
+"symbolicName": "",
+"version": "5.2.0",
+"state": "ACTIVE",
+"size": 0
+},
  */
 @Getter
-@Setter
 @Slf4j
 public class BundleDescriptor implements Identifiable {
 
-    private String id;
-    private String symbolicName;
-    private String version;
-    private String state;
-    private long size;
+    @Setter
+    private String id;              // eg "0"
+
+    private String symbolicName;    // eg "org.apache.felix.framework"
+    private String version;         // eg "5.2.0"
+    private String state;           // eg "ACTIVE"
+    private long size;              // eg 3234 (KB)
 
     /**
      * Constructor taking an OSGi bundle.

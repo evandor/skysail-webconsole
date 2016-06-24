@@ -5,8 +5,8 @@ import java.util.List;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import fi.iki.elonen.NanoHTTPD.IHTTPSession;
-import io.skysail.webconsole.entities.ServiceDescriptor;
-import io.skysail.webconsole.services.OsgiService;
+import io.skysail.webconsole.osgi.entities.services.ServiceDescriptor;
+import io.skysail.webconsole.osgi.services.OsgiService;
 
 public class BundleServicesHandler extends AbstractHttpHandler { // NOSONAR
 

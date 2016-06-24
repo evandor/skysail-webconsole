@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import io.skysail.webconsole.entities.snapshots.SnapshotDescriptor;
 import io.skysail.webconsole.entities.snapshots.SnapshotDetails;
+import io.skysail.webconsole.osgi.services.OsgiService;
 import io.skysail.webconsole.snapshots.Snapshots;
 
 public class SnapshotsService {

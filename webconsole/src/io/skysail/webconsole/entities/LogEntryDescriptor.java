@@ -3,7 +3,8 @@ package io.skysail.webconsole.entities;
 import org.osgi.service.log.LogEntry;
 import org.osgi.service.log.LogService;
 
-import io.skysail.webconsole.entities.bundles.BundleDescriptor;
+import io.skysail.webconsole.osgi.entities.bundles.BundleDescriptor;
+import io.skysail.webconsole.osgi.entities.services.ServiceDescriptor;
 import lombok.Getter;
 
 @Getter

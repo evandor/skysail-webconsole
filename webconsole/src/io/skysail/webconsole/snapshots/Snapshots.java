@@ -11,8 +11,8 @@ import org.javers.core.JaversBuilder;
 import org.javers.core.diff.Diff;
 import org.javers.core.diff.changetype.ValueChange;
 
-import io.skysail.webconsole.entities.bundles.BundleSnapshot;
-import io.skysail.webconsole.services.OsgiService;
+import io.skysail.webconsole.osgi.entities.bundles.BundleSnapshot;
+import io.skysail.webconsole.osgi.services.OsgiService;
 import lombok.Getter;
 
 public class Snapshots {

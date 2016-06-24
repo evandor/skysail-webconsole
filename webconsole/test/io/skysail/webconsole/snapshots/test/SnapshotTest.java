@@ -11,9 +11,9 @@ import org.mockito.Mockito;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.ServiceReference;
 
-import io.skysail.webconsole.entities.ServiceDescriptor;
-import io.skysail.webconsole.entities.bundles.BundleSnapshot;
-import io.skysail.webconsole.services.OsgiService;
+import io.skysail.webconsole.osgi.entities.bundles.BundleSnapshot;
+import io.skysail.webconsole.osgi.entities.services.ServiceDescriptor;
+import io.skysail.webconsole.osgi.services.OsgiService;
 import io.skysail.webconsole.snapshots.Snapshot;
 import io.skysail.webconsole.test.TestUtils;
 

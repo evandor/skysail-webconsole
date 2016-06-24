@@ -13,23 +13,20 @@ import lombok.Setter;
 @Setter
 public class ServiceDescriptor {
 
-	private String id;
+    private String id;
+    private String objectClass;
+    private String pid;
+    private String ranking;
+    private long bundleId;
 
-	private String objectClass;
-
-	private String pid;
-
-	private String ranking;
-
-	private long bundleId;
-
-	public ServiceDescriptor(ServiceReference<?> ref) {
-		id = Long.toString((Long)ref.getProperty(Constants.SERVICE_ID));
-		objectClass = Arrays.stream((String[])ref.getProperty(Constants.OBJECTCLASS)).collect(Collectors.joining(", "));
-		pid = (String)ref.getProperty(Constants.SERVICE_PID);
-		ranking = ref.getProperty(Constants.SERVICE_RANKING) != null ? ref.getProperty(Constants.SERVICE_RANKING).toString() : "";
-		this.bundleId = ref.getBundle().getBundleId();
-	}
-
+    public ServiceDescriptor(ServiceReference<?> ref) {
+        id = Long.toString((Long) ref.getProperty(Constants.SERVICE_ID));
+        objectClass = Arrays.stream((String[]) ref.getProperty(Constants.OBJECTCLASS))
+                .collect(Collectors.joining(", "));
+        pid = (String) ref.getProperty(Constants.SERVICE_PID);
+        ranking = ref.getProperty(Constants.SERVICE_RANKING) != null
+                ? ref.getProperty(Constants.SERVICE_RANKING).toString() : "";
+        this.bundleId = ref.getBundle().getBundleId();
+    }
 
 }

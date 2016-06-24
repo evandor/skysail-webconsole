@@ -1,10 +1,8 @@
 Bundle-Name: SKYSAIL :: webconsole :: osgi
 
-Bundle-Version: 0.1.7.${tstamp}
+Bundle-Version: 0.1.8.${tstamp}
 
 Bundle-Description: Core logic of the skysail webconsole project
-
--dsannotations: *
 
 -buildpath: \
     ${osgi},\
@@ -28,4 +26,7 @@ Export-Package: \
 	io.skysail.webconsole.osgi.services,\
 	io.skysail.webconsole.osgi.entities.bundles,\
 	io.skysail.webconsole.osgi.entities.services,\
-	io.skysail.webconsole.osgi.entities.packages
+	io.skysail.webconsole.osgi.entities.packages,\
+	io.skysail.domain
+	
+Bundle-Activator: io.skysail.webconsole.osgi.services.OsgiService

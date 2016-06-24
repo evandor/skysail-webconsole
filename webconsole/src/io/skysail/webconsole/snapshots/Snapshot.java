@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import io.skysail.webconsole.entities.ServiceDescriptor;
-import io.skysail.webconsole.entities.bundles.BundleSnapshot;
-import io.skysail.webconsole.services.OsgiService;
+import io.skysail.webconsole.osgi.entities.bundles.BundleSnapshot;
+import io.skysail.webconsole.osgi.entities.services.ServiceDescriptor;
+import io.skysail.webconsole.osgi.services.OsgiService;
 import lombok.Getter;
 import lombok.NonNull;
 

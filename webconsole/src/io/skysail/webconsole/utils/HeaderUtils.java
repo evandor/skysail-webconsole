@@ -3,7 +3,7 @@ package io.skysail.webconsole.utils;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.skysail.webconsole.entities.packages.ExportPackage;
+import io.skysail.webconsole.osgi.entities.packages.ExportPackage;
 
 public class HeaderUtils {
 

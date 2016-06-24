@@ -25,16 +25,12 @@ import io.skysail.webconsole.osgi.entities.packages.ExportPackage;
 import io.skysail.webconsole.osgi.entities.packages.ImportPackage;
 import io.skysail.webconsole.osgi.entities.wires.WireDescriptor;
 import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 
 /**
  * maximal OSGi bundle representation.
  *
  */
 @Getter
-@Setter
-@ToString(callSuper = true)
 public class BundleDetails extends BundleDescriptor {
 
     private String location;

@@ -28,16 +28,15 @@ import io.skysail.webconsole.server.handler.SnapshotsHandler;
 import io.skysail.webconsole.server.handler.StaticFilesHandler;
 import io.skysail.webconsole.server.handler.VersionHandler;
 import io.skysail.webconsole.services.LogService;
-import io.skysail.webconsole.services.OsgiService;
 import io.skysail.webconsole.services.SnapshotsService;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class Server extends NanoHTTPD {
 
-	private static final String BACKEND_BUNDLES = "/backend/bundles/";
+    private static final String BACKEND_BUNDLES = "/backend/bundles/";
 
-	private static final String WEBCONSOLE_CLIENT = "webconsole.client";
+    private static final String WEBCONSOLE_CLIENT = "webconsole.client";
 
     private AgentBundleListener bundleListener;
     private AgentServiceListener serviceListener;
@@ -62,36 +61,35 @@ public class Server extends NanoHTTPD {
     private BundleListenerHandler bundleListenerHandler;
     private FrameworkListenerHandler frameworkListenerHandler;
 
-	private VersionHandler versionHandler;
+    private VersionHandler versionHandler;
 
-	private OsgiService osgiService;
+    // private OsgiService osgiService;
 
-	private SnapshotsService snapshotsService;
+    private SnapshotsService snapshotsService;
 
-	private LogService logService;
+    private LogService logService;
 
     private ServiceReference<Resolver> resolverReference;
 
-	private BundleServicesHandler bundleServicesHandler;
-
+    private BundleServicesHandler bundleServicesHandler;
 
     public Server(BundleContext bundleContext, ServiceReference<Resolver> resolverReference) throws IOException {
         super(2002);
         this.resolverReference = resolverReference;
         start(NanoHTTPD.SOCKET_READ_TIMEOUT, false);
 
-        osgiService = new OsgiService(bundleContext);
-        snapshotsService = new SnapshotsService(osgiService);
+        // osgiService = new OsgiService(bundleContext);
+        snapshotsService = new SnapshotsService(null);
         logService = new LogService(bundleContext);
 
         bundleListener = new AgentBundleListener(bundleContext);
         serviceListener = new AgentServiceListener(bundleContext);
         frameworkListener = new AgentFrameworkListener(bundleContext);
 
-        bundlesHandler = new BundlesHandler(osgiService);
-        bundleServicesHandler = new BundleServicesHandler(osgiService);
-        servicesHandler = new ServicesHandler(osgiService);
-        packagesHandler = new PackagesHandler(osgiService);
+        bundlesHandler = new BundlesHandler(bundleContext);
+        bundleServicesHandler = new BundleServicesHandler(null);
+        servicesHandler = new ServicesHandler(null);
+        packagesHandler = new PackagesHandler(null);
 
         snapshotsHandler = new SnapshotsHandler(snapshotsService);
         snapshotHandler = new SnapshotHandler(snapshotsService);
@@ -99,7 +97,7 @@ public class Server extends NanoHTTPD {
         logsHandler = new LogsHandler(logService);
         frameworkHandler = new FrameworkHandler(bundleContext);
 
-        bundleHandler = new BundleHandler(bundleContext, osgiService);
+        bundleHandler = new BundleHandler(bundleContext, null);
         serviceHandler = new ServiceHandler(bundleContext);
 
         bundleListenerHandler = new BundleListenerHandler(bundleListener);
@@ -107,34 +105,29 @@ public class Server extends NanoHTTPD {
         frameworkListenerHandler = new FrameworkListenerHandler(frameworkListener);
 
         Bundle clientBundle = Arrays.stream(bundleContext.getBundles())
-				.filter(b -> b.getSymbolicName().equals(WEBCONSOLE_CLIENT)).findFirst().orElse(bundleContext.getBundle());
+                .filter(b -> b.getSymbolicName().equals(WEBCONSOLE_CLIENT)).findFirst()
+                .orElse(bundleContext.getBundle());
 
         log.info("using client bundle '{}' [{}]", clientBundle.getSymbolicName(), clientBundle.getVersion());
 
         versionHandler = new VersionHandler(clientBundle);
         staticFilesHandler = new StaticFilesHandler(clientBundle);
 
-       /* SocketWorker socketWorker = new SocketWorker(8088);
-        socketWorker.start();
-
-        TimerTask timerTask = new TimerTask() {
-
-			@Override
-			public void run() {
-				WebSocket webSocket = socketWorker.getWebSocket();
-				if (webSocket != null) {
-					try {
-						webSocket.send("payload");
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
-				}
-
-			}
-		};
-		Timer timer = new Timer(true);
-        timer.scheduleAtFixedRate(timerTask, 1000, 10*1000);
-        System.out.println(socketWorker);*/
+        /*
+         * SocketWorker socketWorker = new SocketWorker(8088);
+         * socketWorker.start();
+         *
+         * TimerTask timerTask = new TimerTask() {
+         *
+         * @Override public void run() { WebSocket webSocket =
+         * socketWorker.getWebSocket(); if (webSocket != null) { try {
+         * webSocket.send("payload"); } catch (IOException e) {
+         * e.printStackTrace(); } }
+         *
+         * } }; Timer timer = new Timer(true);
+         * timer.scheduleAtFixedRate(timerTask, 1000, 10*1000);
+         * System.out.println(socketWorker);
+         */
 
         snapshotsService.createSnapshot();
     }
@@ -149,7 +142,7 @@ public class Server extends NanoHTTPD {
 
         // --- POSTS ---------------------------------
         if (session.getMethod().equals(Method.POST) && "/backend/snapshots/".equals(session.getUri())) {
-        	return snapshotsHandler.handle(session);
+            return snapshotsHandler.handle(session);
         }
 
         // --- GETS ----------------------------------
@@ -205,14 +198,14 @@ public class Server extends NanoHTTPD {
             return versionHandler.handle(session);
         }
         if (session.getUri().equals("") || session.getUri().equals("/")) {
-            Response res =  newFixedLengthResponse(Response.Status.REDIRECT, NanoHTTPD.MIME_HTML, "");
+            Response res = newFixedLengthResponse(Response.Status.REDIRECT, NanoHTTPD.MIME_HTML, "");
             res.addHeader("Location", "/index.html");
             return res;
         }
         return staticFilesHandler.handle(session);
     }
 
-	public void createSnapshot() {
-		this.snapshotsService.createSnapshot();
-	}
+    public void createSnapshot() {
+        this.snapshotsService.createSnapshot();
+    }
 }

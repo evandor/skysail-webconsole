@@ -2,8 +2,8 @@ package io.skysail.webconsole.entities.snapshots;
 
 import java.util.List;
 
-import io.skysail.webconsole.entities.ServiceDescriptor;
-import io.skysail.webconsole.entities.bundles.BundleSnapshot;
+import io.skysail.webconsole.osgi.entities.bundles.BundleSnapshot;
+import io.skysail.webconsole.osgi.entities.services.ServiceDescriptor;
 import io.skysail.webconsole.snapshots.Snapshot;
 import lombok.Getter;
 

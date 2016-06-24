@@ -15,8 +15,8 @@ import org.osgi.framework.BundleContext;
 import fi.iki.elonen.NanoHTTPD.IHTTPSession;
 import fi.iki.elonen.NanoHTTPD.Method;
 import fi.iki.elonen.NanoHTTPD.Response;
+import io.skysail.webconsole.osgi.services.OsgiService;
 import io.skysail.webconsole.server.handler.BundleHandler;
-import io.skysail.webconsole.services.OsgiService;
 import io.skysail.webconsole.test.TestUtils;
 
 public class BundleHandlerTest {
