@@ -11,7 +11,8 @@
 -runbundles: \
     osgi.core;version=6.0,\
     webconsole;version=latest,\
-    webconsole.antlr;version=latest,\
+    webconsole.antlr;version=${webconsole.antlr.version},\
+    webconsole.osgi;version=${webconsole.osgi.version},\
     org.apache.felix.log;version=latest,\
     ch.qos.logback.classic;version='[1.0.0,1.0.1)',\
     ch.qos.logback.core;version='[1.0.0,1.0.1)',\
