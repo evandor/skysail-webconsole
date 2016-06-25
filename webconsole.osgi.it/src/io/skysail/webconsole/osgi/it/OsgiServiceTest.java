@@ -39,6 +39,6 @@ public class OsgiServiceTest {
     @Test
     public void osgiService_provides_bundleDescriptors() {
         List<BundleDescriptor> bundleDescriptors = osgiService.getBundleDescriptors();
-        assertTrue(bundleDescriptors.size() > 10);
+        assertTrue(bundleDescriptors.size() > 1);
     }
 }
