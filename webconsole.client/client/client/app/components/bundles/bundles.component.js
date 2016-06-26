@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/common', "@angular/router-deprecated", '../../services/backend.service', '../../services/breadcrumbs.service', '../../components/navbar/breadcrumb', '../../components/tabs', '../../components/tab', '../../pipes/bundleState.pipe', '../../pipes/bundlesFilter.pipe', '../../directives/percentBar.d3.directive', '../../directives/adjacency.directive'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/common', "@angular/router", '../../services/backend.service', '../../services/breadcrumbs.service', '../../components/navbar/breadcrumb', '../../components/tabs', '../../components/tab', '../../pipes/bundleState.pipe', '../../pipes/bundlesFilter.pipe', '../../directives/percentBar.d3.directive', '../../directives/adjacency.directive'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/common', "@angular/router-deprecated
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, router_deprecated_1, backend_service_1, breadcrumbs_service_1, breadcrumb_1, tabs_1, tab_1, bundleState_pipe_1, bundlesFilter_pipe_1, percentBar_d3_directive_1, adjacency_directive_1;
+    var core_1, common_1, router_1, backend_service_1, breadcrumbs_service_1, breadcrumb_1, tabs_1, tab_1, bundleState_pipe_1, bundlesFilter_pipe_1, percentBar_d3_directive_1, adjacency_directive_1;
     var BundlesComponent;
     return {
         setters:[
@@ -20,8 +20,8 @@ System.register(['@angular/core', '@angular/common', "@angular/router-deprecated
             function (common_1_1) {
                 common_1 = common_1_1;
             },
-            function (router_deprecated_1_1) {
-                router_deprecated_1 = router_deprecated_1_1;
+            function (router_1_1) {
+                router_1 = router_1_1;
             },
             function (backend_service_1_1) {
                 backend_service_1 = backend_service_1_1;
@@ -58,10 +58,9 @@ System.register(['@angular/core', '@angular/common', "@angular/router-deprecated
                     this._breadcrumbService = _breadcrumbService;
                     this.searchId = "";
                     this.maxSize = 0;
-                    _backend.setBaseUrl('http://localhost:2002/');
                 }
                 BundlesComponent.prototype.onSelect = function (bundle) {
-                    this.router.navigate(['Bundle', { id: bundle.id }]);
+                    this.router.navigate(['/bundles', bundle.id]);
                     this._breadcrumbService.add(new breadcrumb_1.Breadcrumb(['bundle'], "hier"));
                 };
                 BundlesComponent.prototype.ngOnInit = function () {
@@ -85,18 +84,18 @@ System.register(['@angular/core', '@angular/common', "@angular/router-deprecated
                 };
                 BundlesComponent.prototype.setData = function (value, max, size) {
                     this.value = value;
-                    this.max = max;
+                    this.maxSize = max;
                     this.size = size;
                 };
                 BundlesComponent = __decorate([
                     core_1.Component({
                         selector: 'bundles',
-                        directives: [common_1.FORM_DIRECTIVES, router_deprecated_1.ROUTER_DIRECTIVES, common_1.NgFor, common_1.NgFormModel, tabs_1.Tabs, tab_1.Tab, adjacency_directive_1.AdjacencyDirective, percentBar_d3_directive_1.PercentBarDirective],
+                        directives: [common_1.FORM_DIRECTIVES, router_1.ROUTER_DIRECTIVES, common_1.NgFor, common_1.NgFormModel, tabs_1.Tabs, tab_1.Tab, adjacency_directive_1.AdjacencyDirective, percentBar_d3_directive_1.PercentBarDirective],
                         providers: [backend_service_1.BackendServices, breadcrumbs_service_1.BreadcrumbsService],
                         templateUrl: 'app/html/bundles/bundles.template.html',
                         pipes: [bundlesFilter_pipe_1.BundlesFilter, bundleState_pipe_1.BundleStatePipe]
                     }), 
-                    __metadata('design:paramtypes', [router_deprecated_1.Router, backend_service_1.BackendServices, breadcrumbs_service_1.BreadcrumbsService])
+                    __metadata('design:paramtypes', [router_1.Router, backend_service_1.BackendServices, breadcrumbs_service_1.BreadcrumbsService])
                 ], BundlesComponent);
                 return BundlesComponent;
             }());

@@ -33,9 +33,9 @@ public class ImportPackageVisitor extends ImportPackageBaseVisitor<Void> {
         currentImportedPackages = new ArrayList<>();
         List<PackageNameContext> packageNames = ctx.packageNames().packageName();
         packageNames.stream().forEach(pkgName -> {
-            ImportPackage exportedPackage = new ImportPackage(pkgName.getText());
-            importedPackages.add(exportedPackage);
-            currentImportedPackages.add(exportedPackage);
+            ImportPackage importedPackage = new ImportPackage(pkgName.getText());
+            importedPackages.add(importedPackage);
+            currentImportedPackages.add(importedPackage);
         });
         ctx.parameter().stream().forEach(this::visit);
         return null;
@@ -53,7 +53,7 @@ public class ImportPackageVisitor extends ImportPackageBaseVisitor<Void> {
         } else if (ctx.Attribute() != null) {
             String[] attribute = ctx.Attribute().getText().split("=");
             if ("version".equals(attribute[0])) {
-                currentImportedPackages.stream().forEach(cep -> cep.setVersionRange(attribute[1]));
+                currentImportedPackages.stream().forEach(cep -> cep.setVersionRange(attribute[1].replace("\"","")));
             } else if ("specification-version".equals(attribute[0])) {
                     //ignore
             } else if ("bundle-symbolic-name".equals(attribute[0])) {

@@ -3,17 +3,18 @@ package io.skysail.webconsole.services;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import io.skysail.webconsole.entities.snapshots.SnapshotDescriptor;
-import io.skysail.webconsole.entities.snapshots.SnapshotDetails;
-import io.skysail.webconsole.osgi.services.OsgiService;
+import org.osgi.framework.BundleContext;
+
+import io.skysail.webconsole.osgi.entities.snapshots.SnapshotDescriptor;
+import io.skysail.webconsole.osgi.entities.snapshots.SnapshotDetails;
 import io.skysail.webconsole.snapshots.Snapshots;
 
 public class SnapshotsService {
 
     private Snapshots snapshots;
 
-    public SnapshotsService(OsgiService osgiService) {
-        snapshots = new Snapshots(osgiService);
+    public SnapshotsService(BundleContext bundleContext) {
+        snapshots = new Snapshots(bundleContext);
     }
 
     public void createSnapshot() {

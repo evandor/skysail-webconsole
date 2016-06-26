@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/common', '@angular/http', "@angular/router-deprecated", '../../services/backend.service', '../../domain/keyValue', '../../domain/service', '../../components/tabs', '../../components/tab', '../../pipes/derp.pipe'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/common', '@angular/http', "@angular/router", '../../services/backend.service', '../../domain/keyValue', '../../domain/service', '../../components/tabs', '../../components/tab', '../../pipes/derp.pipe'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/common', '@angular/http', "@angular/
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, http_1, router_deprecated_1, backend_service_1, keyValue_1, service_1, tabs_1, tab_1, derp_pipe_1;
+    var core_1, common_1, http_1, router_1, backend_service_1, keyValue_1, service_1, tabs_1, tab_1, derp_pipe_1;
     var ServiceComponent;
     return {
         setters:[
@@ -23,8 +23,8 @@ System.register(['@angular/core', '@angular/common', '@angular/http', "@angular/
             function (http_1_1) {
                 http_1 = http_1_1;
             },
-            function (router_deprecated_1_1) {
-                router_deprecated_1 = router_deprecated_1_1;
+            function (router_1_1) {
+                router_1 = router_1_1;
             },
             function (backend_service_1_1) {
                 backend_service_1 = backend_service_1_1;
@@ -46,22 +46,20 @@ System.register(['@angular/core', '@angular/common', '@angular/http', "@angular/
             }],
         execute: function() {
             ServiceComponent = (function () {
-                function ServiceComponent(router, _routeParams, _backend) {
+                function ServiceComponent(router, _backend) {
                     this.router = router;
-                    this._routeParams = _routeParams;
                     this._backend = _backend;
                     this.isLoading = true;
                     this.service = new service_1.Service();
                     this.properties = [];
                     this.usingBundles = [];
-                    _backend.setBaseUrl('http://localhost:2002/');
                 }
-                ServiceComponent.prototype.onSelect = function (bundle) {
-                    this.router.navigate(['Bundle', { id: bundle.id }]);
+                ServiceComponent.prototype.onSelect = function (bundleId) {
+                    this.router.navigate(['Bundle', { id: bundleId }]);
                 };
                 ServiceComponent.prototype.ngOnInit = function () {
                     var _this = this;
-                    var id = this._routeParams.get('id');
+                    var id = 4; //this._routeParams.get('id');
                     this._backend.getService(id)
                         .subscribe(function (res) {
                         _this.service = res;
@@ -82,7 +80,7 @@ System.register(['@angular/core', '@angular/common', '@angular/http', "@angular/
                         providers: [backend_service_1.BackendServices, http_1.HTTP_PROVIDERS],
                         templateUrl: 'app/html/services/service.template.html'
                     }), 
-                    __metadata('design:paramtypes', [router_deprecated_1.Router, router_deprecated_1.RouteParams, backend_service_1.BackendServices])
+                    __metadata('design:paramtypes', [router_1.Router, backend_service_1.BackendServices])
                 ], ServiceComponent);
                 return ServiceComponent;
             }());

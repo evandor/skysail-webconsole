@@ -3,59 +3,68 @@
     [
       {
         "name": "@angular/router",
-        "raw": "@angular/router@2.0.0-rc.1",
-        "rawSpec": "2.0.0-rc.1",
+        "raw": "@angular/router@3.0.0-alpha.8",
+        "rawSpec": "3.0.0-alpha.8",
         "scope": "@angular",
-        "spec": "2.0.0-rc.1",
+        "spec": "3.0.0-alpha.8",
         "type": "version"
       },
       "/Users/carsten/git/skysail-webconsole/webconsole.client/client"
     ]
   ],
-  "_from": "@angular/router@2.0.0-rc.1",
-  "_id": "@angular/router@2.0.0-rc.1",
+  "_from": "@angular/router@3.0.0-alpha.8",
+  "_id": "@angular/router@3.0.0-alpha.8",
   "_inCache": true,
   "_installable": true,
   "_location": "/@angular/router",
-  "_nodeVersion": "5.4.1",
+  "_nodeVersion": "6.2.2",
   "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/router-2.0.0-rc.1.tgz_1462310744425_0.4073680811561644"
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/router-3.0.0-alpha.8.tgz_1466798746925_0.17696267645806074"
   },
   "_npmUser": {
     "email": "angular-core+npm@google.com",
     "name": "angular"
   },
-  "_npmVersion": "3.8.7",
+  "_npmVersion": "3.9.5",
   "_phantomChildren": {},
   "_requested": {
     "name": "@angular/router",
-    "raw": "@angular/router@2.0.0-rc.1",
-    "rawSpec": "2.0.0-rc.1",
+    "raw": "@angular/router@3.0.0-alpha.8",
+    "rawSpec": "3.0.0-alpha.8",
     "scope": "@angular",
-    "spec": "2.0.0-rc.1",
+    "spec": "3.0.0-alpha.8",
     "type": "version"
   },
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/@angular/router/-/router-2.0.0-rc.1.tgz",
-  "_shasum": "96f3868884e151fe8bac07ac7e1b4ec0ad07db77",
+  "_resolved": "https://registry.npmjs.org/@angular/router/-/router-3.0.0-alpha.8.tgz",
+  "_shasum": "f0992f229c9e8ffdc9308ac4323ecf32d5315e41",
   "_shrinkwrap": null,
-  "_spec": "@angular/router@2.0.0-rc.1",
+  "_spec": "@angular/router@3.0.0-alpha.8",
   "_where": "/Users/carsten/git/skysail-webconsole/webconsole.client/client",
   "author": {
     "name": "angular"
+  },
+  "bugs": {
+    "url": "https://github.com/angular/angular/issues"
   },
   "dependencies": {},
   "description": "",
   "devDependencies": {},
   "directories": {},
   "dist": {
-    "shasum": "96f3868884e151fe8bac07ac7e1b4ec0ad07db77",
-    "tarball": "https://registry.npmjs.org/@angular/router/-/router-2.0.0-rc.1.tgz"
+    "shasum": "f0992f229c9e8ffdc9308ac4323ecf32d5315e41",
+    "tarball": "https://registry.npmjs.org/@angular/router/-/router-3.0.0-alpha.8.tgz"
   },
+  "homepage": "https://github.com/angular/angular#readme",
   "jsnext:main": "esm/index.js",
+  "keywords": [
+    "angular2",
+    "angular",
+    "router"
+  ],
   "license": "MIT",
   "main": "index.js",
   "maintainers": [
@@ -67,12 +76,19 @@
   "name": "@angular/router",
   "optionalDependencies": {},
   "peerDependencies": {
-    "@angular/common": "2.0.0-rc.1",
-    "@angular/core": "2.0.0-rc.1",
-    "@angular/platform-browser": "2.0.0-rc.1"
+    "@angular/common": "^2.0.0-rc.2",
+    "@angular/compiler": "^2.0.0-rc.2",
+    "@angular/core": "^2.0.0-rc.2",
+    "@angular/platform-browser": "^2.0.0-rc.2",
+    "@angular/platform-browser-dynamic": "^2.0.0-rc.2",
+    "rxjs": "5.0.0-beta.6"
   },
   "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/angular/angular.git"
+  },
   "scripts": {},
-  "typins": "index.d.ts",
-  "version": "2.0.0-rc.1"
+  "typings": "index.d.ts",
+  "version": "3.0.0-alpha.8"
 }

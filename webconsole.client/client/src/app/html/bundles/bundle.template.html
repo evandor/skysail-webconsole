@@ -1,4 +1,4 @@
-<h1><span class="glyphicon glyphicon-th-large" aria-hidden="true" style="color: green"></span> Details of Bundle <i>{{bundle.symbolicName}}</i>:</h1>
+<h1><i class="fa fa-th-large" aria-hidden="true" style="color: green"></i> Details of Bundle <i>{{bundle.symbolicName}}</i>:</h1>
 
 <div *ngIf="isLoading">loading...</div>
 
@@ -6,12 +6,6 @@
   <tab [tabTitle]="'Overview'">
 
     <table class="table">
-      <thead>
-        <tr>
-          <th width='270px;'>Key</th>
-          <th>Value</th>
-        </tr>
-      </thead>
       <tr>
         <th><span title="">ID</span></th>
         <td>{{bundle.id}}</td>
@@ -61,12 +55,6 @@
 
   <tab [tabTitle]="exportedPackagesTitle()">
     <table class="table">
-      <thead>
-        <tr>
-          <th width='270px;'>Key</th>
-          <th>Value</th>
-        </tr>
-      </thead>
       <tr>
         <th><span class="glyphicon glyphicon-log-out" aria-hidden="true" style="color: blue"></span> Exported Packages:</th>
         <td>

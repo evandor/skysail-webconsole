@@ -54,24 +54,24 @@
 # JUnit
 junit: org.apache.servicemix.bundles.junit; version=4.12
 
-javac.source:          1.8
-javac.target:          1.8
+javac.source:                1.8
+javac.target:                1.8
 
-copyright:              Copyright (c) twentyeleven.de (2011, ${tstamp;yyyy}). All Rights Reserved.
-copyright.html:         Copyright &copy; twentyeleven.de (2011, ${tstamp;yyyy}). All Rights Reserved.
+copyright:                   Copyright (c) twentyeleven.de (2011, ${tstamp;yyyy}). All Rights Reserved.
+copyright.html:              Copyright &copy; twentyeleven.de (2011, ${tstamp;yyyy}). All Rights Reserved.
 
-webconsole.antlr.version                           '[0.2.3,0.2.4)'
-webconsole.client.version                          '[0.1.11,0.1.12)'
-webconsole.osgi.version                            '[0.1.8,0.1.9)'
+webconsole.antlr.version     '[0.2.3,0.2.4)'
+webconsole.client.version    '[0.1.11,0.1.12)'
+webconsole.osgi.version      '[0.1.9,0.1.10)'
 
 
-osgi.version                                       '[6.0.0,6.0.1)'
-osgi.annotation.version                            '[6.0.1,6.0.2)'
+osgi.version                 '[6.0.0,6.0.1)'
+osgi.annotation.version      '[6.0.1,6.0.2)'
 
-Bundle-Vendor:          graefundpartner http://www.graefundpartner.de
-Bundle-Copyright:       ${copyright}
-Bundle-License:         http://www.opensource.org/licenses/apache2.0.php;\
-                          description="Apache 2.0 Licensed";\
-                          link=LICENSE
+Bundle-Vendor:               graefundpartner http://www.graefundpartner.de
+Bundle-Copyright:            ${copyright}
+Bundle-License:              http://www.opensource.org/licenses/apache2.0.php;\
+                             description="Apache 2.0 Licensed";\
+                             link=LICENSE
 
 -plugin: aQute.lib.deployer.FileRepo;readonly=true;name=Non-OSGi;location=${workspace}/cnf/nonosgi-repo

@@ -1,60 +1,67 @@
-import { Directive, HostListener, HostBinding, Input, Optional } from '@angular/core';
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+import { LocationStrategy } from '@angular/common';
+import { Directive, HostBinding, HostListener, Input } from '@angular/core';
 import { Router } from '../router';
-import { RouteSegment } from '../segments';
-import { isString, isArray, isPresent } from '../facade/lang';
-import { ObservableWrapper } from '../facade/async';
+import { ActivatedRoute } from '../router_state';
 export class RouterLink {
-    constructor(_routeSegment, _router) {
-        this._routeSegment = _routeSegment;
-        this._router = _router;
-        this._commands = [];
-        this.isActive = false;
-        // because auxiliary links take existing primary and auxiliary routes into account,
-        // we need to update the link whenever params or other routes change.
-        this._subscription =
-            ObservableWrapper.subscribe(_router.changes, (_) => { this._updateTargetUrlAndHref(); });
+    /**
+     * @internal
+     */
+    constructor(router, route, locationStrategy) {
+        this.router = router;
+        this.route = route;
+        this.locationStrategy = locationStrategy;
+        this.commands = [];
     }
-    ngOnDestroy() { ObservableWrapper.dispose(this._subscription); }
     set routerLink(data) {
-        if (isArray(data)) {
-            this._commands = data;
+        if (Array.isArray(data)) {
+            this.commands = data;
         }
         else {
-            this._commands = [data];
+            this.commands = [data];
         }
-        this._updateTargetUrlAndHref();
     }
-    onClick() {
-        // If no target, or if target is _self, prevent default browser behavior
-        if (!isString(this.target) || this.target == '_self') {
-            this._router.navigate(this._commands, this._routeSegment);
-            return false;
+    ngOnChanges(changes) { this.updateTargetUrlAndHref(); }
+    onClick(button, ctrlKey, metaKey) {
+        if (button !== 0 || ctrlKey || metaKey) {
+            return true;
         }
-        return true;
+        if (typeof this.target === 'string' && this.target != '_self') {
+            return true;
+        }
+        this.router.navigateByUrl(this.urlTree);
+        return false;
     }
-    _updateTargetUrlAndHref() {
-        let tree = this._router.createUrlTree(this._commands, this._routeSegment);
-        if (isPresent(tree)) {
-            this.href = this._router.serializeUrl(tree);
-            this.isActive = this._router.urlTree.contains(tree);
-        }
-        else {
-            this.isActive = false;
+    updateTargetUrlAndHref() {
+        this.urlTree = this.router.createUrlTree(this.commands, { relativeTo: this.route, queryParams: this.queryParams, fragment: this.fragment });
+        if (this.urlTree) {
+            this.href = this.locationStrategy.prepareExternalUrl(this.router.serializeUrl(this.urlTree));
         }
     }
 }
+/** @nocollapse */
 RouterLink.decorators = [
     { type: Directive, args: [{ selector: '[routerLink]' },] },
 ];
+/** @nocollapse */
 RouterLink.ctorParameters = [
-    { type: RouteSegment, decorators: [{ type: Optional },] },
     { type: Router, },
+    { type: ActivatedRoute, },
+    { type: LocationStrategy, },
 ];
+/** @nocollapse */
 RouterLink.propDecorators = {
     'target': [{ type: Input },],
+    'queryParams': [{ type: Input },],
+    'fragment': [{ type: Input },],
     'href': [{ type: HostBinding },],
-    'isActive': [{ type: HostBinding, args: ['class.router-link-active',] },],
     'routerLink': [{ type: Input },],
-    'onClick': [{ type: HostListener, args: ["click",] },],
+    'onClick': [{ type: HostListener, args: ['click', ['$event.button', '$event.ctrlKey', '$event.metaKey'],] },],
 };
 //# sourceMappingURL=router_link.js.map

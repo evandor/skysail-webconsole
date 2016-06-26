@@ -10,7 +10,9 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 import org.osgi.service.resolver.Resolver;
 
+import io.skysail.webconsole.osgi.services.OsgiService;
 import io.skysail.webconsole.server.Server;
+import io.skysail.webconsole.services.OsgiServiceTracker;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -26,10 +28,13 @@ public class AgentActivator implements BundleActivator {
     private BundleContext context;
     private Server server;
     private ServiceReference<Resolver> resolverReference;
+    private OsgiServiceTracker osgiServiceTracker;
 
     @Override
     public void start(BundleContext context) throws Exception {
         this.context = context;
+        osgiServiceTracker = new OsgiServiceTracker(context, OsgiService.class, null);
+        osgiServiceTracker.open();
         startAgent();
         //server.createSnapshot();
         // openBrowser();
@@ -38,6 +43,7 @@ public class AgentActivator implements BundleActivator {
     @Override
     public void stop(BundleContext context) throws Exception {
         this.context = null;
+        osgiServiceTracker.close();
         try {
             server.stop();
             if (resolverReference != null) {
@@ -57,7 +63,7 @@ public class AgentActivator implements BundleActivator {
 
     private void createServer() { // NOSONAR
         try {
-            server = new io.skysail.webconsole.server.Server(context, resolverReference);
+            server = new io.skysail.webconsole.server.Server(context, osgiServiceTracker);
         } catch (Exception e) {
             log.error(e.getMessage(), e);
         }

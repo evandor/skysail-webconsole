@@ -3,7 +3,7 @@ import {FORM_DIRECTIVES, FormBuilder, NgFor, NgFormModel} from '@angular/common'
 import {BackendServices} from '../../services/backend.service';
 import {Service} from '../../domain/service';
 import {Bundle} from '../../domain/bundle';
-import {ROUTER_DIRECTIVES, RouteParams, Router} from "@angular/router-deprecated";
+import {ROUTER_DIRECTIVES, Router} from "@angular/router";
 
 //import {BundlesService} from '../services/bundles.service';
 
@@ -21,7 +21,6 @@ export class ServicesComponent implements OnInit {
     services: Service[];
 
     constructor(private router: Router, private _backend: BackendServices) {
-        _backend.setBaseUrl('http://localhost:2002/');
     }
     
     onSelect(serviceId: string) {

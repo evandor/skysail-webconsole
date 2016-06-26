@@ -1,6 +1,5 @@
 import {Component, OnInit,ElementRef} from '@angular/core';
 import {FORM_DIRECTIVES, FormBuilder, NgFor, NgFormModel} from '@angular/common';
-import {RouteParams} from '@angular/router-deprecated';
 import {HTTP_PROVIDERS} from '@angular/http';
 
 import {BackendServices} from '../services/backend.service';
@@ -19,8 +18,7 @@ export class FrameworkComponent implements OnInit {
     framework = {};
     isLoading = true;
 
-    constructor(private _routeParams:RouteParams, private _backend: BackendServices) {
-         _backend.setBaseUrl('http://localhost:2002/');
+    constructor( private _backend: BackendServices) {
     }
 
     ngOnInit() {

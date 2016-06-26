@@ -8,6 +8,7 @@ import java.util.Optional;
 
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
+import org.osgi.framework.ServiceReference;
 import org.osgi.framework.VersionRange;
 import org.osgi.service.packageadmin.ExportedPackage;
 import org.osgi.service.packageadmin.PackageAdmin;
@@ -22,11 +23,9 @@ import io.skysail.webconsole.osgi.services.OsgiService;
 public class BundleHandler extends AbstractHttpHandler { // NOSONAR
 
     private BundleContext bundleContext;
-    private OsgiService osgiService;
 
-    public BundleHandler(BundleContext bundleContext, OsgiService osgiService) {
+    public BundleHandler(BundleContext bundleContext) {
         this.bundleContext = bundleContext;
-        this.osgiService = osgiService;
     }
 
     @Override
@@ -34,6 +33,9 @@ public class BundleHandler extends AbstractHttpHandler { // NOSONAR
     public synchronized String getResponse(IHTTPSession session) throws JsonProcessingException {
         String bundleId = session.getUri().substring(session.getUri().lastIndexOf("/") + 1);
         BundleDetails bundleDetails = getBundleDetails(bundleId);
+
+        ServiceReference<OsgiService> serviceReference = bundleContext.getServiceReference(OsgiService.class);
+        OsgiService osgiService = bundleContext.getService(serviceReference);
 
         // to be replaced with wiring API
         PackageAdmin packageAdmin = (PackageAdmin) osgiService.getService(PackageAdmin.class.getName());
@@ -55,7 +57,7 @@ public class BundleHandler extends AbstractHttpHandler { // NOSONAR
                 });
             }
         }
-
+        bundleContext.ungetService(serviceReference);
         return mapper.writeValueAsString(bundleDetails);
     }
 

@@ -1,6 +1,7 @@
 package io.skysail.webconsole.osgi.entities.bundles;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Dictionary;
 import java.util.Enumeration;
@@ -23,6 +24,7 @@ import io.skysail.webconsole.osgi.entities.antlr.ExportPackageVisitor;
 import io.skysail.webconsole.osgi.entities.antlr.ImportPackageVisitor;
 import io.skysail.webconsole.osgi.entities.packages.ExportPackage;
 import io.skysail.webconsole.osgi.entities.packages.ImportPackage;
+import io.skysail.webconsole.osgi.entities.services.ServiceReferenceDescriptor;
 import io.skysail.webconsole.osgi.entities.wires.WireDescriptor;
 import lombok.Getter;
 
@@ -46,6 +48,8 @@ public class BundleDetails extends BundleDescriptor {
     private List<ManifestHeader> manifestHeaders = new ArrayList<>();
     private String exportService;
     private WireDescriptor wireDescriptor;
+    private List<ServiceReferenceDescriptor> registeredServices;
+    private List<ServiceReferenceDescriptor> servicesInUse;
 
     /**
      * @param bundle an OSGi bundle
@@ -69,6 +73,9 @@ public class BundleDetails extends BundleDescriptor {
         }
 
         wireDescriptor = new WireDescriptor(bundle.adapt(BundleWiring.class));
+        this.registeredServices = getRegisteredServices(bundle);
+        this.servicesInUse = getServicesInUse(bundle);
+
     }
 
     private List<ManifestHeader> dump(Dictionary<?, ?> headers) {
@@ -128,5 +135,24 @@ public class BundleDetails extends BundleDescriptor {
         org.antlr.v4.runtime.CharStream input = new org.antlr.v4.runtime.ANTLRInputStream(inputString);
         return new ExportPackageParser(new CommonTokenStream(new ExportPackageLexer(input)));
     }
+
+    private List<ServiceReferenceDescriptor> getServicesInUse(Bundle bundle) {
+        if (bundle.getServicesInUse() == null) {
+            return Collections.emptyList();
+        }
+        return Arrays.stream(bundle.getServicesInUse()) // NOSONAR
+                .map(ref -> new ServiceReferenceDescriptor(ref))
+                .collect(Collectors.toList());
+    }
+
+    private List<ServiceReferenceDescriptor> getRegisteredServices(Bundle bundle) {
+        if (bundle.getRegisteredServices() == null) {
+            return Collections.emptyList();
+        }
+        return Arrays.stream(bundle.getRegisteredServices()) // NOSONAR
+                .map(ref -> new ServiceReferenceDescriptor(ref))
+                .collect(Collectors.toList());
+    }
+
 
 }

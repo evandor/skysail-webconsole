@@ -21,13 +21,13 @@ public class ServiceHandler extends AbstractHttpHandler { // NOSONAR
 
     @Override
     String getResponse(IHTTPSession session) throws JsonProcessingException {
-    	String serviceId = session.getUri().substring(session.getUri().lastIndexOf("/") + 1);
+        String serviceId = session.getUri().substring(session.getUri().lastIndexOf("/") + 1);
         ServiceDetails details = getBundleDetails(serviceId);
         return mapper.writeValueAsString(details);
     }
 
     public ServiceDetails getBundleDetails(String serviceId) {
-    	try {
+        try {
             ServiceReference<?>[] references = bundleContext
                     .getAllServiceReferences(null, "(service.id=" + serviceId + ")");
             if (references == null || references.length == 0) {
@@ -37,6 +37,7 @@ public class ServiceHandler extends AbstractHttpHandler { // NOSONAR
         } catch (InvalidSyntaxException e) {
             log.error(e.getMessage(), e);
         }
-        return null;    }
+        return null;
+    }
 
 }

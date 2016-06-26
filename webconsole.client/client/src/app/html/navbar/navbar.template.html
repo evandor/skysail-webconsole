@@ -1,46 +1,23 @@
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-                aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/"><img src="app/img/skysail.logo.png" height="25px;"></a>
-        </div>
+<nav class="navbar navbar-light bg-faded navbar-fixed-top">
+    <a class="navbar-brand" href="/"><img src="app/img/skysail.logo.png" height="27px;"></a>
 
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li [class]="checkActive('Bundles')"><a [routerLink]="['Bundles']" [innerHtml]="getBundlesMenuTitle()"><span class="sr-only">(current)</span></a></li>
-                <li [class]="checkActive('Services')"><a [routerLink]="['Services']">Services <span class="sr-only">(current)</span></a></li>
-                <li [class]="checkActive('Packages')"><a [routerLink]="['Packages']">Packages <span class="sr-only">(current)</span></a></li>
-                <li [class]="checkActive('Logs')"><a [routerLink]="['Logs']">Logs <span class="sr-only">(current)</span></a></li>
-                <li [class]="checkActive('Help')"><a [routerLink]="['Help']">? <span class="sr-only">(current)</span></a></li>
-                <!--<li><a href="#">Link <span class="sr-only">(current)</span></a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">One more separated link</a></li>
-                    </ul>
-                </li>-->
-            </ul>
-            <!--<form class="navbar-form navbar-left" role="search">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
-                </div>
-                <button type="submit" class="btn btn-default">Submit</button>
-            </form>-->
-            <ul class="nav navbar-nav navbar-right">
-                <li><a [routerLink]="['Snapshots']">Snapshots</a></li>
-                <form (ngSubmit)="onSubmit()" class="navbar-form navbar-left">
-                    <input type="submit" class="btn btn-info" value="Create Snapshot">
-                </form>
-            </ul>
-        </div>
-    </div>
+    <ul class="nav navbar-nav">
+        <li [class]="checkActive('Bundles')"><a class="nav-link" [routerLink]="['/bundles']" [innerHtml]="getBundlesMenuTitle()"></a></li>
+        <li [class]="checkActive('Services')"><a class="nav-link" [routerLink]="['/services']">Services</a></li>
+        <li [class]="checkActive('Packages')"><a class="nav-link" [routerLink]="['/packages']">Packages</a></li>
+        <li [class]="checkActive('Logs')"><a class="nav-link" [routerLink]="['/logs']">Logs</a></li>
+        <li [class]="checkActive('Snapshots')"><a class="nav-link" [routerLink]="['/snapshots']">Snapshots</a></li>
+        <li [class]="checkActive('Help')"><a class="nav-link" [routerLink]="['/help']">?</a></li>
+
+    </ul>
+
+
+        <form (ngSubmit)="onSubmit()" class="form-inline pull-xs-right">
+            <input type="submit" class="btn btn-info" value="Create Snapshot">
+        </form>
+
+ <!--   <form class="form-inline pull-xs-right">
+        <input class="form-control" type="text" placeholder="Search">
+        <button class="btn btn-success-outline" type="submit">Search</button>
+    </form>-->
 </nav>

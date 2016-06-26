@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/common', '@angular/router-deprecated', '@angular/http', '../services/backend.service', '../components/tabs', '../components/tab'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/common', '@angular/http', '../services/backend.service', '../components/tabs', '../components/tab'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/common', '@angular/router-deprecated
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, router_deprecated_1, http_1, backend_service_1, tabs_1, tab_1;
+    var core_1, common_1, http_1, backend_service_1, tabs_1, tab_1;
     var FrameworkComponent;
     return {
         setters:[
@@ -19,9 +19,6 @@ System.register(['@angular/core', '@angular/common', '@angular/router-deprecated
             },
             function (common_1_1) {
                 common_1 = common_1_1;
-            },
-            function (router_deprecated_1_1) {
-                router_deprecated_1 = router_deprecated_1_1;
             },
             function (http_1_1) {
                 http_1 = http_1_1;
@@ -37,12 +34,10 @@ System.register(['@angular/core', '@angular/common', '@angular/router-deprecated
             }],
         execute: function() {
             FrameworkComponent = (function () {
-                function FrameworkComponent(_routeParams, _backend) {
-                    this._routeParams = _routeParams;
+                function FrameworkComponent(_backend) {
                     this._backend = _backend;
                     this.framework = {};
                     this.isLoading = true;
-                    _backend.setBaseUrl('http://localhost:2002/');
                 }
                 FrameworkComponent.prototype.ngOnInit = function () {
                     var _this = this;
@@ -60,7 +55,7 @@ System.register(['@angular/core', '@angular/common', '@angular/router-deprecated
                         providers: [backend_service_1.BackendServices, http_1.HTTP_PROVIDERS],
                         templateUrl: 'app/html/bundles/bundle.template.html'
                     }), 
-                    __metadata('design:paramtypes', [router_deprecated_1.RouteParams, backend_service_1.BackendServices])
+                    __metadata('design:paramtypes', [backend_service_1.BackendServices])
                 ], FrameworkComponent);
                 return FrameworkComponent;
             }());

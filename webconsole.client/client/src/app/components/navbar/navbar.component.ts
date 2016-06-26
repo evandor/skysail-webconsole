@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {ROUTER_DIRECTIVES, Router} from "@angular/router-deprecated";
+import {ROUTER_DIRECTIVES, Router} from "@angular/router";
 import {BackendServices} from '../../services/backend.service';
 
 
@@ -17,10 +17,9 @@ export class Navbar {
     currentMenuItem: string = "Bundles";
 
     constructor(private router: Router, private _backend: BackendServices) {
-        _backend.setBaseUrl('http://localhost:2002/');
-        
-       /* this.router.subscribe(val => {
-            if (val.startsWith("bundles")) {
+ 
+        this.router.events.subscribe(() => {
+            /*if (val.startsWith("bundles")) {
                 this.currentMenuItem = "Bundles";
             } else if (val.startsWith("services")) {
                 this.currentMenuItem = "Services";
@@ -32,8 +31,8 @@ export class Navbar {
                 this.currentMenuItem = "Help";
             } else {
                 this.currentMenuItem = "Bundles";
-            }
-        });*/
+            }*/
+        });
     }
 
     getBundlesMenuTitle() {
@@ -41,12 +40,12 @@ export class Navbar {
         //this._backend.getBundles().subscribe(res => bundlesCount = res.length);
         return "Bundles";//(" + bundlesCount + ")";
     }
-    
+
     checkActive(menuItem: string) {
         if (menuItem == this.currentMenuItem) {
-            return "active";
+            return "nav-item active";
         }
-        return "";
+        return "nav-item";
     }
 
     onSubmit() {

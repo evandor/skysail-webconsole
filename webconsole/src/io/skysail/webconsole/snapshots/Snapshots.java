@@ -10,14 +10,17 @@ import org.javers.core.Javers;
 import org.javers.core.JaversBuilder;
 import org.javers.core.diff.Diff;
 import org.javers.core.diff.changetype.ValueChange;
+import org.osgi.framework.BundleContext;
+import org.osgi.framework.ServiceReference;
 
+import io.skysail.webconsole.osgi.entities.Snapshot;
 import io.skysail.webconsole.osgi.entities.bundles.BundleSnapshot;
 import io.skysail.webconsole.osgi.services.OsgiService;
 import lombok.Getter;
 
 public class Snapshots {
 
-    private OsgiService osgiService;
+    private BundleContext bundleContext;
 
     private AtomicLong cnt = new AtomicLong(new Date().getTime());
 
@@ -26,18 +29,23 @@ public class Snapshots {
 
     private Map<String, Snapshot> snapshotsByTitle = new HashMap<>();
 
-    public Snapshots(OsgiService osgiService) {
-        this.osgiService = osgiService;
+    public Snapshots(BundleContext bundleContext) {
+        this.bundleContext = bundleContext;
     }
 
     public Snapshot createSnapshot(String title) {
         long id = cnt.getAndIncrement();
+
+        ServiceReference<OsgiService> serviceReference = bundleContext.getServiceReference(OsgiService.class);
+        OsgiService osgiService = bundleContext.getService(serviceReference);
+
         Snapshot snapshot = new Snapshot(osgiService, id, title);
         if (snapshotsByTitle.get(title) != null) {
             throw new IllegalStateException("snapshot with title " + title + " already exists");
         }
         snapshots.put(id, snapshot);
         snapshotsByTitle.put(snapshot.getTitle(), snapshot);
+        bundleContext.ungetService(serviceReference);
         return snapshot;
     }
 

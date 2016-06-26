@@ -1,4 +1,4 @@
-System.register(["@angular/core", "@angular/router-deprecated", '@angular/common', '../../services/breadcrumbs.service', '../navbar/breadcrumb'], function(exports_1, context_1) {
+System.register(["@angular/core", "@angular/router", '@angular/common', '../../services/breadcrumbs.service', '../navbar/breadcrumb'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,15 +10,15 @@ System.register(["@angular/core", "@angular/router-deprecated", '@angular/common
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_deprecated_1, common_1, breadcrumbs_service_1, breadcrumb_1;
+    var core_1, router_1, common_1, breadcrumbs_service_1, breadcrumb_1;
     var Breadcrumbs;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (router_deprecated_1_1) {
-                router_deprecated_1 = router_deprecated_1_1;
+            function (router_1_1) {
+                router_1 = router_1_1;
             },
             function (common_1_1) {
                 common_1 = common_1_1;
@@ -35,7 +35,7 @@ System.register(["@angular/core", "@angular/router-deprecated", '@angular/common
                     var _this = this;
                     this.router = router;
                     this._breadcrumbsService = _breadcrumbsService;
-                    this.router.subscribe(function () {
+                    this.router.events.subscribe(function () {
                         _breadcrumbsService.clear();
                         _breadcrumbsService.add(new breadcrumb_1.Breadcrumb(['Bundles'], '<span class="glyphicon glyphicon-home" aria-hidden="true"></span>'));
                         /*if (val.startsWith("bundles")) {
@@ -55,11 +55,11 @@ System.register(["@angular/core", "@angular/router-deprecated", '@angular/common
                 Breadcrumbs = __decorate([
                     core_1.Component({
                         selector: 'breadcrumbs',
-                        directives: [router_deprecated_1.ROUTER_DIRECTIVES, common_1.NgFor, common_1.NgFormModel],
+                        directives: [router_1.ROUTER_DIRECTIVES, common_1.NgFor, common_1.NgFormModel],
                         providers: [breadcrumbs_service_1.BreadcrumbsService],
                         templateUrl: 'app/html/navbar/breadcrumbs.template.html'
                     }), 
-                    __metadata('design:paramtypes', [router_deprecated_1.Router, breadcrumbs_service_1.BreadcrumbsService])
+                    __metadata('design:paramtypes', [router_1.Router, breadcrumbs_service_1.BreadcrumbsService])
                 ], Breadcrumbs);
                 return Breadcrumbs;
             }());

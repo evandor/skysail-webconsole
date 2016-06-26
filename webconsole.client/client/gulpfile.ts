@@ -56,7 +56,9 @@ gulp.task("libs", () => {
             'zone.js/dist/**',
             '@angular/**',
             'bootstrap/dist/**',
-            'd3/**'
+            'd3/**',
+            'fuel-ui/**',
+            'font-awesome/**'
         ], {cwd: "node_modules/**"}) /* Glob required here. */
         .pipe(gulp.dest("client/lib"));
 });

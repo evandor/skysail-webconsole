@@ -1,6 +1,6 @@
 import {Component, OnInit, ElementRef} from '@angular/core';
 import {FORM_DIRECTIVES, FormBuilder, NgFor, NgFormModel} from '@angular/common';
-import {ROUTER_DIRECTIVES, RouteConfig, Router} from "@angular/router-deprecated";
+import {ROUTER_DIRECTIVES, Router} from "@angular/router";
 
 import {BackendServices} from '../../services/backend.service';
 import {BreadcrumbsService} from '../../services/breadcrumbs.service';
@@ -35,12 +35,10 @@ export class BundlesComponent implements OnInit {
     maxSize: number = 0;
     size: number;
 
-    constructor(private router: Router, private _backend: BackendServices, private _breadcrumbService: BreadcrumbsService) {
-        _backend.setBaseUrl('http://localhost:2002/');
-    }
+    constructor(private router: Router, private _backend: BackendServices, private _breadcrumbService: BreadcrumbsService) {}
 
     onSelect(bundle: Bundle) {
-        this.router.navigate(['Bundle', { id: bundle.id }]);
+        this.router.navigate(['/bundles', bundle.id]);
         this._breadcrumbService.add(new Breadcrumb(['bundle'], "hier"));
     }
 
@@ -67,7 +65,7 @@ export class BundlesComponent implements OnInit {
     
     setData(value, max, size) {
         this.value = value;
-        this.max = max;
+        this.maxSize = max;
         this.size = size;
     }
 

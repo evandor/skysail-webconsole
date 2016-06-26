@@ -7,7 +7,6 @@ Bundle-Description: An OSGi webconsole to inspect a running framework
 Bundle-Activator: io.skysail.webconsole.AgentActivator
 
 Private-Package: \
-	io.skysail.webconsole.entities.snapshots,\
 	io.skysail.webconsole.entities.packages,\
 	io.skysail.webconsole.ui,\
 	io.skysail.webconsole.entities.antlr,\
@@ -24,8 +23,8 @@ Private-Package: \
 
 -buildpath: \
     webconsole;version=latest,\
-    webconsole.antlr;version='[0.2.2,0.2.3)',\
-    webconsole.client;version='[0.1.10,0.1.11)',\
+    webconsole.antlr;version=${webconsole.antlr.version},\
+    webconsole.client;version=${webconsole.client.version},\
     webconsole.osgi;version=${webconsole.osgi.version},\
     ${osgi},\
     ${testlibs},\
@@ -34,7 +33,6 @@ Private-Package: \
     slf4j.api;version=1.7
 
 Export-Package: \
-    com.fasterxml.jackson.*,\
     com.google.gson.*,\
     fi.iki.elonen.*,\
     org.picocontainer.*,\

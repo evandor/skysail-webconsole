@@ -11,7 +11,6 @@ export class FooterComponent implements OnInit {
     version;
     
     constructor(private _backend: BackendServices, private _window: Window) {
-        _backend.setBaseUrl('http://localhost:2002/');
     }
     
     ngOnInit() {

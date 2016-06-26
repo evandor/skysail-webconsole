@@ -1,6 +1,6 @@
 import {Component, OnInit,ElementRef} from '@angular/core';
 import {FORM_DIRECTIVES, FormBuilder, NgFor, NgFormModel} from '@angular/common';
-import {ROUTER_DIRECTIVES, RouteParams, Router} from "@angular/router-deprecated";
+import {ROUTER_DIRECTIVES, Router} from "@angular/router";
 
 import {BackendServices} from '../../services/backend.service';
 import {Snapshot} from '../../domain/snapshot';
@@ -18,7 +18,6 @@ export class SnapshotsComponent implements OnInit {
     snapshots: Snapshot[];
 
     constructor(private router: Router, private _backend: BackendServices) {
-        _backend.setBaseUrl('http://localhost:2002/');
     }
 
     ngOnInit() {

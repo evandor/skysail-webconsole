@@ -6,8 +6,8 @@ import { Tab } from './tab';
     selector: 'tabs',
     template: `
     <ul class="nav nav-tabs">
-      <li *ngFor="let tab of tabs" (click)="selectTab(tab)" [class.active]="tab.active">
-        <a class="clickable">{{tab.title}} <span class="badge">{{tab.elementCount}}</span></a>
+      <li *ngFor="let tab of tabs" (click)="selectTab(tab)" class="nav-item" [class.active]="tab.active">
+        <a class="nav-link clickable">{{tab.title}} <span class="badge">{{tab.elementCount}}</span></a>
       </li>
     </ul>
     <ng-content></ng-content>
@@ -31,9 +31,6 @@ export class Tabs {
         }
 
     }
-    // _deactivateAllTabs(){
-    //   this.tabs.forEach((tab)=>tab.active = false);
-    // }
 
     addTab(tab: Tab) {
         if (this.tabs.length === 0) {

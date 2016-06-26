@@ -11,6 +11,7 @@ import org.junit.rules.ExpectedException;
 import org.mockito.Mockito;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
+import org.osgi.framework.ServiceReference;
 
 import fi.iki.elonen.NanoHTTPD.IHTTPSession;
 import fi.iki.elonen.NanoHTTPD.Method;
@@ -31,8 +32,7 @@ public class BundleHandlerTest {
     @Before
     public void setup() {
         bundleContext = Mockito.mock(BundleContext.class);
-        OsgiService osgiService = Mockito.mock(OsgiService.class);
-        bundleHandler = new BundleHandler(bundleContext, osgiService);
+        bundleHandler = new BundleHandler(bundleContext);
         session = Mockito.mock(IHTTPSession.class);
         Mockito.when(session.getMethod()).thenReturn(Method.GET);
     }
@@ -50,6 +50,10 @@ public class BundleHandlerTest {
     public void test() {
         Bundle[] bundles = new Bundle[1];
         bundles[0] = TestUtils.mockBundle(0L, "symbolicName", "0.1.0");
+        ServiceReference<OsgiService> serviceRef = Mockito.mock(ServiceReference.class);
+        Mockito.when(bundleContext.getServiceReference(OsgiService.class)).thenReturn(serviceRef);
+        OsgiService osgiService = Mockito.mock(OsgiService.class);
+        Mockito.when(bundleContext.getService(serviceRef)).thenReturn(osgiService);
         Mockito.when(bundleContext.getBundles()).thenReturn(bundles);
         Mockito.when(session.getUri()).thenReturn("/bundles/0");
 

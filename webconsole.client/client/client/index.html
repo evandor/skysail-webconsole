@@ -6,7 +6,9 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="lib/fuel-ui/bundles/fuel-ui.min.css" />
 
  <style>
     .clickable {
@@ -73,9 +75,12 @@
         System.import('app/boot').then(null, console.error.bind(console));
     </script>
 
+    <!-- 3. Fuel UI -->
+    <script src="lib/fuel-ui/bundles/fuel-ui.min.js"></script>
+
 </head>
 
-<!-- 3. Display the application -->
+<!-- 4. Display the application -->
 
 <body>
     <my-app>Loading...</my-app>

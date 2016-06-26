@@ -1,6 +1,6 @@
 import {Component, OnInit, ElementRef} from '@angular/core';
 import {FORM_DIRECTIVES, FormBuilder, NgFor, NgFormModel} from '@angular/common';
-import {ROUTER_DIRECTIVES, Router} from "@angular/router-deprecated";
+import {ROUTER_DIRECTIVES, Router} from "@angular/router";
 
 import {BackendServices} from '../services/backend.service';
 import {BreadcrumbsService} from '../services/breadcrumbs.service';
@@ -25,7 +25,6 @@ export class PackagesComponent implements OnInit {
     isLoading = true;
 
     constructor(private router: Router, private _backend: BackendServices, private _breadcrumbService: BreadcrumbsService) {
-        _backend.setBaseUrl('http://localhost:2002/');
     }
 
     onSelectBundle(bundle: Bundle) {

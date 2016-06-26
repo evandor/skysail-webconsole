@@ -1,6 +1,6 @@
 import {Component, OnInit, ElementRef} from '@angular/core';
 import {FORM_DIRECTIVES, FormBuilder, NgFor, NgFormModel} from '@angular/common';
-import {ROUTER_DIRECTIVES, RouteParams, Router} from "@angular/router-deprecated";
+import {ROUTER_DIRECTIVES, Router, ActivatedRoute} from "@angular/router";
 import {HTTP_PROVIDERS} from '@angular/http';
 
 import {BackendServices} from '../../services/backend.service';
@@ -32,14 +32,18 @@ export class BundleComponent implements OnInit {
 
     isLoading = true;
 
-    constructor(private _routeSegment: RouteParams, private _backend: BackendServices, private _router: Router) {
-        _backend.setBaseUrl('http://localhost:2002/');
+    private sub: any;
+
+    constructor(private _backend: BackendServices, private route: ActivatedRoute, private _router: Router) {
     }
 
     ngOnInit() {
-        let id = this._routeSegment.get('id');
 
-        this._backend.getBundle(id)
+        this.sub = this.route.params.subscribe(params => {
+            let id = params['id']; 
+            //this.service.getHero(id).then(hero => this.hero = hero);
+
+            this._backend.getBundle(id)
             .subscribe(res => {
                 this.bundle = res;
                 var props = <Map<string, string>>res.wireDescriptor.capabilities;
@@ -65,15 +69,23 @@ export class BundleComponent implements OnInit {
                 this.isLoading = false;
             }
             );
+        });
+
+        
     }
 
+    ngOnDestroy() {
+        this.sub.unsubscribe();
+    }
+
+
     exportedPackagesTitle() {
-        return "Exported Packages (" + this.bundle.exportPackage.length + ")";
+        return "Exp. Pkgs. (" + this.bundle.exportPackage.length + ")";
     }
 
     importedPackagesTitle() {
         //                return "<span class='glyphicon glyphicon-log-in' aria-hidden='true' style='color: blue'> Imported Packages (" + this.bundle.importPackage.length + ")";
-        return "Imported Packages (" + this.bundle.importPackage.length + ")";
+        return "Imp. Pkgs. (" + this.bundle.importPackage.length + ")";
     }
 
     providedServicesTitle() {

@@ -1,37 +1,50 @@
-import { Directive, ViewContainerRef, Attribute, ReflectiveInjector } from '@angular/core';
-import { RouterOutletMap } from '../router';
-import { DEFAULT_OUTLET_NAME } from '../constants';
-import { isPresent, isBlank } from '../facade/lang';
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+import { Attribute, Directive, ReflectiveInjector, ViewContainerRef } from '@angular/core';
+import { RouterOutletMap } from '../router_outlet_map';
+import { PRIMARY_OUTLET } from '../shared';
 export class RouterOutlet {
-    constructor(parentOutletMap, _location, name) {
-        this._location = _location;
-        parentOutletMap.registerOutlet(isBlank(name) ? DEFAULT_OUTLET_NAME : name, this);
+    /**
+     * @internal
+     */
+    constructor(parentOutletMap, location, name) {
+        this.location = location;
+        parentOutletMap.registerOutlet(name ? name : PRIMARY_OUTLET, this);
     }
-    unload() {
-        this._loaded.destroy();
-        this._loaded = null;
+    get isActivated() { return !!this.activated; }
+    get component() {
+        if (!this.activated)
+            throw new Error('Outlet is not activated');
+        return this.activated.instance;
     }
-    /**
-     * Returns the loaded component.
-     */
-    get loadedComponent() { return isPresent(this._loaded) ? this._loaded.instance : null; }
-    /**
-     * Returns true is the outlet is not empty.
-     */
-    get isLoaded() { return isPresent(this._loaded); }
-    /**
-     * Called by the Router to instantiate a new component.
-     */
-    load(factory, providers, outletMap) {
+    get activatedRoute() {
+        if (!this.activated)
+            throw new Error('Outlet is not activated');
+        return this._activatedRoute;
+    }
+    deactivate() {
+        if (this.activated) {
+            this.activated.destroy();
+            this.activated = null;
+        }
+    }
+    activate(factory, activatedRoute, providers, outletMap) {
         this.outletMap = outletMap;
-        let inj = ReflectiveInjector.fromResolvedProviders(providers, this._location.parentInjector);
-        this._loaded = this._location.createComponent(factory, this._location.length, inj, []);
-        return this._loaded;
+        this._activatedRoute = activatedRoute;
+        const inj = ReflectiveInjector.fromResolvedProviders(providers, this.location.parentInjector);
+        this.activated = this.location.createComponent(factory, this.location.length, inj, []);
     }
 }
+/** @nocollapse */
 RouterOutlet.decorators = [
     { type: Directive, args: [{ selector: 'router-outlet' },] },
 ];
+/** @nocollapse */
 RouterOutlet.ctorParameters = [
     { type: RouterOutletMap, },
     { type: ViewContainerRef, },

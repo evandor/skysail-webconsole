@@ -25,7 +25,6 @@ System.register(['@angular/core', '../services/backend.service'], function(expor
                 function FooterComponent(_backend, _window) {
                     this._backend = _backend;
                     this._window = _window;
-                    _backend.setBaseUrl('http://localhost:2002/');
                 }
                 FooterComponent.prototype.ngOnInit = function () {
                     var _this = this;

@@ -31,12 +31,10 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', '../
                     this._window = _window;
                     this._config = _config;
                     this._baseUrl = '';
-                }
-                BackendServices.prototype.setBaseUrl = function (baseUrl) {
                     var hostname = this._window.location.hostname;
                     this._baseUrl = "http://" + this._config.host + ":" + this._config.port + "/"; //baseUrl;
                     console.log("base url set to '" + this._baseUrl + "'");
-                };
+                }
                 BackendServices.prototype.get = function (path) {
                     var headers = new http_1.Headers();
                     //headers.append('Authorization', 'Basic YWRtaW46c2t5c2FpbA==');

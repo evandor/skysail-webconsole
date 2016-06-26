@@ -1,4 +1,4 @@
-import { Observable } from '../../src/facade/async';
+import { Observable } from '../facade/async';
 /**
  * An unmodifiable list of items that Angular keeps up to date when the state
  * of the application changes.
@@ -17,11 +17,10 @@ import { Observable } from '../../src/facade/async';
  * ```typescript
  * @Component({...})
  * class Container {
- *   constructor(@Query(Item) items: QueryList<Item>) {
- *     items.changes.subscribe(_ => console.log(items.length));
- *   }
+ *   @ViewChildren(Item) items:QueryList<Item>;
  * }
  * ```
+ * @stable
  */
 export declare class QueryList<T> {
     private _dirty;
@@ -34,29 +33,25 @@ export declare class QueryList<T> {
     /**
      * returns a new array with the passed in function applied to each element.
      */
-    map<U>(fn: (item: T) => U): U[];
+    map<U>(fn: (item: T, index?: number) => U): U[];
     /**
      * returns a filtered array.
      */
-    filter(fn: (item: T) => boolean): T[];
+    filter(fn: (item: T, index?: number) => boolean): T[];
     /**
      * returns a reduced value.
      */
-    reduce<U>(fn: (acc: U, item: T) => U, init: U): U;
+    reduce<U>(fn: (acc: U, item: T, index?: number) => U, init: U): U;
     /**
      * executes function for each element in a query.
      */
-    forEach(fn: (item: T) => void): void;
+    forEach(fn: (item: T, index?: number) => void): void;
     /**
      * converts QueryList into an array
      */
     toArray(): T[];
     toString(): string;
-    /**
-     * @internal
-     */
     reset(res: Array<T | any[]>): void;
-    /** @internal */
     notifyOnChanges(): void;
     /** internal */
     setDirty(): void;

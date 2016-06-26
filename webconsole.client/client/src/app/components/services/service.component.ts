@@ -1,7 +1,7 @@
 import {Component, OnInit,ElementRef} from '@angular/core';
 import {FORM_DIRECTIVES, FormBuilder, NgFor, NgFormModel} from '@angular/common';
 import {HTTP_PROVIDERS} from '@angular/http';
-import {ROUTER_DIRECTIVES, RouteParams, Router} from "@angular/router-deprecated";
+import {ROUTER_DIRECTIVES, Router} from "@angular/router";
 
 import {BackendServices} from '../../services/backend.service';
 import {Bundle} from '../../domain/bundle';
@@ -26,16 +26,15 @@ export class ServiceComponent implements OnInit {
     properties: KeyValue[] = [];
     usingBundles: Bundle[] = [];
 
-    constructor(private router: Router, private _routeParams:RouteParams, private _backend: BackendServices) {
-         _backend.setBaseUrl('http://localhost:2002/');
+    constructor(private router: Router, private _backend: BackendServices) {
     }
 
-    onSelect(bundle: Bundle) {
-        this.router.navigate( ['Bundle', { id: bundle.id }]  );
+    onSelect(bundleId: string) {
+        this.router.navigate( ['Bundle', { id: bundleId }]  );
     }
     
     ngOnInit() {
-        let id = this._routeParams.get('id');
+        let id = 4;//this._routeParams.get('id');
         
         this._backend.getService(id)
             .subscribe(res => {

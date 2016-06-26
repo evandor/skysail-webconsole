@@ -1,26 +1,18 @@
 import {Component} from '@angular/core';
-import {ROUTER_DIRECTIVES, RouteConfig, RouterOutlet} from '@angular/router-deprecated';
-import {FrameworkComponent} from './components/framework.component';
-import {FooterComponent} from './components/footer.component';
-import {BundlesComponent} from './components/bundles/bundles.component';
-import {BundleComponent} from './components/bundles/bundle.component';
-import {LogsComponent} from './components/logs.component';
-import {ServicesComponent} from './components/services/services.component';
-import {ServiceComponent} from './components/services/service.component';
-import {PackagesComponent} from './components/packages.component'
-import {HelpComponent} from './components/help.component';
-import {SnapshotsComponent} from './components/snapshots/snapshots.component';
+import {ROUTER_DIRECTIVES} from '@angular/router';
 //import {BarGraph} from './components/graph.component';
 
 import {Navbar} from './components/navbar/navbar.component';
 import {Breadcrumbs} from './components/navbar/breadcrumbs.component';
+
+import {FooterComponent} from './components/footer.component';
 
 //import {TimerWebsocketComponent} from './components/websockets/timerWS.component'
 //import {SMDropdown} from './directives/dropdown.directive';
 //import {D3Directive} from './directives/d3.directive'
 import {PercentBarDirective} from './directives/percentBar.d3.directive'
 
-@RouteConfig([
+/*@Routes([
     { path: '/framework',    as: 'Framework', component: FrameworkComponent },
     { path: '/bundles',      as: 'Bundles',   component: BundlesComponent, useAsDefault: true },
     { path: '/bundles/:id',  as: 'Bundle',    component: BundleComponent },
@@ -31,7 +23,7 @@ import {PercentBarDirective} from './directives/percentBar.d3.directive'
    // { path: '/graph',        as: 'Graph',     component: GraphComponent },
     { path: '/snapshots',    as: 'Snapshots', component: SnapshotsComponent },
     { path: '/help',         as: 'Help',      component: HelpComponent }
-])
+])*/
 @Component({
     selector: 'my-app',
     templateUrl: 'app/html/app.template.html',
