@@ -91,7 +91,7 @@ public class Server extends NanoHTTPD {
         frameworkHandler = new FrameworkHandler(bundleContext);
 
         bundleHandler = new BundleHandler(bundleContext);
-        serviceHandler = new ServiceHandler(osgiServiceTracker);
+        serviceHandler = new ServiceHandler(bundleContext);
 
         bundleListenerHandler = new BundleListenerHandler(bundleListener);
         serviceListenerHandler = new ServiceListenerHandler(serviceListener);
