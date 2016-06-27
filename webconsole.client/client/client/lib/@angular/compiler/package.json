@@ -37,8 +37,7 @@
     "type": "version"
   },
   "_requiredBy": [
-    "/",
-    "/fuel-ui"
+    "/"
   ],
   "_resolved": "https://registry.npmjs.org/@angular/compiler/-/compiler-2.0.0-rc.3.tgz",
   "_shasum": "bba3da8419bec5103314326961971693ed1e1ee0",

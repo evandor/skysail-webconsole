@@ -37,8 +37,7 @@
     "type": "version"
   },
   "_requiredBy": [
-    "/",
-    "/fuel-ui"
+    "/"
   ],
   "_resolved": "https://registry.npmjs.org/@angular/platform-browser/-/platform-browser-2.0.0-rc.3.tgz",
   "_shasum": "8c3892cddd41018c3fb8316c7445910716e03f33",

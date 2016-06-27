@@ -67,6 +67,7 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '../../s
                     var _this = this;
                     this._backend.getBundles()
                         .subscribe(function (res) {
+                        console.log("got bundles");
                         _this.bundles = res;
                         (function (err) { return _this.logError(err); });
                         _this.bundles.forEach(function (bundle) {

@@ -23,11 +23,11 @@ System.register(['@angular/core'], function(exports_1, context_1) {
                 }
                 BundlesFilter.prototype.transform = function (bundles, args) {
                     if (bundles == null) {
-                        console.log("ARGS: null");
+                        console.log("ARGS1: null");
                         return null;
                     }
                     if (typeof args == 'undefined') {
-                        console.log("ARGS: " + args[0]);
+                        console.log("ARGS2: " + args[0]);
                         return bundles.filter(function (bundle) { return true; });
                     }
                     return bundles.filter(function (bundle) { return bundle.symbolicName.indexOf(args[0]) !== -1; });

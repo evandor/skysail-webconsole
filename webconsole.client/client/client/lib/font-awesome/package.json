@@ -37,8 +37,7 @@
     "type": "range"
   },
   "_requiredBy": [
-    "/",
-    "/fuel-ui"
+    "/"
   ],
   "_resolved": "https://registry.npmjs.org/font-awesome/-/font-awesome-4.6.3.tgz",
   "_shasum": "86933651540ee00874c664017f50f2172f6531a2",

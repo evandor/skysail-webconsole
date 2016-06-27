@@ -24,7 +24,7 @@
     </td>
     <td>&nbsp;</td>
   </tr>
-      <tr *ngFor="let bundle of bundles">
+      <tr *ngFor="let bundle of bundles | bundlesFilter">
         <!--bundlesFilter:searchName-->
         <td>{{bundle.id}}</td>
         <td (click)="onSelect(bundle)" style="cursor: pointer; color:#000066;">{{bundle.symbolicName}}</td>

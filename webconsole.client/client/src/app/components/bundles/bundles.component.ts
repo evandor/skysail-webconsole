@@ -15,6 +15,7 @@ import {BundlesFilter} from '../../pipes/bundlesFilter.pipe'
 import {PercentBarDirective} from '../../directives/percentBar.d3.directive'
 import {AdjacencyDirective} from '../../directives/adjacency.directive'
 
+//import {OrderByPipe} from 'fuel-ui/fuel-ui';
 
 declare var jQuery: any;
 
@@ -45,6 +46,7 @@ export class BundlesComponent implements OnInit {
     ngOnInit() {
         this._backend.getBundles()
             .subscribe(res => {
+                console.log("got bundles");
                 this.bundles = res;
                 err => this.logError(err);
                 this.bundles.forEach(bundle => {
