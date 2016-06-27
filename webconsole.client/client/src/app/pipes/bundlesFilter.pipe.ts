@@ -7,10 +7,11 @@ import {Bundle} from '../domain/bundle';
 })
 @Injectable()
 export class BundlesFilter implements PipeTransform {
+    tmp = [];
     transform(bundles: Bundle[], args: any[]): any {
         if (bundles == null) {
             console.log("ARGS1: null");
-            return null;
+            return Bundle[0];
         }
         if (typeof args == 'undefined') {
             console.log("ARGS2: " + args[0]);

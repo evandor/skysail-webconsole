@@ -56,6 +56,7 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '../../s
                     this.router = router;
                     this._backend = _backend;
                     this._breadcrumbService = _breadcrumbService;
+                    this.isLoading = true;
                     this.searchId = "";
                     this.maxSize = 0;
                 }
@@ -75,6 +76,7 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '../../s
                                 _this.maxSize = bundle.size;
                             }
                         });
+                        _this.isLoading = false;
                     });
                 };
                 BundlesComponent.prototype.logError = function (err) {
@@ -94,7 +96,7 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '../../s
                         directives: [common_1.FORM_DIRECTIVES, router_1.ROUTER_DIRECTIVES, common_1.NgFor, common_1.NgFormModel, tabs_1.Tabs, tab_1.Tab, adjacency_directive_1.AdjacencyDirective, percentBar_d3_directive_1.PercentBarDirective],
                         providers: [backend_service_1.BackendServices, breadcrumbs_service_1.BreadcrumbsService],
                         templateUrl: 'app/html/bundles/bundles.template.html',
-                        pipes: [bundlesFilter_pipe_1.BundlesFilter, bundleState_pipe_1.BundleStatePipe]
+                        pipes: [bundlesFilter_pipe_1.BundlesFilter, bundleState_pipe_1.BundleStatePipe],
                     }), 
                     __metadata('design:paramtypes', [router_1.Router, backend_service_1.BackendServices, breadcrumbs_service_1.BreadcrumbsService])
                 ], BundlesComponent);

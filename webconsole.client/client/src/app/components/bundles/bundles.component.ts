@@ -1,4 +1,4 @@
-import {Component, OnInit, ElementRef} from '@angular/core';
+import {Component, OnInit, ElementRef,ChangeDetectionStrategy} from '@angular/core';
 import {FORM_DIRECTIVES, FormBuilder, NgFor, NgFormModel} from '@angular/common';
 import {ROUTER_DIRECTIVES, Router} from "@angular/router";
 
@@ -24,11 +24,14 @@ declare var jQuery: any;
     directives: [FORM_DIRECTIVES, ROUTER_DIRECTIVES, NgFor, NgFormModel, Tabs, Tab, AdjacencyDirective,PercentBarDirective],
     providers: [BackendServices, BreadcrumbsService],
     templateUrl: 'app/html/bundles/bundles.template.html',
-    pipes: [BundlesFilter, BundleStatePipe]
+    pipes: [BundlesFilter, BundleStatePipe],
+    //changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BundlesComponent implements OnInit {
 
     bundles: Bundle[];
+    
+    isLoading = true;
 
     searchId: string = "";
     
@@ -54,6 +57,7 @@ export class BundlesComponent implements OnInit {
                         this.maxSize = bundle.size;
                     }
                 });
+                this.isLoading=false;
             });
     }
 

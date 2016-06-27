@@ -1,15 +1,8 @@
 {
   "_args": [
     [
-      {
-        "name": "d3",
-        "raw": "d3@3.5.17",
-        "rawSpec": "3.5.17",
-        "scope": null,
-        "spec": "3.5.17",
-        "type": "version"
-      },
-      "/Users/carsten/git/skysail-webconsole/webconsole.client/client"
+      "d3@3.5.17",
+      "C:\\git\\skysail-webconsole\\webconsole.client\\client"
     ]
   ],
   "_from": "d3@3.5.17",
@@ -39,11 +32,11 @@
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/d3/-/d3-3.5.17.tgz",
+  "_resolved": "http://registry.npmjs.org/d3/-/d3-3.5.17.tgz",
   "_shasum": "bc46748004378b21a360c9fc7cf5231790762fb8",
   "_shrinkwrap": null,
   "_spec": "d3@3.5.17",
-  "_where": "/Users/carsten/git/skysail-webconsole/webconsole.client/client",
+  "_where": "C:\\git\\skysail-webconsole\\webconsole.client\\client",
   "author": {
     "name": "Mike Bostock",
     "url": "http://bost.ocks.org/mike"
