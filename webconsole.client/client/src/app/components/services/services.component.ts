@@ -24,11 +24,11 @@ export class ServicesComponent implements OnInit {
     }
     
     onSelect(serviceId: string) {
-        this.router.navigate( ['Service', { id: serviceId }]  );
+        this.router.navigate( ['/services', serviceId]  );
     }
     
     onSelectBundle(bundle: Bundle) {
-        this.router.navigate( ['Bundle', { id: bundle.id }]  );
+        this.router.navigate( ['/bundles', bundle.id]  );
     }
 
     ngOnInit() {

@@ -26,6 +26,7 @@
     "@angular/platform-browser-dynamic": "2.0.0-rc.3",
     "@angular/router": "3.0.0-alpha.8",
     "@angular/upgrade": "2.0.0-rc.3",
+    "angular2-localstorage": "^0.4.0",
     "bootstrap": "^4.0.0-alpha.2",
     "d3": "3.5.17",
     "es6-shim": "^0.35.0",

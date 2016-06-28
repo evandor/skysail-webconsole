@@ -46,8 +46,9 @@ System.register(['@angular/core', '@angular/common', '@angular/http', "@angular/
             }],
         execute: function() {
             ServiceComponent = (function () {
-                function ServiceComponent(router, _backend) {
+                function ServiceComponent(router, route, _backend) {
                     this.router = router;
+                    this.route = route;
                     this._backend = _backend;
                     this.isLoading = true;
                     this.service = new service_1.Service();
@@ -55,21 +56,23 @@ System.register(['@angular/core', '@angular/common', '@angular/http', "@angular/
                     this.usingBundles = [];
                 }
                 ServiceComponent.prototype.onSelect = function (bundleId) {
-                    this.router.navigate(['Bundle', { id: bundleId }]);
+                    this.router.navigate(['/bundles', bundleId]);
                 };
                 ServiceComponent.prototype.ngOnInit = function () {
                     var _this = this;
-                    var id = 4; //this._routeParams.get('id');
-                    this._backend.getService(id)
-                        .subscribe(function (res) {
-                        _this.service = res;
-                        var props = res.properties;
-                        for (var key in props) {
-                            _this.properties.push(new keyValue_1.KeyValue(key, props[key]));
-                        }
-                        ;
-                        _this.usingBundles = res.usingBundles;
-                        _this.isLoading = false;
+                    this.route.params.subscribe(function (params) {
+                        var id = params['id'];
+                        _this._backend.getService(id)
+                            .subscribe(function (res) {
+                            _this.service = res;
+                            var props = res.properties;
+                            for (var key in props) {
+                                _this.properties.push(new keyValue_1.KeyValue(key, props[key]));
+                            }
+                            ;
+                            _this.usingBundles = res.usingBundles;
+                            _this.isLoading = false;
+                        });
                     });
                 };
                 ServiceComponent = __decorate([
@@ -80,7 +83,7 @@ System.register(['@angular/core', '@angular/common', '@angular/http', "@angular/
                         providers: [backend_service_1.BackendServices, http_1.HTTP_PROVIDERS],
                         templateUrl: 'app/html/services/service.template.html'
                     }), 
-                    __metadata('design:paramtypes', [router_1.Router, backend_service_1.BackendServices])
+                    __metadata('design:paramtypes', [router_1.Router, router_1.ActivatedRoute, backend_service_1.BackendServices])
                 ], ServiceComponent);
                 return ServiceComponent;
             }());

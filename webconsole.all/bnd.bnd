@@ -22,7 +22,7 @@ Private-Package: \
 	io.skysail.webconsole.utils
 
 -buildpath: \
-    webconsole;version=latest,\
+    webconsole;version=${webconsole.version},\
     webconsole.antlr;version=${webconsole.antlr.version},\
     webconsole.client;version=${webconsole.client.version},\
     webconsole.osgi;version=${webconsole.osgi.version},\

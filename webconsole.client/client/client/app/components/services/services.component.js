@@ -33,10 +33,10 @@ System.register(['@angular/core', '@angular/common', '../../services/backend.ser
                     this._backend = _backend;
                 }
                 ServicesComponent.prototype.onSelect = function (serviceId) {
-                    this.router.navigate(['Service', { id: serviceId }]);
+                    this.router.navigate(['/services', serviceId]);
                 };
                 ServicesComponent.prototype.onSelectBundle = function (bundle) {
-                    this.router.navigate(['Bundle', { id: bundle.id }]);
+                    this.router.navigate(['/bundles', bundle.id]);
                 };
                 ServicesComponent.prototype.ngOnInit = function () {
                     var _this = this;
