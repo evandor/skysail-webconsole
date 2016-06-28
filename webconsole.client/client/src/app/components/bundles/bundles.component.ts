@@ -15,6 +15,8 @@ import {BundlesFilter} from '../../pipes/bundlesFilter.pipe'
 import {PercentBarDirective} from '../../directives/percentBar.d3.directive'
 import {AdjacencyDirective} from '../../directives/adjacency.directive'
 
+import {LocalStorage, SessionStorage} from "angular2-localstorage/WebStorage";
+
 //import {OrderByPipe} from 'fuel-ui/fuel-ui';
 
 declare var jQuery: any;
@@ -30,14 +32,13 @@ declare var jQuery: any;
 export class BundlesComponent implements OnInit {
 
     bundles: Bundle[];
-    
     isLoading = true;
-
     searchId: string = "";
-    
     value: number;
     maxSize: number = 0;
     size: number;
+
+    @LocalStorage() public searchName:string = '';
 
     constructor(private router: Router, private _backend: BackendServices, private _breadcrumbService: BreadcrumbsService) {}
 
@@ -47,9 +48,9 @@ export class BundlesComponent implements OnInit {
     }
 
     ngOnInit() {
+        console.log("SEARCH: " + this.searchName);
         this._backend.getBundles()
             .subscribe(res => {
-                console.log("got bundles");
                 this.bundles = res;
                 err => this.logError(err);
                 this.bundles.forEach(bundle => {

@@ -32,7 +32,7 @@ gulp.task("compile", [], () => { // "tslint"
         .pipe(tsc(tsProject));
     return tsResult.js
         .pipe(sourcemaps.write("."))
-        .pipe(gulp.dest("client"));
+        .pipe(gulp.dest("client/app"));
 });
 
 /**

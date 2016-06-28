@@ -1,0 +1,1 @@
+{"version":3,"sources":["app/domain/wire.ts"],"names":[],"mappings":";;;;;;;YAAA;gBAAA;gBAKA,CAAC;gBAAD,WAAC;YAAD,CALA,AAKC,IAAA;YALD,uBAKC,CAAA","file":"src/app/domain/wire.js","sourcesContent":["export class Wire {\n    pid: string; // providerBundleId\n    rid: string; // requirerBundleId\n    requirement: string;\n    capability: string;\n}"],"sourceRoot":"/source/"}
