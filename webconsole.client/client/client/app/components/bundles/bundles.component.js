@@ -58,6 +58,8 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '../../s
                     this._breadcrumbService = _breadcrumbService;
                     this.isLoading = true;
                     this.searchId = "";
+                    //@Input() 
+                    //@LocalStorage() 
                     this.searchName = '';
                     this.maxSize = 0;
                 }
@@ -79,6 +81,12 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '../../s
                         });
                         _this.isLoading = false;
                     });
+                };
+                BundlesComponent.prototype.ngOnChanges = function (changes) {
+                    console.log("hier:" + changes);
+                };
+                BundlesComponent.prototype.clicked = function () {
+                    console.log("clicked");
                 };
                 BundlesComponent.prototype.logError = function (err) {
                     console.error('There was an error: ' + err);

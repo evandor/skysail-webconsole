@@ -10,10 +10,14 @@ import {WindowService} from './services/window.service'
 import {ConfigService} from './services/config.service' 
 import {APP_ROUTER_PROVIDERS} from './app.router'
 
-bootstrap(AppComponent, [
-    HTTP_PROVIDERS,WindowService,ConfigService,APP_ROUTER_PROVIDERS,
+import {LocalStorageService, LocalStorageSubscriber} from 'angular2-localstorage/LocalStorageEmitter';
+
+var appPromise = bootstrap(AppComponent, [
+    HTTP_PROVIDERS,WindowService,ConfigService,APP_ROUTER_PROVIDERS, LocalStorageService,
     //provide(LocationStrategy, {useClass: HashLocationStrategy}
     provide(Window, {useValue: window})
 ]).catch(err => console.error(err));
 
 //bootstrap(AppComponent,[CookieService, AuthService, WindowService, ROUTER_PROVIDERS, HTTP_PROVIDERS, provide(Window, {useValue: window})]);
+
+LocalStorageSubscriber(appPromise);

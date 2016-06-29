@@ -2,8 +2,7 @@ import {Injectable, Pipe, PipeTransform} from '@angular/core';
 import {Bundle} from '../domain/bundle';
 
 @Pipe({
-    name: 'bundlesFilter',
-    pure: false
+    name: 'bundlesFilter'
 })
 @Injectable()
 export class BundlesFilter implements PipeTransform {

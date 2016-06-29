@@ -33,18 +33,6 @@ System.register(['@angular/core', '@angular/router', './components/navbar/navbar
                 percentBar_d3_directive_1 = percentBar_d3_directive_1_1;
             }],
         execute: function() {
-            /*@Routes([
-                { path: '/framework',    as: 'Framework', component: FrameworkComponent },
-                { path: '/bundles',      as: 'Bundles',   component: BundlesComponent, useAsDefault: true },
-                { path: '/bundles/:id',  as: 'Bundle',    component: BundleComponent },
-                { path: '/services',     as: 'Services',  component: ServicesComponent },
-                { path: '/services/:id', as: 'Service',   component: ServiceComponent },
-                { path: '/packages',     as: 'Packages',  component: PackagesComponent },
-                { path: '/logs',         as: 'Logs',      component: LogsComponent },
-               // { path: '/graph',        as: 'Graph',     component: GraphComponent },
-                { path: '/snapshots',    as: 'Snapshots', component: SnapshotsComponent },
-                { path: '/help',         as: 'Help',      component: HelpComponent }
-            ])*/
             AppComponent = (function () {
                 function AppComponent() {
                     this.name = "Ringo";

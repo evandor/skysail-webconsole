@@ -1,4 +1,4 @@
-import {Component, OnInit, ElementRef,ChangeDetectionStrategy} from '@angular/core';
+import {Component, OnInit, ElementRef,ChangeDetectionStrategy, OnChanges, Input, Output, EventEmitter} from '@angular/core';
 import {FORM_DIRECTIVES, FormBuilder, NgFor, NgFormModel} from '@angular/common';
 import {ROUTER_DIRECTIVES, Router} from "@angular/router";
 
@@ -15,6 +15,8 @@ import {BundlesFilter} from '../../pipes/bundlesFilter.pipe'
 import {PercentBarDirective} from '../../directives/percentBar.d3.directive'
 import {AdjacencyDirective} from '../../directives/adjacency.directive'
 
+import {LocalStorage, SessionStorage} from "angular2-localstorage/WebStorage";
+
 //import {OrderByPipe} from 'fuel-ui/fuel-ui';
 
 declare var jQuery: any;
@@ -27,14 +29,15 @@ declare var jQuery: any;
     pipes: [BundlesFilter, BundleStatePipe],
     //changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class BundlesComponent implements OnInit {
+export class BundlesComponent implements OnInit, OnChanges {
 
     bundles: Bundle[];
-    
     isLoading = true;
-
     searchId: string = "";
-    searchName: string = '';
+    //@Input() 
+    //@LocalStorage() 
+    public searchName: string = '';
+    //@Output() searchNameChange = new EventEmitter();
     
     value: number;
     maxSize: number = 0;
@@ -60,6 +63,14 @@ export class BundlesComponent implements OnInit {
                 });
                 this.isLoading=false;
             });
+    }
+
+    ngOnChanges(changes) {
+        console.log("hier:" + changes);
+    }
+
+    clicked() {
+        console.log("clicked");
     }
 
     logError(err) {

@@ -35,8 +35,7 @@ System.register(['@angular/core', '../domain/bundle'], function(exports_1, conte
                 };
                 BundlesFilter = __decorate([
                     core_1.Pipe({
-                        name: 'bundlesFilter',
-                        pure: false
+                        name: 'bundlesFilter'
                     }),
                     core_1.Injectable(), 
                     __metadata('design:paramtypes', [])

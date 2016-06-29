@@ -1,7 +1,7 @@
-System.register(['@angular/router', './components/framework.component', './components/bundles/bundles.component', './components/bundles/bundle.component', './components/logs.component', './components/services/services.component', './components/services/service.component', './components/packages.component', './components/help.component', './components/snapshots/snapshots.component'], function(exports_1, context_1) {
+System.register(['@angular/router', './components/framework.component', './components/bundles/bundles.component', './components/bundles/bundle.component', './components/logs.component', './components/services/services.component', './components/services/service.component', './components/packages.component', './components/help.component', './components/snapshots/snapshots.component', './components/config.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var router_1, framework_component_1, bundles_component_1, bundle_component_1, logs_component_1, services_component_1, service_component_1, packages_component_1, help_component_1, snapshots_component_1;
+    var router_1, framework_component_1, bundles_component_1, bundle_component_1, logs_component_1, services_component_1, service_component_1, packages_component_1, help_component_1, snapshots_component_1, config_component_1;
     var routes, APP_ROUTER_PROVIDERS;
     return {
         setters:[
@@ -34,6 +34,9 @@ System.register(['@angular/router', './components/framework.component', './compo
             },
             function (snapshots_component_1_1) {
                 snapshots_component_1 = snapshots_component_1_1;
+            },
+            function (config_component_1_1) {
+                config_component_1 = config_component_1_1;
             }],
         execute: function() {
             exports_1("routes", routes = [
@@ -45,6 +48,7 @@ System.register(['@angular/router', './components/framework.component', './compo
                 { path: 'packages', component: packages_component_1.PackagesComponent },
                 { path: 'logs', component: logs_component_1.LogsComponent },
                 { path: 'snapshots', component: snapshots_component_1.SnapshotsComponent },
+                { path: 'config', component: config_component_1.ConfigComponent },
                 { path: 'help', component: help_component_1.HelpComponent }
             ]);
             exports_1("APP_ROUTER_PROVIDERS", APP_ROUTER_PROVIDERS = [
