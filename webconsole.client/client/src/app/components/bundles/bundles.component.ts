@@ -15,7 +15,7 @@ import {BundlesFilter} from '../../pipes/bundlesFilter.pipe'
 import {PercentBarDirective} from '../../directives/percentBar.d3.directive'
 import {AdjacencyDirective} from '../../directives/adjacency.directive'
 
-import {LocalStorage, SessionStorage} from "angular2-localstorage/WebStorage";
+//import {LocalStorage, SessionStorage} from "angular2-localstorage/WebStorage";
 
 //import {OrderByPipe} from 'fuel-ui/fuel-ui';
 

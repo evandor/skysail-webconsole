@@ -6,6 +6,7 @@ const tsc = require("gulp-typescript");
 const sourcemaps = require('gulp-sourcemaps');
 const tsProject = tsc.createProject("tsconfig.json");
 const tslint = require('gulp-tslint');
+var debug = require('gulp-debug');
 
 /**
  * Remove build directory.
@@ -28,10 +29,13 @@ gulp.task('tslint', () => {
  */
 gulp.task("compile", [], () => { // "tslint"
     let tsResult = gulp.src("src/**/*.ts")
+        .pipe(debug({title: 'compile0:'}))
         .pipe(sourcemaps.init())
+        .pipe(debug({title: 'compile1:'}))
         .pipe(tsc(tsProject));
     return tsResult.js
         .pipe(sourcemaps.write("."))
+        .pipe(debug({title: 'compile2:'}))
         .pipe(gulp.dest("client"));
 });
 
@@ -40,6 +44,7 @@ gulp.task("compile", [], () => { // "tslint"
  */
 gulp.task("resources", () => {
     return gulp.src(["src/**/*", "!**/*.ts"])
+        .pipe(debug({title: 'resource:'}))
         .pipe(gulp.dest("client"));
 });
 
@@ -57,7 +62,8 @@ gulp.task("libs", () => {
             '@angular/**',
             'bootstrap/dist/**',
             'd3/**',
-            'font-awesome/**'
+            'font-awesome/**',
+            'angular2-localstorage/**'
         ], {cwd: "node_modules/**"}) /* Glob required here. */
         .pipe(gulp.dest("client/lib"));
 });

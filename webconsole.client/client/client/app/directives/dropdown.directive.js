@@ -20,7 +20,7 @@ System.register(['@angular/core'], function(exports_1, context_1) {
         execute: function() {
             SMDropdown = (function () {
                 function SMDropdown(el) {
-                    jQuery(el.nativeElement).dropdown();
+                    // jQuery(el.nativeElement).dropdown();
                 }
                 SMDropdown = __decorate([
                     core_1.Directive({

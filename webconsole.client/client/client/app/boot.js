@@ -1,9 +1,9 @@
 /* Avoid: 'error TS2304: Cannot find name <type>' during compilation */
 ///<reference path="../../typings/index.d.ts"/>
-System.register(["./app.component", "@angular/platform-browser-dynamic", "@angular/core", '@angular/http', './services/window.service', './services/config.service', './app.router', 'angular2-localstorage/LocalStorageEmitter'], function(exports_1, context_1) {
+System.register(["./app.component", "@angular/platform-browser-dynamic", "@angular/core", '@angular/http', './services/window.service', './services/config.service', './app.router'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var app_component_1, platform_browser_dynamic_1, core_1, http_1, window_service_1, config_service_1, app_router_1, LocalStorageEmitter_1;
+    var app_component_1, platform_browser_dynamic_1, core_1, http_1, window_service_1, config_service_1, app_router_1;
     var appPromise;
     return {
         setters:[
@@ -27,20 +27,18 @@ System.register(["./app.component", "@angular/platform-browser-dynamic", "@angul
             },
             function (app_router_1_1) {
                 app_router_1 = app_router_1_1;
-            },
-            function (LocalStorageEmitter_1_1) {
-                LocalStorageEmitter_1 = LocalStorageEmitter_1_1;
             }],
         execute: function() {
+            //import {LocalStorageService, LocalStorageSubscriber} from 'angular2-localstorage/LocalStorageEmitter';
             appPromise = platform_browser_dynamic_1.bootstrap(app_component_1.AppComponent, [
-                http_1.HTTP_PROVIDERS, window_service_1.WindowService, config_service_1.ConfigService, app_router_1.APP_ROUTER_PROVIDERS, LocalStorageEmitter_1.LocalStorageService,
+                http_1.HTTP_PROVIDERS, window_service_1.WindowService, config_service_1.ConfigService, app_router_1.APP_ROUTER_PROVIDERS,
                 //provide(LocationStrategy, {useClass: HashLocationStrategy}
                 core_1.provide(Window, { useValue: window })
             ]).catch(function (err) { return console.error(err); });
-            //bootstrap(AppComponent,[CookieService, AuthService, WindowService, ROUTER_PROVIDERS, HTTP_PROVIDERS, provide(Window, {useValue: window})]);
-            LocalStorageEmitter_1.LocalStorageSubscriber(appPromise);
         }
     }
 });
+//bootstrap(AppComponent,[CookieService, AuthService, WindowService, ROUTER_PROVIDERS, HTTP_PROVIDERS, provide(Window, {useValue: window})]);
+//LocalStorageSubscriber(appPromise); 
 
 //# sourceMappingURL=boot.js.map

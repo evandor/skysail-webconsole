@@ -5,6 +5,6 @@ import {Component, Directive, ElementRef} from '@angular/core'
 })
 export class SMDropdown {
   constructor(el: ElementRef) {
-    jQuery(el.nativeElement).dropdown();
+   // jQuery(el.nativeElement).dropdown();
   }
 }

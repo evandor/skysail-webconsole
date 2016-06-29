@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "client/app",
+    "outDir": "client",
     "target": "es5",
     "module": "system",
     "moduleResolution": "node",
