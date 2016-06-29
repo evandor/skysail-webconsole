@@ -1,0 +1,4 @@
+<ol class="breadcrumb">
+  <li *ngFor="let breadcrumb of breadcrumbs"><a [routerLink]="breadcrumb.link" [innerHtml]='breadcrumb.title'></a></li>
+  <li class="active">Data</li>
+</ol>

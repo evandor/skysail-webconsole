@@ -1,0 +1,25 @@
+<nav class="navbar navbar-light bg-faded navbar-fixed-top">
+    <a class="navbar-brand" href="/"><img src="app/img/skysail.logo.png" height="27px;"></a>
+
+    <ul class="nav navbar-nav">
+        <li [class]="checkActive('Bundles')">
+            <a class="nav-link" [routerLink]="['/bundles']" [innerHtml]="getBundlesMenuTitle()"></a>
+        </li>
+        <li [class]="checkActive('Services')"><a class="nav-link" [routerLink]="['/services']">Services</a></li>
+        <li [class]="checkActive('Packages')"><a class="nav-link" [routerLink]="['/packages']">Packages</a></li>
+        <li [class]="checkActive('Logs')"><a class="nav-link" [routerLink]="['/logs']">Logs</a></li>
+        <li [class]="checkActive('Snapshots')"><a class="nav-link" [routerLink]="['/snapshots']">Snapshots</a></li>
+        <li [class]="checkActive('Config')"><a class="nav-link" [routerLink]="['/config']"><i class="fa fa-cog" aria-hidden="true"></i></a></li>
+        <li [class]="checkActive('Help')"><a class="nav-link" [routerLink]="['/help']">?</a></li>
+    </ul>
+
+
+    <form (ngSubmit)="onSubmit()" class="form-inline pull-xs-right">
+        <input type="submit" class="btn btn-info" value="Create Snapshot">
+    </form>
+
+    <!--   <form class="form-inline pull-xs-right">
+        <input class="form-control" type="text" placeholder="Search">
+        <button class="btn btn-success-outline" type="submit">Search</button>
+    </form>-->
+</nav>

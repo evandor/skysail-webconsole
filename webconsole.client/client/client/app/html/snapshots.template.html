@@ -1,0 +1,15 @@
+<h1>Snapshots</h1>
+<table class="table" width='90%'>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>#Bundles</th>
+      <th>#Services</th>
+    </tr>
+  </thead>
+  <tr *ngFor="let snapshot of snapshots">
+    <td>{{snapshot.title}}</td>
+    <td>{{snapshot.bundleCount}}</td>
+    <td>{{snapshot.serviceCount}}</td>
+  </tr>
+</table>
