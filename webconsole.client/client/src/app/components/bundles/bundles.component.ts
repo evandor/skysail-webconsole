@@ -34,6 +34,7 @@ export class BundlesComponent implements OnInit {
     isLoading = true;
 
     searchId: string = "";
+    searchName: string = '';
     
     value: number;
     maxSize: number = 0;

@@ -58,6 +58,7 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '../../s
                     this._breadcrumbService = _breadcrumbService;
                     this.isLoading = true;
                     this.searchId = "";
+                    this.searchName = '';
                     this.maxSize = 0;
                 }
                 BundlesComponent.prototype.onSelect = function (bundle) {

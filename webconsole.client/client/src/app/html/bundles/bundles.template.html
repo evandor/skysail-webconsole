@@ -2,29 +2,29 @@
 
 <tabs>
   <tab [tabTitle]="'Bundles Overview'">
-    <table class="table table-hover" width='100%'>
+    <table class="table table-hover" style="table-layout: fixed; width=100%;white-space: nowrap;">
       <thead>
         <tr>
-          <th>ID</th>
+          <th style="width:30px;">ID</th>
           <th>SymbolicName</th>
-          <th>Version</th>
-          <th>Status</th>
-          <th>Size (KB)</th>
+          <th style="width:200px;">Version</th>
+          <th style="width:100px;">Status</th>
+          <th style="width:120px;">Size (KB)</th>
         </tr>
       </thead>
-      <tr>
-        <td><input type="text" name="search_id" size="4" /></td>
+      <tr *ngIf="bundles?.length > 0">
+        <td><!--<input type="text" name="search_id" size="4" />--></td>
         <td><input type="text" name="search_name" size="40" [(ngModel)]="searchName" /></td>
-        <td><input type="text" name="search_version" size="12" /></td>
+        <td><!--<input type="text" name="search_version" size="12" />--></td>
         <td>
-          <select>
+<!--          <select>
          <option name="search_state" value="">All</option>       
          <option name="search_state" value="Active">Active</option>       
-       </select>
+       </select>-->
         </td>
         <td>&nbsp;</td>
       </tr>
-      <tr *ngFor="let bundle of bundles">
+      <tr *ngFor="let bundle of (bundles | bundlesFilter:searchName)">
         <!--bundlesFilter:searchName-->
         <td>{{bundle.id}}</td>
         <td (click)="onSelect(bundle)" style="cursor: pointer; color:#000066;">{{bundle.symbolicName}}</td>

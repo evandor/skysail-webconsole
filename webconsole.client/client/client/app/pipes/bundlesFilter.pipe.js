@@ -23,18 +23,15 @@ System.register(['@angular/core', '../domain/bundle'], function(exports_1, conte
         execute: function() {
             BundlesFilter = (function () {
                 function BundlesFilter() {
-                    this.tmp = [];
                 }
                 BundlesFilter.prototype.transform = function (bundles, args) {
                     if (bundles == null) {
-                        console.log("ARGS1: null");
                         return bundle_1.Bundle[0];
                     }
-                    if (typeof args == 'undefined') {
-                        console.log("ARGS2: " + args[0]);
+                    if (typeof args[0] == 'undefined') {
                         return bundles.filter(function (bundle) { return true; });
                     }
-                    return bundles.filter(function (bundle) { return bundle.symbolicName.indexOf(args[0]) !== -1; });
+                    return bundles.filter(function (bundle) { return bundle.symbolicName.indexOf(args.toString()) !== -1; });
                 };
                 BundlesFilter = __decorate([
                     core_1.Pipe({
