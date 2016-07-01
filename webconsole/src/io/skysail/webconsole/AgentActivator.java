@@ -32,6 +32,7 @@ public class AgentActivator implements BundleActivator {
 
     @Override
     public void start(BundleContext context) throws Exception {
+        log.info("starting webconsole plugin");
         this.context = context;
         osgiServiceTracker = new OsgiServiceTracker(context, OsgiService.class, null);
         osgiServiceTracker.open();
@@ -42,6 +43,7 @@ public class AgentActivator implements BundleActivator {
 
     @Override
     public void stop(BundleContext context) throws Exception {
+        log.info("stopping webconsole plugin");
         this.context = null;
         osgiServiceTracker.close();
         try {
@@ -63,7 +65,9 @@ public class AgentActivator implements BundleActivator {
 
     private void createServer() { // NOSONAR
         try {
-            server = new io.skysail.webconsole.server.Server(context, osgiServiceTracker);
+            int port = 2002;
+            log.info("starting intern webconsole server on port {}", port);
+            server = new io.skysail.webconsole.server.Server(context, osgiServiceTracker, port );
         } catch (Exception e) {
             log.error(e.getMessage(), e);
         }

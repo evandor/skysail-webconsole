@@ -68,8 +68,8 @@ public class Server extends NanoHTTPD {
 
     private BundleServicesHandler bundleServicesHandler;
 
-    public Server(BundleContext bundleContext, OsgiServiceTracker osgiServiceTracker) throws IOException {
-        super(2002);
+    public Server(BundleContext bundleContext, OsgiServiceTracker osgiServiceTracker, int port) throws IOException {
+        super(port);
         start(NanoHTTPD.SOCKET_READ_TIMEOUT, false);
 
         snapshotsService = new SnapshotsService(bundleContext);
