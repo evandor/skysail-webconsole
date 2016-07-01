@@ -1,8 +1,10 @@
 Bundle-Name: SKYSAIL :: webconsole :: all
 
-Bundle-Version: 0.1.1.${tstamp}
+Bundle-Version: 0.1.2.${tstamp}
 
 Bundle-Description: An OSGi webconsole to inspect a running framework
+
+Bundle-Activator: io.skysail.webconsole.all.WebconsoleAllActivator
 
 -buildpath: \
     webconsole;version=${webconsole.version},\
@@ -24,8 +26,10 @@ Export-Package: \
     org.osgi.util.function.*,\
     org.javers.*,\
     org.joda.time.*,\
-    io.skysail.webconsole.antlr.*,\
+    io.skysail.domain.*,\
+    io.skysail.webconsole.*,\
     org.antlr.v4.runtime.*,\
+    com.fasterxml.jackson.*,\
     client.*
 
 #    !client.node_modules.*,\
@@ -36,10 +40,9 @@ Import-Package: \
     !javax.inject.*,\
 	!org.codehaus.*,\
 	!org.joda.convert.*,\
-	!io.skysail.webconsole,\
 	*
 
 #   !org.joda.*,\
 #    !com.google.gson.*,\
 #    !org.picocontainer.*,\
-
+Private-Package: io.skysail.webconsole.all
