@@ -1,89 +1,39 @@
 <html>
 
 <head>
-    <base href="/" />
-    <title>Skysail Client</title>
+  <base href="/" />
+  <title>Skysail Client</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
-   <!-- <link rel="stylesheet" href="lib/fuel-ui/bundles/fuel-ui.min.css" />-->
+  <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
+  <!-- <link rel="stylesheet" href="lib/fuel-ui/bundles/fuel-ui.min.css" />-->
+  <link rel="stylesheet" href="app/styles.css">
 
- <style>
-    .clickable {
-      cursor: pointer;
-      color: #000066;
-    }
-    
-    .ellipses {
-      overflow: hidden;
-      /*white-space: nowrap;*/
-      text-overflow: ellipsis;
-    }
-    
-    .problem {
-      color: #FF0000;
-    }
-    
-    .chart div {
-      font: 10px sans-serif;
-      background-color: steelblue;
-      text-align: right;
-      padding: 3px;
-      margin: 1px;
-      color: white;
-    }
-    
-    .grid {
-      stroke: black;
-      stroke-width: 1px;
-      fill: red;
-    }
-    
-    .arc {
-      stroke: black;
-      fill: none;
-    }
-    
-    .node {
-      fill: lightgray;
-      stroke: black;
-      stroke-width: 1px;
-    }
-    
-    circle.active {
-      fill: red;
-    }
-    
-    path.active {
-      stroke: red;
-    }
-  </style>
-  
-    <!-- 1. Load libraries -->
-    <!-- Polyfill(s) for older browsers -->
-    <script src="lib/es6-shim/es6-shim.min.js"></script>
+  <!-- 1. Load libraries -->
+  <!-- Polyfill(s) for older browsers -->
+  <script src="lib/es6-shim/es6-shim.min.js"></script>
 
-    <script src="lib/zone.js/dist/zone.js"></script>
-    <script src="lib/reflect-metadata/Reflect.js"></script>
-    <script src="lib/systemjs/dist/system.src.js"></script>
+  <script src="lib/zone.js/dist/zone.js"></script>
+  <script src="lib/reflect-metadata/Reflect.js"></script>
+  <script src="lib/systemjs/dist/system.src.js"></script>
 
-    <!-- 2. Configure SystemJS -->
-    <script src="systemjs.config.js"></script>
-    <script>
+  <!-- 2. Configure SystemJS -->
+  <script src="systemjs.config.js"></script>
+  <script>
         System.import('app/boot').then(null, console.error.bind(console));
     </script>
 
-    <!-- 3. Fuel UI -->
-    <!--<script src="lib/fuel-ui/bundles/fuel-ui.min.js"></script>-->
+  <!-- 3. Fuel UI -->
+  <!--<script src="lib/fuel-ui/bundles/fuel-ui.min.js"></script>-->
 
 </head>
 
 <!-- 4. Display the application -->
 
 <body>
-    <my-app>Loading...</my-app>
+  <my-app>Loading...</my-app>
 </body>
 
 </html>

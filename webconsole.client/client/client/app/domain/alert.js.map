@@ -1,1 +1,1 @@
-{"version":3,"sources":["app/domain/alert.ts"],"names":[],"mappings":";;;;;;;YAAA;gBAAA;gBAGA,CAAC;gBAAD,YAAC;YAAD,CAHA,AAGC,IAAA;YAHD,yBAGC,CAAA","file":"app/domain/alert.js","sourcesContent":["export class Alert {\r\n    level: string;\r\n    message: string;\r\n}"],"sourceRoot":"/source/"}
+{"version":3,"sources":["app/domain/alert.ts"],"names":[],"mappings":";;;;;;;YAAA;gBAAA;gBAGA,CAAC;gBAAD,YAAC;YAAD,CAHA,AAGC,IAAA;YAHD,yBAGC,CAAA","file":"app/domain/alert.js","sourcesContent":["export class Alert {\n    level: string;\n    message: string;\n}"],"sourceRoot":"/source/"}

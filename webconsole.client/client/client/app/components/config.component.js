@@ -1,4 +1,4 @@
-System.register(['@angular/core'], function(exports_1, context_1) {
+System.register(['@angular/core', '../domain/backendconfig'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,21 +10,41 @@ System.register(['@angular/core'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, backendconfig_1;
     var ConfigComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (backendconfig_1_1) {
+                backendconfig_1 = backendconfig_1_1;
             }],
         execute: function() {
             ConfigComponent = (function () {
                 function ConfigComponent() {
+                    this.model = new backendconfig_1.BackendConfig('evandor', 'none', 'http://localhost:8080');
+                    this.submitted = false;
+                    // Reset the form with a new hero AND restore 'pristine' class state
+                    // by toggling 'active' flag which causes the form
+                    // to be removed/re-added in a tick via NgIf
+                    // TODO: Workaround until NgForm has a reset method (#6822)
+                    this.active = true;
                 }
+                ConfigComponent.prototype.onSubmit = function () { this.submitted = true; };
+                Object.defineProperty(ConfigComponent.prototype, "diagnostic", {
+                    // TODO: Remove this when we're done
+                    get: function () { return JSON.stringify(this.model); },
+                    enumerable: true,
+                    configurable: true
+                });
+                ConfigComponent.prototype.showFormControls = function (form) {
+                    return form && form.controls['endpoint'] && form.controls['endpoint'].value;
+                };
                 ConfigComponent = __decorate([
                     core_1.Component({
                         selector: 'config',
-                        template: 'hi'
+                        templateUrl: 'app/html/config.template.html'
                     }), 
                     __metadata('design:paramtypes', [])
                 ], ConfigComponent);

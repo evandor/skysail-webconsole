@@ -11,9 +11,17 @@ import {ConfigService} from './services/config.service'
 import {APP_ROUTER_PROVIDERS} from './app.router'
 
 //import {LocalStorageService, LocalStorageSubscriber} from 'angular2-localstorage/LocalStorageEmitter';
+import { disableDeprecatedForms, provideForms } from '@angular/forms';
+
 
 var appPromise = bootstrap(AppComponent, [
-    HTTP_PROVIDERS,WindowService,ConfigService,APP_ROUTER_PROVIDERS, //, LocalStorageService,
+    HTTP_PROVIDERS,
+    WindowService,
+    ConfigService,
+    APP_ROUTER_PROVIDERS, 
+    //LocalStorageService,
+    disableDeprecatedForms(),
+    provideForms(),
     //provide(LocationStrategy, {useClass: HashLocationStrategy}
     provide(Window, {useValue: window})
 ]).catch(err => console.error(err));
