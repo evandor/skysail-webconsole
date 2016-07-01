@@ -6,19 +6,6 @@ Bundle-Description: An OSGi webconsole to inspect a running framework
 
 Bundle-Activator: io.skysail.webconsole.AgentActivator
 
-Private-Package: \
-	io.skysail.webconsole.ui,\
-	io.skysail.webconsole.log,\
-	io.skysail.webconsole,\
-	io.skysail.webconsole.services,\
-	io.skysail.webconsole.entities,\
-	io.skysail.webconsole.listener,\
-	io.skysail.webconsole.events,\
-	io.skysail.webconsole.server,\
-	io.skysail.webconsole.server.handler,\
-	io.skysail.webconsole.snapshots,\
-	io.skysail.webconsole.utils
-
 -buildpath: \
     webconsole;version=${webconsole.version},\
     webconsole.antlr;version=${webconsole.antlr.version},\
@@ -55,6 +42,5 @@ Import-Package: \
 
 #   !org.joda.*,\
 #    !com.google.gson.*,\
-
 #    !org.picocontainer.*,\
 
