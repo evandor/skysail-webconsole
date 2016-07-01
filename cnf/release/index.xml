@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<repository increment="1467354740000" name="Release" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+<repository increment="1467358126000" name="Release" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="webconsole.all"/>
@@ -1936,6 +1936,2160 @@
     </requirement>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(osgi.wiring.package=io.skysail.webconsole)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.annotation)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.net.ssl)"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.antlr.v4.runtime)(version&gt;=0.2.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.antlr.v4.runtime.atn)(version&gt;=0.2.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.antlr.v4.runtime.dfa)(version&gt;=0.2.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.antlr.v4.runtime.misc)(version&gt;=0.2.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.antlr.v4.runtime.tree)(version&gt;=0.2.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.antlr.v4.runtime.tree.pattern)(version&gt;=0.2.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.antlr.v4.runtime.tree.xpath)(version&gt;=0.2.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.javers.common.collections)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.javers.common.date)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.javers.common.exception)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.javers.common.reflection)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.javers.common.string)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.javers.common.validation)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.javers.core)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.javers.core.changelog)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.javers.core.commit)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.javers.core.diff)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.javers.core.diff.appenders)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.javers.core.diff.appenders.levenshtein)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.javers.core.diff.changetype)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.javers.core.diff.changetype.container)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.javers.core.diff.changetype.map)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.javers.core.diff.custom)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.javers.core.graph)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.javers.core.json)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.javers.core.json.typeadapter.change)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.javers.core.json.typeadapter.commit)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.javers.core.json.typeadapter.date)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.javers.core.json.typeadapter.util)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.javers.core.metamodel.annotation)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.javers.core.metamodel.clazz)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.javers.core.metamodel.object)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.javers.core.metamodel.property)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.javers.core.metamodel.scanner)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.javers.core.metamodel.type)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.javers.core.pico)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.javers.core.snapshot)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.javers.groovysupport)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.javers.java8support)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.javers.mongosupport)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.javers.repository.api)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.javers.repository.inmemory)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.javers.repository.jql)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.joda.time)(version&gt;=2.9.0)(!(version&gt;=3.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.joda.time.base)(version&gt;=2.9.0)(!(version&gt;=3.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.joda.time.chrono)(version&gt;=2.9.0)(!(version&gt;=3.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.joda.time.convert)(version&gt;=2.9.0)(!(version&gt;=3.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.joda.time.field)(version&gt;=2.9.0)(!(version&gt;=3.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.joda.time.format)(version&gt;=2.9.0)(!(version&gt;=3.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.joda.time.tz)(version&gt;=2.9.0)(!(version&gt;=3.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.dto)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework)(version&gt;=1.8.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework.dto)(version&gt;=1.8.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.service.component.runtime.dto)(version&gt;=1.3.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.util.function)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.util.promise)(version&gt;=1.0.0)(!(version&gt;=1.1.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.picocontainer)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.picocontainer.adapters)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.picocontainer.annotations)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.picocontainer.behaviors)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.picocontainer.containers)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.picocontainer.converters)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.picocontainer.injectors)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.picocontainer.lifecycle)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.picocontainer.monitors)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.picocontainer.parameters)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.picocontainer.paranamer)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.picocontainer.references)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.picocontainer.security)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.slf4j)(version&gt;=1.7.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="webconsole.all"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="d804a695eb1e645ab2d8bd48240e587c3cd4658773ed1a10863a3570fc93bdab"/>
+      <attribute name="url" value="webconsole.all/webconsole.all-0.1.1.jar"/>
+      <attribute name="size" type="Long" value="4954945"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.google.gson"/>
+      <attribute name="version" type="Version" value="2.6.2"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="com.google.gson.reflect,com.google.gson.stream"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.google.gson.annotations"/>
+      <attribute name="version" type="Version" value="2.6.2"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.google.gson.internal"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="com.google.gson,com.google.gson.reflect,com.google.gson.stream"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.google.gson.internal.bind"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="com.google.gson,com.google.gson.internal,com.google.gson.reflect,com.google.gson.stream"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.google.gson.internal.bind.util"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.google.gson.reflect"/>
+      <attribute name="version" type="Version" value="2.6.2"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.google.gson.stream"/>
+      <attribute name="version" type="Version" value="2.6.2"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="fi.iki.elonen"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="javax.net.ssl"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="fi.iki.elonen.util"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="fi.iki.elonen"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.picocontainer"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.picocontainer.adapters,org.picocontainer.containers,org.picocontainer.lifecycle"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.picocontainer.adapters"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.picocontainer"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.picocontainer.annotations"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.picocontainer.behaviors"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.picocontainer,org.picocontainer.injectors"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.picocontainer.classname"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.picocontainer,org.picocontainer.containers"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.picocontainer.composers"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.picocontainer,org.picocontainer.monitors"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.picocontainer.containers"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.picocontainer,org.picocontainer.lifecycle"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.picocontainer.converters"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.picocontainer"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.picocontainer.injectors"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.picocontainer,org.picocontainer.adapters,org.picocontainer.paranamer"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.picocontainer.lifecycle"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.picocontainer"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.picocontainer.monitors"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.picocontainer"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.picocontainer.parameters"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.picocontainer"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.picocontainer.paranamer"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.picocontainer.references"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.picocontainer"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.picocontainer.security"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.picocontainer.visitors"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.picocontainer"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.osgi.service.component"/>
+      <attribute name="version" type="Version" value="1.3.0"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.osgi.framework"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.osgi.service.component.annotations"/>
+      <attribute name="version" type="Version" value="1.3.0"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.osgi.service.component.runtime"/>
+      <attribute name="version" type="Version" value="1.3.0"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.osgi.framework,org.osgi.service.component.runtime.dto,org.osgi.util.promise"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.osgi.service.component.runtime.dto"/>
+      <attribute name="version" type="Version" value="1.3.0"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.osgi.dto,org.osgi.framework.dto"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.osgi.util.promise"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.osgi.util.function"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.osgi.util.function"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.javers.common.collections"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.javers.core.metamodel.object"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.javers.common.date"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.joda.time"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.javers.common.exception"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.javers.common.properties"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.javers.common.reflection"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.javers.common.collections"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.javers.common.string"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.javers.common.validation"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.javers.core"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="com.google.gson,org.javers.common.collections,org.javers.common.date,org.javers.core.changelog,org.javers.core.commit,org.javers.core.diff,org.javers.core.diff.changetype,org.javers.core.diff.custom,org.javers.core.graph,org.javers.core.json,org.javers.core.metamodel.clazz,org.javers.core.metamodel.object,org.javers.core.metamodel.property,org.javers.core.metamodel.type,org.javers.core.pico,org.javers.repository.api,org.javers.repository.jql,org.picocontainer"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.javers.core.changelog"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.javers.core.commit,org.javers.core.diff,org.javers.core.diff.changetype,org.javers.core.diff.changetype.container,org.javers.core.diff.changetype.map,org.javers.core.metamodel.object,org.joda.time.format"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.javers.core.commit"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.javers.common.date,org.javers.core.diff,org.javers.core.graph,org.javers.core.metamodel.object,org.javers.core.pico,org.javers.core.snapshot,org.javers.repository.api,org.joda.time,org.picocontainer"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.javers.core.diff"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.javers.common.collections,org.javers.core,org.javers.core.commit,org.javers.core.diff.appenders,org.javers.core.diff.changetype,org.javers.core.diff.changetype.container,org.javers.core.graph,org.javers.core.metamodel.object,org.javers.core.metamodel.property,org.javers.core.metamodel.type,org.javers.core.pico"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.javers.core.diff.appenders"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.javers.core,org.javers.core.diff,org.javers.core.diff.changetype,org.javers.core.diff.changetype.container,org.javers.core.metamodel.object,org.javers.core.metamodel.property,org.javers.core.metamodel.type,org.javers.core.pico,org.picocontainer"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.javers.core.diff.appenders.levenshtein"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.javers.core.diff,org.javers.core.diff.appenders,org.javers.core.diff.changetype,org.javers.core.diff.changetype.container,org.javers.core.metamodel.property,org.javers.core.metamodel.type"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.javers.core.diff.changetype"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.javers.common.collections,org.javers.core.commit,org.javers.core.diff,org.javers.core.metamodel.object"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.javers.core.diff.changetype.container"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.javers.core.diff.changetype,org.javers.core.metamodel.object"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.javers.core.diff.changetype.map"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.javers.core.diff.changetype,org.javers.core.metamodel.object"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.javers.core.diff.custom"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.javers.core.diff,org.javers.core.diff.appenders,org.javers.core.diff.changetype,org.javers.core.metamodel.object,org.javers.core.metamodel.property,org.javers.core.metamodel.type"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.javers.core.graph"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.javers.common.collections,org.javers.core,org.javers.core.diff,org.javers.core.metamodel.object,org.javers.core.metamodel.property,org.javers.core.metamodel.scanner,org.javers.core.metamodel.type,org.javers.core.pico,org.picocontainer"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.javers.core.json"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="com.google.gson,org.javers.core.metamodel.object,org.joda.time"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.javers.core.json.typeadapter.change"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.javers.core.pico,org.picocontainer"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.javers.core.json.typeadapter.commit"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="com.google.gson,org.javers.core.json,org.javers.core.metamodel.object,org.javers.core.pico,org.picocontainer"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.javers.core.json.typeadapter.date"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.javers.core.json,org.joda.time"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.javers.core.json.typeadapter.util"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.javers.core"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.javers.core.metamodel.annotation"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.javers.core.metamodel.clazz"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.javers.common.collections"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.javers.core.metamodel.object"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.javers.common.collections,org.javers.core.commit,org.javers.core.graph,org.javers.core.metamodel.property,org.javers.core.metamodel.type,org.javers.repository.jql,org.picocontainer"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.javers.core.metamodel.property"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.javers.common.reflection"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.javers.core.metamodel.scanner"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.javers.common.collections,org.javers.core,org.javers.core.metamodel.property,org.javers.core.pico,org.picocontainer"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.javers.core.metamodel.type"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.javers.common.collections,org.javers.common.string,org.javers.core.metamodel.clazz,org.javers.core.metamodel.object,org.javers.core.metamodel.property,org.javers.core.metamodel.scanner,org.javers.core.pico,org.picocontainer"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.javers.core.pico"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.javers.common.reflection,org.javers.core,org.picocontainer"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.javers.core.selftest"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.javers.core.snapshot"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.javers.core.commit,org.javers.core.diff,org.javers.core.graph,org.javers.core.json,org.javers.core.metamodel.object,org.javers.core.metamodel.type,org.javers.core.pico,org.javers.repository.api,org.picocontainer"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.javers.groovysupport"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.javers.core"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.javers.java8support"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.javers.core"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.javers.mongosupport"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="com.google.gson,org.javers.common.collections,org.javers.repository.api"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.javers.repository.api"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.javers.common.collections,org.javers.core.commit,org.javers.core.diff,org.javers.core.json,org.javers.core.metamodel.object,org.javers.core.metamodel.type,org.javers.core.snapshot,org.joda.time"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.javers.repository.inmemory"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.javers.common.collections,org.javers.core.commit,org.javers.core.json,org.javers.core.metamodel.object,org.javers.core.metamodel.type,org.javers.core.pico,org.javers.repository.api,org.picocontainer"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.javers.repository.jql"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.javers.common.collections,org.javers.core.commit,org.javers.core.diff,org.javers.core.metamodel.object,org.javers.core.metamodel.type,org.javers.repository.api,org.joda.time"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.joda.time"/>
+      <attribute name="version" type="Version" value="2.9.3"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.joda.time.base,org.joda.time.field,org.joda.time.format,org.joda.time.tz"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.joda.time.base"/>
+      <attribute name="version" type="Version" value="2.9.3"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.joda.time,org.joda.time.format"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.joda.time.chrono"/>
+      <attribute name="version" type="Version" value="2.9.3"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.joda.time"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.joda.time.convert"/>
+      <attribute name="version" type="Version" value="2.9.3"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.joda.time,org.joda.time.format"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.joda.time.field"/>
+      <attribute name="version" type="Version" value="2.9.3"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.joda.time"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.joda.time.format"/>
+      <attribute name="version" type="Version" value="2.9.3"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.joda.time"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.joda.time.tz"/>
+      <attribute name="version" type="Version" value="2.9.3"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.joda.time"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.joda.time.tz.data"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.joda.time.tz.data.Africa"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.joda.time.tz.data.America"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.joda.time.tz.data.America.Argentina"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.joda.time.tz.data.America.Indiana"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.joda.time.tz.data.America.Kentucky"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.joda.time.tz.data.America.North_Dakota"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.joda.time.tz.data.Antarctica"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.joda.time.tz.data.Arctic"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.joda.time.tz.data.Asia"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.joda.time.tz.data.Atlantic"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.joda.time.tz.data.Australia"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.joda.time.tz.data.Etc"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.joda.time.tz.data.Europe"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.joda.time.tz.data.Indian"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.joda.time.tz.data.Pacific"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="io.skysail.webconsole.antlr"/>
+      <attribute name="version" type="Version" value="0.2.0"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.antlr.v4.runtime,org.antlr.v4.runtime.atn,org.antlr.v4.runtime.dfa,org.antlr.v4.runtime.tree"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.antlr.v4.runtime"/>
+      <attribute name="version" type="Version" value="0.2.3"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.antlr.v4.runtime.atn,org.antlr.v4.runtime.dfa,org.antlr.v4.runtime.misc,org.antlr.v4.runtime.tree,org.antlr.v4.runtime.tree.pattern"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.antlr.v4.runtime.atn"/>
+      <attribute name="version" type="Version" value="0.2.3"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.antlr.v4.runtime,org.antlr.v4.runtime.dfa,org.antlr.v4.runtime.misc"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.antlr.v4.runtime.dfa"/>
+      <attribute name="version" type="Version" value="0.2.3"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.antlr.v4.runtime,org.antlr.v4.runtime.atn"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.antlr.v4.runtime.misc"/>
+      <attribute name="version" type="Version" value="0.2.3"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.antlr.v4.runtime"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.antlr.v4.runtime.tree"/>
+      <attribute name="version" type="Version" value="0.2.3"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.antlr.v4.runtime,org.antlr.v4.runtime.misc"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.antlr.v4.runtime.tree.pattern"/>
+      <attribute name="version" type="Version" value="0.2.3"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.antlr.v4.runtime,org.antlr.v4.runtime.misc,org.antlr.v4.runtime.tree"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="org.antlr.v4.runtime.tree.xpath"/>
+      <attribute name="version" type="Version" value="0.2.3"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+      <directive name="uses" value="org.antlr.v4.runtime,org.antlr.v4.runtime.atn,org.antlr.v4.runtime.dfa,org.antlr.v4.runtime.tree"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.app"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.app.components"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.app.components.bundles"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.app.components.navbar"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.app.components.services"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.app.components.snapshots"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.app.components.websockets"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.app.css"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.app.directives"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.app.domain"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.app.html"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.app.html.bundles"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.app.html.navbar"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.app.html.services"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.app.img"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.app.pipes"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.app.services"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.common"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.common.esm"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.common.esm.src"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.common.esm.src.directives"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.common.esm.src.facade"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.common.esm.src.forms"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.common.esm.src.forms.directives"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.common.esm.src.location"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.common.esm.src.pipes"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.common.esm.testing"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.common.src"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.common.src.directives"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.common.src.facade"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.common.src.forms"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.common.src.forms.directives"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.common.src.location"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.common.src.pipes"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.common.testing"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.compiler"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.compiler.esm"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.compiler.esm.src"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.compiler.esm.src.expression_parser"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.compiler.esm.src.facade"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.compiler.esm.src.output"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.compiler.esm.src.schema"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.compiler.esm.src.view_compiler"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.compiler.esm.testing"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.compiler.src"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.compiler.src.expression_parser"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.compiler.src.facade"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.compiler.src.output"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.compiler.src.schema"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.compiler.src.view_compiler"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.compiler.testing"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.core"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.core.esm"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.core.esm.src"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.core.esm.src.change_detection"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.core.esm.src.change_detection.differs"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.core.esm.src.debug"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.core.esm.src.di"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.core.esm.src.facade"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.core.esm.src.linker"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.core.esm.src.metadata"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.core.esm.src.profile"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.core.esm.src.reflection"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.core.esm.src.render"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.core.esm.src.testability"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.core.esm.src.util"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.core.esm.src.zone"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.core.esm.testing"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.core.src"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.core.src.change_detection"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.core.src.change_detection.differs"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.core.src.debug"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.core.src.di"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.core.src.facade"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.core.src.linker"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.core.src.metadata"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.core.src.profile"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.core.src.reflection"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.core.src.render"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.core.src.testability"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.core.src.util"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.core.src.zone"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.core.testing"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.http"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.http.esm"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.http.esm.src"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.http.esm.src.backends"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.http.esm.src.facade"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.http.esm.testing"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.http.src"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.http.src.backends"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.http.src.facade"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.http.testing"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.platform-browser"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.platform-browser-dynamic"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.platform-browser-dynamic.esm"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.platform-browser-dynamic.esm.src.facade"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.platform-browser-dynamic.esm.src.xhr"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.platform-browser-dynamic.esm.testing"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.platform-browser-dynamic.src.facade"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.platform-browser-dynamic.src.xhr"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.platform-browser-dynamic.testing"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.platform-browser.esm"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.platform-browser.esm.src"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.platform-browser.esm.src.animate"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.platform-browser.esm.src.browser"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.platform-browser.esm.src.browser.location"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.platform-browser.esm.src.browser.tools"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.platform-browser.esm.src.dom"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.platform-browser.esm.src.dom.debug"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.platform-browser.esm.src.dom.events"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.platform-browser.esm.src.facade"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.platform-browser.esm.src.security"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.platform-browser.esm.testing"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.platform-browser.src"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.platform-browser.src.animate"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.platform-browser.src.browser"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.platform-browser.src.browser.location"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.platform-browser.src.browser.tools"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.platform-browser.src.dom"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.platform-browser.src.dom.debug"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.platform-browser.src.dom.events"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.platform-browser.src.facade"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.platform-browser.src.security"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.platform-browser.testing"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.router"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.router-deprecated"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.router-deprecated.esm"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.router-deprecated.esm.src"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.router-deprecated.esm.src.directives"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.router-deprecated.esm.src.facade"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.router-deprecated.esm.src.lifecycle"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.router-deprecated.esm.src.route_config"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.router-deprecated.esm.src.rules"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.router-deprecated.esm.src.rules.route_handlers"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.router-deprecated.esm.src.rules.route_paths"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.router-deprecated.src"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.router-deprecated.src.directives"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.router-deprecated.src.facade"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.router-deprecated.src.lifecycle"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.router-deprecated.src.route_config"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.router-deprecated.src.rules"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.router-deprecated.src.rules.route_handlers"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.router-deprecated.src.rules.route_paths"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.router.esm"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.router.esm.src"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.router.esm.src.directives"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.router.esm.src.facade"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.router.esm.src.metadata"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.router.esm.testing"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.router.src"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.router.src.directives"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.router.src.facade"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.router.src.metadata"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.router.testing"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.upgrade"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.upgrade.esm"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.upgrade.esm.src"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.@angular.upgrade.src"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.bootstrap.dist.css"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.bootstrap.dist.fonts"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.bootstrap.dist.js"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.d3"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.d3.src"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.d3.src.arrays"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.d3.src.behavior"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.d3.src.color"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.d3.src.compat"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.d3.src.core"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.d3.src.dsv"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.d3.src.event"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.d3.src.format"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.d3.src.geo"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.d3.src.geom"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.d3.src.geom.voronoi"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.d3.src.interpolate"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.d3.src.layout"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.d3.src.locale"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.d3.src.math"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.d3.src.scale"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.d3.src.selection"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.d3.src.svg"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.d3.src.time"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.d3.src.transition"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.d3.src.xhr"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.es6-shim"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.reflect-metadata"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.rxjs"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.rxjs.add.observable"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.rxjs.add.observable.dom"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.rxjs.add.operator"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.rxjs.bundles"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.rxjs.observable"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.rxjs.observable.dom"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.rxjs.operator"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.rxjs.scheduler"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.rxjs.src"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.rxjs.symbol"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.rxjs.testing"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.rxjs.util"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.systemjs.dist"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="client.lib.zone.js.dist"/>
+      <attribute name="version" type="Version" value="0.3.4"/>
+      <attribute name="bundle-symbolic-name" value="webconsole.all"/>
+      <attribute name="bundle-version" type="Version" value="0.1.1.201607010728"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=com.google.gson)(version&gt;=2.6.0)(!(version&gt;=3.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=com.google.gson.annotations)(version&gt;=2.6.0)(!(version&gt;=3.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=com.google.gson.internal)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=com.google.gson.internal.bind)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=com.google.gson.internal.bind.util)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=com.google.gson.reflect)(version&gt;=2.6.0)(!(version&gt;=3.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=com.google.gson.stream)(version&gt;=2.6.0)(!(version&gt;=3.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=fi.iki.elonen)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=fi.iki.elonen.util)(version&gt;=0.3.0)(!(version&gt;=1.0.0)))"/>
     </requirement>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(osgi.wiring.package=javax.annotation)"/>
