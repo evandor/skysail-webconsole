@@ -1,6 +1,6 @@
 Bundle-Name: SKYSAIL :: webconsole
 
-Bundle-Version: 0.3.4.${tstamp}
+Bundle-Version: 0.3.5.${tstamp}
 
 Bundle-Description: An OSGi webconsole to inspect a running framework
 
@@ -30,7 +30,6 @@ Include-Resource: libs=libs
     libs/gson-2.6.2.jar;version=file,\
     libs/joda-time-2.9.3.jar;version=file,\
     webconsole.antlr;version=${webconsole.antlr.version},\
-    webconsole.client;version=${webconsole.client.version},\
     webconsole.osgi;version=${webconsole.osgi.version},\
     ${osgi},\
     ${testlibs},\
@@ -49,8 +48,7 @@ Export-Package: \
     org.javers.*,\
     org.joda.time.*,\
     io.skysail.webconsole.antlr.*,\
-    org.antlr.v4.runtime.*,\
-    client.*
+    org.antlr.v4.runtime.*
 
 #    !client.node_modules.*,\
     
