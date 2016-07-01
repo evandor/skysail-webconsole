@@ -63,7 +63,6 @@ copyright.html:              Copyright &copy; twentyeleven.de (2011, ${tstamp;yy
 webconsole.version           '[0.3.4,0.3.5)'
 webconsole.antlr.version     '[0.2.3,0.2.4)'
 webconsole.client.version    '[0.1.11,0.1.12)'
-// current
 webconsole.osgi.version      '[0.1.9,0.1.10)'
 
 

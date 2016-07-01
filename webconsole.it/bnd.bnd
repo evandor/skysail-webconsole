@@ -37,6 +37,7 @@ javac.target: 1.8
 -runbundles: \
     webconsole;version=latest,\
     webconsole.antlr;version=${webconsole.antlr.version},\
+    webconsole.client;version=${webconsole.client.version},\
     webconsole.osgi;version=${webconsole.osgi.version},\
     ${junit},\
     ${mockito},\
