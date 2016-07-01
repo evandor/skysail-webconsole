@@ -13,7 +13,7 @@ import lombok.Getter;
 public class OsgiServiceTracker extends ServiceTracker<OsgiService, OsgiService> {
 
     @Getter
-    private Optional<OsgiService> osgiService;
+    private Optional<OsgiService> osgiService = Optional.empty();
 
     public OsgiServiceTracker(BundleContext context, Class<OsgiService> clazz,
             ServiceTrackerCustomizer<OsgiService, OsgiService> customizer) {
