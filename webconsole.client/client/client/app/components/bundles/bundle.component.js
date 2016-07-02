@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/common', "@angular/router", '@angular/http', '../../services/backend.service', '../../domain/bundle', '../../components/tabs', '../../components/tab', '../../domain/keyValue', '../../pipes/newline.pipe', '../../pipes/values.pipe', '../../pipes/bundleState.pipe'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/common', "@angular/router", '@angular/http', '../../services/backend.service', '../../services/appglobals.service', '../../services/breadcrumbs.service', '../../domain/bundle', '../navbar/breadcrumb', '../../components/tabs', '../../components/tab', '../../domain/keyValue', '../../pipes/newline.pipe', '../../pipes/values.pipe', '../../pipes/bundleState.pipe'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '@angula
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, router_1, http_1, backend_service_1, bundle_1, tabs_1, tab_1, keyValue_1, newline_pipe_1, values_pipe_1, bundleState_pipe_1;
+    var core_1, common_1, router_1, http_1, backend_service_1, appglobals_service_1, breadcrumbs_service_1, bundle_1, breadcrumb_1, tabs_1, tab_1, keyValue_1, newline_pipe_1, values_pipe_1, bundleState_pipe_1;
     var BundleComponent;
     return {
         setters:[
@@ -29,8 +29,17 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '@angula
             function (backend_service_1_1) {
                 backend_service_1 = backend_service_1_1;
             },
+            function (appglobals_service_1_1) {
+                appglobals_service_1 = appglobals_service_1_1;
+            },
+            function (breadcrumbs_service_1_1) {
+                breadcrumbs_service_1 = breadcrumbs_service_1_1;
+            },
             function (bundle_1_1) {
                 bundle_1 = bundle_1_1;
+            },
+            function (breadcrumb_1_1) {
+                breadcrumb_1 = breadcrumb_1_1;
             },
             function (tabs_1_1) {
                 tabs_1 = tabs_1_1;
@@ -52,21 +61,23 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '@angula
             }],
         execute: function() {
             BundleComponent = (function () {
-                function BundleComponent(_backend, route, _router) {
+                function BundleComponent(_backend, _route, _router, _breadcrumbsService, _appGlobals) {
                     this._backend = _backend;
-                    this.route = route;
+                    this._route = _route;
                     this._router = _router;
+                    this._breadcrumbsService = _breadcrumbsService;
+                    this._appGlobals = _appGlobals;
                     this.bundle = new bundle_1.Bundle();
                     this.capabilities = [];
-                    this.isLoading = true;
                 }
                 BundleComponent.prototype.ngOnInit = function () {
                     var _this = this;
-                    this.sub = this.route.params.subscribe(function (params) {
+                    this.sub = this._route.params.subscribe(function (params) {
                         var id = params['id'];
-                        //this.service.getHero(id).then(hero => this.hero = hero);
+                        _this._breadcrumbsService.add(new breadcrumb_1.Breadcrumb(['/bundles'], 'thetitle'));
                         _this._backend.getBundle(id)
                             .subscribe(function (res) {
+                            _this._appGlobals.setIsLoading(true);
                             _this.bundle = res;
                             var props = res.wireDescriptor.capabilities;
                             for (var key in props) {
@@ -87,7 +98,7 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '@angula
                                 .subscribe(function (serviceRes) {
                                 _this.bundle.providedServices = serviceRes;
                             });
-                            _this.isLoading = false;
+                            _this._appGlobals.setIsLoading(false);
                         });
                     });
                 };
@@ -115,11 +126,10 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '@angula
                     return "";
                 };
                 BundleComponent.prototype.onSelectService = function (service) {
-                    this._router.navigate(['Service', { id: service.id }]);
-                    //this._breadcrumbService.add(new Breadcrumb(['Bundle'], "hier"));
+                    this._router.navigate(['/services', service.id]);
                 };
                 BundleComponent.prototype.onSelectBundle = function (id) {
-                    this._router.navigate(['Bundle', { id: id }]);
+                    this._router.navigate(['/bundles', id]);
                 };
                 BundleComponent.prototype.objToStrMap = function (obj) {
                     var strMap = new Map();
@@ -137,7 +147,7 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '@angula
                         pipes: [newline_pipe_1.NewlinePipe, values_pipe_1.ValuesPipe, bundleState_pipe_1.BundleStatePipe],
                         templateUrl: 'app/html/bundles/bundle.template.html',
                     }), 
-                    __metadata('design:paramtypes', [backend_service_1.BackendServices, router_1.ActivatedRoute, router_1.Router])
+                    __metadata('design:paramtypes', [backend_service_1.BackendServices, router_1.ActivatedRoute, router_1.Router, breadcrumbs_service_1.BreadcrumbsService, appglobals_service_1.AppGlobals])
                 ], BundleComponent);
                 return BundleComponent;
             }());

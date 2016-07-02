@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component} from "@angular/core";
 import {ROUTER_DIRECTIVES, Router} from "@angular/router";
 import {BackendServices} from '../../services/backend.service';
 import {AppGlobals} from '../../services/appglobals.service';
@@ -12,7 +12,7 @@ import {Subscription} from 'rxjs/Subscription';
     pipes: [],
     templateUrl: 'app/html/navbar/navbar.template.html'
 })
-export class Navbar implements OnInit {
+export class Navbar {
 
     res;
 
@@ -23,7 +23,7 @@ export class Navbar implements OnInit {
     subscription:Subscription;
 
     constructor(private router: Router, private _backend: BackendServices, private _appGlobals: AppGlobals) {
-        //this._appGlobals.isLoading.subscribe(value => this.loading = value);
+        this._appGlobals._isLoading.subscribe(value => this.loading = value);
         this.router.events.subscribe(() => {
             /*if (val.startsWith("bundles")) {
                 this.currentMenuItem = "Bundles";
@@ -41,18 +41,7 @@ export class Navbar implements OnInit {
         });
     }
 
-    ngOnInit() {
-        this.subscription = this._appGlobals.isLoadingObservable$.subscribe(
-            value => this.loading = value
-        );
-    }
-    ngOnDestroy() {
-        // prevent memory leak when component is destroyed
-        this.subscription.unsubscribe();
-    }
-
     isLoading(): boolean {
-        console.log("isLoading: " + this.loading);
         return this.loading;
     }
 

@@ -15,7 +15,7 @@ declare var jQuery: any;
 @Component({
     selector: 'packages',
     directives: [FORM_DIRECTIVES, ROUTER_DIRECTIVES, NgFor, NgFormModel],
-    providers: [BackendServices, BreadcrumbsService],
+    providers: [BackendServices],
     templateUrl: 'app/html/packages.template.html'
 })
 export class PackagesComponent implements OnInit {
@@ -26,22 +26,17 @@ export class PackagesComponent implements OnInit {
 
     //isLoading = true;
 
-    constructor(private router: Router, private _backend: BackendServices, private _appGlobals: AppGlobals) {
-        //this._appGlobals.isLoading.subscribe(value => this.isLoading = value);
-    }
+    constructor(private router: Router, private _backend: BackendServices, private _appGlobals: AppGlobals) {}
 
     onSelectBundle(bundle: Bundle) {
         this.router.navigate(['Bundle', { id: bundle.id }]);
     }
 
     ngOnInit() {
-        console.log("in packagesComponent");
-       // this.isLoading = true;
         this._appGlobals.setIsLoading(true);
         this._backend.getPackages()
             .subscribe(res => {
                 this.packages = res;
-                //this.isLoading = false;
                 this._appGlobals.setIsLoading(false);
             });
     }

@@ -29,12 +29,13 @@ System.register(["@angular/core", "@angular/router", '../../services/backend.ser
         execute: function() {
             Navbar = (function () {
                 function Navbar(router, _backend, _appGlobals) {
+                    var _this = this;
                     this.router = router;
                     this._backend = _backend;
                     this._appGlobals = _appGlobals;
                     this.currentMenuItem = "Bundles";
                     this.loading = false;
-                    //this._appGlobals.isLoading.subscribe(value => this.loading = value);
+                    this._appGlobals._isLoading.subscribe(function (value) { return _this.loading = value; });
                     this.router.events.subscribe(function () {
                         /*if (val.startsWith("bundles")) {
                             this.currentMenuItem = "Bundles";
@@ -51,16 +52,7 @@ System.register(["@angular/core", "@angular/router", '../../services/backend.ser
                         }*/
                     });
                 }
-                Navbar.prototype.ngOnInit = function () {
-                    var _this = this;
-                    this.subscription = this._appGlobals.isLoadingObservable$.subscribe(function (value) { return _this.loading = value; });
-                };
-                Navbar.prototype.ngOnDestroy = function () {
-                    // prevent memory leak when component is destroyed
-                    this.subscription.unsubscribe();
-                };
                 Navbar.prototype.isLoading = function () {
-                    console.log("isLoading: " + this.loading);
                     return this.loading;
                 };
                 Navbar.prototype.getBundlesMenuTitle = function () {

@@ -1,4 +1,4 @@
-System.register(['@angular/core', '../components/navbar/breadcrumb'], function(exports_1, context_1) {
+System.register(['@angular/core'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,22 +10,19 @@ System.register(['@angular/core', '../components/navbar/breadcrumb'], function(e
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, breadcrumb_1;
+    var core_1;
     var BreadcrumbsService;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
-            },
-            function (breadcrumb_1_1) {
-                breadcrumb_1 = breadcrumb_1_1;
             }],
         execute: function() {
             BreadcrumbsService = (function () {
                 function BreadcrumbsService() {
                     console.log("in breadcrumbsservice constructor");
                     this.breadcrumbs = [];
-                    this.breadcrumbs.push(new breadcrumb_1.Breadcrumb(['bundles'], '<span class="glyphicon glyphicon-home" aria-hidden="true"></span>'));
+                    //this.breadcrumbs.push(new Breadcrumb(['bundles'], '<span class="glyphicon glyphicon-home" aria-hidden="true"></span>'));
                 }
                 BreadcrumbsService.prototype.getBreadcrumbs = function () {
                     return this.breadcrumbs;

@@ -4,7 +4,12 @@ import {ROUTER_DIRECTIVES, Router, ActivatedRoute} from "@angular/router";
 import {HTTP_PROVIDERS} from '@angular/http';
 
 import {BackendServices} from '../../services/backend.service';
+import {AppGlobals} from '../../services/appglobals.service';
+import {BreadcrumbsService} from '../../services/breadcrumbs.service';
+
 import {Bundle} from '../../domain/bundle';
+import {Breadcrumb} from '../navbar/breadcrumb';
+
 import {Tabs} from '../../components/tabs';
 import {Tab} from '../../components/tab';
 
@@ -30,21 +35,26 @@ export class BundleComponent implements OnInit {
 
     capabilities: KeyValue[] = [];
 
-    isLoading = true;
-
     private sub: any;
 
-    constructor(private _backend: BackendServices, private route: ActivatedRoute, private _router: Router) {
+    constructor(
+        private _backend: BackendServices, 
+        private _route: ActivatedRoute, 
+        private _router: Router, 
+        private _breadcrumbsService: BreadcrumbsService,
+        private _appGlobals: AppGlobals) {
     }
 
     ngOnInit() {
 
-        this.sub = this.route.params.subscribe(params => {
+        this.sub = this._route.params.subscribe(params => {
             let id = params['id']; 
-            //this.service.getHero(id).then(hero => this.hero = hero);
+
+            this._breadcrumbsService.add(new Breadcrumb(['/bundles'],'thetitle'));
 
             this._backend.getBundle(id)
             .subscribe(res => {
+                this._appGlobals.setIsLoading(true);
                 this.bundle = res;
                 var props = <Map<string, string>>res.wireDescriptor.capabilities;
                 for (var key in props) {
@@ -64,9 +74,7 @@ export class BundleComponent implements OnInit {
                     .subscribe(serviceRes => {
                         this.bundle.providedServices = serviceRes;
                     });
-
-
-                this.isLoading = false;
+                this._appGlobals.setIsLoading(false);
             }
             );
         });
@@ -104,12 +112,11 @@ export class BundleComponent implements OnInit {
     }
 
     onSelectService(service: Service) {
-        this._router.navigate(['Service', { id: service.id }]);
-        //this._breadcrumbService.add(new Breadcrumb(['Bundle'], "hier"));
+        this._router.navigate(['/services',service.id]);
     }
 
     onSelectBundle(id: string) {
-        this._router.navigate(['Bundle', { id: id }]);
+        this._router.navigate(['/bundles', id ]);
     }
 
     objToStrMap(obj) {

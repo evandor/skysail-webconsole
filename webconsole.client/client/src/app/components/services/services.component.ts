@@ -1,6 +1,8 @@
 import {Component, OnInit, ElementRef} from '@angular/core';
 import {FORM_DIRECTIVES, FormBuilder, NgFor, NgFormModel} from '@angular/common';
 import {BackendServices} from '../../services/backend.service';
+import {AppGlobals} from '../../services/appglobals.service';
+
 import {Service} from '../../domain/service';
 import {Bundle} from '../../domain/bundle';
 import {ROUTER_DIRECTIVES, Router} from "@angular/router";
@@ -20,7 +22,7 @@ export class ServicesComponent implements OnInit {
 
     services: Service[];
 
-    constructor(private router: Router, private _backend: BackendServices) {
+    constructor(private router: Router, private _backend: BackendServices, private _appGlobals: AppGlobals) {
     }
     
     onSelect(serviceId: string) {
@@ -34,7 +36,9 @@ export class ServicesComponent implements OnInit {
     ngOnInit() {
         this._backend.getServices()
             .subscribe(res => {
+                this._appGlobals.setIsLoading(true);
                 this.services = res;
+                this._appGlobals.setIsLoading(false);
             });
     }
 

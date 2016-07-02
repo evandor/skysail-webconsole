@@ -5,12 +5,14 @@ import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 @Injectable()
 export class AppGlobals {
 
-    private _isLoading: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+    public _isLoading:     BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+    public _filteredCount: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
-    isLoadingObservable$ = this._isLoading.asObservable();
-
-    setIsLoading(isLoading) {
-        console.log("setting isLoading to " + isLoading);
+    setIsLoading(isLoading: boolean) {
         this._isLoading.next(isLoading);
+    }
+
+    setFilteredCount(count: number) {
+        this._filteredCount.next(count);
     }
 }

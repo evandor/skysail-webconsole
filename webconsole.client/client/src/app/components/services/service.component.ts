@@ -4,6 +4,8 @@ import {HTTP_PROVIDERS} from '@angular/http';
 import {ROUTER_DIRECTIVES, Router, ActivatedRoute} from "@angular/router";
 
 import {BackendServices} from '../../services/backend.service';
+import {AppGlobals} from '../../services/appglobals.service';
+
 import {Bundle} from '../../domain/bundle';
 import {KeyValue} from '../../domain/keyValue';
 import {Service} from '../../domain/service';
@@ -21,12 +23,11 @@ import {DerpPipe} from '../../pipes/derp.pipe';
 })
 export class ServiceComponent implements OnInit {
 
-    isLoading = true;
     service: Service = new Service();
     properties: KeyValue[] = [];
     usingBundles: Bundle[] = [];
 
-    constructor(private router: Router, private route: ActivatedRoute, private _backend: BackendServices) {
+    constructor(private router: Router, private route: ActivatedRoute, private _backend: BackendServices, private _appGlobals: AppGlobals) {
     }
 
     onSelect(bundleId: string) {
@@ -38,13 +39,15 @@ export class ServiceComponent implements OnInit {
             let id = params['id'];
             this._backend.getService(id)
                 .subscribe(res => {
+                    this._appGlobals.setIsLoading(true);
+
                     this.service = res;
                     var props = <Map<string, string>>res.properties;
                     for (var key in props) {
                         this.properties.push(new KeyValue(key, props[key]));
                     };
                     this.usingBundles = <Bundle[]>res.usingBundles;
-                    this.isLoading = false;
+                    this._appGlobals.setIsLoading(false);
                 }
                 );
         });

@@ -4,6 +4,8 @@ import {ROUTER_DIRECTIVES, Router} from "@angular/router";
 
 import {BackendServices} from '../../services/backend.service';
 import {BreadcrumbsService} from '../../services/breadcrumbs.service';
+import {AppGlobals} from '../../services/appglobals.service';
+
 import {Breadcrumb} from '../../components/navbar/breadcrumb';
 import {Bundle} from '../../domain/bundle';
 import {Tabs} from '../../components/tabs';
@@ -17,14 +19,12 @@ import {AdjacencyDirective} from '../../directives/adjacency.directive'
 
 //import {LocalStorage, SessionStorage} from "angular2-localstorage/WebStorage";
 
-//import {OrderByPipe} from 'fuel-ui/fuel-ui';
-
 declare var jQuery: any;
 
 @Component({
     selector: 'bundles',
     directives: [FORM_DIRECTIVES, ROUTER_DIRECTIVES, NgFor, NgFormModel, Tabs, Tab, AdjacencyDirective,PercentBarDirective],
-    providers: [BackendServices, BreadcrumbsService],
+    providers: [BackendServices],
     templateUrl: 'app/html/bundles/bundles.template.html',
     pipes: [BundlesFilter, BundleStatePipe],
     //changeDetection: ChangeDetectionStrategy.OnPush
@@ -32,18 +32,21 @@ declare var jQuery: any;
 export class BundlesComponent implements OnInit, OnChanges {
 
     bundles: Bundle[];
-    isLoading = true;
     searchId: string = "";
     //@Input() 
     //@LocalStorage() 
     public searchName: string = '';
     //@Output() searchNameChange = new EventEmitter();
+
+    filteredCount: number = 0;
     
     value: number;
     maxSize: number = 0;
     size: number;
 
-    constructor(private router: Router, private _backend: BackendServices, private _breadcrumbService: BreadcrumbsService) {}
+    constructor(private router: Router, private _backend: BackendServices, private _breadcrumbService: BreadcrumbsService, private _appGlobals: AppGlobals) {
+        _appGlobals._filteredCount.subscribe(value => this.filteredCount = value);
+    }
 
     onSelect(bundle: Bundle) {
         this.router.navigate(['/bundles', bundle.id]);
@@ -53,7 +56,7 @@ export class BundlesComponent implements OnInit, OnChanges {
     ngOnInit() {
         this._backend.getBundles()
             .subscribe(res => {
-                console.log("got bundles");
+                this._appGlobals.setIsLoading(true);
                 this.bundles = res;
                 err => this.logError(err);
                 this.bundles.forEach(bundle => {
@@ -61,7 +64,7 @@ export class BundlesComponent implements OnInit, OnChanges {
                         this.maxSize = bundle.size;
                     }
                 });
-                this.isLoading=false;
+                this._appGlobals.setIsLoading(false);
             });
     }
 

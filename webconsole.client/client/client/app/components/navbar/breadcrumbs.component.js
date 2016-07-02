@@ -31,24 +31,23 @@ System.register(["@angular/core", "@angular/router", '@angular/common', '../../s
             }],
         execute: function() {
             Breadcrumbs = (function () {
-                function Breadcrumbs(router, _breadcrumbsService) {
+                function Breadcrumbs(router, _breadcrumbsService, _route) {
                     var _this = this;
                     this.router = router;
                     this._breadcrumbsService = _breadcrumbsService;
+                    this._route = _route;
                     this.router.events.subscribe(function () {
                         _breadcrumbsService.clear();
-                        _breadcrumbsService.add(new breadcrumb_1.Breadcrumb(['Bundles'], '<span class="glyphicon glyphicon-home" aria-hidden="true"></span>'));
-                        /*if (val.startsWith("bundles")) {
-                            _breadcrumbsService.add(new Breadcrumb(['bundles'], 'Bundles'));
-                        } else if (val.startsWith("services")) {
-                            _breadcrumbsService.add(new Breadcrumb(['services'], 'Services'));
-                        } else if (val.startsWith("packages")) {
-                            _breadcrumbsService.add(new Breadcrumb(['packages'], 'Packages'));
-                        } else if (val == "logs") {
-                            _breadcrumbsService.add(new Breadcrumb(['logs'], 'Logs'));
-                        } else {
-                            console.log(val);
-                        }*/
+                        _breadcrumbsService.add(new breadcrumb_1.Breadcrumb(['/bundles'], '<i class="fa fa-home" aria-hidden="true"></i>'));
+                        var val = _this.router.url;
+                        console.log(val);
+                        var segements = val.split('/');
+                        segements.forEach(function (segment) {
+                            console.log("bc: " + segment);
+                            if (segment != '') {
+                                _breadcrumbsService.add(new breadcrumb_1.Breadcrumb([segment], segment));
+                            }
+                        });
                         _this.breadcrumbs = _breadcrumbsService.getBreadcrumbs();
                     });
                 }
@@ -59,7 +58,7 @@ System.register(["@angular/core", "@angular/router", '@angular/common', '../../s
                         providers: [breadcrumbs_service_1.BreadcrumbsService],
                         templateUrl: 'app/html/navbar/breadcrumbs.template.html'
                     }), 
-                    __metadata('design:paramtypes', [router_1.Router, breadcrumbs_service_1.BreadcrumbsService])
+                    __metadata('design:paramtypes', [router_1.Router, breadcrumbs_service_1.BreadcrumbsService, router_1.ActivatedRoute])
                 ], Breadcrumbs);
                 return Breadcrumbs;
             }());

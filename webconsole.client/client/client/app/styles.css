@@ -1,4 +1,9 @@
-.clickable {
+  html {
+    overflow: -moz-scrollbars-vertical; 
+    overflow-y: scroll;
+  }
+
+   .clickable {
       cursor: pointer;
       color: #000066;
     }

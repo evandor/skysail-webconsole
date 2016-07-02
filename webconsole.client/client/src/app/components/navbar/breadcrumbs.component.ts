@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {ROUTER_DIRECTIVES, Router} from "@angular/router";
+import {ROUTER_DIRECTIVES, Router, ActivatedRoute} from "@angular/router";
 import {FORM_DIRECTIVES, FormBuilder, NgFor, NgFormModel} from '@angular/common';
 
 import {BackendServices} from '../../services/backend.service';
@@ -16,25 +16,24 @@ import {Breadcrumb} from '../navbar/breadcrumb';
 export class Breadcrumbs {
 
     breadcrumbs: Breadcrumb[];
-    
-    constructor(private router: Router, private _breadcrumbsService: BreadcrumbsService) {
+
+    constructor(private router: Router, private _breadcrumbsService: BreadcrumbsService, private _route: ActivatedRoute) {
         this.router.events.subscribe(() => {
             _breadcrumbsService.clear();
-            _breadcrumbsService.add(new Breadcrumb(['Bundles'], '<span class="glyphicon glyphicon-home" aria-hidden="true"></span>'));
-            /*if (val.startsWith("bundles")) {
-                _breadcrumbsService.add(new Breadcrumb(['bundles'], 'Bundles'));
-            } else if (val.startsWith("services")) {
-                _breadcrumbsService.add(new Breadcrumb(['services'], 'Services'));
-            } else if (val.startsWith("packages")) {
-                _breadcrumbsService.add(new Breadcrumb(['packages'], 'Packages'));
-            } else if (val == "logs") {
-                _breadcrumbsService.add(new Breadcrumb(['logs'], 'Logs'));
-            } else {
-                console.log(val);
-            }*/
+            _breadcrumbsService.add(new Breadcrumb(['/bundles'], '<i class="fa fa-home" aria-hidden="true"></i>'));
+            var val = this.router.url;
+            console.log(val);
+
+            var segements = val.split('/');
+            segements.forEach(segment => {
+                console.log("bc: " + segment);
+                if (segment != '') {
+                    _breadcrumbsService.add(new Breadcrumb([segment], segment));
+                }
+            });
             this.breadcrumbs = _breadcrumbsService.getBreadcrumbs();
         });
     }
-    
-  
+
+
 }

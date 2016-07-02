@@ -1,4 +1,4 @@
-System.register(['@angular/core', '../domain/bundle'], function(exports_1, context_1) {
+System.register(['@angular/core', '../domain/bundle', '../services/appglobals.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '../domain/bundle'], function(exports_1, conte
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, bundle_1;
+    var core_1, bundle_1, appglobals_service_1;
     var BundlesFilter;
     return {
         setters:[
@@ -19,26 +19,34 @@ System.register(['@angular/core', '../domain/bundle'], function(exports_1, conte
             },
             function (bundle_1_1) {
                 bundle_1 = bundle_1_1;
+            },
+            function (appglobals_service_1_1) {
+                appglobals_service_1 = appglobals_service_1_1;
             }],
         execute: function() {
             BundlesFilter = (function () {
-                function BundlesFilter() {
+                function BundlesFilter(_appGlobals) {
+                    this._appGlobals = _appGlobals;
                 }
                 BundlesFilter.prototype.transform = function (bundles, args) {
                     if (bundles == null) {
+                        this._appGlobals.setFilteredCount(0);
                         return bundle_1.Bundle[0];
                     }
                     if (typeof args[0] == 'undefined') {
+                        this._appGlobals.setFilteredCount(bundles.length);
                         return bundles.filter(function (bundle) { return true; });
                     }
-                    return bundles.filter(function (bundle) { return bundle.symbolicName.indexOf(args.toString()) !== -1; });
+                    var filteredBundles = bundles.filter(function (bundle) { return bundle.symbolicName.indexOf(args.toString()) !== -1; });
+                    this._appGlobals.setFilteredCount(filteredBundles.length);
+                    return filteredBundles;
                 };
                 BundlesFilter = __decorate([
                     core_1.Pipe({
                         name: 'bundlesFilter'
                     }),
                     core_1.Injectable(), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [appglobals_service_1.AppGlobals])
                 ], BundlesFilter);
                 return BundlesFilter;
             }());

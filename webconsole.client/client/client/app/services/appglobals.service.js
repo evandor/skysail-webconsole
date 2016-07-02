@@ -24,11 +24,13 @@ System.register(['@angular/core', 'rxjs/BehaviorSubject'], function(exports_1, c
             AppGlobals = (function () {
                 function AppGlobals() {
                     this._isLoading = new BehaviorSubject_1.BehaviorSubject(false);
-                    this.isLoadingObservable$ = this._isLoading.asObservable();
+                    this._filteredCount = new BehaviorSubject_1.BehaviorSubject(0);
                 }
                 AppGlobals.prototype.setIsLoading = function (isLoading) {
-                    console.log("setting isLoading to " + isLoading);
                     this._isLoading.next(isLoading);
+                };
+                AppGlobals.prototype.setFilteredCount = function (count) {
+                    this._filteredCount.next(count);
                 };
                 AppGlobals = __decorate([
                     core_1.Injectable(), 

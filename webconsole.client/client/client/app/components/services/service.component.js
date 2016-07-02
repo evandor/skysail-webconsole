@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/common', '@angular/http', "@angular/router", '../../services/backend.service', '../../domain/keyValue', '../../domain/service', '../../components/tabs', '../../components/tab', '../../pipes/derp.pipe'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/common', '@angular/http', "@angular/router", '../../services/backend.service', '../../services/appglobals.service', '../../domain/keyValue', '../../domain/service', '../../components/tabs', '../../components/tab', '../../pipes/derp.pipe'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/common', '@angular/http', "@angular/
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, http_1, router_1, backend_service_1, keyValue_1, service_1, tabs_1, tab_1, derp_pipe_1;
+    var core_1, common_1, http_1, router_1, backend_service_1, appglobals_service_1, keyValue_1, service_1, tabs_1, tab_1, derp_pipe_1;
     var ServiceComponent;
     return {
         setters:[
@@ -29,6 +29,9 @@ System.register(['@angular/core', '@angular/common', '@angular/http', "@angular/
             function (backend_service_1_1) {
                 backend_service_1 = backend_service_1_1;
             },
+            function (appglobals_service_1_1) {
+                appglobals_service_1 = appglobals_service_1_1;
+            },
             function (keyValue_1_1) {
                 keyValue_1 = keyValue_1_1;
             },
@@ -46,11 +49,11 @@ System.register(['@angular/core', '@angular/common', '@angular/http', "@angular/
             }],
         execute: function() {
             ServiceComponent = (function () {
-                function ServiceComponent(router, route, _backend) {
+                function ServiceComponent(router, route, _backend, _appGlobals) {
                     this.router = router;
                     this.route = route;
                     this._backend = _backend;
-                    this.isLoading = true;
+                    this._appGlobals = _appGlobals;
                     this.service = new service_1.Service();
                     this.properties = [];
                     this.usingBundles = [];
@@ -64,6 +67,7 @@ System.register(['@angular/core', '@angular/common', '@angular/http', "@angular/
                         var id = params['id'];
                         _this._backend.getService(id)
                             .subscribe(function (res) {
+                            _this._appGlobals.setIsLoading(true);
                             _this.service = res;
                             var props = res.properties;
                             for (var key in props) {
@@ -71,7 +75,7 @@ System.register(['@angular/core', '@angular/common', '@angular/http', "@angular/
                             }
                             ;
                             _this.usingBundles = res.usingBundles;
-                            _this.isLoading = false;
+                            _this._appGlobals.setIsLoading(false);
                         });
                     });
                 };
@@ -83,7 +87,7 @@ System.register(['@angular/core', '@angular/common', '@angular/http', "@angular/
                         providers: [backend_service_1.BackendServices, http_1.HTTP_PROVIDERS],
                         templateUrl: 'app/html/services/service.template.html'
                     }), 
-                    __metadata('design:paramtypes', [router_1.Router, router_1.ActivatedRoute, backend_service_1.BackendServices])
+                    __metadata('design:paramtypes', [router_1.Router, router_1.ActivatedRoute, backend_service_1.BackendServices, appglobals_service_1.AppGlobals])
                 ], ServiceComponent);
                 return ServiceComponent;
             }());
