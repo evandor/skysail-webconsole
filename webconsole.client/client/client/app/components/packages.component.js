@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/common', "@angular/router", '../services/backend.service', '../services/breadcrumbs.service'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/common', "@angular/router", '../services/backend.service', '../services/breadcrumbs.service', '../services/appglobals.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '../serv
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, router_1, backend_service_1, breadcrumbs_service_1;
+    var core_1, common_1, router_1, backend_service_1, breadcrumbs_service_1, appglobals_service_1;
     var PackagesComponent;
     return {
         setters:[
@@ -28,25 +28,33 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '../serv
             },
             function (breadcrumbs_service_1_1) {
                 breadcrumbs_service_1 = breadcrumbs_service_1_1;
+            },
+            function (appglobals_service_1_1) {
+                appglobals_service_1 = appglobals_service_1_1;
             }],
         execute: function() {
             PackagesComponent = (function () {
-                function PackagesComponent(router, _backend, _breadcrumbService) {
+                //isLoading = true;
+                function PackagesComponent(router, _backend, _appGlobals) {
                     this.router = router;
                     this._backend = _backend;
-                    this._breadcrumbService = _breadcrumbService;
+                    this._appGlobals = _appGlobals;
                     this.searchId = "";
-                    this.isLoading = true;
+                    //this._appGlobals.isLoading.subscribe(value => this.isLoading = value);
                 }
                 PackagesComponent.prototype.onSelectBundle = function (bundle) {
                     this.router.navigate(['Bundle', { id: bundle.id }]);
                 };
                 PackagesComponent.prototype.ngOnInit = function () {
                     var _this = this;
+                    console.log("in packagesComponent");
+                    // this.isLoading = true;
+                    this._appGlobals.setIsLoading(true);
                     this._backend.getPackages()
                         .subscribe(function (res) {
                         _this.packages = res;
-                        _this.isLoading = false;
+                        //this.isLoading = false;
+                        _this._appGlobals.setIsLoading(false);
                     });
                 };
                 PackagesComponent = __decorate([
@@ -56,7 +64,7 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '../serv
                         providers: [backend_service_1.BackendServices, breadcrumbs_service_1.BreadcrumbsService],
                         templateUrl: 'app/html/packages.template.html'
                     }), 
-                    __metadata('design:paramtypes', [router_1.Router, backend_service_1.BackendServices, breadcrumbs_service_1.BreadcrumbsService])
+                    __metadata('design:paramtypes', [router_1.Router, backend_service_1.BackendServices, appglobals_service_1.AppGlobals])
                 ], PackagesComponent);
                 return PackagesComponent;
             }());

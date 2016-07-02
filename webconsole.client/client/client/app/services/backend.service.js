@@ -26,15 +26,19 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', '../
             }],
         execute: function() {
             BackendServices = (function () {
-                function BackendServices(_http, _window, _config) {
+                function BackendServices(_http, _config) {
                     this._http = _http;
-                    this._window = _window;
                     this._config = _config;
                     this._baseUrl = '';
-                    var hostname = this._window.location.hostname;
-                    this._baseUrl = "http://" + this._config.host + ":" + this._config.port + "/"; //baseUrl;
+                    console.log("BackendServices constructor");
+                    this._baseUrl = "http://" + this._config.host + ":" + this._config.port + "/";
                     console.log("base url set to '" + this._baseUrl + "'");
                 }
+                /*ngOnInit() {
+                    console.log("BackendServices onInit");
+                    this._baseUrl = "http://" + this._config.host + ":" + this._config.port + "/";
+                    console.log("base url set to '" + this._baseUrl + "'");
+                }*/
                 BackendServices.prototype.get = function (path) {
                     var headers = new http_1.Headers();
                     //headers.append('Authorization', 'Basic YWRtaW46c2t5c2FpbA==');
@@ -90,7 +94,7 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', '../
                 };
                 BackendServices = __decorate([
                     core_1.Injectable(), 
-                    __metadata('design:paramtypes', [http_1.Http, Window, config_service_1.ConfigService])
+                    __metadata('design:paramtypes', [http_1.Http, config_service_1.ConfigService])
                 ], BackendServices);
                 return BackendServices;
             }());

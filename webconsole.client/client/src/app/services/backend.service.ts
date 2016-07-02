@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core'
+import {Injectable, OnInit} from '@angular/core'
 import {Http, Headers, RequestOptions} from '@angular/http'
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -16,11 +16,17 @@ export class BackendServices {
 
     private _baseUrl = '';
 
-    constructor(private _http: Http, private _window: Window, private _config: ConfigService) {
-        var hostname = this._window.location.hostname;
-        this._baseUrl = "http://" + this._config.host + ":" + this._config.port + "/";//baseUrl;
+    constructor(private _http: Http, private _config: ConfigService) {
+        console.log("BackendServices constructor");
+        this._baseUrl = "http://" + this._config.host + ":" + this._config.port + "/";
         console.log("base url set to '" + this._baseUrl + "'");
     }
+
+    /*ngOnInit() {
+        console.log("BackendServices onInit");
+        this._baseUrl = "http://" + this._config.host + ":" + this._config.port + "/";
+        console.log("base url set to '" + this._baseUrl + "'");
+    }*/
 
     get(path) {
         var headers = new Headers();

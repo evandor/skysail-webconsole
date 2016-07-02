@@ -8,6 +8,7 @@ import {LocationStrategy, HashLocationStrategy} from "@angular/common";
 import {HTTP_PROVIDERS} from '@angular/http';
 import {WindowService} from './services/window.service'
 import {ConfigService} from './services/config.service' 
+import {AppGlobals} from './services/appglobals.service' 
 import {APP_ROUTER_PROVIDERS} from './app.router'
 
 //import {LocalStorageService, LocalStorageSubscriber} from 'angular2-localstorage/LocalStorageEmitter';
@@ -22,6 +23,7 @@ var appPromise = bootstrap(AppComponent, [
     //LocalStorageService,
     disableDeprecatedForms(),
     provideForms(),
+    AppGlobals,
     //provide(LocationStrategy, {useClass: HashLocationStrategy}
     provide(Window, {useValue: window})
 ]).catch(err => console.error(err));

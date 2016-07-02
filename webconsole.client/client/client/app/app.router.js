@@ -49,7 +49,8 @@ System.register(['@angular/router', './components/framework.component', './compo
                 { path: 'logs', component: logs_component_1.LogsComponent },
                 { path: 'snapshots', component: snapshots_component_1.SnapshotsComponent },
                 { path: 'config', component: config_component_1.ConfigComponent },
-                { path: 'help', component: help_component_1.HelpComponent }
+                { path: 'help', component: help_component_1.HelpComponent },
+                { path: '**', component: bundles_component_1.BundlesComponent }
             ]);
             exports_1("APP_ROUTER_PROVIDERS", APP_ROUTER_PROVIDERS = [
                 router_1.provideRouter(routes)

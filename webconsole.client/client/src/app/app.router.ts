@@ -22,7 +22,8 @@ export const routes: RouterConfig = [
     { path: 'logs',         component: LogsComponent },
     { path: 'snapshots',    component: SnapshotsComponent },
     { path: 'config',       component: ConfigComponent },
-    { path: 'help',         component: HelpComponent }
+    { path: 'help',         component: HelpComponent },
+    { path: '**',           component: BundlesComponent }
 ];
 
 export const APP_ROUTER_PROVIDERS = [

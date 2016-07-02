@@ -1,4 +1,4 @@
-System.register(["@angular/core", "@angular/router", '../../services/backend.service'], function(exports_1, context_1) {
+System.register(["@angular/core", "@angular/router", '../../services/backend.service', '../../services/appglobals.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(["@angular/core", "@angular/router", '../../services/backend.ser
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, backend_service_1;
+    var core_1, router_1, backend_service_1, appglobals_service_1;
     var Navbar;
     return {
         setters:[
@@ -22,13 +22,19 @@ System.register(["@angular/core", "@angular/router", '../../services/backend.ser
             },
             function (backend_service_1_1) {
                 backend_service_1 = backend_service_1_1;
+            },
+            function (appglobals_service_1_1) {
+                appglobals_service_1 = appglobals_service_1_1;
             }],
         execute: function() {
             Navbar = (function () {
-                function Navbar(router, _backend) {
+                function Navbar(router, _backend, _appGlobals) {
                     this.router = router;
                     this._backend = _backend;
+                    this._appGlobals = _appGlobals;
                     this.currentMenuItem = "Bundles";
+                    this.loading = false;
+                    //this._appGlobals.isLoading.subscribe(value => this.loading = value);
                     this.router.events.subscribe(function () {
                         /*if (val.startsWith("bundles")) {
                             this.currentMenuItem = "Bundles";
@@ -45,6 +51,18 @@ System.register(["@angular/core", "@angular/router", '../../services/backend.ser
                         }*/
                     });
                 }
+                Navbar.prototype.ngOnInit = function () {
+                    var _this = this;
+                    this.subscription = this._appGlobals.isLoadingObservable$.subscribe(function (value) { return _this.loading = value; });
+                };
+                Navbar.prototype.ngOnDestroy = function () {
+                    // prevent memory leak when component is destroyed
+                    this.subscription.unsubscribe();
+                };
+                Navbar.prototype.isLoading = function () {
+                    console.log("isLoading: " + this.loading);
+                    return this.loading;
+                };
                 Navbar.prototype.getBundlesMenuTitle = function () {
                     var bundlesCount;
                     //this._backend.getBundles().subscribe(res => bundlesCount = res.length);
@@ -95,7 +113,7 @@ System.register(["@angular/core", "@angular/router", '../../services/backend.ser
                         pipes: [],
                         templateUrl: 'app/html/navbar/navbar.template.html'
                     }), 
-                    __metadata('design:paramtypes', [router_1.Router, backend_service_1.BackendServices])
+                    __metadata('design:paramtypes', [router_1.Router, backend_service_1.BackendServices, appglobals_service_1.AppGlobals])
                 ], Navbar);
                 return Navbar;
             }());

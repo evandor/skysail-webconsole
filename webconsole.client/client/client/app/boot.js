@@ -1,9 +1,9 @@
 /* Avoid: 'error TS2304: Cannot find name <type>' during compilation */
 ///<reference path="../../typings/index.d.ts"/>
-System.register(["./app.component", "@angular/platform-browser-dynamic", "@angular/core", '@angular/http', './services/window.service', './services/config.service', './app.router', '@angular/forms'], function(exports_1, context_1) {
+System.register(["./app.component", "@angular/platform-browser-dynamic", "@angular/core", '@angular/http', './services/window.service', './services/config.service', './services/appglobals.service', './app.router', '@angular/forms'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var app_component_1, platform_browser_dynamic_1, core_1, http_1, window_service_1, config_service_1, app_router_1, forms_1;
+    var app_component_1, platform_browser_dynamic_1, core_1, http_1, window_service_1, config_service_1, appglobals_service_1, app_router_1, forms_1;
     var appPromise;
     return {
         setters:[
@@ -25,6 +25,9 @@ System.register(["./app.component", "@angular/platform-browser-dynamic", "@angul
             function (config_service_1_1) {
                 config_service_1 = config_service_1_1;
             },
+            function (appglobals_service_1_1) {
+                appglobals_service_1 = appglobals_service_1_1;
+            },
             function (app_router_1_1) {
                 app_router_1 = app_router_1_1;
             },
@@ -40,6 +43,7 @@ System.register(["./app.component", "@angular/platform-browser-dynamic", "@angul
                 //LocalStorageService,
                 forms_1.disableDeprecatedForms(),
                 forms_1.provideForms(),
+                appglobals_service_1.AppGlobals,
                 //provide(LocationStrategy, {useClass: HashLocationStrategy}
                 core_1.provide(Window, { useValue: window })
             ]).catch(function (err) { return console.error(err); });

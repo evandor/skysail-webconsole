@@ -1,4 +1,4 @@
-<nav class="navbar navbar-light bg-faded navbar-fixed-top">
+<nav class="navbar navbar-light bg-faded navbar-fixed-top" style="height:53px;">
     <a class="navbar-brand" href="/"><img src="app/img/skysail.logo.png" height="27px;"></a>
 
     <ul class="nav navbar-nav">
@@ -9,8 +9,11 @@
         <li [class]="checkActive('Packages')"><a class="nav-link" [routerLink]="['/packages']">Packages</a></li>
         <li [class]="checkActive('Logs')"><a class="nav-link" [routerLink]="['/logs']">Logs</a></li>
         <li [class]="checkActive('Snapshots')"><a class="nav-link" [routerLink]="['/snapshots']">Snapshots</a></li>
-        <li [class]="checkActive('Config')"><a class="nav-link" [routerLink]="['/config']"><i class="fa fa-cog" aria-hidden="true"></i></a></li>
         <li [class]="checkActive('Help')"><a class="nav-link" [routerLink]="['/help']">?</a></li>
+        <li *ngIf="isLoading()" class="nav-item"><i class="fa fa-spinner fa-spin" style="font-size:16px;color:green;margin-top:10px;" aria-hidden="true"></i></li>
+    </ul>
+    <ul class="nav navbar-nav pull-xs-right">
+        <li [class]="checkActive('Config')"><a class="nav-link" [routerLink]="['/config']">&nbsp;&nbsp;&nbsp;<i class="fa fa-cog" aria-hidden="true"></i></a></li>
     </ul>
 
 

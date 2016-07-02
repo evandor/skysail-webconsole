@@ -4,6 +4,8 @@ import {ROUTER_DIRECTIVES, Router} from "@angular/router";
 
 import {BackendServices} from '../services/backend.service';
 import {BreadcrumbsService} from '../services/breadcrumbs.service';
+import {AppGlobals} from '../services/appglobals.service';
+
 import {Breadcrumb} from '../components/navbar/breadcrumb';
 import {Bundle} from '../domain/bundle';
 import {ExportPackage} from '../domain/exportPackage'
@@ -22,9 +24,10 @@ export class PackagesComponent implements OnInit {
 
     searchId: string = "";
 
-    isLoading = true;
+    //isLoading = true;
 
-    constructor(private router: Router, private _backend: BackendServices, private _breadcrumbService: BreadcrumbsService) {
+    constructor(private router: Router, private _backend: BackendServices, private _appGlobals: AppGlobals) {
+        //this._appGlobals.isLoading.subscribe(value => this.isLoading = value);
     }
 
     onSelectBundle(bundle: Bundle) {
@@ -32,10 +35,14 @@ export class PackagesComponent implements OnInit {
     }
 
     ngOnInit() {
+        console.log("in packagesComponent");
+       // this.isLoading = true;
+        this._appGlobals.setIsLoading(true);
         this._backend.getPackages()
             .subscribe(res => {
                 this.packages = res;
-                this.isLoading = false;
+                //this.isLoading = false;
+                this._appGlobals.setIsLoading(false);
             });
     }
 
