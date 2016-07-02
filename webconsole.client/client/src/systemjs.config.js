@@ -9,7 +9,7 @@
         'app': 'app', // 'dist',
         'rxjs': 'lib/rxjs',
         '@angular': 'lib/@angular',
-        '@angular/forms':  'lib/@angular/forms',
+        '@angular/forms': 'lib/@angular/forms',
         'd3': 'lib/d3/d3.min.js', //https://d3js.org/d3.v3.min.js'
         //'angular2-localstorage': 'lib/angular2-localstorage'
     };
@@ -37,6 +37,15 @@
     // add package entries for angular packages in the form '@angular/common': { main: 'index.js', defaultExtension: 'js' }
     packageNames.forEach(function (pkgName) {
         packages[pkgName] = { main: 'index.js', defaultExtension: 'js' };
+    });
+
+    packageNames.forEach(function (pkgName) {
+
+        // Bundled (~40 requests):
+        packages['@angular/' + pkgName] = { main: '/bundles/' + pkgName + '.umd.js', defaultExtension: 'js' };
+
+        // Individual files (~300 requests):
+        //packages['@angular/'+pkgName] = { main: 'index.js', defaultExtension: 'js' };
     });
 
     var config = {
