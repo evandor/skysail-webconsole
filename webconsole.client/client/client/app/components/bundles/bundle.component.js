@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/common', "@angular/router", '@angular/http', '../../services/backend.service', '../../services/appglobals.service', '../../services/breadcrumbs.service', '../../domain/bundle', '../navbar/breadcrumb', '../../components/tabs', '../../components/tab', '../../domain/keyValue', '../../pipes/newline.pipe', '../../pipes/values.pipe', '../../pipes/bundleState.pipe'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/common', "@angular/router", '@angular/http', '../../services/backend.service', '../../services/appglobals.service', '../../services/breadcrumbs.service', '../../domain/bundle', '../navbar/breadcrumb', '../../components/tabs', '../../components/tab', '../../domain/keyValue', '../../pipes/newline.pipe', '../../pipes/values.pipe', '../../pipes/link.pipe', '../../pipes/bundleState.pipe'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '@angula
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, router_1, http_1, backend_service_1, appglobals_service_1, breadcrumbs_service_1, bundle_1, breadcrumb_1, tabs_1, tab_1, keyValue_1, newline_pipe_1, values_pipe_1, bundleState_pipe_1;
+    var core_1, common_1, router_1, http_1, backend_service_1, appglobals_service_1, breadcrumbs_service_1, bundle_1, breadcrumb_1, tabs_1, tab_1, keyValue_1, newline_pipe_1, values_pipe_1, link_pipe_1, bundleState_pipe_1;
     var BundleComponent;
     return {
         setters:[
@@ -55,6 +55,9 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '@angula
             },
             function (values_pipe_1_1) {
                 values_pipe_1 = values_pipe_1_1;
+            },
+            function (link_pipe_1_1) {
+                link_pipe_1 = link_pipe_1_1;
             },
             function (bundleState_pipe_1_1) {
                 bundleState_pipe_1 = bundleState_pipe_1_1;
@@ -144,7 +147,7 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '@angula
                         selector: 'bundle',
                         directives: [common_1.FORM_DIRECTIVES, common_1.NgFor, common_1.NgFormModel, tabs_1.Tabs, tab_1.Tab],
                         providers: [backend_service_1.BackendServices, http_1.HTTP_PROVIDERS],
-                        pipes: [newline_pipe_1.NewlinePipe, values_pipe_1.ValuesPipe, bundleState_pipe_1.BundleStatePipe],
+                        pipes: [newline_pipe_1.NewlinePipe, values_pipe_1.ValuesPipe, bundleState_pipe_1.BundleStatePipe, link_pipe_1.LinkPipe],
                         templateUrl: 'app/html/bundles/bundle.template.html',
                     }), 
                     __metadata('design:paramtypes', [backend_service_1.BackendServices, router_1.ActivatedRoute, router_1.Router, breadcrumbs_service_1.BreadcrumbsService, appglobals_service_1.AppGlobals])

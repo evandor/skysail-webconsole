@@ -8,10 +8,8 @@
 
   <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css" />
   <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
-  <!-- <link rel="stylesheet" href="lib/fuel-ui/bundles/fuel-ui.min.css" />-->
   <link rel="stylesheet" href="app/styles.css">
 
-  <!-- 1. Load libraries -->
   <!-- Polyfill(s) for older browsers -->
   <script src="lib/es6-shim/es6-shim.min.js"></script>
 
@@ -19,18 +17,11 @@
   <script src="lib/reflect-metadata/Reflect.js"></script>
   <script src="lib/systemjs/dist/system.src.js"></script>
 
-  <!-- 2. Configure SystemJS -->
   <script src="systemjs.config.js"></script>
   <script>
         System.import('app/boot').then(null, console.error.bind(console));
     </script>
-
-  <!-- 3. Fuel UI -->
-  <!--<script src="lib/fuel-ui/bundles/fuel-ui.min.js"></script>-->
-
 </head>
-
-<!-- 4. Display the application -->
 
 <body>
   <my-app>&nbsp;<i class="fa fa-spinner fa-spin" style="font-size:16px;color:gray;margin-top:10px;" aria-hidden="true"></i></my-app>

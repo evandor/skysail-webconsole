@@ -19,13 +19,14 @@ import {Service} from '../../domain/service';
 
 import {NewlinePipe} from '../../pipes/newline.pipe';
 import {ValuesPipe} from '../../pipes/values.pipe';
+import {LinkPipe} from '../../pipes/link.pipe';
 import {BundleStatePipe} from '../../pipes/bundleState.pipe';
 
 @Component({
     selector: 'bundle',
     directives: [FORM_DIRECTIVES, NgFor, NgFormModel, Tabs, Tab],
     providers: [BackendServices, HTTP_PROVIDERS],
-    pipes: [NewlinePipe, ValuesPipe, BundleStatePipe],
+    pipes: [NewlinePipe, ValuesPipe, BundleStatePipe,LinkPipe],
     templateUrl: 'app/html/bundles/bundle.template.html',
     //styleUrls:  ['app/js/datatables.css']
 })

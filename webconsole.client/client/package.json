@@ -5,6 +5,7 @@
     "clean": "gulp clean",
     "compile": "gulp compile",
     "build": "gulp build",
+    "build_prod": "gulp build && browserify -s main client/app/boot.js > client/app/bundle.js",
     "start": "concurrent --kill-others \"gulp watch\" \"lite-server\"",
     "postinstall": "typings install"
   },
