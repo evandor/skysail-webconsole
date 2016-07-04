@@ -9,7 +9,7 @@ import {ROUTER_DIRECTIVES, Router} from "@angular/router";
 
 //import {BundlesService} from '../services/bundles.service';
 
-declare var jQuery:any;
+declare var jQuery: any;
 
 @Component({
     selector: 'services',
@@ -24,19 +24,19 @@ export class ServicesComponent implements OnInit {
 
     constructor(private router: Router, private _backend: BackendServices, private _appGlobals: AppGlobals) {
     }
-    
+
     onSelect(serviceId: string) {
-        this.router.navigate( ['/services', serviceId]  );
+        this.router.navigate(['/services', serviceId]);
     }
-    
+
     onSelectBundle(bundle: Bundle) {
-        this.router.navigate( ['/bundles', bundle.id]  );
+        this.router.navigate(['/bundles', bundle.id]);
     }
 
     ngOnInit() {
+        this._appGlobals.setIsLoading(true);
         this._backend.getServices()
             .subscribe(res => {
-                this._appGlobals.setIsLoading(true);
                 this.services = res;
                 this._appGlobals.setIsLoading(false);
             });

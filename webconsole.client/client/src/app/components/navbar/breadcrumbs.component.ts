@@ -22,11 +22,8 @@ export class Breadcrumbs {
             _breadcrumbsService.clear();
             _breadcrumbsService.add(new Breadcrumb(['/bundles'], '<i class="fa fa-home" aria-hidden="true"></i>'));
             var val = this.router.url;
-            console.log(val);
-
             var segements = val.split('/');
             segements.forEach(segment => {
-                console.log("bc: " + segment);
                 if (segment != '') {
                     _breadcrumbsService.add(new Breadcrumb([segment], segment));
                 }

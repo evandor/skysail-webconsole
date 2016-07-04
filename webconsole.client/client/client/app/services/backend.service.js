@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', '../services/config.service'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', '../services/appglobals.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', '../
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1, config_service_1;
+    var core_1, http_1, appglobals_service_1;
     var BackendServices;
     return {
         setters:[
@@ -21,24 +21,20 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', '../
                 http_1 = http_1_1;
             },
             function (_1) {},
-            function (config_service_1_1) {
-                config_service_1 = config_service_1_1;
+            function (appglobals_service_1_1) {
+                appglobals_service_1 = appglobals_service_1_1;
             }],
         execute: function() {
             BackendServices = (function () {
-                function BackendServices(_http, _config) {
+                function BackendServices(_http, _appGlobals) {
+                    var _this = this;
                     this._http = _http;
-                    this._config = _config;
+                    this._appGlobals = _appGlobals;
                     this._baseUrl = '';
                     console.log("BackendServices constructor");
-                    this._baseUrl = "http://" + this._config.host + ":" + this._config.port + "/";
+                    _appGlobals._backendUrl.subscribe(function (value) { return _this._baseUrl = value; });
                     console.log("base url set to '" + this._baseUrl + "'");
                 }
-                /*ngOnInit() {
-                    console.log("BackendServices onInit");
-                    this._baseUrl = "http://" + this._config.host + ":" + this._config.port + "/";
-                    console.log("base url set to '" + this._baseUrl + "'");
-                }*/
                 BackendServices.prototype.get = function (path) {
                     var headers = new http_1.Headers();
                     //headers.append('Authorization', 'Basic YWRtaW46c2t5c2FpbA==');
@@ -94,7 +90,7 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', '../
                 };
                 BackendServices = __decorate([
                     core_1.Injectable(), 
-                    __metadata('design:paramtypes', [http_1.Http, config_service_1.ConfigService])
+                    __metadata('design:paramtypes', [http_1.Http, appglobals_service_1.AppGlobals])
                 ], BackendServices);
                 return BackendServices;
             }());

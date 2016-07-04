@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/common', "@angular/router", '../services/backend.service', '../pipes/maxLength.pipe'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/common', "@angular/router", '../services/backend.service', '../services/appglobals.service', '../pipes/maxLength.pipe'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '../serv
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, router_1, backend_service_1, maxLength_pipe_1;
+    var core_1, common_1, router_1, backend_service_1, appglobals_service_1, maxLength_pipe_1;
     var LogsComponent;
     return {
         setters:[
@@ -26,23 +26,28 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '../serv
             function (backend_service_1_1) {
                 backend_service_1 = backend_service_1_1;
             },
+            function (appglobals_service_1_1) {
+                appglobals_service_1 = appglobals_service_1_1;
+            },
             function (maxLength_pipe_1_1) {
                 maxLength_pipe_1 = maxLength_pipe_1_1;
             }],
         execute: function() {
             LogsComponent = (function () {
-                function LogsComponent(router, _backend) {
+                function LogsComponent(router, _backend, _appGlobals) {
                     this.router = router;
                     this._backend = _backend;
+                    this._appGlobals = _appGlobals;
                 }
                 LogsComponent.prototype.onSelectService = function (service) {
                     this.router.navigate(['Service', { id: service.id }]);
                 };
                 LogsComponent.prototype.ngOnInit = function () {
                     var _this = this;
-                    console.log("oninit bundlesservice called!");
+                    this._appGlobals.setIsLoading(true);
                     this._backend.getLogs()
                         .subscribe(function (res) { return _this.logs = res; });
+                    this._appGlobals.setIsLoading(false);
                 };
                 LogsComponent = __decorate([
                     core_1.Component({
@@ -52,7 +57,7 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '../serv
                         pipes: [maxLength_pipe_1.MaxLengthPipe],
                         templateUrl: 'app/html/logs.template.html'
                     }), 
-                    __metadata('design:paramtypes', [router_1.Router, backend_service_1.BackendServices])
+                    __metadata('design:paramtypes', [router_1.Router, backend_service_1.BackendServices, appglobals_service_1.AppGlobals])
                 ], LogsComponent);
                 return LogsComponent;
             }());

@@ -1,4 +1,4 @@
-import {Component, OnInit, ElementRef,ChangeDetectionStrategy, OnChanges, Input, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, ElementRef, ChangeDetectionStrategy, OnChanges, Input, Output, EventEmitter} from '@angular/core';
 import {FORM_DIRECTIVES, FormBuilder, NgFor, NgFormModel} from '@angular/common';
 import {ROUTER_DIRECTIVES, Router} from "@angular/router";
 
@@ -23,7 +23,7 @@ declare var jQuery: any;
 
 @Component({
     selector: 'bundles',
-    directives: [FORM_DIRECTIVES, ROUTER_DIRECTIVES, NgFor, NgFormModel, Tabs, Tab, AdjacencyDirective,PercentBarDirective],
+    directives: [FORM_DIRECTIVES, ROUTER_DIRECTIVES, NgFor, NgFormModel, Tabs, Tab, AdjacencyDirective, PercentBarDirective],
     providers: [BackendServices],
     templateUrl: 'app/html/bundles/bundles.template.html',
     pipes: [BundlesFilter, BundleStatePipe],
@@ -39,7 +39,7 @@ export class BundlesComponent implements OnInit, OnChanges {
     //@Output() searchNameChange = new EventEmitter();
 
     filteredCount: number = 0;
-    
+
     value: number;
     maxSize: number = 0;
     size: number;
@@ -54,9 +54,9 @@ export class BundlesComponent implements OnInit, OnChanges {
     }
 
     ngOnInit() {
+        this._appGlobals.setIsLoading(true);
         this._backend.getBundles()
             .subscribe(res => {
-                this._appGlobals.setIsLoading(true);
                 this.bundles = res;
                 err => this.logError(err);
                 this.bundles.forEach(bundle => {
@@ -83,7 +83,7 @@ export class BundlesComponent implements OnInit, OnChanges {
     getPercentChartSpanId(id: string) {
         return "chartSpanId_" + id;
     }
-    
+
     setData(value, max, size) {
         this.value = value;
         this.maxSize = max;

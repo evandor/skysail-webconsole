@@ -44,9 +44,9 @@ System.register(['@angular/core', '@angular/common', '../../services/backend.ser
                 };
                 ServicesComponent.prototype.ngOnInit = function () {
                     var _this = this;
+                    this._appGlobals.setIsLoading(true);
                     this._backend.getServices()
                         .subscribe(function (res) {
-                        _this._appGlobals.setIsLoading(true);
                         _this.services = res;
                         _this._appGlobals.setIsLoading(false);
                     });

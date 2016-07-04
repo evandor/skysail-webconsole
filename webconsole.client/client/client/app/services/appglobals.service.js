@@ -25,12 +25,16 @@ System.register(['@angular/core', 'rxjs/BehaviorSubject'], function(exports_1, c
                 function AppGlobals() {
                     this._isLoading = new BehaviorSubject_1.BehaviorSubject(false);
                     this._filteredCount = new BehaviorSubject_1.BehaviorSubject(0);
+                    this._backendUrl = new BehaviorSubject_1.BehaviorSubject("http://localhost:2002/");
                 }
                 AppGlobals.prototype.setIsLoading = function (isLoading) {
                     this._isLoading.next(isLoading);
                 };
                 AppGlobals.prototype.setFilteredCount = function (count) {
                     this._filteredCount.next(count);
+                };
+                AppGlobals.prototype.setBackendUrl = function (url) {
+                    this._backendUrl.next(url);
                 };
                 AppGlobals = __decorate([
                     core_1.Injectable(), 

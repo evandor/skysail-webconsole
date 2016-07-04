@@ -40,10 +40,8 @@ System.register(["@angular/core", "@angular/router", '@angular/common', '../../s
                         _breadcrumbsService.clear();
                         _breadcrumbsService.add(new breadcrumb_1.Breadcrumb(['/bundles'], '<i class="fa fa-home" aria-hidden="true"></i>'));
                         var val = _this.router.url;
-                        console.log(val);
                         var segements = val.split('/');
                         segements.forEach(function (segment) {
-                            console.log("bc: " + segment);
                             if (segment != '') {
                                 _breadcrumbsService.add(new breadcrumb_1.Breadcrumb([segment], segment));
                             }

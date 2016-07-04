@@ -76,9 +76,9 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '../../s
                 };
                 BundlesComponent.prototype.ngOnInit = function () {
                     var _this = this;
+                    this._appGlobals.setIsLoading(true);
                     this._backend.getBundles()
                         .subscribe(function (res) {
-                        _this._appGlobals.setIsLoading(true);
                         _this.bundles = res;
                         (function (err) { return _this.logError(err); });
                         _this.bundles.forEach(function (bundle) {

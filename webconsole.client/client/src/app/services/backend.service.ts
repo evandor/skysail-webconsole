@@ -10,23 +10,19 @@ import {Service} from '../domain/service';
 import {Snapshot} from '../domain/snapshot';
 
 import {ConfigService} from '../services/config.service';
+import {AppGlobals} from '../services/appglobals.service';
+
 
 @Injectable()
 export class BackendServices {
 
     private _baseUrl = '';
 
-    constructor(private _http: Http, private _config: ConfigService) {
+    constructor(private _http: Http, private _appGlobals: AppGlobals) {
         console.log("BackendServices constructor");
-        this._baseUrl = "http://" + this._config.host + ":" + this._config.port + "/";
+        _appGlobals._backendUrl.subscribe(value => this._baseUrl = value);
         console.log("base url set to '" + this._baseUrl + "'");
     }
-
-    /*ngOnInit() {
-        console.log("BackendServices onInit");
-        this._baseUrl = "http://" + this._config.host + ":" + this._config.port + "/";
-        console.log("base url set to '" + this._baseUrl + "'");
-    }*/
 
     get(path) {
         var headers = new Headers();
