@@ -1,4 +1,4 @@
-// Generated from /Users/carsten/git/skysail-webconsole/webconsole.antlr/src/main/antlr4/io/skysail/webconsole/antlr/ImportPackage.g4 by ANTLR 4.5.3
+// Generated from C:\git\skysail-webconsole\webconsole.antlr\src\main\antlr4\io\skysail\webconsole\antlr\ImportPackage.g4 by ANTLR 4.5.3
 package io.skysail.webconsole.antlr;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
