@@ -1,2 +1,4 @@
 /bin/
+nodes_modules/
 /generated/
+build/

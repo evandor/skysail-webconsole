@@ -1,9 +1,5 @@
 "use strict";
 
-require('./tasks/build/build');
-require('./tasks/release/release');
-require('./tasks/start');
-
 const gulp = require("gulp");
 const del = require("del");
 const tsc = require("gulp-typescript");
