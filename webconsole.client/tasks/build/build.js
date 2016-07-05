@@ -8,6 +8,7 @@ var watch = require('gulp-watch');
 var batch = require('gulp-batch');
 var plumber = require('gulp-plumber');
 var jetpack = require('fs-jetpack');
+var debug = require('gulp-debug');
 
 var bundle = require('./bundle');
 var generateSpecImportsFile = require('./generate_spec_imports');
@@ -19,9 +20,8 @@ var destDir = projectDir.cwd('./build');
 
 var paths = {
     copyFromAppDir: [
-        './node_modules/**',
-        './helpers/**',
         './**/*.html',
+		'./helpers/**',
         './**/*.+(jpg|png|svg)'
     ],
 };
@@ -36,7 +36,7 @@ gulp.task('clean', function () {
 
 
 var copyTask = function () {
-    return projectDir.copyAsync('client', destDir.path(), {
+    return projectDir.copyAsync('client/client', destDir.path(), {
             overwrite: true,
             matching: paths.copyFromAppDir
         });
@@ -47,8 +47,8 @@ gulp.task('copy-watch', copyTask);
 
 var bundleApplication = function () {
     return Q.all([
-            //bundle(srcDir.path('background.js'), destDir.path('background.js')),
-            bundle(srcDir.path('client/app/boot.js'), destDir.path('boot1.js')),
+            bundle(srcDir.path('client/app/background.js'), destDir.path('background.js')),
+            bundle(srcDir.path('client/app/boot.js'), destDir.path('boot.js')),
         ]);
 };
 
@@ -59,6 +59,7 @@ var bundleSpecs = function () {
 };
 
 var bundleTask = function () {
+	console.log("utils.getEnvName(): " + utils.getEnvName());
     if (utils.getEnvName() === 'test') {
         return bundleSpecs();
     }
@@ -71,7 +72,8 @@ gulp.task('bundle-watch', bundleTask);
 var lessTask = function () {
     return gulp.src('client/stylesheets/main.less')
         .pipe(plumber())
-        .pipe(less())
+		.pipe(debug({title: 'less:'}))
+		.pipe(less())
         .pipe(gulp.dest(destDir.path('stylesheets')));
 };
 gulp.task('less', ['clean'], lessTask);

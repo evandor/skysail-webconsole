@@ -2,3 +2,4 @@
 nodes_modules/
 /generated/
 build/
+/releases

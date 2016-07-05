@@ -17,6 +17,7 @@ module.exports.os = function () {
 
 module.exports.replace = function (str, patterns) {
     Object.keys(patterns).forEach(function (pattern) {
+		console.log("***"+str);
         var matcher = new RegExp('{{' + pattern + '}}', 'g');
         str = str.replace(matcher, patterns[pattern]);
     });
@@ -24,6 +25,7 @@ module.exports.replace = function (str, patterns) {
 };
 
 module.exports.getReleasePackageName = function(manifest) {
+	console.log(manifest);
     return module.exports.replace(manifest.packageNameTemplate, {
         name: manifest.name,
         version: manifest.version,
