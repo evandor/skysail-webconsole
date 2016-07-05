@@ -8,7 +8,7 @@ import {AppGlobals} from '../services/appglobals.service';
 @Injectable()
 export class BundlesFilter implements PipeTransform {
 
-    constructor(private _appGlobals: AppGlobals) {}
+    constructor(private _appGlobals: AppGlobals) { }
 
     transform(bundles: Bundle[], args: any[]): any {
         if (bundles == null) {
@@ -21,6 +21,13 @@ export class BundlesFilter implements PipeTransform {
         }
         var filteredBundles = bundles.filter(bundle => bundle.symbolicName.indexOf(args.toString()) !== -1);
         this._appGlobals.setFilteredCount(filteredBundles.length);
+
+        var theList: string[] = [];
+        filteredBundles.forEach(bundle => {
+            theList.push(bundle.id);
+        });
+        this._appGlobals.setBundleIdList(theList);
+
         return filteredBundles;
     }
 }

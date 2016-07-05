@@ -39,6 +39,11 @@ System.register(['@angular/core', '../domain/bundle', '../services/appglobals.se
                     }
                     var filteredBundles = bundles.filter(function (bundle) { return bundle.symbolicName.indexOf(args.toString()) !== -1; });
                     this._appGlobals.setFilteredCount(filteredBundles.length);
+                    var theList = [];
+                    filteredBundles.forEach(function (bundle) {
+                        theList.push(bundle.id);
+                    });
+                    this._appGlobals.setBundleIdList(theList);
                     return filteredBundles;
                 };
                 BundlesFilter = __decorate([

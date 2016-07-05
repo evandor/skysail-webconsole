@@ -23,4 +23,5 @@ export class Bundle {
     manifestHeaders: ManifestHeader;
     wireDescriptor: WireDescriptor;
     providedServices: Service[] = [];
+    sourcePaths: string[];
 }

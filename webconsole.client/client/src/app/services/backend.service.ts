@@ -22,6 +22,10 @@ export class BackendServices {
         console.log("BackendServices constructor");
         _appGlobals._backendUrl.subscribe(value => this._baseUrl = value);
         console.log("base url set to '" + this._baseUrl + "'");
+        if (this._baseUrl == "http://undefined:undefined/") {
+            this._baseUrl = "http://localhost:2002/";
+            console.log("base url undefined, setting back to default " + this._baseUrl);
+        }
     }
 
     get(path) {
@@ -48,6 +52,16 @@ export class BackendServices {
 
     getBundleServices(id): Observable<Service[]> {
         return this._http.get(this._baseUrl + 'backend/bundles/' + id + "/services")
+            .map(res => res.json());
+    }
+
+    getBundleContents(id): Observable<Bundle> {
+        return this._http.get(this._baseUrl + 'backend/bundles/' + id + "/contents")
+            .map(res => res.json());
+    }
+
+    getBundleFileContents(id: string, filename: string): Observable<string> {
+        return this._http.get(this._baseUrl + 'backend/bundles/' + id + "/contents/" + filename)
             .map(res => res.json());
     }
 

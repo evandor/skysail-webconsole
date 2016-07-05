@@ -134,6 +134,9 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '@angula
                 BundleComponent.prototype.onSelectBundle = function (id) {
                     this._router.navigate(['/bundles', id]);
                 };
+                BundleComponent.prototype.showContents = function (bundle) {
+                    this._router.navigate(['/bundles', bundle.id, 'contents']);
+                };
                 BundleComponent.prototype.objToStrMap = function (obj) {
                     var strMap = new Map();
                     for (var _i = 0, _a = Object.keys(obj); _i < _a.length; _i++) {

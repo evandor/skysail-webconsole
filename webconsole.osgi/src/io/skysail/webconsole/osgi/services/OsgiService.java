@@ -1,13 +1,22 @@
 package io.skysail.webconsole.osgi.services;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.Arrays;
+import java.util.Base64;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.zip.ZipFile;
 
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleActivator;
@@ -17,8 +26,10 @@ import org.osgi.framework.ServiceReference;
 import org.osgi.framework.ServiceRegistration;
 import org.osgi.util.tracker.ServiceTracker;
 
+import io.skysail.webconsole.osgi.entities.bundles.BundleContentDescriptor;
 import io.skysail.webconsole.osgi.entities.bundles.BundleDescriptor;
 import io.skysail.webconsole.osgi.entities.bundles.BundleDetails;
+import io.skysail.webconsole.osgi.entities.bundles.BundleFileContentDescriptor;
 import io.skysail.webconsole.osgi.entities.bundles.BundleSnapshot;
 import io.skysail.webconsole.osgi.entities.packages.ExportPackage;
 import io.skysail.webconsole.osgi.entities.services.ServiceDescriptor;
@@ -122,6 +133,66 @@ public class OsgiService implements BundleActivator {
                 .map(mapper)
                 .sorted((b1, b2) -> Integer.valueOf(b1.getId()).compareTo(Integer.valueOf(b2.getId())))
                 .collect(Collectors.toList());
+    }
+
+    public BundleContentDescriptor getBundleContentDescriptor(String id) {
+        BundleDetails bundleDetails = getBundleDetails(id);
+        String location = bundleDetails.getLocation().replace("reference:file:", "");
+        BundleContentDescriptor result = new BundleContentDescriptor(getBundle(id).get());
+        try (ZipFile zipFile = new ZipFile(location)) {
+            zipFile.stream().filter(e -> !e.getName().endsWith("/")).forEach(result::addPath);
+        } catch (IOException e) {
+        }
+        return result;
+    }
+
+    public BundleDetails getBundleDetails(String bundleId) {
+        return getBundle(bundleId).map(b -> new BundleDetails(b))
+                .orElseThrow(() -> new IllegalArgumentException(""));
+    }
+
+    public BundleFileContentDescriptor getBundleFileContentDescriptor(String[] uriSplit) {
+        String id = uriSplit[3];
+
+        String filename = new String(Base64.getDecoder().decode(uriSplit[4].substring("contents/".length())));
+
+        String content = "";
+        Optional<Bundle> bundle = getBundle(id);
+        if (bundle.isPresent()) {
+            content = getContent(bundle.get(), filename);
+        }
+
+        BundleFileContentDescriptor result = new BundleFileContentDescriptor(getBundle(id).get());
+        result.setCode(content);
+        return result;
+    }
+
+    private String getContent(Bundle bundle, String filename) {
+        URL resource = bundle.getResource(filename);
+        BufferedReader br;
+        if (resource == null) {
+            return null;
+        }
+        try {
+            URLConnection connection = resource.openConnection();
+            InputStream inputStream = connection.getInputStream();
+            br = new BufferedReader(new InputStreamReader(inputStream));
+            StringBuilder sb = new StringBuilder();
+            while (br.ready()) {
+                sb.append(br.readLine()).append("\n");
+            }
+            br.close();
+            return sb.toString();
+        } catch (Exception e) {
+            log.error(e.getMessage() + " when accessing " + resource, e);
+        }
+        return "problem accessing uri " + filename;
+    }
+
+    private Optional<Bundle> getBundle(String bundleId) {
+        return Arrays.stream(bundleContext.getBundles()) // NOSONAR
+                .filter(b -> bundleId.equals(Long.toString(b.getBundleId())))
+                .findFirst();
     }
 
 }

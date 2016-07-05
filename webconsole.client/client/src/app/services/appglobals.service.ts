@@ -5,9 +5,10 @@ import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 @Injectable()
 export class AppGlobals {
 
-    public _isLoading:     BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+    public _isLoading: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
     public _filteredCount: BehaviorSubject<number> = new BehaviorSubject<number>(0);
-    public _backendUrl:    BehaviorSubject<string> = new BehaviorSubject<string>("http://localhost:2002/");
+    public _bundleIdList: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
+    public _backendUrl: BehaviorSubject<string> = new BehaviorSubject<string>("http://localhost:2002/");
 
     setIsLoading(isLoading: boolean) {
         this._isLoading.next(isLoading);
@@ -16,9 +17,15 @@ export class AppGlobals {
     setFilteredCount(count: number) {
         this._filteredCount.next(count);
     }
-    
+
     setBackendUrl(url: string) {
         this._backendUrl.next(url);
+    }
+
+    setBundleIdList(theList: string[]) {
+        console.log(theList);
+
+        this._bundleIdList.next(theList);
     }
 
 }

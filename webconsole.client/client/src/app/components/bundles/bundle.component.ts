@@ -120,6 +120,10 @@ export class BundleComponent implements OnInit {
         this._router.navigate(['/bundles', id ]);
     }
 
+    showContents(bundle: Bundle) {
+        this._router.navigate(['/bundles', bundle.id, 'contents' ]);
+    }
+
     objToStrMap(obj) {
         let strMap = new Map();
         for (let k of Object.keys(obj)) {

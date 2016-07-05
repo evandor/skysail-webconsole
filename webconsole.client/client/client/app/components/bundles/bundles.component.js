@@ -62,11 +62,9 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '../../s
                     this._breadcrumbService = _breadcrumbService;
                     this._appGlobals = _appGlobals;
                     this.searchId = "";
-                    //@Input() 
-                    //@LocalStorage() 
                     this.searchName = '';
-                    //@Output() searchNameChange = new EventEmitter();
                     this.filteredCount = 0;
+                    this.bundleIdList = [];
                     this.maxSize = 0;
                     _appGlobals._filteredCount.subscribe(function (value) { return _this.filteredCount = value; });
                 }
@@ -82,10 +80,12 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '../../s
                         _this.bundles = res;
                         (function (err) { return _this.logError(err); });
                         _this.bundles.forEach(function (bundle) {
+                            _this.bundleIdList.push(bundle.id);
                             if (bundle.size > _this.maxSize) {
                                 _this.maxSize = bundle.size;
                             }
                         });
+                        _this._appGlobals.setBundleIdList(_this.bundleIdList);
                         _this._appGlobals.setIsLoading(false);
                     });
                 };

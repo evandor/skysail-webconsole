@@ -10,6 +10,8 @@ import fi.iki.elonen.NanoHTTPD;
 import io.skysail.webconsole.listener.AgentBundleListener;
 import io.skysail.webconsole.listener.AgentFrameworkListener;
 import io.skysail.webconsole.listener.AgentServiceListener;
+import io.skysail.webconsole.server.handler.BundleContentsHandler;
+import io.skysail.webconsole.server.handler.BundleFileContentHandler;
 import io.skysail.webconsole.server.handler.BundleHandler;
 import io.skysail.webconsole.server.handler.BundleListenerHandler;
 import io.skysail.webconsole.server.handler.BundleServicesHandler;
@@ -67,6 +69,8 @@ public class Server extends NanoHTTPD {
     private LogService logService;
 
     private BundleServicesHandler bundleServicesHandler;
+    private BundleContentsHandler bundleContentsHandler;
+    private BundleFileContentHandler bundleFileContentHandler;
 
     public Server(BundleContext bundleContext, OsgiServiceTracker osgiServiceTracker, int port) throws IOException {
         super(port);
@@ -81,6 +85,9 @@ public class Server extends NanoHTTPD {
 
         bundlesHandler = new BundlesHandler(osgiServiceTracker);
         bundleServicesHandler = new BundleServicesHandler(osgiServiceTracker);
+        bundleContentsHandler = new BundleContentsHandler(osgiServiceTracker);
+        bundleFileContentHandler = new BundleFileContentHandler(osgiServiceTracker);
+
         servicesHandler = new ServicesHandler(osgiServiceTracker);
         packagesHandler = new PackagesHandler(osgiServiceTracker);
 
@@ -90,7 +97,7 @@ public class Server extends NanoHTTPD {
         logsHandler = new LogsHandler(logService);
         frameworkHandler = new FrameworkHandler(bundleContext);
 
-        bundleHandler = new BundleHandler(bundleContext);
+        bundleHandler = new BundleHandler(osgiServiceTracker);
         serviceHandler = new ServiceHandler(bundleContext);
 
         bundleListenerHandler = new BundleListenerHandler(bundleListener);
@@ -148,6 +155,12 @@ public class Server extends NanoHTTPD {
         }
         if (session.getUri().startsWith(BACKEND_BUNDLES) && session.getUri().endsWith("/services")) {
             return bundleServicesHandler.handle(session);
+        }
+        if (session.getUri().startsWith(BACKEND_BUNDLES) && session.getUri().contains("/contents/")) {
+            return bundleFileContentHandler.handle(session);
+        }
+        if (session.getUri().startsWith(BACKEND_BUNDLES) && session.getUri().endsWith("/contents")) {
+            return bundleContentsHandler.handle(session);
         }
         if (session.getUri().startsWith(BACKEND_BUNDLES)) {
             return bundleHandler.handle(session);

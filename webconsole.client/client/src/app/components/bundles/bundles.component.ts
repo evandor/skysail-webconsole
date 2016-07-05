@@ -33,12 +33,10 @@ export class BundlesComponent implements OnInit, OnChanges {
 
     bundles: Bundle[];
     searchId: string = "";
-    //@Input() 
-    //@LocalStorage() 
     public searchName: string = '';
-    //@Output() searchNameChange = new EventEmitter();
-
     filteredCount: number = 0;
+
+    bundleIdList: string[] = [];
 
     value: number;
     maxSize: number = 0;
@@ -60,10 +58,12 @@ export class BundlesComponent implements OnInit, OnChanges {
                 this.bundles = res;
                 err => this.logError(err);
                 this.bundles.forEach(bundle => {
+                    this.bundleIdList.push(bundle.id);
                     if (bundle.size > this.maxSize) {
                         this.maxSize = bundle.size;
                     }
                 });
+                this._appGlobals.setBundleIdList(this.bundleIdList);
                 this._appGlobals.setIsLoading(false);
             });
     }

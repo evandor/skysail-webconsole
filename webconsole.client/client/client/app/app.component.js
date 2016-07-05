@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/router', './components/navbar/navbar.component', './components/navbar/breadcrumbs.component', './components/footer.component', './directives/percentBar.d3.directive'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/router', './components/navbar/navbar.component', './components/navbar/breadcrumbs.component', './components/navbar/navigation.component', './components/footer.component', './directives/percentBar.d3.directive'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/router', './components/navbar/navbar
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, navbar_component_1, breadcrumbs_component_1, footer_component_1, percentBar_d3_directive_1;
+    var core_1, router_1, navbar_component_1, breadcrumbs_component_1, navigation_component_1, footer_component_1, percentBar_d3_directive_1;
     var AppComponent;
     return {
         setters:[
@@ -25,6 +25,9 @@ System.register(['@angular/core', '@angular/router', './components/navbar/navbar
             },
             function (breadcrumbs_component_1_1) {
                 breadcrumbs_component_1 = breadcrumbs_component_1_1;
+            },
+            function (navigation_component_1_1) {
+                navigation_component_1 = navigation_component_1_1;
             },
             function (footer_component_1_1) {
                 footer_component_1 = footer_component_1_1;
@@ -44,7 +47,7 @@ System.register(['@angular/core', '@angular/router', './components/navbar/navbar
                     core_1.Component({
                         selector: 'my-app',
                         templateUrl: 'app/html/app.template.html',
-                        directives: [router_1.ROUTER_DIRECTIVES, footer_component_1.FooterComponent, navbar_component_1.Navbar, breadcrumbs_component_1.Breadcrumbs, percentBar_d3_directive_1.PercentBarDirective] //, RouterOutletMap, BarGraph, TimerWebsocketComponent, SMDropdown, D3Directive]
+                        directives: [router_1.ROUTER_DIRECTIVES, footer_component_1.FooterComponent, navbar_component_1.Navbar, navigation_component_1.NavigationComponent, breadcrumbs_component_1.Breadcrumbs, percentBar_d3_directive_1.PercentBarDirective] //, RouterOutletMap, BarGraph, TimerWebsocketComponent, SMDropdown, D3Directive]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);

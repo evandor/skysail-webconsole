@@ -1,8 +1,15 @@
 {
   "_args": [
     [
-      "rxjs@5.0.0-beta.6",
-      "C:\\git\\skysail-webconsole\\webconsole.client\\client"
+      {
+        "name": "rxjs",
+        "raw": "rxjs@5.0.0-beta.6",
+        "rawSpec": "5.0.0-beta.6",
+        "scope": null,
+        "spec": "5.0.0-beta.6",
+        "type": "version"
+      },
+      "/Users/carsten/git/skysail-webconsole/webconsole.client/client"
     ]
   ],
   "_from": "rxjs@5.0.0-beta.6",
@@ -32,11 +39,11 @@
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "http://registry.npmjs.org/rxjs/-/rxjs-5.0.0-beta.6.tgz",
+  "_resolved": "https://registry.npmjs.org/rxjs/-/rxjs-5.0.0-beta.6.tgz",
   "_shasum": "cb6dc46d6ddfedfeefc9b15dafd09c34a4370d23",
   "_shrinkwrap": null,
   "_spec": "rxjs@5.0.0-beta.6",
-  "_where": "C:\\git\\skysail-webconsole\\webconsole.client\\client",
+  "_where": "/Users/carsten/git/skysail-webconsole/webconsole.client/client",
   "author": {
     "email": "blesh@netflix.com",
     "name": "Ben Lesh"

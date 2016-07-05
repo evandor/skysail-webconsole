@@ -1,7 +1,7 @@
-System.register(['@angular/router', './components/framework.component', './components/bundles/bundles.component', './components/bundles/bundle.component', './components/logs.component', './components/services/services.component', './components/services/service.component', './components/packages.component', './components/help.component', './components/snapshots/snapshots.component', './components/config.component'], function(exports_1, context_1) {
+System.register(['@angular/router', './components/framework.component', './components/bundles/bundles.component', './components/bundles/bundle.component', './components/logs.component', './components/services/services.component', './components/services/service.component', './components/packages.component', './components/help.component', './components/snapshots/snapshots.component', './components/bundles/bundlecontent.component', './components/codemirror.component', './components/config.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var router_1, framework_component_1, bundles_component_1, bundle_component_1, logs_component_1, services_component_1, service_component_1, packages_component_1, help_component_1, snapshots_component_1, config_component_1;
+    var router_1, framework_component_1, bundles_component_1, bundle_component_1, logs_component_1, services_component_1, service_component_1, packages_component_1, help_component_1, snapshots_component_1, bundlecontent_component_1, codemirror_component_1, config_component_1;
     var routes, APP_ROUTER_PROVIDERS;
     return {
         setters:[
@@ -35,14 +35,22 @@ System.register(['@angular/router', './components/framework.component', './compo
             function (snapshots_component_1_1) {
                 snapshots_component_1 = snapshots_component_1_1;
             },
+            function (bundlecontent_component_1_1) {
+                bundlecontent_component_1 = bundlecontent_component_1_1;
+            },
+            function (codemirror_component_1_1) {
+                codemirror_component_1 = codemirror_component_1_1;
+            },
             function (config_component_1_1) {
                 config_component_1 = config_component_1_1;
             }],
         execute: function() {
             exports_1("routes", routes = [
                 { path: 'framework', component: framework_component_1.FrameworkComponent },
-                { path: 'bundles', component: bundles_component_1.BundlesComponent },
+                { path: 'bundles/:id/contents/:file', component: codemirror_component_1.CodeMirrorComponent },
+                { path: 'bundles/:id/contents', component: bundlecontent_component_1.BundleContentComponent },
                 { path: 'bundles/:id', component: bundle_component_1.BundleComponent },
+                { path: 'bundles', component: bundles_component_1.BundlesComponent },
                 { path: 'services', component: services_component_1.ServicesComponent },
                 { path: 'services/:id', component: service_component_1.ServiceComponent },
                 { path: 'packages', component: packages_component_1.PackagesComponent },

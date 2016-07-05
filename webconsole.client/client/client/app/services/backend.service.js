@@ -57,6 +57,14 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', '../
                     return this._http.get(this._baseUrl + 'backend/bundles/' + id + "/services")
                         .map(function (res) { return res.json(); });
                 };
+                BackendServices.prototype.getBundleContents = function (id) {
+                    return this._http.get(this._baseUrl + 'backend/bundles/' + id + "/contents")
+                        .map(function (res) { return res.json(); });
+                };
+                BackendServices.prototype.getBundleFileContents = function (id, filename) {
+                    return this._http.get(this._baseUrl + 'backend/bundles/' + id + "/contents/" + filename)
+                        .map(function (res) { return res.json(); });
+                };
                 BackendServices.prototype.getServices = function () {
                     return this._http.get(this._baseUrl + 'backend/services')
                         .map(function (res) { return res.json(); });

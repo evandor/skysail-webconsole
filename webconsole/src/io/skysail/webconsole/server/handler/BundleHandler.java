@@ -19,13 +19,15 @@ import fi.iki.elonen.NanoHTTPD.IHTTPSession;
 import io.skysail.webconsole.osgi.entities.bundles.BundleDetails;
 import io.skysail.webconsole.osgi.entities.packages.ImportPackage;
 import io.skysail.webconsole.osgi.services.OsgiService;
+import io.skysail.webconsole.services.NopOsgiService;
+import io.skysail.webconsole.services.OsgiServiceTracker;
 
 public class BundleHandler extends AbstractHttpHandler { // NOSONAR
 
-    private BundleContext bundleContext;
+    private OsgiServiceTracker osgiServiceTracker;
 
-    public BundleHandler(BundleContext bundleContext) {
-        this.bundleContext = bundleContext;
+    public BundleHandler(OsgiServiceTracker osgiServiceTracker) {
+        this.osgiServiceTracker = osgiServiceTracker;
     }
 
     @Override
@@ -34,8 +36,8 @@ public class BundleHandler extends AbstractHttpHandler { // NOSONAR
         String bundleId = session.getUri().substring(session.getUri().lastIndexOf("/") + 1);
         BundleDetails bundleDetails = getBundleDetails(bundleId);
 
-        ServiceReference<OsgiService> serviceReference = bundleContext.getServiceReference(OsgiService.class);
-        OsgiService osgiService = bundleContext.getService(serviceReference);
+        //ServiceReference<OsgiService> serviceReference = bundleContext.getServiceReference(OsgiService.class);
+        OsgiService osgiService = osgiServiceTracker.getOsgiService().orElse(new NopOsgiService());
 
         // to be replaced with wiring API
         PackageAdmin packageAdmin = (PackageAdmin) osgiService.getService(PackageAdmin.class.getName());
@@ -57,15 +59,12 @@ public class BundleHandler extends AbstractHttpHandler { // NOSONAR
                 });
             }
         }
-        bundleContext.ungetService(serviceReference);
         return mapper.writeValueAsString(bundleDetails);
     }
 
     public BundleDetails getBundleDetails(String bundleId) {
-        return Arrays.stream(bundleContext.getBundles()) // NOSONAR
-                .filter(b -> bundleId.equals(Long.toString(b.getBundleId())))
-                .findFirst().map(b -> new BundleDetails(b))
-                .orElseThrow(() -> new IllegalArgumentException(""));
+        OsgiService osgiService = osgiServiceTracker.getOsgiService().orElse(new NopOsgiService());
+        return osgiService.getBundleDetails(bundleId);
     }
 
     private boolean isSatisfied(ImportPackage importPackage, ExportedPackage exported) {

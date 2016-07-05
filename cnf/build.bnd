@@ -1,3 +1,12 @@
+webconsole.version           '[0.3.5,0.3.6)'
+webconsole.antlr.version     '[0.2.3,0.2.4)'
+webconsole.client.version    '[0.1.14,0.1.15)'
+webconsole.osgi.version      '[0.1.10,0.1.11)'
+
+
+osgi.version                 '[6.0.0,6.0.1)'
+osgi.annotation.version      '[6.0.1,6.0.2)'
+
 # Configure Repositories
 -plugin.1.Central: \
 	aQute.bnd.deployer.repository.wrapper.Plugin; \
@@ -59,15 +68,6 @@ javac.target:                1.8
 
 copyright:                   Copyright (c) twentyeleven.de (2011, ${tstamp;yyyy}). All Rights Reserved.
 copyright.html:              Copyright &copy; twentyeleven.de (2011, ${tstamp;yyyy}). All Rights Reserved.
-
-webconsole.version           '[0.3.5,0.3.6)'
-webconsole.antlr.version     '[0.2.3,0.2.4)'
-webconsole.client.version    '[0.1.14,0.1.15)'
-webconsole.osgi.version      '[0.1.9,0.1.10)'
-
-
-osgi.version                 '[6.0.0,6.0.1)'
-osgi.annotation.version      '[6.0.1,6.0.2)'
 
 Bundle-Vendor:               graefundpartner http://www.graefundpartner.de
 Bundle-Copyright:            ${copyright}
