@@ -1,4 +1,4 @@
-webconsole.version           '[0.3.5,0.3.6)'
+webconsole.version           '[0.3.6,0.3.7)'
 webconsole.antlr.version     '[0.2.3,0.2.4)'
 webconsole.client.version    '[0.1.14,0.1.15)'
 webconsole.osgi.version      '[0.1.10,0.1.11)'
