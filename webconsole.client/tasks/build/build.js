@@ -47,8 +47,8 @@ gulp.task('copy-watch', copyTask);
 
 var bundleApplication = function () {
     return Q.all([
-            bundle(srcDir.path('background.js'), destDir.path('background.js')),
-            bundle(srcDir.path('boot.js'), destDir.path('boot.js')),
+            //bundle(srcDir.path('background.js'), destDir.path('background.js')),
+            bundle(srcDir.path('client/app/boot.js'), destDir.path('boot1.js')),
         ]);
 };
 

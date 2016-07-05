@@ -14,9 +14,9 @@ var nodeBuiltInModules = ['assert', 'buffer', 'child_process', 'cluster',
 var electronBuiltInModules = ['electron'];
 
 var npmModulesUsedInApp = function () {
-console.log("Hier");
+	console.log("Hier");
     var appManifest = require('../../client/package.json');
-	console.log(appManifest);
+	//console.log(appManifest);
     return Object.keys(appManifest.dependencies);
 };
 
@@ -25,6 +25,8 @@ var generateExternalModulesList = function () {
 };
 
 module.exports = function (src, dest) {
+		console.log("Src: " + src);
+		console.log("Dest: " + dest);
     var deferred = Q.defer();
 
     rollup.rollup({
