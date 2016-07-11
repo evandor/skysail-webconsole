@@ -21,12 +21,13 @@ import {NewlinePipe} from '../../pipes/newline.pipe';
 import {ValuesPipe} from '../../pipes/values.pipe';
 import {LinkPipe} from '../../pipes/link.pipe';
 import {BundleStatePipe} from '../../pipes/bundleState.pipe';
+import {MaxLengthPipe} from '../../pipes/maxLength.pipe';
 
 @Component({
     selector: 'bundle',
     directives: [FORM_DIRECTIVES, NgFor, NgFormModel, Tabs, Tab],
     providers: [BackendServices, HTTP_PROVIDERS],
-    pipes: [NewlinePipe, ValuesPipe, BundleStatePipe,LinkPipe],
+    pipes: [NewlinePipe, MaxLengthPipe, ValuesPipe, BundleStatePipe,LinkPipe],
     templateUrl: 'app/html/bundles/bundle.template.html',
     //styleUrls:  ['app/js/datatables.css']
 })
@@ -49,9 +50,8 @@ export class BundleComponent implements OnInit {
     ngOnInit() {
 
         this.sub = this._route.params.subscribe(params => {
+            this._appGlobals.setRouteParams(params);
             let id = params['id']; 
-
-            this._breadcrumbsService.add(new Breadcrumb(['/bundles'],'thetitle'));
 
             this._backend.getBundle(id)
             .subscribe(res => {

@@ -25,32 +25,73 @@ System.register(["@angular/core", '@angular/router', '../../services/appglobals.
             }],
         execute: function() {
             NavigationComponent = (function () {
-                function NavigationComponent(_route, _appGlobals) {
+                function NavigationComponent(_route, _appGlobals, _router) {
                     var _this = this;
                     this._route = _route;
                     this._appGlobals = _appGlobals;
+                    this._router = _router;
                     this.bundleIdList = [];
+                    this.currentId = "0";
+                    this.prevExistsFlag = false;
                     this._appGlobals._bundleIdList.subscribe(function (val) { return _this.bundleIdList = val; });
+                    this._appGlobals._routeParams.subscribe(function (val) { return _this.routeParams = val; });
                 }
+                NavigationComponent.prototype.ngOnInit = function () {
+                    console.log("ID" + this.routeParams['id']);
+                    if (this.routeParams['id'] === "undefined") {
+                        return false;
+                    }
+                    var currentBundleIndex = this.getCurrentBundleIndex();
+                    console.log(currentBundleIndex);
+                    if (currentBundleIndex == null || currentBundleIndex == 0) {
+                        return false;
+                    }
+                    return true;
+                };
+                NavigationComponent.prototype.prevExists = function () {
+                    return this.prevExistsFlag;
+                };
                 NavigationComponent.prototype.next = function () {
                     var _this = this;
-                    this._route.params.subscribe(function (params) {
-                        var currentId = params['id'];
-                        var goto = 0;
-                        var index = 0;
-                        _this.bundleIdList.forEach(function (id) {
-                            //index 
-                            if (id == currentId) {
-                            }
-                        });
+                    var goto = "0";
+                    var index = 0;
+                    this.bundleIdList.forEach(function (id) {
+                        index += 1;
+                        if (id == _this.routeParams['id']) {
+                            goto = _this.bundleIdList[index];
+                        }
                     });
+                    this._router.navigate(['/bundles', goto]);
+                };
+                NavigationComponent.prototype.prev = function () {
+                    var _this = this;
+                    var goto = "0";
+                    var index = 0;
+                    this.bundleIdList.forEach(function (id) {
+                        index += 1;
+                        if (id == _this.routeParams['id']) {
+                            goto = _this.bundleIdList[index - 2];
+                        }
+                    });
+                    this._router.navigate(['/bundles', goto]);
+                };
+                NavigationComponent.prototype.getCurrentBundleIndex = function () {
+                    var _this = this;
+                    var index = 0;
+                    this.bundleIdList.forEach(function (id) {
+                        index += 1;
+                        if (id == _this.routeParams['id']) {
+                            return index;
+                        }
+                    });
+                    return null;
                 };
                 NavigationComponent = __decorate([
                     core_1.Component({
                         selector: 'navigation',
                         templateUrl: 'app/html/navbar/navigation.template.html'
                     }), 
-                    __metadata('design:paramtypes', [router_1.ActivatedRoute, appglobals_service_1.AppGlobals])
+                    __metadata('design:paramtypes', [router_1.ActivatedRoute, appglobals_service_1.AppGlobals, router_1.Router])
                 ], NavigationComponent);
                 return NavigationComponent;
             }());

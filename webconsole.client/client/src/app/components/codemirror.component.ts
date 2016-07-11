@@ -48,7 +48,7 @@ export class CodeMirrorComponent implements OnInit,OnChanges, AfterViewInit {
             var value = this.editor.getDoc().getValue();
             console.log("Value changed!");
         });
-        this.editor.setSize("100%", "100%");
+        this.editor.setSize("100%", "80%");
     }
 
     ngOnChanges(changes:{}) {

@@ -34,6 +34,10 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', '../
                     console.log("BackendServices constructor");
                     _appGlobals._backendUrl.subscribe(function (value) { return _this._baseUrl = value; });
                     console.log("base url set to '" + this._baseUrl + "'");
+                    if (this._baseUrl == "http://undefined:undefined/") {
+                        this._baseUrl = "http://localhost:2002/";
+                        console.log("base url undefined, setting back to default " + this._baseUrl);
+                    }
                 }
                 BackendServices.prototype.get = function (path) {
                     var headers = new http_1.Headers();

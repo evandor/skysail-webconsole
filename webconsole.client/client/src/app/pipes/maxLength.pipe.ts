@@ -17,7 +17,6 @@ export class MaxLengthPipe implements PipeTransform {
         if (value.length < args[0]) {
             return value;
         }
-       // return "<span>" + value.substr(0,args[0]) + "...</span>";
-       return value.substr(0,args[0]) + "...";
+       return "<span title='"+value+"'>" + value.substr(0,+args) + "...</span>";
    }
 }

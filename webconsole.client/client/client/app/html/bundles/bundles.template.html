@@ -13,11 +13,13 @@
         </tr>
       </thead>
       <tr *ngIf="bundles?.length > 0">
-        <td><!--<input type="text" name="search_id" size="4" />--></td>
-        <td><input type="text" name="search_name" size="40" [(ngModel)]="searchName" /></td>
-        <td><!--<input type="text" name="search_version" size="12" />--></td>
         <td>
-<!--          <select>
+          <!--<input type="text" name="search_id" size="4" />--></td>
+        <td><input type="text" name="search_name" size="40" [(ngModel)]="searchName" /></td>
+        <td>
+          <!--<input type="text" name="search_version" size="12" />--></td>
+        <td>
+          <!--          <select>
          <option name="search_state" value="">All</option>       
          <option name="search_state" value="Active">Active</option>       
        </select>-->
@@ -38,6 +40,12 @@
   <tab [tabTitle]="'Adjacency Matrix'">
     <div id="vizcontainer">
       <svg style="width:1000px;height:1000px;border:1px lightgray solid;" adjacency />
+    </div>
+  </tab>
+
+  <tab [tabTitle]="'Package Dependencies'">
+    <div>
+      <svg id="d3pkgDep" style="width:1000px;height:1000px;border:3px lightgray solid;" d3PkgDep />
     </div>
   </tab>
 </tabs>

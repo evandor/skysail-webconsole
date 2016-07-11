@@ -3,7 +3,7 @@ export class Breadcrumb {
     link: string[];
     
     constructor(link: string[], title: string) {
-        this.title = title;
+        this.title = " &gt; " + title;
         this.link = link;
     }
 }

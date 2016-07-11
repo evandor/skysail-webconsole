@@ -53,7 +53,7 @@ System.register(["@angular/core", "@angular/router", '../services/backend.servic
                         var value = _this.editor.getDoc().getValue();
                         console.log("Value changed!");
                     });
-                    this.editor.setSize("100%", "100%");
+                    this.editor.setSize("100%", "80%");
                 };
                 CodeMirrorComponent.prototype.ngOnChanges = function (changes) {
                     console.log("on changes");

@@ -41,7 +41,7 @@ System.register(['@angular/core', '../services/backend.service'], function(expor
                     core_1.Component({
                         selector: 'footer',
                         providers: [backend_service_1.BackendServices],
-                        template: '<p><small>client: {{version}}</small></p>'
+                        template: '<!--<p><small>client: {{version}}</small></p>-->'
                     }), 
                     __metadata('design:paramtypes', [backend_service_1.BackendServices, Window])
                 ], FooterComponent);

@@ -4,7 +4,7 @@ import {BackendServices} from '../services/backend.service';
 @Component({
     selector: 'footer',
     providers: [BackendServices],
-    template: '<p><small>client: {{version}}</small></p>'
+    template: '<!--<p><small>client: {{version}}</small></p>-->'
 })
 export class FooterComponent implements OnInit {
 

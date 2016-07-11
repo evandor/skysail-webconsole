@@ -7,7 +7,7 @@ System.register([], function(exports_1, context_1) {
         execute: function() {
             Breadcrumb = (function () {
                 function Breadcrumb(link, title) {
-                    this.title = title;
+                    this.title = " &gt; " + title;
                     this.link = link;
                 }
                 return Breadcrumb;

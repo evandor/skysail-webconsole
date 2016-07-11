@@ -1,13 +1,17 @@
 import {Component} from "@angular/core";
-import {ROUTER_DIRECTIVES, Router} from "@angular/router";
+import {ROUTER_DIRECTIVES, ActivatedRoute, Router} from "@angular/router";
 import {BackendServices} from '../../services/backend.service';
 import {AppGlobals} from '../../services/appglobals.service';
+import {BreadcrumbsService} from '../../services/breadcrumbs.service';
+
 import {Subscription} from 'rxjs/Subscription';
 
+import {Breadcrumbs} from '../../components/navbar/breadcrumbs.component';
+import {Breadcrumb} from '../navbar/breadcrumb';
 
 @Component({
     selector: 'navbar',
-    directives: [ROUTER_DIRECTIVES],
+    directives: [ROUTER_DIRECTIVES, Breadcrumbs],
     providers: [BackendServices],
     pipes: [],
     templateUrl: 'app/html/navbar/navbar.template.html'
@@ -20,25 +24,41 @@ export class Navbar {
 
     private loading = false;
 
-    subscription:Subscription;
+    subscription: Subscription;
 
-    constructor(private router: Router, private _backend: BackendServices, private _appGlobals: AppGlobals) {
+    breadcrumbs: Breadcrumb[];
+
+    bundleIdList: string[] = [];
+    currentId = "0";
+    private sub: any;
+    private routeParams: any;
+    private prevExistsFlag: boolean = false;
+
+    constructor(
+        private _router: Router,
+        private _backend: BackendServices,
+        private _appGlobals: AppGlobals,
+        private _breadcrumbsService: BreadcrumbsService
+    ) {
+
         this._appGlobals._isLoading.subscribe(value => this.loading = value);
-        this.router.events.subscribe(() => {
-            /*if (val.startsWith("bundles")) {
-                this.currentMenuItem = "Bundles";
-            } else if (val.startsWith("services")) {
-                this.currentMenuItem = "Services";
-            } else if (val.startsWith("packages")) {
-                this.currentMenuItem = "Packages";
-            } else if (val == "logs") {
-                this.currentMenuItem = "Logs";
-            } else if (val == "help") {
-                this.currentMenuItem = "Help";
-            } else {
-                this.currentMenuItem = "Bundles";
-            }*/
+
+        this._appGlobals._bundleIdList.subscribe(val => this.bundleIdList = val);
+        this._appGlobals._routeParams.subscribe(val => this.routeParams = val);
+
+        this._router.events.subscribe(() => {
+            _breadcrumbsService.clear();
+            _breadcrumbsService.add(new Breadcrumb(['/bundles'], '<i class="fa fa-home" aria-hidden="true"></i>'));
+            var val = this._router.url;
+            var segements = val.split('/');
+            segements.forEach(segment => {
+                if (segment != '') {
+                    _breadcrumbsService.add(new Breadcrumb([segment], segment));
+                }
+            });
+            this.breadcrumbs = _breadcrumbsService.getBreadcrumbs();
         });
+
     }
 
     isLoading(): boolean {
@@ -80,6 +100,26 @@ export class Navbar {
 
     get page() {
         return "";//this.location.path().split('/')[1];
+    }
+
+    next() {
+        this._router.navigate(['/bundles', this.getCurrentBundleIndex(this.routeParams['id']) + 1]);
+    }
+
+    prev() {
+        this._router.navigate(['/bundles', this.getCurrentBundleIndex(this.routeParams['id']) - 1]);
+    }
+
+    getCurrentBundleIndex(routeParamId): number {
+        var index = 0;
+        var goto = 0;
+        this.bundleIdList.forEach(id => {
+            if (id == routeParamId) {
+                goto = index;
+            }
+            index += 1;
+        });
+        return goto;
     }
 }
 

@@ -16,18 +16,16 @@ import {BundlesFilter} from '../../pipes/bundlesFilter.pipe'
 
 import {PercentBarDirective} from '../../directives/percentBar.d3.directive'
 import {AdjacencyDirective} from '../../directives/adjacency.directive'
-
-//import {LocalStorage, SessionStorage} from "angular2-localstorage/WebStorage";
+import {D3PkgDepDirective} from '../../directives/d3pkgdep.directive'
 
 declare var jQuery: any;
 
 @Component({
     selector: 'bundles',
-    directives: [FORM_DIRECTIVES, ROUTER_DIRECTIVES, NgFor, NgFormModel, Tabs, Tab, AdjacencyDirective, PercentBarDirective],
+    directives: [FORM_DIRECTIVES, ROUTER_DIRECTIVES, NgFor, NgFormModel, Tabs, Tab, AdjacencyDirective, D3PkgDepDirective, PercentBarDirective],
     providers: [BackendServices],
     templateUrl: 'app/html/bundles/bundles.template.html',
     pipes: [BundlesFilter, BundleStatePipe],
-    //changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BundlesComponent implements OnInit, OnChanges {
 

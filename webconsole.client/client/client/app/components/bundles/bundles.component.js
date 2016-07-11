@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/common', "@angular/router", '../../services/backend.service', '../../services/breadcrumbs.service', '../../services/appglobals.service', '../../components/navbar/breadcrumb', '../../components/tabs', '../../components/tab', '../../pipes/bundleState.pipe', '../../pipes/bundlesFilter.pipe', '../../directives/percentBar.d3.directive', '../../directives/adjacency.directive'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/common', "@angular/router", '../../services/backend.service', '../../services/breadcrumbs.service', '../../services/appglobals.service', '../../components/navbar/breadcrumb', '../../components/tabs', '../../components/tab', '../../pipes/bundleState.pipe', '../../pipes/bundlesFilter.pipe', '../../directives/percentBar.d3.directive', '../../directives/adjacency.directive', '../../directives/d3pkgdep.directive'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '../../s
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, router_1, backend_service_1, breadcrumbs_service_1, appglobals_service_1, breadcrumb_1, tabs_1, tab_1, bundleState_pipe_1, bundlesFilter_pipe_1, percentBar_d3_directive_1, adjacency_directive_1;
+    var core_1, common_1, router_1, backend_service_1, breadcrumbs_service_1, appglobals_service_1, breadcrumb_1, tabs_1, tab_1, bundleState_pipe_1, bundlesFilter_pipe_1, percentBar_d3_directive_1, adjacency_directive_1, d3pkgdep_directive_1;
     var BundlesComponent;
     return {
         setters:[
@@ -52,6 +52,9 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '../../s
             },
             function (adjacency_directive_1_1) {
                 adjacency_directive_1 = adjacency_directive_1_1;
+            },
+            function (d3pkgdep_directive_1_1) {
+                d3pkgdep_directive_1 = d3pkgdep_directive_1_1;
             }],
         execute: function() {
             BundlesComponent = (function () {
@@ -109,7 +112,7 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '../../s
                 BundlesComponent = __decorate([
                     core_1.Component({
                         selector: 'bundles',
-                        directives: [common_1.FORM_DIRECTIVES, router_1.ROUTER_DIRECTIVES, common_1.NgFor, common_1.NgFormModel, tabs_1.Tabs, tab_1.Tab, adjacency_directive_1.AdjacencyDirective, percentBar_d3_directive_1.PercentBarDirective],
+                        directives: [common_1.FORM_DIRECTIVES, router_1.ROUTER_DIRECTIVES, common_1.NgFor, common_1.NgFormModel, tabs_1.Tabs, tab_1.Tab, adjacency_directive_1.AdjacencyDirective, d3pkgdep_directive_1.D3PkgDepDirective, percentBar_d3_directive_1.PercentBarDirective],
                         providers: [backend_service_1.BackendServices],
                         templateUrl: 'app/html/bundles/bundles.template.html',
                         pipes: [bundlesFilter_pipe_1.BundlesFilter, bundleState_pipe_1.BundleStatePipe],

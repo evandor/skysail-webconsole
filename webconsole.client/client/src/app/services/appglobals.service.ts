@@ -9,6 +9,7 @@ export class AppGlobals {
     public _filteredCount: BehaviorSubject<number> = new BehaviorSubject<number>(0);
     public _bundleIdList: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
     public _backendUrl: BehaviorSubject<string> = new BehaviorSubject<string>("http://localhost:2002/");
+    public _routeParams: BehaviorSubject<any> = new BehaviorSubject<any>([]);
 
     setIsLoading(isLoading: boolean) {
         this._isLoading.next(isLoading);
@@ -24,8 +25,11 @@ export class AppGlobals {
 
     setBundleIdList(theList: string[]) {
         console.log(theList);
-
         this._bundleIdList.next(theList);
+    }
+
+    setRouteParams(params: any) {
+        this._routeParams.next(params);
     }
 
 }

@@ -27,6 +27,7 @@ System.register(['@angular/core', 'rxjs/BehaviorSubject'], function(exports_1, c
                     this._filteredCount = new BehaviorSubject_1.BehaviorSubject(0);
                     this._bundleIdList = new BehaviorSubject_1.BehaviorSubject([]);
                     this._backendUrl = new BehaviorSubject_1.BehaviorSubject("http://localhost:2002/");
+                    this._routeParams = new BehaviorSubject_1.BehaviorSubject([]);
                 }
                 AppGlobals.prototype.setIsLoading = function (isLoading) {
                     this._isLoading.next(isLoading);
@@ -40,6 +41,9 @@ System.register(['@angular/core', 'rxjs/BehaviorSubject'], function(exports_1, c
                 AppGlobals.prototype.setBundleIdList = function (theList) {
                     console.log(theList);
                     this._bundleIdList.next(theList);
+                };
+                AppGlobals.prototype.setRouteParams = function (params) {
+                    this._routeParams.next(params);
                 };
                 AppGlobals = __decorate([
                     core_1.Injectable(), 

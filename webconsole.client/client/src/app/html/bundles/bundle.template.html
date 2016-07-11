@@ -16,6 +16,10 @@
         <th><span title="Manifest header identifying the bundle's version.">Version</span></th>
         <td>{{bundle.version}}</td>
       </tr>
+      <tr>
+        <th>State</th>
+        <td [innerHTML]="bundle.state | bundleState"></td>
+      </tr>
       <tr *ngIf="bundle.description">
         <th>Description</th>
         <td>{{bundle.description}}</td>
@@ -34,15 +38,7 @@
       </tr>
       <tr>
         <th>Location</th>
-        <td class="ellipses" (click)="showContents(bundle)">{{bundle.location}}</td>
-      </tr>
-      <tr>
-        <th>Start Level</th>
-        <td>{{bundle.startLevel}}</td>
-      </tr>
-      <tr>
-        <th>State</th>
-        <td [innerHTML]="bundle.state | bundleState"></td>
+        <td (click)="showContents(bundle)" [innerHtml]="bundle.location | maxLength:80" style="cursor: pointer; color:#000066;">...</td>
       </tr>
       <tr *ngIf="bundle.vendor">
         <th>Vendor</th>
@@ -54,7 +50,7 @@
   <tab [tabTitle]="exportedPackagesTitle()">
     <table class="table">
       <tr>
-        <th><span class="glyphicon glyphicon-log-out" aria-hidden="true" style="color: blue"></span> Exported Packages:</th>
+        <th><i class="fa fa-folder-open-o" aria-hidden="true" style="color: #0275d8"></i> Exported Packages:</th>
         <td>
           <div *ngFor="let pkg of bundle.exportPackage">
             <span>{{pkg.pkgName}} [{{pkg.version}}]</span><span>{{pkg.mandatory}}</span>
@@ -68,7 +64,7 @@
     <table class="table">
       <thead>
         <tr>
-          <th width='270px;'>Package</th>
+          <th width='200px;'>Package</th>
           <th>Version Range</th>
           <th>Resolution</th>
           <th>Satiesfied by (Candidates)</th>
@@ -193,7 +189,7 @@
     <table class="table">
       <thead>
         <tr>
-          <th width='70px;'>Service ID</th>
+          <th width='200px;'>Service ID</th>
           <th>Service</th>
         </tr>
       </thead>
@@ -207,17 +203,9 @@
   </tab>
 
   <tab tabTitle="Manifest">
-    <table class="table">
-      <thead>
-        <tr>
-          <th width='270px;'>Key</th>
-          <th>Value</th>
-        </tr>
-      </thead>
+    <table class="table" style="max-width:500px;">
       <tr>
-        <th>Manifest Headers</th>
         <td>
-          <!--<div *ng F or="#value of bundle.manifestHeaders | values"> </div>-->
           <p *ngFor="let h of bundle.manifestHeaders"><b>{{h.key}}</b>: <span innerHtml="{{h.value | link}}"></span></p>
         </td>
       </tr>
