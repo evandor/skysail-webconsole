@@ -22,7 +22,7 @@ public class AgentFrameworkEvent extends AgentEvent {
         this.type = mapType(event.getType());
         this.bundle = getBundleName(event.getBundle());
         this.source = event.getSource().toString();
-        throwableMessage = event.getThrowable().getMessage();
+        throwableMessage = event.getThrowable() != null ? event.getThrowable().getMessage() : null;
     }
 
     private String mapType(int type) {

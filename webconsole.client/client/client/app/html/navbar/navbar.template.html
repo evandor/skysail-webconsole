@@ -10,11 +10,11 @@
         <li [class]="checkActive('Logs')"><a class="nav-link" [routerLink]="['/logs']">Logs</a></li>
         <li [class]="checkActive('Snapshots')"><a class="nav-link" [routerLink]="['/snapshots']">Snapshots</a></li>
         <li [class]="checkActive('Help')"><a class="nav-link" [routerLink]="['/help']">?</a></li>
-        <li *ngIf="isLoading()" class="nav-item"><i class="fa fa-spinner fa-spin" style="font-size:16px;color:green;margin-top:10px;" aria-hidden="true"></i></li>
-        <li *ngIf="!isLoading()" class="nav-item"><i class="fa fa-check-circle-o" style="font-size:19px;color:green;margin-top:10px;" aria-hidden="true"></i></li>
-        <li class="nav-item" *ngFor="let breadcrumb of breadcrumbs"><a class="nav-link" [routerLink]="breadcrumb.link" [innerHtml]='breadcrumb.title'></a></li>
-        <li class="nav-item"><a class="nav-link" (click)="prev()">[prev]</a></li>
-        <li class="nav-item"><a class="nav-link" (click)="next()">[next]</a></li>
+        <li *ngIf="isLoading()" class="nav-item" style="margin-right:30px;"><i class="fa fa-spinner fa-spin" style="font-size:16px;color:green;margin-top:10px;" aria-hidden="true"></i></li>
+        <li *ngIf="!isLoading()" class="nav-item" style="margin-right:30px;"><i class="fa fa-check-circle-o" style="font-size:19px;color:green;margin-top:10px;" aria-hidden="true"></i></li>
+        <li class="nav-item" style="background-color:white;margin-left:0px;padding-left:5px;border-bottom:1px solid #bfbfbf;" *ngFor="let breadcrumb of breadcrumbs"><a class="nav-link" [routerLink]="breadcrumb.link" [innerHtml]='breadcrumb.title'></a></li>
+        <li class="nav-item" style="background-color:white;margin-left:0px;padding-left:5px;border-bottom:1px solid #bfbfbf;"><a class="nav-link" (click)="prev()">[prev]</a></li>
+        <li class="nav-item" style="background-color:white;margin-left:0px;padding-left:5px;padding-right:5px;border-bottom:1px solid #bfbfbf;"><a class="nav-link" (click)="next()">[next]</a></li>
     </ul>
     <ul class="nav navbar-nav pull-xs-right">
         <li [class]="checkActive('Config')"><a class="nav-link" [routerLink]="['/config']">&nbsp;&nbsp;&nbsp;<i class="fa fa-cog" aria-hidden="true"></i></a></li>

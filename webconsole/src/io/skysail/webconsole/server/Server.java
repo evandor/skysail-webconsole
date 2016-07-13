@@ -35,7 +35,11 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class Server extends NanoHTTPD {
 
-    private static final String BACKEND_BUNDLES = "/backend/bundles/";
+    private static final String BACKEND = "/backend/";
+    private static final String VERSION = "v1/";
+
+    private static final String BACKEND_BUNDLES = BACKEND + VERSION + "bundles/";
+    private static final String BACKEND_SERVICES = BACKEND + VERSION + "services/";
 
     private static final String WEBCONSOLE_CLIENT = "webconsole.client";
 
@@ -150,7 +154,7 @@ public class Server extends NanoHTTPD {
             return frameworkHandler.handle(session);
         }
 
-        if ("/backend/bundles".equals(session.getUri())) {
+        if ((BACKEND + VERSION + "bundles").equals(session.getUri())) {
             return bundlesHandler.handle(session);
         }
         if (session.getUri().startsWith(BACKEND_BUNDLES) && session.getUri().endsWith("/services")) {
@@ -166,41 +170,41 @@ public class Server extends NanoHTTPD {
             return bundleHandler.handle(session);
         }
 
-        if ("/backend/services".equals(session.getUri())) {
+        if ((BACKEND + VERSION + "services").equals(session.getUri())) {
             return servicesHandler.handle(session);
         }
-        if (session.getUri().startsWith("/backend/services/")) {
+        if (session.getUri().startsWith(BACKEND_SERVICES)) {
             return serviceHandler.handle(session);
         }
 
-        if ("/backend/packages".equals(session.getUri())) {
+        if ("/backend/v1/packages".equals(session.getUri())) {
             return packagesHandler.handle(session);
         }
 
-        if ("/backend/snapshots".equals(session.getUri())) {
+        if ("/backend/v1/snapshots".equals(session.getUri())) {
             return snapshotsHandler.handle(session);
         }
-        if (session.getUri().startsWith("/backend/snapshotdetails/")) {
+        if (session.getUri().startsWith("/backend/v1/snapshotdetails/")) {
             return snapshotHandler.handle(session);
         }
-        if ("/backend/snapshotdetails".equals(session.getUri())) {
+        if ("/backend/v1/snapshotdetails".equals(session.getUri())) {
             return snapshotsHandler.handle(session);
         }
 
-        if ("/backend/logs".equals(session.getUri())) {
+        if ("/backend/v1/logs".equals(session.getUri())) {
             return logsHandler.handle(session);
         }
 
-        if ("/backend/bundlelistener".equals(session.getUri())) {
+        if ("/backend/v1/bundlelistener".equals(session.getUri())) {
             return bundleListenerHandler.handle(session);
         }
-        if ("/backend/frameworklistener".equals(session.getUri())) {
+        if ("/backend/v1/frameworklistener".equals(session.getUri())) {
             return frameworkListenerHandler.handle(session);
         }
-        if ("/backend/servicelistener".equals(session.getUri())) {
+        if ("/backend/v1/servicelistener".equals(session.getUri())) {
             return serviceListenerHandler.handle(session);
         }
-        if ("/client/version".equals(session.getUri())) {
+        if ("/backend/v1/client/version".equals(session.getUri())) {
             return versionHandler.handle(session);
         }
         if (session.getUri().equals("") || session.getUri().equals("/")) {

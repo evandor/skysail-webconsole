@@ -167,22 +167,29 @@
       <div *ngFor="let alert of bundle.wireDescriptor?.alerts" class="alert alert-{{alert.level}}" role="alert">{{alert.message}}</div>
     </span>
 
-    <table class="table">
-      <tr>
-        <th width='270px;'>Key</th>
-        <th>Requiring Bundle</th>
-        <th>Requirement</th>
-        <th>Capability</th>
-      </tr>
-      <tr *ngFor="let providedWire of bundle.wireDescriptor?.providedWires">
-        <th><span class="glyphicon glyphicon-log-out" aria-hidden="true" style="color: blue"></span> Provided Wire:</th>
-        <td (click)="onSelectBundle(providedWire.rid)" style="cursor: pointer; color:#000066;">{{providedWire.rid}} </td>
-        <td>
-          <div>{{providedWire.requirement | json }}</div>
-        </td>
-        <td>{{providedWire.capability | json}}</td>
-      </tr>
-    </table>
+    <div class="container">
+      <div *ngFor="let wire of wires | values" class="table">
+        <div class="row">
+          <div class="col-md-10"><b>{{wire[0].capability.name}}</b> is wired to</div>
+          <div class="col-md-2">
+            <span title="{{wire[0].capability.attributes | json}}">Attributes</span>
+            <span title="{{wire[0].capability.directives | json}}">Directives</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">&nbsp;</div>
+        </div>
+        <div class="row" *ngFor="let req of wire">
+          <div class="col-md-1">&nbsp;</div>
+          <div class="col-md-3" (click)="onSelectBundle(req.requirement.bundleId)">{{req.requirement.bundleName }}</div>
+          <div class="col-md-8">{{req.requirement.directives}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">&nbsp;</div>
+        </div>
+      </div>
+    </div>
+
   </tab>
 
   <tab [tabTitle]="providedServicesTitle()">

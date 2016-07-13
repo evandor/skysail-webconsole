@@ -5,6 +5,8 @@ import java.util.stream.Collectors;
 
 import org.osgi.framework.wiring.BundleRequirement;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 
 @Getter
@@ -13,14 +15,25 @@ public class Requirement {
     private String namespace;
     private List<String> attributes;
     private List<String> directives;
-    private String resource;
+    private long bundleId;
+    private String bundleName;
+    @JsonIgnore
+    private String nsAttribute;
 
     public Requirement(BundleRequirement req) {
         namespace = req.getNamespace();
+        nsAttribute = (String)req.getAttributes().get(namespace);
         attributes = req.getAttributes().keySet().stream().map(key -> key + ": " + req.getAttributes().get(key)).collect(Collectors.toList());
         directives = req.getDirectives().keySet().stream().map(key -> key + ":= " + req.getDirectives().get(key)).collect(Collectors.toList());
-        resource = req.getResource().toString();
-        //System.out.println(req.getRevision());
+        bundleId = req.getResource().getBundle().getBundleId();
+        bundleName = req.getResource().getBundle().getSymbolicName();
     }
 
+    // artificial id derived from namespace and hashcodes
+    public String getId() {
+        return new StringBuilder(namespace).append("-").append(bundleId).append("-").append(this.hashCode()).toString();
+    }
+    public String getName() {
+        return namespace + ": " + nsAttribute;
+    }
 }

@@ -12,8 +12,6 @@ import lombok.Getter;
 @Getter
 public class WireDescriptor {
 
-   // private List<Alert> alerts = new ArrayList<>();
-
     private List<Capability> capabilities;
     private List<Requirement> requirements;
     private List<Wire> providedWires;
@@ -37,8 +35,7 @@ public class WireDescriptor {
 
         providedWires = wiring.getProvidedWires(null).stream()
                 .map(wire -> new Wire(wire))
-                // .sorted((r1,r2) ->
-                // r1.getNamespace().compareTo(r2.getNamespace()))
+                .sorted((r1,r2) -> r1.getCapability().getNamespace().compareTo(r2.getCapability().getNamespace()))
                 .collect(Collectors.toList());
 
         requiredWires = wiring.getRequiredWires(null).stream()

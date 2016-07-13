@@ -15,7 +15,7 @@ public class SnapshotHandler extends AbstractHttpHandler { // NOSONAR
 
     @Override
     String getResponse(IHTTPSession session) throws JsonProcessingException {
-        if (session.getUri().equals("/backend/snapshotdetails/latest")) {
+        if (session.getUri().equals("/backend/v1/snapshotdetails/latest")) {
             return mapper.writeValueAsString(snapshotsService.getLatestSnapshotDetails());
         }
         String snapshotId = session.getUri().substring(session.getUri().lastIndexOf("/") + 1);

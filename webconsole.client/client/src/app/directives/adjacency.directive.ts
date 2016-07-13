@@ -2,47 +2,17 @@ import {Component, Directive, ElementRef, Input, OnInit} from '@angular/core'
 
 import {BackendServices} from '../services/backend.service';
 
+import {Node} from '../domain/node';
+import {Edge} from '../domain/edge';
+
 import * as d3 from 'd3';
-
-
-class Edge {
-    source: string;
-    target: string;
-    weight: number;
-
-    constructor(source, target, weight) {
-        this.source = source;
-        this.target = target;
-        this.weight = weight;
-    }
-}
-
-class Node {
-    id: string;
-    followers: number;
-    following: number;
-
-    constructor(id, followers, following) {
-        this.id = id;
-        this.followers = followers;
-        this.following = following;
-    }
-}
 
 @Directive({
     selector: "[adjacency]"
 })
 export class AdjacencyDirective implements OnInit {
 
-    /* @Input('d3MaxWidth') maxWidth: string;
-     @Input('d3MaxValue') maxValue: string;
-     @Input('d3PercentBar') value: string;
-     @Input('id') id: string;*/
-
-    // data: Array<number> = [];
-
     edges = Array<Edge>();
-    //nodes = Array<Node>();
     
     rNodes = Array<Node>(); // requirererNodes
     pNodes = Array<Node>(); // providerNodes
@@ -116,7 +86,7 @@ export class AdjacencyDirective implements OnInit {
                     if (bundle.id == "0") {
                         return;
                     }
-                    allNodes.push(new Node(bundle.id, 17, 500));
+                    allNodes.push(new Node(bundle.id, bundle.symbolicName, 17, 500));
                     var toCounter = new Map<string, number>();
                     bundle.wireDescriptor.providedWires.forEach(wire => {
                         var requirerId = wire.rid;

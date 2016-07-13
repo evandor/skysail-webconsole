@@ -16,9 +16,11 @@ import {Tab} from '../../components/tab';
 import {KeyValue} from '../../domain/keyValue';
 import {ImportPackage} from '../../domain/importPackage';
 import {Service} from '../../domain/service';
+import {Capability} from '../../domain/capability';
 
 import {NewlinePipe} from '../../pipes/newline.pipe';
 import {ValuesPipe} from '../../pipes/values.pipe';
+import {KeyValuesPipe} from '../../pipes/keyvalues.pipe';
 import {LinkPipe} from '../../pipes/link.pipe';
 import {BundleStatePipe} from '../../pipes/bundleState.pipe';
 import {MaxLengthPipe} from '../../pipes/maxLength.pipe';
@@ -27,7 +29,7 @@ import {MaxLengthPipe} from '../../pipes/maxLength.pipe';
     selector: 'bundle',
     directives: [FORM_DIRECTIVES, NgFor, NgFormModel, Tabs, Tab],
     providers: [BackendServices, HTTP_PROVIDERS],
-    pipes: [NewlinePipe, MaxLengthPipe, ValuesPipe, BundleStatePipe,LinkPipe],
+    pipes: [NewlinePipe, MaxLengthPipe, ValuesPipe, KeyValuesPipe, BundleStatePipe, LinkPipe],
     templateUrl: 'app/html/bundles/bundle.template.html',
     //styleUrls:  ['app/js/datatables.css']
 })
@@ -39,10 +41,12 @@ export class BundleComponent implements OnInit {
 
     private sub: any;
 
+    wires = [];//new Map<string, Capability[]>();
+
     constructor(
-        private _backend: BackendServices, 
-        private _route: ActivatedRoute, 
-        private _router: Router, 
+        private _backend: BackendServices,
+        private _route: ActivatedRoute,
+        private _router: Router,
         private _breadcrumbsService: BreadcrumbsService,
         private _appGlobals: AppGlobals) {
     }
@@ -51,36 +55,56 @@ export class BundleComponent implements OnInit {
 
         this.sub = this._route.params.subscribe(params => {
             this._appGlobals.setRouteParams(params);
-            let id = params['id']; 
+            let id = params['id'];
 
             this._backend.getBundle(id)
-            .subscribe(res => {
-                this._appGlobals.setIsLoading(true);
-                this.bundle = res;
-                var props = <Map<string, string>>res.wireDescriptor.capabilities;
-                for (var key in props) {
-                    if (key == "attributes") {
-                        var attributes = <Map<string, string>>props[key];
-                        var attributeMap: KeyValue[];
-                        for (var attribute in attributes) {
-                            attributeMap.push(new KeyValue(attribute, attributes[attribute]));
+                .subscribe(res => {
+                    this._appGlobals.setIsLoading(true);
+                    this.bundle = res;
+                    var props = <Map<string, string>>res.wireDescriptor.capabilities;
+                    /*for (var key in props) {
+                        if (key == "attributes") {
+                            var attributes = <Map<string, string>>props[key];
+                            var attributeMap: KeyValue[];
+                            for (var attribute in attributes) {
+                                attributeMap.push(new KeyValue(attribute, attributes[attribute]));
+                            }
+                            this.capabilities.push(new KeyValue(key, attributeMap));
+                        } else {
+                            this.capabilities.push(new KeyValue(key, props[key]));
                         }
-                        this.capabilities.push(new KeyValue(key, attributeMap));
-                    } else {
-                        this.capabilities.push(new KeyValue(key, props[key]));
-                    }
-                };
+                    };*/
 
-                this._backend.getBundleServices(this.bundle.id)
-                    .subscribe(serviceRes => {
-                        this.bundle.providedServices = serviceRes;
+                    var providedWires = res.wireDescriptor.providedWires;
+                    var oldIdentifier = "";
+                    var theValue = [];
+                    providedWires.forEach(wire => {
+                        var identifier = wire.capability['id']
+                        console.log(identifier);
+                        if (oldIdentifier != identifier) {
+                            oldIdentifier = identifier;
+                            /*theValue = [];
+                            this.caps.push({
+                                key: identifier,
+                                value: theValue
+                            })*/
+                            this.wires[identifier] = Array<any>();
+                        }
+                        //theValue.push(wire);
+                        this.wires[identifier].push(wire);
                     });
-                this._appGlobals.setIsLoading(false);
-            }
-            );
+                    console.log(this.wires);
+
+                    this._backend.getBundleServices(this.bundle.id)
+                        .subscribe(serviceRes => {
+                            this.bundle.providedServices = serviceRes;
+                        });
+                    this._appGlobals.setIsLoading(false);
+                }
+                );
         });
 
-        
+
     }
 
     ngOnDestroy() {
@@ -113,15 +137,15 @@ export class BundleComponent implements OnInit {
     }
 
     onSelectService(service: Service) {
-        this._router.navigate(['/services',service.id]);
+        this._router.navigate(['/services', service.id]);
     }
 
     onSelectBundle(id: string) {
-        this._router.navigate(['/bundles', id ]);
+        this._router.navigate(['/bundles', id]);
     }
 
     showContents(bundle: Bundle) {
-        this._router.navigate(['/bundles', bundle.id, 'contents' ]);
+        this._router.navigate(['/bundles', bundle.id, 'contents']);
     }
 
     objToStrMap(obj) {

@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/common', "@angular/router", '@angular/http', '../../services/backend.service', '../../services/appglobals.service', '../../services/breadcrumbs.service', '../../domain/bundle', '../../components/tabs', '../../components/tab', '../../domain/keyValue', '../../pipes/newline.pipe', '../../pipes/values.pipe', '../../pipes/link.pipe', '../../pipes/bundleState.pipe', '../../pipes/maxLength.pipe'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/common', "@angular/router", '@angular/http', '../../services/backend.service', '../../services/appglobals.service', '../../services/breadcrumbs.service', '../../domain/bundle', '../../components/tabs', '../../components/tab', '../../pipes/newline.pipe', '../../pipes/values.pipe', '../../pipes/keyvalues.pipe', '../../pipes/link.pipe', '../../pipes/bundleState.pipe', '../../pipes/maxLength.pipe'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '@angula
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, router_1, http_1, backend_service_1, appglobals_service_1, breadcrumbs_service_1, bundle_1, tabs_1, tab_1, keyValue_1, newline_pipe_1, values_pipe_1, link_pipe_1, bundleState_pipe_1, maxLength_pipe_1;
+    var core_1, common_1, router_1, http_1, backend_service_1, appglobals_service_1, breadcrumbs_service_1, bundle_1, tabs_1, tab_1, newline_pipe_1, values_pipe_1, keyvalues_pipe_1, link_pipe_1, bundleState_pipe_1, maxLength_pipe_1;
     var BundleComponent;
     return {
         setters:[
@@ -44,14 +44,14 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '@angula
             function (tab_1_1) {
                 tab_1 = tab_1_1;
             },
-            function (keyValue_1_1) {
-                keyValue_1 = keyValue_1_1;
-            },
             function (newline_pipe_1_1) {
                 newline_pipe_1 = newline_pipe_1_1;
             },
             function (values_pipe_1_1) {
                 values_pipe_1 = values_pipe_1_1;
+            },
+            function (keyvalues_pipe_1_1) {
+                keyvalues_pipe_1 = keyvalues_pipe_1_1;
             },
             function (link_pipe_1_1) {
                 link_pipe_1 = link_pipe_1_1;
@@ -72,6 +72,7 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '@angula
                     this._appGlobals = _appGlobals;
                     this.bundle = new bundle_1.Bundle();
                     this.capabilities = [];
+                    this.wires = []; //new Map<string, Capability[]>();
                 }
                 BundleComponent.prototype.ngOnInit = function () {
                     var _this = this;
@@ -83,20 +84,37 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '@angula
                             _this._appGlobals.setIsLoading(true);
                             _this.bundle = res;
                             var props = res.wireDescriptor.capabilities;
-                            for (var key in props) {
+                            /*for (var key in props) {
                                 if (key == "attributes") {
-                                    var attributes = props[key];
-                                    var attributeMap;
+                                    var attributes = <Map<string, string>>props[key];
+                                    var attributeMap: KeyValue[];
                                     for (var attribute in attributes) {
-                                        attributeMap.push(new keyValue_1.KeyValue(attribute, attributes[attribute]));
+                                        attributeMap.push(new KeyValue(attribute, attributes[attribute]));
                                     }
-                                    _this.capabilities.push(new keyValue_1.KeyValue(key, attributeMap));
+                                    this.capabilities.push(new KeyValue(key, attributeMap));
+                                } else {
+                                    this.capabilities.push(new KeyValue(key, props[key]));
                                 }
-                                else {
-                                    _this.capabilities.push(new keyValue_1.KeyValue(key, props[key]));
+                            };*/
+                            var providedWires = res.wireDescriptor.providedWires;
+                            var oldIdentifier = "";
+                            var theValue = [];
+                            providedWires.forEach(function (wire) {
+                                var identifier = wire.capability['id'];
+                                console.log(identifier);
+                                if (oldIdentifier != identifier) {
+                                    oldIdentifier = identifier;
+                                    /*theValue = [];
+                                    this.caps.push({
+                                        key: identifier,
+                                        value: theValue
+                                    })*/
+                                    _this.wires[identifier] = Array();
                                 }
-                            }
-                            ;
+                                //theValue.push(wire);
+                                _this.wires[identifier].push(wire);
+                            });
+                            console.log(_this.wires);
                             _this._backend.getBundleServices(_this.bundle.id)
                                 .subscribe(function (serviceRes) {
                                 _this.bundle.providedServices = serviceRes;
@@ -150,7 +168,7 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '@angula
                         selector: 'bundle',
                         directives: [common_1.FORM_DIRECTIVES, common_1.NgFor, common_1.NgFormModel, tabs_1.Tabs, tab_1.Tab],
                         providers: [backend_service_1.BackendServices, http_1.HTTP_PROVIDERS],
-                        pipes: [newline_pipe_1.NewlinePipe, maxLength_pipe_1.MaxLengthPipe, values_pipe_1.ValuesPipe, bundleState_pipe_1.BundleStatePipe, link_pipe_1.LinkPipe],
+                        pipes: [newline_pipe_1.NewlinePipe, maxLength_pipe_1.MaxLengthPipe, values_pipe_1.ValuesPipe, keyvalues_pipe_1.KeyValuesPipe, bundleState_pipe_1.BundleStatePipe, link_pipe_1.LinkPipe],
                         templateUrl: 'app/html/bundles/bundle.template.html',
                     }), 
                     __metadata('design:paramtypes', [backend_service_1.BackendServices, router_1.ActivatedRoute, router_1.Router, breadcrumbs_service_1.BreadcrumbsService, appglobals_service_1.AppGlobals])

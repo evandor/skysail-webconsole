@@ -1,4 +1,4 @@
-System.register(['@angular/core', '../services/backend.service', 'd3'], function(exports_1, context_1) {
+System.register(['@angular/core', '../services/backend.service', '../domain/node', '../domain/edge', 'd3'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,8 +10,8 @@ System.register(['@angular/core', '../services/backend.service', 'd3'], function
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, backend_service_1, d3;
-    var Edge, Node, AdjacencyDirective;
+    var core_1, backend_service_1, node_1, edge_1, d3;
+    var AdjacencyDirective;
     return {
         setters:[
             function (core_1_1) {
@@ -20,37 +20,21 @@ System.register(['@angular/core', '../services/backend.service', 'd3'], function
             function (backend_service_1_1) {
                 backend_service_1 = backend_service_1_1;
             },
+            function (node_1_1) {
+                node_1 = node_1_1;
+            },
+            function (edge_1_1) {
+                edge_1 = edge_1_1;
+            },
             function (d3_1) {
                 d3 = d3_1;
             }],
         execute: function() {
-            Edge = (function () {
-                function Edge(source, target, weight) {
-                    this.source = source;
-                    this.target = target;
-                    this.weight = weight;
-                }
-                return Edge;
-            }());
-            Node = (function () {
-                function Node(id, followers, following) {
-                    this.id = id;
-                    this.followers = followers;
-                    this.following = following;
-                }
-                return Node;
-            }());
             AdjacencyDirective = (function () {
                 function AdjacencyDirective(_el, _backend) {
                     this._el = _el;
                     this._backend = _backend;
-                    /* @Input('d3MaxWidth') maxWidth: string;
-                     @Input('d3MaxValue') maxValue: string;
-                     @Input('d3PercentBar') value: string;
-                     @Input('id') id: string;*/
-                    // data: Array<number> = [];
                     this.edges = Array();
-                    //nodes = Array<Node>();
                     this.rNodes = Array(); // requirererNodes
                     this.pNodes = Array(); // providerNodes
                 }
@@ -122,7 +106,7 @@ System.register(['@angular/core', '../services/backend.service', 'd3'], function
                             if (bundle.id == "0") {
                                 return;
                             }
-                            allNodes.push(new Node(bundle.id, 17, 500));
+                            allNodes.push(new node_1.Node(bundle.id, bundle.symbolicName, 17, 500));
                             var toCounter = new Map();
                             bundle.wireDescriptor.providedWires.forEach(function (wire) {
                                 var requirerId = wire.rid;
@@ -136,7 +120,7 @@ System.register(['@angular/core', '../services/backend.service', 'd3'], function
                                 toCounter.forEach(function (value, index, map) {
                                     if (index != "0") {
                                         // console.log(bundle.id + ": " + index + "/" + value);
-                                        _this.edges.push(new Edge(bundle.id, index, value));
+                                        _this.edges.push(new edge_1.Edge(bundle.id, index, value));
                                     }
                                 });
                             });
