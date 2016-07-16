@@ -142,7 +142,7 @@ public class Server extends NanoHTTPD {
      */
     @Override
     public Response serve(IHTTPSession session) {
-        log.info("processing {} on uri '{}'", session.getMethod(), session.getUri());
+        log.debug("processing {} on uri '{}'", session.getMethod(), session.getUri());
 
         // --- POSTS ---------------------------------
         if (session.getMethod().equals(Method.POST) && "/backend/snapshots/".equals(session.getUri())) {
