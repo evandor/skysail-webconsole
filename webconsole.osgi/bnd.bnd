@@ -1,6 +1,6 @@
 Bundle-Name: SKYSAIL :: webconsole :: osgi
 
-Bundle-Version: 0.1.11.${tstamp}
+Bundle-Version: 0.1.12.${tstamp}
 
 Bundle-Description: Core logic of the skysail webconsole project
 
