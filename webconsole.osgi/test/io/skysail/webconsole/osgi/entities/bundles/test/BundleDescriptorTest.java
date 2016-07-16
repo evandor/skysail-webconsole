@@ -21,14 +21,20 @@ public class BundleDescriptorTest {
     }
 
     @Test
-    public void testName() {
+    public void captures_simple_bundle() {
         BundleDescriptor descriptor = new BundleDescriptor(bundle);
 
         assertThat(descriptor.getId(), is("7"));
-        //assertThat(descriptor.getSize(), is(greaterThan(0L)));
         assertThat(descriptor.getState(), is("ACTIVE"));
         assertThat(descriptor.getSymbolicName(), is("symbolic.name"));
         assertThat(descriptor.getVersion(), is("1.0.0"));
+    }
+
+    @Test
+    public void captures_bundles_size() {
+        BundleDescriptor descriptor = new BundleDescriptor(bundle);
+
+        //assertThat(descriptor.getSize(), is("7"));
     }
 
     protected Bundle setUpDefaultBundle() {

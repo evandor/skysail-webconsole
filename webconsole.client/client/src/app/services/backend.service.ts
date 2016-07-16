@@ -102,7 +102,7 @@ export class BackendServices {
     }
 
     getVersion() {
-        return this._http.get(this._baseUrl + 'backedn/v1/client/version')
+        return this._http.get(this._baseUrl + 'backend/v1/client/version')
             .map(res => res.text());
     }
 }

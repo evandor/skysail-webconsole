@@ -56,38 +56,20 @@ export class BundleComponent implements OnInit {
         this.sub = this._route.params.subscribe(params => {
             this._appGlobals.setRouteParams(params);
             let id = params['id'];
+            this.wires = [];
 
             this._backend.getBundle(id)
                 .subscribe(res => {
                     this._appGlobals.setIsLoading(true);
                     this.bundle = res;
                     var props = <Map<string, string>>res.wireDescriptor.capabilities;
-                    /*for (var key in props) {
-                        if (key == "attributes") {
-                            var attributes = <Map<string, string>>props[key];
-                            var attributeMap: KeyValue[];
-                            for (var attribute in attributes) {
-                                attributeMap.push(new KeyValue(attribute, attributes[attribute]));
-                            }
-                            this.capabilities.push(new KeyValue(key, attributeMap));
-                        } else {
-                            this.capabilities.push(new KeyValue(key, props[key]));
-                        }
-                    };*/
-
                     var providedWires = res.wireDescriptor.providedWires;
                     var oldIdentifier = "";
                     var theValue = [];
                     providedWires.forEach(wire => {
                         var identifier = wire.capability['id']
-                        console.log(identifier);
                         if (oldIdentifier != identifier) {
                             oldIdentifier = identifier;
-                            /*theValue = [];
-                            this.caps.push({
-                                key: identifier,
-                                value: theValue
-                            })*/
                             this.wires[identifier] = Array<any>();
                         }
                         //theValue.push(wire);
@@ -146,6 +128,10 @@ export class BundleComponent implements OnInit {
 
     showContents(bundle: Bundle) {
         this._router.navigate(['/bundles', bundle.id, 'contents']);
+    }
+
+    onSubmit() {
+        console.log("submitted");
     }
 
     objToStrMap(obj) {

@@ -79,36 +79,19 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '@angula
                     this.sub = this._route.params.subscribe(function (params) {
                         _this._appGlobals.setRouteParams(params);
                         var id = params['id'];
+                        _this.wires = [];
                         _this._backend.getBundle(id)
                             .subscribe(function (res) {
                             _this._appGlobals.setIsLoading(true);
                             _this.bundle = res;
                             var props = res.wireDescriptor.capabilities;
-                            /*for (var key in props) {
-                                if (key == "attributes") {
-                                    var attributes = <Map<string, string>>props[key];
-                                    var attributeMap: KeyValue[];
-                                    for (var attribute in attributes) {
-                                        attributeMap.push(new KeyValue(attribute, attributes[attribute]));
-                                    }
-                                    this.capabilities.push(new KeyValue(key, attributeMap));
-                                } else {
-                                    this.capabilities.push(new KeyValue(key, props[key]));
-                                }
-                            };*/
                             var providedWires = res.wireDescriptor.providedWires;
                             var oldIdentifier = "";
                             var theValue = [];
                             providedWires.forEach(function (wire) {
                                 var identifier = wire.capability['id'];
-                                console.log(identifier);
                                 if (oldIdentifier != identifier) {
                                     oldIdentifier = identifier;
-                                    /*theValue = [];
-                                    this.caps.push({
-                                        key: identifier,
-                                        value: theValue
-                                    })*/
                                     _this.wires[identifier] = Array();
                                 }
                                 //theValue.push(wire);
@@ -154,6 +137,9 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '@angula
                 };
                 BundleComponent.prototype.showContents = function (bundle) {
                     this._router.navigate(['/bundles', bundle.id, 'contents']);
+                };
+                BundleComponent.prototype.onSubmit = function () {
+                    console.log("submitted");
                 };
                 BundleComponent.prototype.objToStrMap = function (obj) {
                     var strMap = new Map();

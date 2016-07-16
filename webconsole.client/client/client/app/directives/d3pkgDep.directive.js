@@ -46,24 +46,23 @@ System.register(['@angular/core', '../services/backend.service', '../domain/node
                         var nodes = Array();
                         var edges = Array();
                         var toCounter = new Map();
-                        data.bundles.forEach(function (bundle) {
+                        var filteredBundles = data.bundles.filter(function (el) {
+                            console.log(el.id);
+                            return el.id == 0 ? null : el;
+                        });
+                        filteredBundles.forEach(function (bundle) {
                             //console.log("creating new Node with id " + bundle.id);
                             nodes.push(new node_1.Node(bundle.id, bundle.symbolicName, 17, 500));
-                            bundle.wireDescriptor.providedWires.forEach(function (wire) {
-                                var requirerId = wire.rid;
-                                if (toCounter.has(requirerId)) {
-                                    var old = toCounter.get(requirerId);
-                                    toCounter.set(requirerId, old + 1);
-                                }
-                                else {
-                                    toCounter.set(requirerId, 1);
-                                }
-                                toCounter.forEach(function (value, index, map) {
-                                    if (index != "0") {
-                                        //console.log(bundle.id + ": " + index + "/" + value);
-                                        edges.push(new edge_1.Edge(bundle.id, index, value));
-                                    }
-                                });
+                            //console.log(bundle.wireDescriptor.providedWires);
+                            var arr = Object.keys(bundle.wireDescriptor.providedWires).map(function (key) {
+                                return {
+                                    key: key,
+                                    value: bundle.wireDescriptor.providedWires[key]
+                                };
+                            });
+                            arr.forEach(function (wire) {
+                                //console.log(wire);
+                                edges.push(new edge_1.Edge(bundle.id, wire.key, wire.value));
                             });
                         });
                         var nodeHash = {};
@@ -81,10 +80,9 @@ System.register(['@angular/core', '../services/backend.service', '../domain/node
                         //console.log(edges);
                         var weightScale = d3.scale.linear()
                             .domain(d3.extent(edges, function (d) { return d.weight; }))
-                            .range([.1, 1]);
-                        console.log(weightScale);
-                        var force = d3.layout.force().charge(-1000)
-                            .size([500, 500])
+                            .range([.3, 3]);
+                        var force = d3.layout.force().charge(-2000)
+                            .size([1000, 600])
                             .nodes(nodes)
                             .links(edges)
                             .on("tick", forceTick);
@@ -95,46 +93,35 @@ System.register(['@angular/core', '../services/backend.service', '../domain/node
                             .attr("class", "link")
                             .style("stroke", "black")
                             .style("opacity", .5)
-                            .style("stroke-width", function (d) { return d.weight; });
+                            .style("stroke-width", function (d) { return weightScale(d.weight); });
                         var nodeEnter = d3.select("#d3PkgDep").selectAll("g.node")
                             .data(nodes, function (d) { return d.id; })
                             .enter()
                             .append("g")
                             .attr("class", "node");
                         nodeEnter.append("circle")
-                            .attr("r", 5)
+                            .attr("r", function (d) { return 4; })
                             .style("fill", "lightgray")
                             .style("stroke", "black")
                             .style("stroke-width", "1px");
                         nodeEnter.append("text")
                             .style("text-anchor", "middle")
-                            .attr("y", 15)
+                            .attr("x", 18)
+                            .attr("y", 18)
                             .text(function (d) { return d.id; });
                         force.start();
-                        /*var graph = d3.select("#d3PkgDep")
-                            .selectAll("g")
-                            .data(data.bundles)
-                            .enter()
-                            .append("g")
-                            .attr("transform", function (d, i) {
-                                var y = 20 + i * 20;
-                                return "translate(100," + y + ")";
-                            })
-                            .style("fill", function (d) { return "white"; })
-                            .style("stroke", "black")
-                            .style("stroke-width", "1px")
-                            .attr("y", function (d, i) { return i * 20 });
-            
-                        graph
-                            .append("text")
-                            .text(function (d) { return d.symbolicName; });
-            
-                        graph
-                            .append("rect")
-                            .attr("width", 200)
-                            .attr("height", 18)
-                            .transition("translate(0,-18)")
-                            ;*/
+                        var marker = d3.select("#d3PkgDep").append('defs')
+                            .append('marker')
+                            .attr("id", "Triangle")
+                            .attr("refX", 12)
+                            .attr("refY", 6)
+                            .attr("markerUnits", 'userSpaceOnUse')
+                            .attr("markerWidth", 12)
+                            .attr("markerHeight", 18)
+                            .attr("orient", 'auto')
+                            .append('path')
+                            .attr("d", 'M 0 0 12 6 0 12 3 6');
+                        d3.selectAll("line").attr("marker-end", "url(#Triangle)");
                         function forceTick() {
                             d3.selectAll("line.link")
                                 .attr("x1", function (d) { return d.source.x; })

@@ -1,7 +1,7 @@
-webconsole.version           '[0.3.6,0.3.7)'
+webconsole.version           '[0.3.7,0.3.8)'
 webconsole.antlr.version     '[0.2.3,0.2.4)'
 webconsole.client.version    '[0.1.14,0.1.15)'
-webconsole.osgi.version      '[0.1.10,0.1.11)'
+webconsole.osgi.version      '[0.1.11,0.1.12)'
 
 
 osgi.version                 '[6.0.0,6.0.1)'

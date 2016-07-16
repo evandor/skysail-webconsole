@@ -11,6 +11,8 @@ import lombok.Getter;
 @Getter
 public class BundleContentDescriptor extends BundleDescriptor {
 
+    private static final String OSGI_OPT = "OSGI-OPT";
+
     private List<String> sourcePaths = new ArrayList<>();
     private List<String> contentPaths = new ArrayList<>();
 
@@ -19,7 +21,7 @@ public class BundleContentDescriptor extends BundleDescriptor {
     }
 
     public void addPath(ZipEntry e) {
-        if (e.getName().startsWith("OSGI-OPT")) {
+        if (e.getName().startsWith(OSGI_OPT)) {
             sourcePaths .add(e.getName());
         } else {
             contentPaths.add(e.getName());

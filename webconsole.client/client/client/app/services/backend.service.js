@@ -97,7 +97,7 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', '../
                     return this._http.post(this._baseUrl + 'backend/v1/snapshots/', JSON.stringify("create"));
                 };
                 BackendServices.prototype.getVersion = function () {
-                    return this._http.get(this._baseUrl + 'backedn/v1/client/version')
+                    return this._http.get(this._baseUrl + 'backend/v1/client/version')
                         .map(function (res) { return res.text(); });
                 };
                 BackendServices = __decorate([

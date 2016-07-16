@@ -13,7 +13,7 @@ import * as d3 from 'd3';
 export class AdjacencyDirective implements OnInit {
 
     edges = Array<Edge>();
-    
+
     rNodes = Array<Node>(); // requirererNodes
     pNodes = Array<Node>(); // providerNodes
 
@@ -88,25 +88,22 @@ export class AdjacencyDirective implements OnInit {
                     }
                     allNodes.push(new Node(bundle.id, bundle.symbolicName, 17, 500));
                     var toCounter = new Map<string, number>();
-                    bundle.wireDescriptor.providedWires.forEach(wire => {
-                        var requirerId = wire.rid;
-                        if (toCounter.has(requirerId)) {
-                            var old = toCounter.get(requirerId);
-                            toCounter.set(requirerId, old + 1);
-                        } else {
-                            toCounter.set(requirerId, 1);
+
+                    var arr = Object.keys(bundle.wireDescriptor.providedWires).map(function (key) {
+                        return {
+                            key: key,
+                            value: bundle.wireDescriptor.providedWires[key]
                         }
-                        toCounter.forEach((value, index, map) => {
-                            if (index != "0") {
-                               // console.log(bundle.id + ": " + index + "/" + value);
-                                this.edges.push(new Edge(bundle.id, index, value));
-                            }
-                        });
                     });
+                    arr.forEach(wire => {
+                        //console.log(wire);
+                        this.edges.push(new Edge(bundle.id, wire.key, wire.value));
+                    });
+
                 })
                 allNodes.forEach(node => {
                     if (this.getEdgeCount(node) > 0) {
-                       // this.nodes.push(node);
+                        // this.nodes.push(node);
                     }
                     if (this.hasRequirements(node)) {
                         this.rNodes.push(node);
@@ -118,7 +115,7 @@ export class AdjacencyDirective implements OnInit {
                 this.render();
             });
     }
-    
+
     hasRequirements(node: Node): boolean {
         for (var e of this.edges) {
             if (e.target == node.id) {
@@ -127,8 +124,8 @@ export class AdjacencyDirective implements OnInit {
         }
         return false;
     }
-    
-     hasCapabilities(node: Node): boolean {
+
+    hasCapabilities(node: Node): boolean {
         for (var e of this.edges) {
             if (e.source == node.id) {
                 return true;

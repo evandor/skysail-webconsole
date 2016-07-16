@@ -17,12 +17,13 @@ import {BundlesFilter} from '../../pipes/bundlesFilter.pipe'
 import {PercentBarDirective} from '../../directives/percentBar.d3.directive'
 import {AdjacencyDirective} from '../../directives/adjacency.directive'
 import {D3PkgDepDirective} from '../../directives/d3pkgdep.directive'
+import {D3BundleSizesDirective} from '../../directives/d3bundlesizes.directive'
 
 declare var jQuery: any;
 
 @Component({
     selector: 'bundles',
-    directives: [FORM_DIRECTIVES, ROUTER_DIRECTIVES, NgFor, NgFormModel, Tabs, Tab, AdjacencyDirective, D3PkgDepDirective, PercentBarDirective],
+    directives: [FORM_DIRECTIVES, ROUTER_DIRECTIVES, NgFor, NgFormModel, Tabs, Tab, AdjacencyDirective, D3PkgDepDirective, D3BundleSizesDirective, PercentBarDirective],
     providers: [BackendServices],
     templateUrl: 'app/html/bundles/bundles.template.html',
     pipes: [BundlesFilter, BundleStatePipe],

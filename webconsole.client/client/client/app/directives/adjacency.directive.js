@@ -108,21 +108,15 @@ System.register(['@angular/core', '../services/backend.service', '../domain/node
                             }
                             allNodes.push(new node_1.Node(bundle.id, bundle.symbolicName, 17, 500));
                             var toCounter = new Map();
-                            bundle.wireDescriptor.providedWires.forEach(function (wire) {
-                                var requirerId = wire.rid;
-                                if (toCounter.has(requirerId)) {
-                                    var old = toCounter.get(requirerId);
-                                    toCounter.set(requirerId, old + 1);
-                                }
-                                else {
-                                    toCounter.set(requirerId, 1);
-                                }
-                                toCounter.forEach(function (value, index, map) {
-                                    if (index != "0") {
-                                        // console.log(bundle.id + ": " + index + "/" + value);
-                                        _this.edges.push(new edge_1.Edge(bundle.id, index, value));
-                                    }
-                                });
+                            var arr = Object.keys(bundle.wireDescriptor.providedWires).map(function (key) {
+                                return {
+                                    key: key,
+                                    value: bundle.wireDescriptor.providedWires[key]
+                                };
+                            });
+                            arr.forEach(function (wire) {
+                                //console.log(wire);
+                                _this.edges.push(new edge_1.Edge(bundle.id, wire.key, wire.value));
                             });
                         });
                         allNodes.forEach(function (node) {

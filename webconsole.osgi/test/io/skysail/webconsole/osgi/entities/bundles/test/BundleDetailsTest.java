@@ -1,17 +1,18 @@
 package io.skysail.webconsole.osgi.entities.bundles.test;
 
 import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
-import java.util.Collections;
 import java.util.Dictionary;
 import java.util.Hashtable;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.Constants;
 import org.osgi.framework.ServiceReference;
+import org.osgi.framework.startlevel.BundleStartLevel;
 
 import io.skysail.webconsole.osgi.entities.bundles.BundleDetails;
 
@@ -24,11 +25,14 @@ public class BundleDetailsTest extends BundleDescriptorTest {
     @Before
     public void setUp() {
         super.setUp();
-        bundle = Mockito.mock(Bundle.class);
+        bundle = mock(Bundle.class);
         theHeaders = new Hashtable<>();
-        Mockito.when(bundle.getHeaders(null)).thenReturn(theHeaders);
-        Mockito.when(bundle.getRegisteredServices()).thenReturn(new ServiceReference[0]);
-        Mockito.when(bundle.getServicesInUse()).thenReturn(new ServiceReference[0]);
+        when(bundle.getHeaders(null)).thenReturn(theHeaders);
+        when(bundle.getRegisteredServices()).thenReturn(new ServiceReference[0]);
+        when(bundle.getServicesInUse()).thenReturn(new ServiceReference[0]);
+        BundleStartLevel bsl = mock(BundleStartLevel.class);
+        when(bsl.getStartLevel()).thenReturn(1);
+        when(bundle.adapt(BundleStartLevel.class)).thenReturn(bsl);
     }
 
     @Test

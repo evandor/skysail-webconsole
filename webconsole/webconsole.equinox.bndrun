@@ -1,0 +1,34 @@
+-runfw: org.eclipse.osgi;version='[3.10.1.v20140909-1633,3.10.1.v20140909-1633]'
+
+-runee: JavaSE-1.8
+
+-runrequires: \
+    osgi.identity;filter:='(&(osgi.identity=org.apache.felix.gogo.command)(version>=0.16.0))',\
+    osgi.identity;filter:='(&(osgi.identity=org.apache.felix.gogo.runtime)(version>=0.16.2))',\
+    osgi.identity;filter:='(&(osgi.identity=org.apache.felix.gogo.shell)(version>=0.12.0))',\
+    osgi.identity;filter:='(&(osgi.identity=slf4j.api)(version>=1.7.21))'
+
+-runbundles: \
+    osgi.core;version=6.0,\
+    webconsole;version=latest,\
+    webconsole.antlr;version=${webconsole.antlr.version},\
+    webconsole.osgi;version=${webconsole.osgi.version},\
+    org.apache.felix.log;version=latest,\
+    ch.qos.logback.classic;version='[1.0.0,1.0.1)',\
+    ch.qos.logback.core;version='[1.0.0,1.0.1)',\
+    org.apache.felix.gogo.command;version='[0.16.0,0.16.1)',\
+    org.apache.felix.gogo.runtime;version='[0.16.2,0.16.3)',\
+    org.apache.felix.gogo.shell;version='[0.12.0,0.12.1)',\
+    slf4j.api;version='[1.7.21,1.7.22)',\
+    javax.validation.api;version=latest,\
+    org.apache.felix.configadmin;version='[1.8.0,1.8.1)',\
+    com.google.guava;version=16.0,\
+    org.apache.felix.webconsole;version='[4.2.14,4.2.15)',\
+    org.apache.felix.webconsole.plugins.obr;version='[1.0.2,1.0.3)',\
+    org.apache.felix.webconsole.plugins.packageadmin;version='[1.0.2,1.0.3)',\
+    org.apache.felix.http.jetty;version='[3.1.6,3.1.7)',\
+    javax.servlet;version='[3.1.0,3.1.1)',\
+    org.osgi.service.event;version='[1.3.1,1.3.2)',\
+    skysail.api;version=latest
+
+#    org.apache.felix.webconsole.plugins.memoryusage;version='[1.0.4,1.0.5)',\

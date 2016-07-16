@@ -24,4 +24,5 @@ export class Bundle {
     wireDescriptor: WireDescriptor;
     providedServices: Service[] = [];
     sourcePaths: string[];
+    registeredServicesCount: number;
 }

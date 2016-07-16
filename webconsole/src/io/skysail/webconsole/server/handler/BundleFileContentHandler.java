@@ -18,7 +18,7 @@ public class BundleFileContentHandler extends AbstractHttpHandler { // NOSONAR
 
     @Override
     String getResponse(IHTTPSession session) throws JsonProcessingException {
-    	String[] uriSplit = session.getUri().split("/", 5);
+    	String[] uriSplit = session.getUri().split("/", 6);
     	OsgiService osgiService = osgiServiceTracker.getOsgiService().orElse(new NopOsgiService());
         BundleFileContentDescriptor descriptors = osgiService.getBundleFileContentDescriptor(uriSplit);
         return mapper.writeValueAsString(descriptors);

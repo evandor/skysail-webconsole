@@ -65,13 +65,15 @@ public class OsgiService implements BundleActivator {
     }
 
     public List<BundleSnapshot> getBundleSnapshots() {
-        return getBundlesRepresentations(b -> new BundleSnapshot(b))
-                .stream().map(BundleSnapshot.class::cast).collect(Collectors.toList());
+        return getBundlesRepresentations(b -> new BundleSnapshot(b)).stream()
+                .map(BundleSnapshot.class::cast)
+                .collect(Collectors.toList());
     }
 
     public List<BundleDetails> getBundleDetails() {
-        return getBundlesRepresentations(b -> new BundleDetails(b))
-                .stream().map(BundleDetails.class::cast).collect(Collectors.toList());
+        return getBundlesRepresentations(b -> new BundleDetails(b)).stream()
+                .map(BundleDetails.class::cast)
+                .collect(Collectors.toList());
     }
 
     public List<ServiceDescriptor> getServiceDescriptors() {
@@ -152,9 +154,9 @@ public class OsgiService implements BundleActivator {
     }
 
     public BundleFileContentDescriptor getBundleFileContentDescriptor(String[] uriSplit) {
-        String id = uriSplit[3];
+        String id = uriSplit[4];
 
-        String filename = new String(Base64.getDecoder().decode(uriSplit[4].substring("contents/".length())));
+        String filename = new String(Base64.getDecoder().decode(uriSplit[5].substring("contents/".length())));
 
         String content = "";
         Optional<Bundle> bundle = getBundle(id);

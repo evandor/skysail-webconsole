@@ -15,6 +15,7 @@
         <li class="nav-item" style="background-color:white;margin-left:0px;padding-left:5px;border-bottom:1px solid #bfbfbf;" *ngFor="let breadcrumb of breadcrumbs"><a class="nav-link" [routerLink]="breadcrumb.link" [innerHtml]='breadcrumb.title'></a></li>
         <li class="nav-item" style="background-color:white;margin-left:0px;padding-left:5px;border-bottom:1px solid #bfbfbf;"><a class="nav-link" (click)="prev()">[prev]</a></li>
         <li class="nav-item" style="background-color:white;margin-left:0px;padding-left:5px;padding-right:5px;border-bottom:1px solid #bfbfbf;"><a class="nav-link" (click)="next()">[next]</a></li>
+        <li class="nav-item" style="background-color:white;margin-left:0px;padding-left:5px;padding-right:5px;border-bottom:1px solid #bfbfbf;"><a class="nav-link" target="_blank" [href]="rawData()">[RAW Data]</a></li>
     </ul>
     <ul class="nav navbar-nav pull-xs-right">
         <li [class]="checkActive('Config')"><a class="nav-link" [routerLink]="['/config']">&nbsp;&nbsp;&nbsp;<i class="fa fa-cog" aria-hidden="true"></i></a></li>

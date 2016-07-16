@@ -1,62 +1,59 @@
 package io.skysail.webconsole.osgi.entities.bundles;
 
-import java.io.File;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.osgi.framework.Bundle;
 
 import io.skysail.domain.Identifiable;
+import io.skysail.webconsole.osgi.entities.services.ServiceReferenceDescriptor;
+import io.skysail.webconsole.osgi.utils.FileUtils;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 /**
  * A minimal OSGi bundle representation.
- *
- *[
-{
-"id": "0",
-"symbolicName": "",
-"version": "5.2.0",
-"state": "ACTIVE",
-"size": 0
-},
  */
 @Getter
 @Slf4j
 public class BundleDescriptor implements Identifiable {
 
     @Setter
-    private String id;              // eg "0"
+    private String id; // eg "0"
 
-    private String symbolicName;    // eg "org.apache.felix.framework"
-    private String version;         // eg "5.2.0"
-    private String state;           // eg "ACTIVE"
-    private long size;              // eg 3234 (KB)
+    private String symbolicName; // eg "org.apache.felix.framework"
+    private String version; // eg "5.2.0"
+    private String state; // eg "ACTIVE"
+    private long size; // eg 3234 (KB)
+    private int registeredServicesCount; // eg 24
+    private int usedServicesCount; // eg 12
 
     /**
      * Constructor taking an OSGi bundle.
      *
-     * @param bundle an OSGi bundle
+     * @param bundle
+     *            an OSGi bundle
      */
     public BundleDescriptor(Bundle bundle) {
         id = Long.toString(bundle.getBundleId());
         symbolicName = bundle.getSymbolicName();
         version = bundle.getVersion() != null ? bundle.getVersion().toString() : "0.0.0";
         state = translate(bundle.getState());
+        registeredServicesCount = getRegisteredServices(bundle).size();
+        usedServicesCount = getServicesInUse(bundle).size();
+        handleLocation(bundle);
+    }
+
+    private void handleLocation(Bundle bundle) {
         String location = bundle.getLocation();
-        if (location != null) {
-            if (location.startsWith("reference:file:")) {
-                String filename = location.substring("reference:file:".length());
-                this.size = new File(filename.replace("%25", "%")).length() / 1024;
-                if (this.size == 0) {
-                    log.info("could not determine file size of '{}'", filename.replace("%25","%"));
-                }
-            } else {
-                log.info("could not determine file size of {}", location);
-            }
-        } else {
+        if (location == null) {
             log.info("could not determine file size for bundle {}", bundle.getSymbolicName());
+            return;
         }
+        this.size = FileUtils.getSize(location);
     }
 
     private String translate(int bundleState) { // NOSONAR
@@ -76,6 +73,24 @@ public class BundleDescriptor implements Identifiable {
         default:
             return "unknown";
         }
+    }
+
+    protected List<ServiceReferenceDescriptor> getRegisteredServices(Bundle bundle) {
+        if (bundle.getRegisteredServices() == null) {
+            return Collections.emptyList();
+        }
+        return Arrays.stream(bundle.getRegisteredServices()) // NOSONAR
+                .map(ref -> new ServiceReferenceDescriptor(ref))
+                .collect(Collectors.toList());
+    }
+
+    protected List<ServiceReferenceDescriptor> getServicesInUse(Bundle bundle) {
+        if (bundle.getServicesInUse() == null) {
+            return Collections.emptyList();
+        }
+        return Arrays.stream(bundle.getServicesInUse()) // NOSONAR
+                .map(ref -> new ServiceReferenceDescriptor(ref))
+                .collect(Collectors.toList());
     }
 
 }

@@ -19,13 +19,19 @@ public class Capability {
     private List<String> directives;
     private long bundleId;
     private String bundleName;
+
     @JsonIgnore
     private String nsAttribute = "";
+    @JsonIgnore
+    private String version = null;
 
     public Capability(BundleCapability cap) {
         namespace = cap.getNamespace();
         if (namespace != null && cap.getAttributes().get(namespace) != null) {
             nsAttribute = cap.getAttributes().get(namespace).toString();
+        }
+        if (cap.getAttributes().get("version") != null) {
+            version = cap.getAttributes().get("version").toString();
         }
         attributes = cap.getAttributes().keySet().stream().map(key -> key + ": " + cap.getAttributes().get(key)).collect(Collectors.toList());
         directives = cap.getDirectives().keySet().stream().map(key -> key + ":= " + cap.getDirectives().get(key)).collect(Collectors.toList());
@@ -38,6 +44,10 @@ public class Capability {
         return new StringBuilder(namespace).append("-").append(bundleId).append("-").append(this.hashCode()).toString();
     }
     public String getName() {
-        return namespace + ": " + nsAttribute;
+        String result = namespace + ": " + nsAttribute;
+        if (version != null) {
+            result += " (" + version +")";
+        }
+        return result;
     }
 }

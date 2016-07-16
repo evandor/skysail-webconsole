@@ -1,35 +1,25 @@
-<h2><i class="fa fa-th-large" aria-hidden="true" style="color: green"></i> Bundles ({{filteredCount}} of {{bundles?.length}})</h2>
+<h2><i class="fa fa-th-large" aria-hidden="true" style="color: green"></i> Bundles <small>({{filteredCount}} of {{bundles?.length}})</small></h2>
 
 <tabs>
   <tab [tabTitle]="'Bundles Overview'">
     <table class="table table-hover" style="table-layout: fixed; width=100%;white-space: nowrap;">
       <thead>
         <tr>
-          <th style="width:30px;">ID</th>
-          <th>SymbolicName</th>
+          <th class="text-xs-right" style="width:50px;">ID</th>
+          <th>SymbolicName <i class="fa fa-search" aria-hidden="true"></i> <input type="text" name="search_name" size="20" style="border: 0px solid gray;"
+              [(ngModel)]="searchName" /></th>
+          <th style="width:120px;"># prov. Serv.</th>
+          <th style="width:120px;"># used Serv.</th>
           <th style="width:200px;">Version</th>
           <th style="width:100px;">Status</th>
           <th style="width:120px;">Size (KB)</th>
         </tr>
       </thead>
-      <tr *ngIf="bundles?.length > 0">
-        <td>
-          <!--<input type="text" name="search_id" size="4" />--></td>
-        <td><input type="text" name="search_name" size="40" [(ngModel)]="searchName" /></td>
-        <td>
-          <!--<input type="text" name="search_version" size="12" />--></td>
-        <td>
-          <!--          <select>
-         <option name="search_state" value="">All</option>       
-         <option name="search_state" value="Active">Active</option>       
-       </select>-->
-        </td>
-        <td>&nbsp;</td>
-      </tr>
       <tr *ngFor="let bundle of (bundles | bundlesFilter:searchName)">
-        <!--bundlesFilter:searchName-->
         <td>{{bundle.id}}</td>
         <td (click)="onSelect(bundle)" style="cursor: pointer; color:#000066;">{{bundle.symbolicName}}</td>
+        <td>{{bundle.registeredServicesCount}}</td>
+        <td>{{bundle.usedServicesCount}}</td>
         <td>{{bundle.version}}</td>
         <td [innerHtml]="bundle.state | bundleState"></td>
         <td><span [d3PercentBar]='bundle.size' [d3MaxValue]='maxSize' [d3MaxWidth]='100' class="chart" title="{{bundle.size}} KB"></span></td>
@@ -44,8 +34,15 @@
   </tab>
 
   <tab [tabTitle]="'Package Dependencies'">
+    Show System Bundle: <input type=checkbox id="showSystemBundle">
     <div>
-      <svg id="d3pkgDep" style="width:1000px;height:600px;border:1px #bfbfbf solid;" d3PkgDep />
+      <svg id="d3pkgDep" style="width:1000px;height:600px;border:0px #bfbfbf solid;" d3PkgDep />
+    </div>
+  </tab>
+
+  <tab [tabTitle]="'Size Distribution'">
+    <div>
+      <svg id="d3BundleSizes" style="width:1000px;height:600px;border:0px #bfbfbf solid;" d3BundleSizes />
     </div>
   </tab>
 </tabs>

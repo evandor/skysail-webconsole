@@ -115,6 +115,9 @@ System.register(["@angular/core", "@angular/router", '../../services/backend.ser
                 Navbar.prototype.prev = function () {
                     this._router.navigate(['/bundles', this.getCurrentBundleIndex(this.routeParams['id']) - 1]);
                 };
+                Navbar.prototype.rawData = function () {
+                    return "http://localhost:2002/backend/v1/bundles";
+                };
                 Navbar.prototype.getCurrentBundleIndex = function (routeParamId) {
                     var index = 0;
                     var goto = 0;

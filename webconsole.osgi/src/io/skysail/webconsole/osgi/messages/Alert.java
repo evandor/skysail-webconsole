@@ -1,4 +1,4 @@
-package io.skysail.webconsole.ui;
+package io.skysail.webconsole.osgi.messages;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

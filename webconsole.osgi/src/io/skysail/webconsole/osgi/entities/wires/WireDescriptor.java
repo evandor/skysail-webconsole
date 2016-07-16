@@ -1,5 +1,6 @@
 package io.skysail.webconsole.osgi.entities.wires;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -7,6 +8,8 @@ import org.osgi.framework.wiring.BundleWiring;
 
 import io.skysail.webconsole.osgi.entities.Capability;
 import io.skysail.webconsole.osgi.entities.Requirement;
+import io.skysail.webconsole.osgi.messages.Alert;
+import io.skysail.webconsole.osgi.messages.Alert.Level;
 import lombok.Getter;
 
 @Getter
@@ -16,10 +19,11 @@ public class WireDescriptor {
     private List<Requirement> requirements;
     private List<Wire> providedWires;
     private List<Wire> requiredWires;
+    private List<Alert> alerts = new ArrayList<>();
 
     public WireDescriptor(BundleWiring wiring) {
         if (wiring == null) {
-            //alerts.add(new Alert("no bundle wiring available, probably due to bundles state", Level.WARNING));
+            alerts.add(new Alert("no bundle wiring available, probably due to bundles state", Level.WARNING));
             return;
         }
 

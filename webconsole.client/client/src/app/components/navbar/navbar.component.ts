@@ -110,6 +110,10 @@ export class Navbar {
         this._router.navigate(['/bundles', this.getCurrentBundleIndex(this.routeParams['id']) - 1]);
     }
 
+    rawData() {
+        return "http://localhost:2002/backend/v1/bundles";
+    }
+
     getCurrentBundleIndex(routeParamId): number {
         var index = 0;
         var goto = 0;

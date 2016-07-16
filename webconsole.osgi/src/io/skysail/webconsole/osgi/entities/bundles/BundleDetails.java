@@ -1,7 +1,6 @@
 package io.skysail.webconsole.osgi.entities.bundles;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Dictionary;
 import java.util.Enumeration;
@@ -11,6 +10,7 @@ import java.util.stream.Collectors;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.Constants;
+import org.osgi.framework.startlevel.BundleStartLevel;
 import org.osgi.framework.wiring.BundleWiring;
 
 import io.skysail.webconsole.antlr.ExportPackageLexer;
@@ -58,8 +58,14 @@ public class BundleDetails extends BundleDescriptor {
         super(bundle);
         this.location = bundle.getLocation();
         this.lastModification = bundle.getLastModified();
-        this.startLevel = 0; // TODO
+        this.startLevel = bundle.adapt(BundleStartLevel.class).getStartLevel();
+        wireDescriptor = new WireDescriptor(bundle.adapt(BundleWiring.class));
+        this.registeredServices = getRegisteredServices(bundle);
+        this.servicesInUse = getServicesInUse(bundle);
+        getHeaderInfo(bundle);
+    }
 
+    private void getHeaderInfo(Bundle bundle) {
         Dictionary<?, ?> headers = bundle.getHeaders(null);
         if (headers != null) {
             this.docUrl = (String) headers.get(Constants.BUNDLE_DOCURL);
@@ -71,11 +77,6 @@ public class BundleDetails extends BundleDescriptor {
             this.importPackage = getImportedPackages(headers);
             this.manifestHeaders = dump(headers);
         }
-
-        wireDescriptor = new WireDescriptor(bundle.adapt(BundleWiring.class));
-        this.registeredServices = getRegisteredServices(bundle);
-        this.servicesInUse = getServicesInUse(bundle);
-
     }
 
     private List<ManifestHeader> dump(Dictionary<?, ?> headers) {
@@ -134,24 +135,6 @@ public class BundleDetails extends BundleDescriptor {
     private ExportPackageParser parseExport(String inputString) {
         org.antlr.v4.runtime.CharStream input = new org.antlr.v4.runtime.ANTLRInputStream(inputString);
         return new ExportPackageParser(new CommonTokenStream(new ExportPackageLexer(input)));
-    }
-
-    private List<ServiceReferenceDescriptor> getServicesInUse(Bundle bundle) {
-        if (bundle.getServicesInUse() == null) {
-            return Collections.emptyList();
-        }
-        return Arrays.stream(bundle.getServicesInUse()) // NOSONAR
-                .map(ref -> new ServiceReferenceDescriptor(ref))
-                .collect(Collectors.toList());
-    }
-
-    private List<ServiceReferenceDescriptor> getRegisteredServices(Bundle bundle) {
-        if (bundle.getRegisteredServices() == null) {
-            return Collections.emptyList();
-        }
-        return Arrays.stream(bundle.getRegisteredServices()) // NOSONAR
-                .map(ref -> new ServiceReferenceDescriptor(ref))
-                .collect(Collectors.toList());
     }
 
 

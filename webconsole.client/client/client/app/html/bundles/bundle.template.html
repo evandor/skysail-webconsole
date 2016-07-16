@@ -44,6 +44,17 @@
         <th>Vendor</th>
         <td>{{bundle.vendor}}</td>
       </tr>
+      <tr>
+        <th>&nbsp;</th>
+        <td>
+          <form (ngSubmit)="onSubmit()">
+            <button type="submit" class="label label-primary">Stop</button>
+            <button type="submit" class="label label-primary">Update</button>
+            <button type="submit" class="label label-primary">Refresh</button>
+
+          </form>
+        </td>
+      </tr>
     </table>
   </tab>
 
@@ -172,8 +183,8 @@
         <div class="row">
           <div class="col-md-10"><b>{{wire[0].capability.name}}</b> is wired to</div>
           <div class="col-md-2">
-            <span title="{{wire[0].capability.attributes | json}}">Attributes</span>
-            <span title="{{wire[0].capability.directives | json}}">Directives</span>
+            <span class="label label-primary" title="{{wire[0].capability.attributes | json}}">Attributes</span>
+            <span class="label label-success" title="{{wire[0].capability.directives | json}}">Directives</span>
           </div>
         </div>
         <div class="row">
@@ -181,7 +192,7 @@
         </div>
         <div class="row" *ngFor="let req of wire">
           <div class="col-md-1">&nbsp;</div>
-          <div class="col-md-3" (click)="onSelectBundle(req.requirement.bundleId)">{{req.requirement.bundleName }}</div>
+          <div class="col-md-3" (click)="onSelectBundle(req.requirement.bundleId)"><i class="fa fa-th-large" aria-hidden="true" style="color: green"></i>&nbsp;{{req.requirement.bundleName }}</div>
           <div class="col-md-8">{{req.requirement.directives}}</div>
         </div>
         <div class="row">
