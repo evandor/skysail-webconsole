@@ -5,8 +5,6 @@ import java.util.stream.Collectors;
 
 import org.osgi.framework.wiring.BundleCapability;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
@@ -19,10 +17,7 @@ public class Capability {
     private List<String> directives;
     private long bundleId;
     private String bundleName;
-
-    @JsonIgnore
     private String nsAttribute = "";
-    @JsonIgnore
     private String version = null;
 
     public Capability(BundleCapability cap) {

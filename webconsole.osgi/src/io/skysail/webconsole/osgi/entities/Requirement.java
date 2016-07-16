@@ -5,8 +5,6 @@ import java.util.stream.Collectors;
 
 import org.osgi.framework.wiring.BundleRequirement;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import lombok.Getter;
 
 @Getter
@@ -17,7 +15,6 @@ public class Requirement {
     private List<String> directives;
     private long bundleId;
     private String bundleName;
-    @JsonIgnore
     private String nsAttribute;
 
     public Requirement(BundleRequirement req) {
