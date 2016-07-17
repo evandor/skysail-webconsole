@@ -1,6 +1,6 @@
 Bundle-Name: SKYSAIL :: webconsole
 
-Bundle-Version: 0.3.7.${tstamp}
+Bundle-Version: 0.3.8.${tstamp}
 
 Bundle-Description: An OSGi webconsole to inspect a running framework, utilizing webconsole.osgi, \
 	webconsole.client and webconsole.antlr
@@ -8,7 +8,6 @@ Bundle-Description: An OSGi webconsole to inspect a running framework, utilizing
 Bundle-Activator: io.skysail.webconsole.AgentActivator
 
 Private-Package: \
-	io.skysail.webconsole.ui,\
 	io.skysail.webconsole.log,\
 	io.skysail.webconsole,\
 	io.skysail.webconsole.services,\
