@@ -28,8 +28,8 @@ public class BundleDescriptor implements Identifiable {
     private String version; // eg "5.2.0"
     private String state; // eg "ACTIVE"
     private long size; // eg 3234 (KB)
-    private int registeredServicesCount; // eg 24
-    private int usedServicesCount; // eg 12
+    private List<String> registeredServiceIds;
+    private List<String> usedServiceIds;
 
     /**
      * Constructor taking an OSGi bundle.
@@ -42,8 +42,8 @@ public class BundleDescriptor implements Identifiable {
         symbolicName = bundle.getSymbolicName();
         version = bundle.getVersion() != null ? bundle.getVersion().toString() : "0.0.0";
         state = translate(bundle.getState());
-        registeredServicesCount = getRegisteredServices(bundle).size();
-        usedServicesCount = getServicesInUse(bundle).size();
+        registeredServiceIds = getRegisteredServices(bundle).stream().map(r -> r.getId()).collect(Collectors.toList());
+        usedServiceIds = getServicesInUse(bundle).stream().map(r -> r.getId()).collect(Collectors.toList());
         handleLocation(bundle);
     }
 

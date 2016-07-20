@@ -12,6 +12,7 @@ import {Breadcrumb} from '../navbar/breadcrumb';
 
 import {Tabs} from '../../components/tabs';
 import {Tab} from '../../components/tab';
+import {SubTab} from '../../components/subtab';
 
 import {KeyValue} from '../../domain/keyValue';
 import {ImportPackage} from '../../domain/importPackage';
@@ -27,7 +28,7 @@ import {MaxLengthPipe} from '../../pipes/maxLength.pipe';
 
 @Component({
     selector: 'bundle',
-    directives: [FORM_DIRECTIVES, NgFor, NgFormModel, Tabs, Tab],
+    directives: [FORM_DIRECTIVES, NgFor, NgFormModel, Tabs, Tab, SubTab],
     providers: [BackendServices, HTTP_PROVIDERS],
     pipes: [NewlinePipe, MaxLengthPipe, ValuesPipe, KeyValuesPipe, BundleStatePipe, LinkPipe],
     templateUrl: 'app/html/bundles/bundle.template.html',
@@ -95,20 +96,35 @@ export class BundleComponent implements OnInit {
 
 
     exportedPackagesTitle() {
-        return "Exp. Pkgs. (" + this.bundle.exportPackage.length + ")";
+        return "<i class='fa fa-folder-open-o' ></i> <i class='fa fa-caret-right' ></i> <span class='label label-pill label-info'>" + this.bundle.exportPackage.length + "</span>";
     }
 
     importedPackagesTitle() {
-        //                return "<span class='glyphicon glyphicon-log-in' aria-hidden='true' style='color: blue'> Imported Packages (" + this.bundle.importPackage.length + ")";
-        return "Imp. Pkgs. (" + this.bundle.importPackage.length + ")";
+        return "<i class='fa fa-folder-open-o' ></i> <i class='fa fa-caret-left' ></i> <span class='label label-pill label-info'>" + this.bundle.importPackage.length + "</span>";
     }
 
     providedServicesTitle() {
-        var providedServicesCount = 0;
+        var servicesCount = 0;
         if (this.bundle.providedServices != null) {
-            providedServicesCount = this.bundle.providedServices.length;
+            servicesCount = this.bundle.providedServices.length;
         }
-        return "Provided Services (" + providedServicesCount + ")";
+        return "<i class='fa fa-play-circle'></i> <i class='fa fa-caret-right'></i> <span class='label label-pill label-info'>" + servicesCount + "</span>";
+    }
+
+    usedServicesTitle() {
+        var servicesCount = 0;
+        if (this.bundle.servicesInUse != null) {
+            servicesCount = this.bundle.servicesInUse.length;
+        }
+        return "<i class='fa fa-play-circle'></i> <i class='fa fa-caret-left'></i> <span class='label label-pill label-info'>" + servicesCount + "</span>";
+    }
+
+    reqWiresTitle() {
+        return "<i class='fa fa-plug'></i> <i class='fa fa-caret-left'></i>";
+    }
+
+    provWiresTitle() {
+        return "<i class='fa fa-plug'></i> <i class='fa fa-caret-right'></i>";
     }
 
     getImportPackageClass(pkg: ImportPackage) {

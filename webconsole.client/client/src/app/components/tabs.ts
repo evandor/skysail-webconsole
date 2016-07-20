@@ -4,14 +4,7 @@ import { Tab } from './tab';
 // http://plnkr.co/edit/1no1sjZ9Lkv4glsUFnnU?p=preview
 @Component({
     selector: 'tabs',
-    template: `
-    <ul class="nav nav-tabs">
-      <li *ngFor="let tab of tabs" (click)="selectTab(tab)" class="nav-item">
-        <a class="nav-link clickable" [class.active]="tab.active">{{tab.title}} <span class="badge">{{tab.elementCount}}</span></a>
-      </li>
-    </ul>
-    <ng-content></ng-content>
-  `,
+    templateUrl: 'app/html/tabs.template.html',
     directives: [NgFor]
 })
 export class Tabs {
@@ -21,8 +14,17 @@ export class Tabs {
     constructor() {
         this.tabs = [];
     }
-    selectTab(tab) {
 
+    getTitle(tab:Tab): string {
+        return tab.title;
+    }
+
+
+
+    selectTab(tab: Tab) {
+        /*if (tab.hasSubtabs()) {
+            return;
+        }*/
         _deactivateAllTabs(this.tabs);
         tab.active = true;
 

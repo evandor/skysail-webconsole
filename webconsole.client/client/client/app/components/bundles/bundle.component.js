@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/common', "@angular/router", '@angular/http', '../../services/backend.service', '../../services/appglobals.service', '../../services/breadcrumbs.service', '../../domain/bundle', '../../components/tabs', '../../components/tab', '../../pipes/newline.pipe', '../../pipes/values.pipe', '../../pipes/keyvalues.pipe', '../../pipes/link.pipe', '../../pipes/bundleState.pipe', '../../pipes/maxLength.pipe'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/common', "@angular/router", '@angular/http', '../../services/backend.service', '../../services/appglobals.service', '../../services/breadcrumbs.service', '../../domain/bundle', '../../components/tabs', '../../components/tab', '../../components/subtab', '../../pipes/newline.pipe', '../../pipes/values.pipe', '../../pipes/keyvalues.pipe', '../../pipes/link.pipe', '../../pipes/bundleState.pipe', '../../pipes/maxLength.pipe'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '@angula
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, router_1, http_1, backend_service_1, appglobals_service_1, breadcrumbs_service_1, bundle_1, tabs_1, tab_1, newline_pipe_1, values_pipe_1, keyvalues_pipe_1, link_pipe_1, bundleState_pipe_1, maxLength_pipe_1;
+    var core_1, common_1, router_1, http_1, backend_service_1, appglobals_service_1, breadcrumbs_service_1, bundle_1, tabs_1, tab_1, subtab_1, newline_pipe_1, values_pipe_1, keyvalues_pipe_1, link_pipe_1, bundleState_pipe_1, maxLength_pipe_1;
     var BundleComponent;
     return {
         setters:[
@@ -43,6 +43,9 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '@angula
             },
             function (tab_1_1) {
                 tab_1 = tab_1_1;
+            },
+            function (subtab_1_1) {
+                subtab_1 = subtab_1_1;
             },
             function (newline_pipe_1_1) {
                 newline_pipe_1 = newline_pipe_1_1;
@@ -110,18 +113,30 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '@angula
                     this.sub.unsubscribe();
                 };
                 BundleComponent.prototype.exportedPackagesTitle = function () {
-                    return "Exp. Pkgs. (" + this.bundle.exportPackage.length + ")";
+                    return "<i class='fa fa-folder-open-o' ></i> <i class='fa fa-caret-right' ></i> <span class='label label-pill label-info'>" + this.bundle.exportPackage.length + "</span>";
                 };
                 BundleComponent.prototype.importedPackagesTitle = function () {
-                    //                return "<span class='glyphicon glyphicon-log-in' aria-hidden='true' style='color: blue'> Imported Packages (" + this.bundle.importPackage.length + ")";
-                    return "Imp. Pkgs. (" + this.bundle.importPackage.length + ")";
+                    return "<i class='fa fa-folder-open-o' ></i> <i class='fa fa-caret-left' ></i> <span class='label label-pill label-info'>" + this.bundle.importPackage.length + "</span>";
                 };
                 BundleComponent.prototype.providedServicesTitle = function () {
-                    var providedServicesCount = 0;
+                    var servicesCount = 0;
                     if (this.bundle.providedServices != null) {
-                        providedServicesCount = this.bundle.providedServices.length;
+                        servicesCount = this.bundle.providedServices.length;
                     }
-                    return "Provided Services (" + providedServicesCount + ")";
+                    return "<i class='fa fa-play-circle'></i> <i class='fa fa-caret-right'></i> <span class='label label-pill label-info'>" + servicesCount + "</span>";
+                };
+                BundleComponent.prototype.usedServicesTitle = function () {
+                    var servicesCount = 0;
+                    if (this.bundle.servicesInUse != null) {
+                        servicesCount = this.bundle.servicesInUse.length;
+                    }
+                    return "<i class='fa fa-play-circle'></i> <i class='fa fa-caret-left'></i> <span class='label label-pill label-info'>" + servicesCount + "</span>";
+                };
+                BundleComponent.prototype.reqWiresTitle = function () {
+                    return "<i class='fa fa-plug'></i> <i class='fa fa-caret-left'></i>";
+                };
+                BundleComponent.prototype.provWiresTitle = function () {
+                    return "<i class='fa fa-plug'></i> <i class='fa fa-caret-right'></i>";
                 };
                 BundleComponent.prototype.getImportPackageClass = function (pkg) {
                     if (pkg.packageResolvingCandidates && pkg.packageResolvingCandidates.length == 0 && pkg.resolution == "MANDATORY") {
@@ -152,7 +167,7 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '@angula
                 BundleComponent = __decorate([
                     core_1.Component({
                         selector: 'bundle',
-                        directives: [common_1.FORM_DIRECTIVES, common_1.NgFor, common_1.NgFormModel, tabs_1.Tabs, tab_1.Tab],
+                        directives: [common_1.FORM_DIRECTIVES, common_1.NgFor, common_1.NgFormModel, tabs_1.Tabs, tab_1.Tab, subtab_1.SubTab],
                         providers: [backend_service_1.BackendServices, http_1.HTTP_PROVIDERS],
                         pipes: [newline_pipe_1.NewlinePipe, maxLength_pipe_1.MaxLengthPipe, values_pipe_1.ValuesPipe, keyvalues_pipe_1.KeyValuesPipe, bundleState_pipe_1.BundleStatePipe, link_pipe_1.LinkPipe],
                         templateUrl: 'app/html/bundles/bundle.template.html',

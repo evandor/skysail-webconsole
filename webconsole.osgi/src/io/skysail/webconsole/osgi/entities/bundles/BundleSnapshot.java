@@ -20,6 +20,8 @@ public class BundleSnapshot extends BundleDescriptor {
 
     private String exportService;
     private WireDescriptorSnapshot wireDescriptor;
+    //private List<ServiceReferenceDescriptor> registeredServices;
+    //private List<ServiceReferenceDescriptor> servicesInUse;
 
     /**
      * @param bundle an OSGi bundle.
@@ -27,6 +29,8 @@ public class BundleSnapshot extends BundleDescriptor {
     public BundleSnapshot(Bundle bundle) {
         super(bundle);
         wireDescriptor = new WireDescriptorSnapshot(bundle.adapt(BundleWiring.class));
+       // registeredServices = getRegisteredServices(bundle);
+       // servicesInUse = getServicesInUse(bundle);
     }
 
 }

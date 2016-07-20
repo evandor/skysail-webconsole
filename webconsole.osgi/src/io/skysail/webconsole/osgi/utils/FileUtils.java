@@ -10,7 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class FileUtils {
 
-    private static final String REFERENCE_FILE = "reference:file:";
+    public static final String REFERENCE_FILE = "reference:file:";
 
     public static String getCurrentDirectory() {
         return new File(".").getAbsolutePath();

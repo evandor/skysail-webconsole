@@ -11,7 +11,7 @@ System.register(['@angular/core', '../services/backend.service', '../domain/node
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, backend_service_1, node_1, edge_1, d3;
-    var D3PkgDepDirective;
+    var D3ServiceDepDirective;
     return {
         setters:[
             function (core_1_1) {
@@ -30,16 +30,16 @@ System.register(['@angular/core', '../services/backend.service', '../domain/node
                 d3 = d3_1;
             }],
         execute: function() {
-            D3PkgDepDirective = (function () {
-                function D3PkgDepDirective(_el, _backend) {
+            D3ServiceDepDirective = (function () {
+                function D3ServiceDepDirective(_el, _backend) {
                     this._el = _el;
                     this._backend = _backend;
                     this.rNodes = Array(); // requirererNodes
                     this.pNodes = Array(); // providerNodes
                 }
-                D3PkgDepDirective.prototype.ngOnInit = function () {
+                D3ServiceDepDirective.prototype.ngOnInit = function () {
                     var url = "http://localhost:2002/backend/v1/snapshotdetails/latest";
-                    var identifier = "#d3PkgDep";
+                    var identifier = "#d3serviceDep";
                     d3.json(url, function (error, data) {
                         if (error != null) {
                             console.log(error);
@@ -49,23 +49,33 @@ System.register(['@angular/core', '../services/backend.service', '../domain/node
                         var toCounter = new Map();
                         var filteredBundles = data.bundles.filter(function (el) {
                             //console.log(el.id);
-                            return el.id == 0 ? null : el;
+                            return el; //el.id == 0 ? null : el;
                         });
                         filteredBundles.forEach(function (bundle) {
                             //console.log("creating new Node with id " + bundle.id);
                             nodes.push(new node_1.Node(bundle.id, bundle.symbolicName, 17, 500));
                             //console.log(bundle.wireDescriptor.providedWires);
-                            var arr = Object.keys(bundle.wireDescriptor.providedWires).map(function (key) {
+                            /*var arr = Object.keys(bundle.).map(function (key) {
                                 return {
                                     key: key,
                                     value: bundle.wireDescriptor.providedWires[key]
-                                };
-                            });
-                            arr.forEach(function (wire) {
-                                //console.log(wire);
-                                edges.push(new edge_1.Edge(bundle.id, wire.key, wire.value));
+                                }
+                            });*/
+                            bundle.usedServiceIds.forEach(function (serviceId) {
+                                var providingBundle = getProvidingBundle(serviceId);
+                                console.log(bundle.id + " => " + serviceId + " => " + providingBundle);
+                                edges.push(new edge_1.Edge(bundle.id, providingBundle, 1));
                             });
                         });
+                        function getProvidingBundle(serviceId) {
+                            var result = null;
+                            data.services.forEach(function (service) {
+                                if (service.id == serviceId) {
+                                    result = service.bundleId;
+                                }
+                            });
+                            return result;
+                        }
                         var nodeHash = {};
                         for (var x in nodes) {
                             nodeHash[nodes[x].id] = nodes[x];
@@ -73,12 +83,12 @@ System.register(['@angular/core', '../services/backend.service', '../domain/node
                         ;
                         //console.log(nodeHash);
                         for (var x in edges) {
-                            edges[x].weight = parseInt(edges[x].weight);
+                            edges[x].weight = 1; //parseInt(edges[x].weight);
                             edges[x].source = nodeHash[edges[x].source];
                             edges[x].target = nodeHash[edges[x].target];
                         }
                         ;
-                        //console.log(edges);
+                        console.log(edges);
                         var weightScale = d3.scale.linear()
                             .domain(d3.extent(edges, function (d) { return d.weight; }))
                             .range([.3, 5]);
@@ -113,7 +123,7 @@ System.register(['@angular/core', '../services/backend.service', '../domain/node
                         force.start();
                         var marker = d3.select(identifier).append('defs')
                             .append('marker')
-                            .attr("id", "Triangle1")
+                            .attr("id", "Triangle")
                             .attr("refX", 12)
                             .attr("refY", 6)
                             .attr("markerUnits", 'userSpaceOnUse')
@@ -122,7 +132,7 @@ System.register(['@angular/core', '../services/backend.service', '../domain/node
                             .attr("orient", 'auto')
                             .append('path')
                             .attr("d", 'M 0 0 12 6 0 12 3 6');
-                        d3.selectAll("line").attr("marker-end", "url(#Triangle1)");
+                        d3.selectAll("line").attr("marker-end", "url(#Triangle)");
                         function forceTick() {
                             d3.selectAll("line.link")
                                 .attr("x1", function (d) { return d.source.x; })
@@ -136,17 +146,17 @@ System.register(['@angular/core', '../services/backend.service', '../domain/node
                         }
                     });
                 };
-                D3PkgDepDirective = __decorate([
+                D3ServiceDepDirective = __decorate([
                     core_1.Directive({
-                        selector: "[d3PkgDep]"
+                        selector: "[d3serviceDep]"
                     }), 
                     __metadata('design:paramtypes', [core_1.ElementRef, backend_service_1.BackendServices])
-                ], D3PkgDepDirective);
-                return D3PkgDepDirective;
+                ], D3ServiceDepDirective);
+                return D3ServiceDepDirective;
             }());
-            exports_1("D3PkgDepDirective", D3PkgDepDirective);
+            exports_1("D3ServiceDepDirective", D3ServiceDepDirective);
         }
     }
 });
 
-//# sourceMappingURL=d3pkgDep.directive.js.map
+//# sourceMappingURL=d3serviceDep.directive.js.map

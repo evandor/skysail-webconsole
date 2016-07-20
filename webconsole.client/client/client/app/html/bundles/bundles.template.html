@@ -18,8 +18,8 @@
       <tr *ngFor="let bundle of (bundles | bundlesFilter:searchName)">
         <td>{{bundle.id}}</td>
         <td (click)="onSelect(bundle)" style="cursor: pointer; color:#000066;">{{bundle.symbolicName}}</td>
-        <td>{{bundle.registeredServicesCount}}</td>
-        <td>{{bundle.usedServicesCount}}</td>
+        <td>{{bundle.registeredServiceIds.length}}</td>
+        <td>{{bundle.usedServiceIds.length}}</td>
         <td>{{bundle.version}}</td>
         <td [innerHtml]="bundle.state | bundleState"></td>
         <td><span [d3PercentBar]='bundle.size' [d3MaxValue]='maxSize' [d3MaxWidth]='100' class="chart" title="{{bundle.size}} KB"></span></td>
@@ -33,14 +33,21 @@
     </div>
   </tab>
 
-  <tab [tabTitle]="'Package Dependencies'">
+  <tab [tabTitle]="getBarChartTitle('Service Dependencies')">
+    Show System Bundle: <input type=checkbox id="showSystemBundle">
+    <div>
+      <svg id="d3serviceDep" style="width:1000px;height:600px;border:0px #bfbfbf solid;" d3serviceDep />
+    </div>
+  </tab>
+
+  <tab [tabTitle]="getBarChartTitle('Package Dependencies')">
     Show System Bundle: <input type=checkbox id="showSystemBundle">
     <div>
       <svg id="d3pkgDep" style="width:1000px;height:600px;border:0px #bfbfbf solid;" d3PkgDep />
     </div>
   </tab>
 
-  <tab [tabTitle]="'Size Distribution'">
+  <tab [tabTitle]="getBarChartTitle('Size Distribution')">
     <div>
       <svg id="d3BundleSizes" style="width:1000px;height:600px;border:0px #bfbfbf solid;" d3BundleSizes />
     </div>

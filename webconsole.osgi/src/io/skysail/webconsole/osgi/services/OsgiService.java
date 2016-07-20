@@ -33,6 +33,8 @@ import io.skysail.webconsole.osgi.entities.bundles.BundleFileContentDescriptor;
 import io.skysail.webconsole.osgi.entities.bundles.BundleSnapshot;
 import io.skysail.webconsole.osgi.entities.packages.ExportPackage;
 import io.skysail.webconsole.osgi.entities.services.ServiceDescriptor;
+import io.skysail.webconsole.osgi.entities.services.ServiceDetails;
+import io.skysail.webconsole.osgi.utils.FileUtils;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -93,9 +95,26 @@ public class OsgiService implements BundleActivator {
         return Collections.emptyList();
     }
 
+    public List<ServiceDetails> getServiceDetails() {
+        if (bundleContext == null) {
+            log.warn(BUNDLE_CONTEXT_NOT_AVAILABLE);
+            return Collections.emptyList();
+        }
+        try {
+            ServiceReference<?>[] references = bundleContext.getAllServiceReferences(null, null);
+            return Arrays.stream(references) // NOSONAR
+                    .map(s -> new ServiceDetails(s))
+                    .sorted((b1, b2) -> Integer.valueOf(b1.getId()).compareTo(Integer.valueOf(b2.getId())))
+                    .collect(Collectors.toList());
+        } catch (InvalidSyntaxException e) {
+            log.error(e.getMessage(), e);
+        }
+        return Collections.emptyList();
+    }
+
     public List<ServiceDescriptor> getBundleServiceDescriptors(String bundleId) {
         Long bundleIdAsLong = Long.parseLong(bundleId);
-        return getServiceDescriptors().stream().filter(sd -> new Long(sd.getBundleId()).equals(bundleIdAsLong))
+        return getServiceDetails().stream().filter(sd -> new Long(sd.getBundleId()).equals(bundleIdAsLong))
                 .collect(Collectors.toList());
     }
 
@@ -139,11 +158,12 @@ public class OsgiService implements BundleActivator {
 
     public BundleContentDescriptor getBundleContentDescriptor(String id) {
         BundleDetails bundleDetails = getBundleDetails(id);
-        String location = bundleDetails.getLocation().replace("reference:file:", "");
+        String location = bundleDetails.getLocation().replace(FileUtils.REFERENCE_FILE, "").replace("%25", "%");
         BundleContentDescriptor result = new BundleContentDescriptor(getBundle(id).get());
         try (ZipFile zipFile = new ZipFile(location)) {
             zipFile.stream().filter(e -> !e.getName().endsWith("/")).forEach(result::addPath);
         } catch (IOException e) {
+            log.error(e.getMessage(),e);
         }
         return result;
     }
@@ -196,5 +216,6 @@ public class OsgiService implements BundleActivator {
                 .filter(b -> bundleId.equals(Long.toString(b.getBundleId())))
                 .findFirst();
     }
+
 
 }

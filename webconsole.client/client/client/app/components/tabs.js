@@ -26,7 +26,13 @@ System.register(['@angular/core', '@angular/common'], function(exports_1, contex
                 function Tabs() {
                     this.tabs = [];
                 }
+                Tabs.prototype.getTitle = function (tab) {
+                    return tab.title;
+                };
                 Tabs.prototype.selectTab = function (tab) {
+                    /*if (tab.hasSubtabs()) {
+                        return;
+                    }*/
                     _deactivateAllTabs(this.tabs);
                     tab.active = true;
                     function _deactivateAllTabs(tabs) {
@@ -42,7 +48,7 @@ System.register(['@angular/core', '@angular/common'], function(exports_1, contex
                 Tabs = __decorate([
                     core_1.Component({
                         selector: 'tabs',
-                        template: "\n    <ul class=\"nav nav-tabs\">\n      <li *ngFor=\"let tab of tabs\" (click)=\"selectTab(tab)\" class=\"nav-item\">\n        <a class=\"nav-link clickable\" [class.active]=\"tab.active\">{{tab.title}} <span class=\"badge\">{{tab.elementCount}}</span></a>\n      </li>\n    </ul>\n    <ng-content></ng-content>\n  ",
+                        templateUrl: 'app/html/tabs.template.html',
                         directives: [common_1.NgFor]
                     }), 
                     __metadata('design:paramtypes', [])

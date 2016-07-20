@@ -10,6 +10,7 @@ System.register([], function(exports_1, context_1) {
                     this.exportPackage = [];
                     this.importPackage = [];
                     this.providedServices = [];
+                    this.servicesInUse = [];
                 }
                 return Bundle;
             }());

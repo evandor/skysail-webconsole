@@ -23,6 +23,7 @@ export class Bundle {
     manifestHeaders: ManifestHeader;
     wireDescriptor: WireDescriptor;
     providedServices: Service[] = [];
+    servicesInUse: Service[] = [];
     sourcePaths: string[];
     registeredServicesCount: number;
 }

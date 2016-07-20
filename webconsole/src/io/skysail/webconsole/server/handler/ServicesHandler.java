@@ -5,7 +5,7 @@ import java.util.List;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import fi.iki.elonen.NanoHTTPD.IHTTPSession;
-import io.skysail.webconsole.osgi.entities.services.ServiceDescriptor;
+import io.skysail.webconsole.osgi.entities.services.ServiceDetails;
 import io.skysail.webconsole.services.NopOsgiService;
 import io.skysail.webconsole.services.OsgiServiceTracker;
 
@@ -19,10 +19,10 @@ public class ServicesHandler extends AbstractHttpHandler { // NOSONAR
 
     @Override
     String getResponse(IHTTPSession session) throws JsonProcessingException {
-        List<ServiceDescriptor> descriptors =
+        List<ServiceDetails> descriptors =
                 osgiServiceTracker.getOsgiService()
                 .orElse(new NopOsgiService())
-                .getServiceDescriptors();
+                .getServiceDetails();
         return mapper.writeValueAsString(descriptors);
     }
 

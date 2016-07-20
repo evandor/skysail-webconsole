@@ -14,7 +14,7 @@ import org.osgi.framework.ServiceReference;
 
 import io.skysail.webconsole.osgi.entities.Snapshot;
 import io.skysail.webconsole.osgi.entities.bundles.BundleSnapshot;
-import io.skysail.webconsole.osgi.entities.services.ServiceDescriptor;
+import io.skysail.webconsole.osgi.entities.services.ServiceDetails;
 import io.skysail.webconsole.osgi.services.OsgiService;
 import io.skysail.webconsole.test.TestUtils;
 
@@ -37,9 +37,9 @@ public class SnapshotTest {
     @Test
     public void provides_list_of_services() {
         OsgiService osgiService = Mockito.mock(OsgiService.class);
-        List<ServiceDescriptor> serviceDescriptors = Arrays.asList(new ServiceDescriptor(mockedService));
+        List<ServiceDetails> serviceDetails = Arrays.asList(new ServiceDetails(mockedService));
 
-        Mockito.when(osgiService.getServiceDescriptors()).thenReturn(serviceDescriptors);
+        Mockito.when(osgiService.getServiceDetails()).thenReturn(serviceDetails);
         Snapshot snapshot = new Snapshot(osgiService, 1l, "title");
         assertThat(snapshot.getServices().size(), is(1));
     }

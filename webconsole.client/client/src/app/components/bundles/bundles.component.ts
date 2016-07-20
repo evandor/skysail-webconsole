@@ -10,20 +10,24 @@ import {Breadcrumb} from '../../components/navbar/breadcrumb';
 import {Bundle} from '../../domain/bundle';
 import {Tabs} from '../../components/tabs';
 import {Tab} from '../../components/tab';
+import {SubTab} from '../../components/subtab';
 
 import {BundleStatePipe} from '../../pipes/bundleState.pipe';
 import {BundlesFilter} from '../../pipes/bundlesFilter.pipe'
 
 import {PercentBarDirective} from '../../directives/percentBar.d3.directive'
 import {AdjacencyDirective} from '../../directives/adjacency.directive'
-import {D3PkgDepDirective} from '../../directives/d3pkgdep.directive'
+import {D3PkgDepDirective} from '../../directives/d3pkgDep.directive'
+import {D3ServiceDepDirective} from '../../directives/d3serviceDep.directive'
 import {D3BundleSizesDirective} from '../../directives/d3bundlesizes.directive'
 
 declare var jQuery: any;
 
 @Component({
     selector: 'bundles',
-    directives: [FORM_DIRECTIVES, ROUTER_DIRECTIVES, NgFor, NgFormModel, Tabs, Tab, AdjacencyDirective, D3PkgDepDirective, D3BundleSizesDirective, PercentBarDirective],
+    directives: [FORM_DIRECTIVES, ROUTER_DIRECTIVES, NgFor, NgFormModel, Tabs, Tab, SubTab, AdjacencyDirective, D3PkgDepDirective, 
+                 D3ServiceDepDirective,
+                 D3BundleSizesDirective, PercentBarDirective],
     providers: [BackendServices],
     templateUrl: 'app/html/bundles/bundles.template.html',
     pipes: [BundlesFilter, BundleStatePipe],
@@ -69,6 +73,10 @@ export class BundlesComponent implements OnInit, OnChanges {
 
     ngOnChanges(changes) {
         console.log("hier:" + changes);
+    }
+
+    getBarChartTitle(title: string) {
+        return "<i class='fa fa-bar-chart'></i> " + title;
     }
 
     clicked() {

@@ -8,9 +8,9 @@ import * as d3 from 'd3';
 
 
 @Directive({
-    selector: "[d3PkgDep]"
+    selector: "[d3serviceDep]"
 })
-export class D3PkgDepDirective {
+export class D3ServiceDepDirective {
 
     rNodes = Array<Node>(); // requirererNodes
     pNodes = Array<Node>(); // providerNodes
@@ -19,7 +19,7 @@ export class D3PkgDepDirective {
 
     ngOnInit() {
         var url = "http://localhost:2002/backend/v1/snapshotdetails/latest"
-        var identifier = "#d3PkgDep";
+        var identifier = "#d3serviceDep";
         d3.json(url, function (error, data) {
             if (error != null) {
                 console.log(error);
@@ -31,7 +31,7 @@ export class D3PkgDepDirective {
 
             var filteredBundles = data.bundles.filter(function(el) {
                 //console.log(el.id);
-                return el.id == 0 ? null : el;
+                return el;//el.id == 0 ? null : el;
             });
 
 
@@ -39,17 +39,28 @@ export class D3PkgDepDirective {
                 //console.log("creating new Node with id " + bundle.id);
                 nodes.push(new Node(bundle.id, bundle.symbolicName, 17, 500));
                 //console.log(bundle.wireDescriptor.providedWires);
-                var arr = Object.keys(bundle.wireDescriptor.providedWires).map(function (key) {
+                /*var arr = Object.keys(bundle.).map(function (key) {
                     return {
                         key: key,
                         value: bundle.wireDescriptor.providedWires[key]
                     }
-                });
-                arr.forEach(wire => {
-                    //console.log(wire);
-                    edges.push(new Edge(bundle.id, wire.key, wire.value));
+                });*/
+                bundle.usedServiceIds.forEach(serviceId => {
+                    var providingBundle = getProvidingBundle(serviceId);
+                    console.log(bundle.id + " => " + serviceId + " => " + providingBundle);
+                    edges.push(new Edge(bundle.id, providingBundle, 1));
                 });
             });
+
+            function getProvidingBundle(serviceId: string) {
+                var result = null;
+                data.services.forEach(service => {
+                    if (service.id == serviceId) {
+                        result = service.bundleId;
+                    }
+                });
+                return result;
+            }
 
             var nodeHash = {};
             for (let x in nodes) {
@@ -57,11 +68,11 @@ export class D3PkgDepDirective {
             };
             //console.log(nodeHash);
             for (let x in edges) {
-                edges[x].weight = parseInt(edges[x].weight);
+                edges[x].weight = 1;//parseInt(edges[x].weight);
                 edges[x].source = nodeHash[edges[x].source];
                 edges[x].target = nodeHash[edges[x].target];
             };
-            //console.log(edges);
+            console.log(edges);
 
             var weightScale = d3.scale.linear()
                 .domain(d3.extent(edges, function (d) { return d.weight; }))
@@ -104,7 +115,7 @@ export class D3PkgDepDirective {
 
             var marker = d3.select(identifier).append('defs')
                 .append('marker')
-                .attr("id", "Triangle1")
+                .attr("id", "Triangle")
                 .attr("refX", 12)
                 .attr("refY", 6)
                 .attr("markerUnits", 'userSpaceOnUse')
@@ -113,8 +124,7 @@ export class D3PkgDepDirective {
                 .attr("orient", 'auto')
                 .append('path')
                 .attr("d", 'M 0 0 12 6 0 12 3 6');
-
-            d3.selectAll("line").attr("marker-end", "url(#Triangle1)");
+            d3.selectAll("line").attr("marker-end", "url(#Triangle)");
             
             function forceTick() {
                 d3.selectAll("line.link")
