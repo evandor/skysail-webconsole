@@ -37,7 +37,6 @@ Bundle Details
 
 * currently, the internal server will always start on port 2002.
 * please be aware that there is no security concept applied yet.
-* the bundle is way bigger than it needs to be, sorry, will fix.
 
 # Features List
 
