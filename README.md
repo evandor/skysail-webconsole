@@ -38,6 +38,12 @@ Bundle Details
 * currently, the internal server will always start on port 2002.
 * please be aware that there is no security concept applied yet.
 
+# Technology
+
+* OSGi (Felix, bndtools)
+* angular2
+* d3.js
+
 # Features List
 
 | Category      | Feature                  | State / in Version |
@@ -45,19 +51,19 @@ Bundle Details
 | Bundles       |                          |                    |
 |               | Bundles Overview         | 0.1.1              |
 |               | Bundle Detail Overview   | 0.1.1              |
-|               | Bundle Exported Packages | 0.3.0              |
-|               | Bundle Imported Packages | 0.3.0              |
-|               | Bundle Imported Pkgs. Resolution | planned for 0.4.0              |
-|               | Bundle Capabilities      | 0.3.0              |
-|               | Bundle Requirements      | 0.3.0              |
-|               | Bundle Manifest View     | 0.3.0              |
+|               | Bundle Exported Packages | 0.1.7              |
+|               | Bundle Imported Packages | 0.1.7              |
+|               | Bundle Imported Pkgs. Resolution | 0.1.7              |
+|               | Bundle Capabilities      | 0.1.7              |
+|               | Bundle Requirements      | 0.1.7              |
+|               | Bundle Manifest View     | 0.1.7              |
 | Services      |                          |                    |
 |               | Services Overview        | 0.1.1              |
-|               | Service Detail Overview  | 0.3.0              |
+|               | Service Detail Overview  | 0.1.7              |
 | Packages      |                          |                    |
-|               | Packages Overview        | 0.3.0              |
+|               | Packages Overview        | 0.1.7              |
 | Logs          |                          |                    |
-|               | Overview                 | 0.3.0              |
+|               | Overview                 | 0.1.7              |
 
 # Try it
 
