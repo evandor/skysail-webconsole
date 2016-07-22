@@ -18,6 +18,9 @@ import {KeyValue} from '../../domain/keyValue';
 import {ImportPackage} from '../../domain/importPackage';
 import {Service} from '../../domain/service';
 import {Capability} from '../../domain/capability';
+import {TreeNode} from '../../domain/treenode';
+import {TreeModel} from '../../domain/treemodel';
+import {ExportPackage} from '../../domain/exportPackage';
 
 import {NewlinePipe} from '../../pipes/newline.pipe';
 import {ValuesPipe} from '../../pipes/values.pipe';
@@ -26,23 +29,43 @@ import {LinkPipe} from '../../pipes/link.pipe';
 import {BundleStatePipe} from '../../pipes/bundleState.pipe';
 import {MaxLengthPipe} from '../../pipes/maxLength.pipe';
 
+import { TreeComponent } from 'angular2-tree-component';
+
 @Component({
     selector: 'bundle',
-    directives: [FORM_DIRECTIVES, NgFor, NgFormModel, Tabs, Tab, SubTab],
+    directives: [FORM_DIRECTIVES, NgFor, NgFormModel, Tabs, Tab, SubTab, TreeComponent],
     providers: [BackendServices, HTTP_PROVIDERS],
     pipes: [NewlinePipe, MaxLengthPipe, ValuesPipe, KeyValuesPipe, BundleStatePipe, LinkPipe],
-    templateUrl: 'app/html/bundles/bundle.template.html',
-    //styleUrls:  ['app/js/datatables.css']
+    templateUrl: 'app/html/bundles/bundle.template.html'
 })
 export class BundleComponent implements OnInit {
 
     bundle: Bundle = new Bundle();
-
     capabilities: KeyValue[] = [];
-
     private sub: any;
-
     wires = [];//new Map<string, Capability[]>();
+
+    exportedPackagesNodes = [
+        {
+            name: 'root1',
+            children: [
+                { name: 'child1' },
+                { name: 'child2' }
+            ]
+        },
+        {
+            name: 'root2',
+            children: [
+                { name: 'child2.1' },
+                {
+                    name: 'child2.2',
+                    children: [
+                        { name: 'subsub' }
+                    ]
+                }
+            ]
+        }
+    ];
 
     constructor(
         private _backend: BackendServices,
@@ -73,21 +96,58 @@ export class BundleComponent implements OnInit {
                             oldIdentifier = identifier;
                             this.wires[identifier] = Array<any>();
                         }
-                        //theValue.push(wire);
                         this.wires[identifier].push(wire);
                     });
-                    console.log(this.wires);
 
                     this._backend.getBundleServices(this.bundle.id)
                         .subscribe(serviceRes => {
                             this.bundle.providedServices = serviceRes;
                         });
+
+                    var treeModel: TreeModel = new TreeModel();
+                    this.bundle.exportPackage.forEach(pkg => {
+                        console.log("handling package " + pkg.pkgName);
+                        this.handlePackage(treeModel, pkg);
+                        console.log("[" + treeModel.root.children.toString() + "]");
+                    });
+                    this.exportedPackagesNodes = treeModel.root.children;
                     this._appGlobals.setIsLoading(false);
                 }
                 );
         });
+    }
 
+    handlePackage(model: TreeModel, pkg: ExportPackage) {
+        var newNode: TreeNode;
+        var id: string = "";
+        pkg.pkgName.split(".").forEach(segment => {
+            id = id + "." + segment;
+            if (id.startsWith(".")) {
+                id = id.substr(1);
+            }
+            var parentNode = model.getParent(id);
+            var nodeName = segment;
+            if (id == pkg.pkgName) {
+                nodeName += " ("+pkg.version+")";
+            }
+            if (parentNode == null) {
+                this.handleSegment(model, model.root, id, nodeName);
+            } else {
+                this.handleSegment(model, parentNode, id, nodeName);
+            }
+        });
+    }
 
+    handleSegment(model: TreeModel, root: TreeNode, id: string, segment: string) {
+        var existingNode: TreeNode = null;
+        root.children.forEach(root => {
+            if (root.name == segment) {
+                existingNode = root;
+            }
+        });
+        if (existingNode == null) {
+            root.children.push(new TreeNode(id, segment));
+        } 
     }
 
     ngOnDestroy() {

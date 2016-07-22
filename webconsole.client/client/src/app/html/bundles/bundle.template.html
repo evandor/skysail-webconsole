@@ -67,11 +67,13 @@
   <tab [tabTitle]="exportedPackagesTitle()" [tabColor]="'#0275d8'" [tabDescription]="'Exported Packages'">
     <table class="table">
       <tr>
-        <th><i class="fa fa-folder-open-o" aria-hidden="true" style="color: #0275d8"></i> Exported Packages:</th>
-        <td>
-          <div *ngFor="let pkg of bundle.exportPackage">
+        <th style="width:270px;"><i class="fa fa-folder-open-o" aria-hidden="true" style="color: #0275d8"></i> Exported Packages:</th>
+        <td style="align:left;">
+          <!--<div *ngFor="let pkg of bundle.exportPackage">
             <span>{{pkg.pkgName}} [{{pkg.version}}]</span><span>{{pkg.mandatory}}</span>
-          </div>
+          </div>-->
+
+           <Tree [nodes]="exportedPackagesNodes"></Tree>
         </td>
       </tr>
     </table>

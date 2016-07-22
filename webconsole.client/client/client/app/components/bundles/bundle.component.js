@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/common', "@angular/router", '@angular/http', '../../services/backend.service', '../../services/appglobals.service', '../../services/breadcrumbs.service', '../../domain/bundle', '../../components/tabs', '../../components/tab', '../../components/subtab', '../../pipes/newline.pipe', '../../pipes/values.pipe', '../../pipes/keyvalues.pipe', '../../pipes/link.pipe', '../../pipes/bundleState.pipe', '../../pipes/maxLength.pipe'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/common', "@angular/router", '@angular/http', '../../services/backend.service', '../../services/appglobals.service', '../../services/breadcrumbs.service', '../../domain/bundle', '../../components/tabs', '../../components/tab', '../../components/subtab', '../../domain/treenode', '../../domain/treemodel', '../../pipes/newline.pipe', '../../pipes/values.pipe', '../../pipes/keyvalues.pipe', '../../pipes/link.pipe', '../../pipes/bundleState.pipe', '../../pipes/maxLength.pipe', 'angular2-tree-component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '@angula
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, router_1, http_1, backend_service_1, appglobals_service_1, breadcrumbs_service_1, bundle_1, tabs_1, tab_1, subtab_1, newline_pipe_1, values_pipe_1, keyvalues_pipe_1, link_pipe_1, bundleState_pipe_1, maxLength_pipe_1;
+    var core_1, common_1, router_1, http_1, backend_service_1, appglobals_service_1, breadcrumbs_service_1, bundle_1, tabs_1, tab_1, subtab_1, treenode_1, treemodel_1, newline_pipe_1, values_pipe_1, keyvalues_pipe_1, link_pipe_1, bundleState_pipe_1, maxLength_pipe_1, angular2_tree_component_1;
     var BundleComponent;
     return {
         setters:[
@@ -47,6 +47,12 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '@angula
             function (subtab_1_1) {
                 subtab_1 = subtab_1_1;
             },
+            function (treenode_1_1) {
+                treenode_1 = treenode_1_1;
+            },
+            function (treemodel_1_1) {
+                treemodel_1 = treemodel_1_1;
+            },
             function (newline_pipe_1_1) {
                 newline_pipe_1 = newline_pipe_1_1;
             },
@@ -64,6 +70,9 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '@angula
             },
             function (maxLength_pipe_1_1) {
                 maxLength_pipe_1 = maxLength_pipe_1_1;
+            },
+            function (angular2_tree_component_1_1) {
+                angular2_tree_component_1 = angular2_tree_component_1_1;
             }],
         execute: function() {
             BundleComponent = (function () {
@@ -76,6 +85,27 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '@angula
                     this.bundle = new bundle_1.Bundle();
                     this.capabilities = [];
                     this.wires = []; //new Map<string, Capability[]>();
+                    this.exportedPackagesNodes = [
+                        {
+                            name: 'root1',
+                            children: [
+                                { name: 'child1' },
+                                { name: 'child2' }
+                            ]
+                        },
+                        {
+                            name: 'root2',
+                            children: [
+                                { name: 'child2.1' },
+                                {
+                                    name: 'child2.2',
+                                    children: [
+                                        { name: 'subsub' }
+                                    ]
+                                }
+                            ]
+                        }
+                    ];
                 }
                 BundleComponent.prototype.ngOnInit = function () {
                     var _this = this;
@@ -97,17 +127,55 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '@angula
                                     oldIdentifier = identifier;
                                     _this.wires[identifier] = Array();
                                 }
-                                //theValue.push(wire);
                                 _this.wires[identifier].push(wire);
                             });
-                            console.log(_this.wires);
                             _this._backend.getBundleServices(_this.bundle.id)
                                 .subscribe(function (serviceRes) {
                                 _this.bundle.providedServices = serviceRes;
                             });
+                            var treeModel = new treemodel_1.TreeModel();
+                            _this.bundle.exportPackage.forEach(function (pkg) {
+                                console.log("handling package " + pkg.pkgName);
+                                _this.handlePackage(treeModel, pkg);
+                                console.log("[" + treeModel.root.children.toString() + "]");
+                            });
+                            _this.exportedPackagesNodes = treeModel.root.children;
                             _this._appGlobals.setIsLoading(false);
                         });
                     });
+                };
+                BundleComponent.prototype.handlePackage = function (model, pkg) {
+                    var _this = this;
+                    var newNode;
+                    var id = "";
+                    pkg.pkgName.split(".").forEach(function (segment) {
+                        id = id + "." + segment;
+                        if (id.startsWith(".")) {
+                            id = id.substr(1);
+                        }
+                        var parentNode = model.getParent(id);
+                        var nodeName = segment;
+                        if (id == pkg.pkgName) {
+                            nodeName += " (" + pkg.version + ")";
+                        }
+                        if (parentNode == null) {
+                            _this.handleSegment(model, model.root, id, nodeName);
+                        }
+                        else {
+                            _this.handleSegment(model, parentNode, id, nodeName);
+                        }
+                    });
+                };
+                BundleComponent.prototype.handleSegment = function (model, root, id, segment) {
+                    var existingNode = null;
+                    root.children.forEach(function (root) {
+                        if (root.name == segment) {
+                            existingNode = root;
+                        }
+                    });
+                    if (existingNode == null) {
+                        root.children.push(new treenode_1.TreeNode(id, segment));
+                    }
                 };
                 BundleComponent.prototype.ngOnDestroy = function () {
                     this.sub.unsubscribe();
@@ -167,10 +235,10 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '@angula
                 BundleComponent = __decorate([
                     core_1.Component({
                         selector: 'bundle',
-                        directives: [common_1.FORM_DIRECTIVES, common_1.NgFor, common_1.NgFormModel, tabs_1.Tabs, tab_1.Tab, subtab_1.SubTab],
+                        directives: [common_1.FORM_DIRECTIVES, common_1.NgFor, common_1.NgFormModel, tabs_1.Tabs, tab_1.Tab, subtab_1.SubTab, angular2_tree_component_1.TreeComponent],
                         providers: [backend_service_1.BackendServices, http_1.HTTP_PROVIDERS],
                         pipes: [newline_pipe_1.NewlinePipe, maxLength_pipe_1.MaxLengthPipe, values_pipe_1.ValuesPipe, keyvalues_pipe_1.KeyValuesPipe, bundleState_pipe_1.BundleStatePipe, link_pipe_1.LinkPipe],
-                        templateUrl: 'app/html/bundles/bundle.template.html',
+                        templateUrl: 'app/html/bundles/bundle.template.html'
                     }), 
                     __metadata('design:paramtypes', [backend_service_1.BackendServices, router_1.ActivatedRoute, router_1.Router, breadcrumbs_service_1.BreadcrumbsService, appglobals_service_1.AppGlobals])
                 ], BundleComponent);

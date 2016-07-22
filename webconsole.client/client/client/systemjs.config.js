@@ -6,11 +6,13 @@
 
     // map tells the System loader where to look for things
     var map = {
-        'app': 'app', // 'dist',
-        'rxjs': 'lib/rxjs',
-        '@angular': 'lib/@angular',
-        '@angular/forms': 'lib/@angular/forms',
-        'd3': 'lib/d3/d3.min.js', //https://d3js.org/d3.v3.min.js'
+        'app':                     'app', 
+        'rxjs':                    'lib/rxjs',
+        '@angular':                'lib/@angular',
+        '@angular/forms':          'lib/@angular/forms',
+        'angular2-tree-component': 'lib/angular2-tree-component',
+        'lodash':                  'lib/lodash',
+        'd3':                      'lib/d3/d3.min.js', //https://d3js.org/d3.v3.min.js'
         //'angular2-localstorage': 'lib/angular2-localstorage'
     };
 
@@ -18,6 +20,8 @@
     var packages = {
         'app': { defaultExtension: 'js' },
         'rxjs': { defaultExtension: 'js' },
+        'angular2-tree-component'   : { main: 'dist/angular2-tree-component.js', defaultExtension: 'js' },
+        'lodash'                    : { main: 'lodash.js', defaultExtension: 'js' },
         'angular2-localstorage': { defaultExtension: 'js' }
     };
 

@@ -62,7 +62,9 @@ gulp.task("libs", () => {
             '@angular/**',
             'bootstrap/dist/**',
             'd3/**',
-            'font-awesome/**'//,
+            'font-awesome/**',//,
+            'angular2-tree-component/**',
+            'lodash/**'
             //'angular2-localstorage/**'
         ], {cwd: "node_modules/**"}) /* Glob required here. */
         .pipe(gulp.dest("client/lib"));
