@@ -1,9 +1,6 @@
 # skysail-webconsole
 an alternative to the (OSGi) felix webconsole
 
-# Important
-*Currently my server is down, some of the links might not work.*
-
 # Motivation
 Although I like the felix webconsole, more often than not I faced issues with integrating it with an existing codebase. OSGi is all about modularity, meaning (amongst others) that the OSGi framework makes sure that the runtime dependencies your code relies on are met. But, in the case of something like an OSGi webconsole, __any dependency__ I have is too much. I want to install the webconsole in _any_ kind of OSGi environment, and I want it to work immediately. I do not want something like "Unresolved requirement: Import-Package: org.apache.commons.fileupload; version="[1.2.0,2.0.0)"", which is what I get if I put the felix webconsole into eclipse Mars.
 
@@ -11,15 +8,21 @@ So, this bundle is an effort to provide a single bundle, ready to be dropped int
 
 # Status
 
-just started, needs serious polishing, internally and visually... - just a prove of concept.
+just started, needs serious polishing, internally and visually... - just a prove of concept. But it's already getting helpful 
+(at least for me ;)).
 
 # Version 
 
-0.3.0
+0.1.8
 
-# Screenshot
+# Screenshots
 
-![screenshot](http://jenkins.twentyeleven.de/job/skysail-webconsole/ws/webconsole/etc/docs/webconsole_0.3.0.png)
+![screenshot bundles overview](http://jenkins.twentyeleven.de/job/skysail-webconsole/ws/webconsole/etc/docs/webconsole.bundles.png)
+
+![screenshot bundles package dependencies](http://jenkins.twentyeleven.de/job/skysail-webconsole/ws/webconsole/etc/docs/webconsole.bundles.pkgDep.png)
+
+![screenshot bundle details](http://jenkins.twentyeleven.de/job/skysail-webconsole/ws/webconsole/etc/docs/webconsole.bundle.details.png)
+
 
 # Demo
 
