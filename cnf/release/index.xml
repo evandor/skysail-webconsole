@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<repository increment="1469175433000" name="Release" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+<repository increment="1469375923000" name="Release" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="webconsole.all"/>
@@ -9848,6 +9848,27 @@
     <requirement namespace="osgi.ee">
       <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
     </requirement>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="webconsole.client"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="0.1.17.201607241558"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="688e8a89a3587dc3ef63549047043654fcb0fe8f8519a067256b01873fa6c48f"/>
+      <attribute name="url" value="webconsole.client/webconsole.client-0.1.17.jar"/>
+      <attribute name="size" type="Long" value="5306138"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="webconsole.client"/>
+      <attribute name="bundle-version" type="Version" value="0.1.17.201607241558"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="webconsole.client"/>
+      <attribute name="bundle-version" type="Version" value="0.1.17.201607241558"/>
+    </capability>
   </resource>
   <resource>
     <capability namespace="osgi.identity">
