@@ -1,0 +1,18 @@
+= The Bundle "skysail.server.um.repository.fixed"
+:jbake-type: page
+:jbake-tags: documentation, manual
+:jbake-status: published
+:linkattrs:
+
+== Overview
+
+This bundle provides a UserManagement (UM) Repository which is meant for testing
+only. Whoever logs in with username = password is permitted, and gets the roles
+"user" and "<username>", so, for example, if you log in with username "admin"
+and password "admin", you will be authenticated with the roles "user" and "admin".
+
+WARNING: This bundle is meant for testing purposes only!
+
+== Context
+
+See skysail.server.um

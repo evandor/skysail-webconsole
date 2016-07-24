@@ -1,0 +1,24 @@
+= Downloads
+:jbake-type: page
+:jbake-tags: documentation, manual
+:jbake-status: published
+v1.2, 2016-02-15
+:library: Asciidoctor
+:idprefix:
+:numbered:
+:imagesdir: images
+:toc: manual
+:css-signature: demo
+:toc-placement: preamble
+
+== Installation
+
+ * Start an OSGi framework where you have access to the console (e.g. ./eclipse -console)
+ * to use the current build, run "install http://jenkins.twentyeleven.de/job/skysail-webconsole/ws/cnf/release/webconsole.all/webconsole.all-0.1.8.jar" in the console
+ * get the bundle id of the new webconsole bundle (e.g. by running "ss" (equinox) or "lb" (felix)
+ * start the bundle: "start <bundleId>"
+ * point your browser to "http://localhost:2002" (sorry, port is fixed for now)
+
+== Source
+
+https://github.com/evandor/skysail-webconsole[Github]

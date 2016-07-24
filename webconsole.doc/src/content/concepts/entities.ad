@@ -1,0 +1,35 @@
+= skysail entities
+:jbake-type: page
+:jbake-tags: entities
+:jbake-status: published
+
+== About Entities
+
+The "ultimate" representation of an entity in skysail is Java (more precisely JVM-) code. A skysail entity is a POJO implementing _Identifiable_ (or
+_Nameable_, which extends _Identifiable_). Its fields can be augmented with a couple of annotations which will help skysail understand their role 
+in the various representations an entity can have.
+
+A simple entity definition in skysail could look like this:
+
+----
+@Getter
+@Setter
+public class Bookmark implements Identifiable {
+
+    @Id
+    private String id;
+
+    @Field
+    private String name;
+}
+----
+
+This example uses lombok, which eliminates some boilerplate code (like getters and setters for "id" and "name" which are added transparently).
+The _@Field_ annotation instructs skysails' default html renderer to provide a formular with an input with name "name". 
+
+=== Tabs
+
+Tabs define a way to organize an entities' fields:
+
+link:/concepts/entities/tabs.html[Tabs]
+

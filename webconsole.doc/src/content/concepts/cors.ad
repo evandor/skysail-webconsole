@@ -1,0 +1,20 @@
+= CORS in skysail
+:jbake-type: page
+:jbake-tags: cors
+:jbake-status: published
+
+== About CORS
+
+see for example https://templth.wordpress.com/2014/11/12/understanding-and-using-cors/.
+
+== Usage in skysail
+
+Since 0.2.0 of skysail.server, CORS can be configured per application with a configuration file like this:
+
+----
+corsOrigins = "*"
+corsAllowedHeaders = ...
+corsExposedHeaders = ...
+corsMethods = ...
+corsAllowCredentials = ...
+----

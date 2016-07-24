@@ -1,0 +1,24 @@
+= Skysail Core Domain
+Carsten Gräf
+2015-11-29
+:jbake-type: page
+:jbake-tags: documentation, manual
+:jbake-status: published
+
+[[section-introduction-and-goals]]
+== Overview
+
+The Application Model describes the core domain of skysail.
+
+The central part of the the model is the *application*: it's a collection of *entities* and (aggregate) *repositories*. The entities themselves
+hold multiple *fields* (describing their properties), and, each of them, *four resources* to handle GET, POST, PUT and DELETE requests.
+
+
+image::../../../img/applications.png[]
+
+== Example
+
+Let's say you want to define an bank account tracking application. You'd start with an application (called AccountsApplication) and define
+two Entities: Account and Transaction. An account (with a name, a bank identifier and the like) serves as a container for transactions (having
+an amount, a date, a comment etc). As a transaction always belongs to an account, you'd need one (aggregate root) repository only, the one
+for accounts.

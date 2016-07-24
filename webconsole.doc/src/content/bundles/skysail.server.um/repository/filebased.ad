@@ -1,0 +1,13 @@
+= The Bundle "skysail.server.um.repository.filebased"
+:jbake-type: page
+:jbake-tags: documentation, manual
+:jbake-status: published
+:linkattrs:
+
+== Overview
+
+This bundle provides a UserManagement (UM) Repository which is based on files.
+
+== Context
+
+See skysail.server.um

@@ -1,0 +1,20 @@
+= Bundles
+:jbake-type: page
+:jbake-tags: documentation, manual
+:jbake-status: published
+:toc-placement: preamble
+
+skysail (the server) is an OSGi-based application, meaning - in terms of deployment - that it is a collection
+of OSGi bundles (java jar files), together with some configuration files. There are mandatory bundles, and optional
+ones; some bundles' type of functionality (e.g. authentication and authorization) may exist only once in an installation,
+other functionality (e.g. Applications) can be added multiple times.
+
+=== skysail.server.um
+
+INFORMATION: stands for "User Management".
+
+The skysail.server.um.* bundle family provides user management related functionality. For details,
+check out the following link:bundles/skysail.server.um/bundles.html[pages].
+
+
+

@@ -1,0 +1,20 @@
+= tabs in skysail
+:jbake-type: page
+:jbake-tags: tabs
+:jbake-status: published
+
+== About Tabs
+
+see for example https://templth.wordpress.com/2014/11/12/understanding-and-using-cors/.
+
+== Usage in skysail
+
+Since 0.2.0 of skysail.server, CORS can be configured per application with a configuration file like this:
+
+----
+corsOrigins = "*"
+corsAllowedHeaders = ...
+corsExposedHeaders = ...
+corsMethods = ...
+corsAllowCredentials = ...
+----

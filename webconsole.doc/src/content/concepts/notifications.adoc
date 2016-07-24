@@ -1,0 +1,40 @@
+= Notifications
+Jonathan Bullock
+2013-10-17
+:jbake-type: page
+:jbake-status: published
+:jbake-tags: blog, asciidoc
+:idprefix:
+
+== Overview
+
+*skysail* can create different representations for its resources, one of them being the generic html view. In this kind
+of view (a representation for an actual, human user) notifications make sense, for example telling the user about the
+outcome of his last interaction, or giving her information about events in the system.
+
+These notifications have the following characteristics:
+
+- They only occur after a request/response cycle, i.e. there will be no notification if there is no page being loaded.
+- They only are available in the generic html view
+- ...
+
+== Implementation
+
+=== Client Side
+
+Javascript libraray: Jquery Plugin http://ned.im/noty/[Noty]
+
+== Server Side
+
+=== Event Handler
+
+`io.skysail.server.converter.HtmlConverter` implements an OSGi event handler (see
+for example http://felix.apache.org/documentation/subprojects/apache-felix-event-admin.html[Felix Event Handler]),
+listening for events with the topic "GUI/message". Those event are collected (per user) and passed to the generic
+html renderer. Once presented in the GUI, the message is removed from the queue.
+
+=== Event Publisher
+
+`io.skysail.server.restlet.filter.EntityWasAddedFilter.doHandle(R, Wrapper)` is an example of where an notification
+event is created.
+

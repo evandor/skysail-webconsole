@@ -1,0 +1,28 @@
+= skysail.server.um Bundles
+:jbake-type: page
+:jbake-tags: documentation, manual
+:jbake-status: published
+:toc-placement: preamble
+
+The skysail.server.um.* bundle family provides user management related functionality.
+
+There are repositories, verifiers, and authentication and authorization providers.
+
+=== skysail.server.um.repository
+
+INFORMATION: stands for "User Management".
+
+User Management repositories provide actual users, roles and user-role associations from
+some kind of backend or repository. They have to register a component implementing
+*UserManagementRepository*; in a skysail installation, only one implementation of 
+this interface is allowed.
+
+For futher information, check the list of existing repository implementations:
+
+=== skysail.server.um.repository.filebased
+
+link:repository/filebased.html[repository.filebased].
+
+=== skysail.server.um.repository.fixed
+
+link:repository/fixed.html[repository.fixed].

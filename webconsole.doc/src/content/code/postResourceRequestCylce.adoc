@@ -1,0 +1,102 @@
+= Post Resource Request Cylce
+Carsten Gräf
+2015-10-29
+:jbake-type: page
+:jbake-tags: documentation, manual
+:jbake-status: published
+
+[[section-introduction-and-goals]]
+== Context and Overview
+
+This page describes the details of *how skysail handles a posted resource*; there are other pages dealing with _getting_, _putting_ and _deleting_ resources.
+
+Posting an entity usually means creating a new entity with the provided data, persisting it, and redirecting
+the user to a predefined page if there was no error. In case of an error, the form page is shown again, together
+with the already entered data and appropriate error messages.
+
+=== Variations
+
+The request cycle described above is the typical user-agent (or brower-) driven flow for an entity put into a database. It is the responsibility of the
+post resource class what actually will happen to a posted resource, persisting it is only one choice. skysail will make sure that the entity is *sanitized,
+safe* and *validated* (and optionally *encrypted*), but what you will finally do with an entity is in your (or your applications) hands. Furthermore,
+depending on content negotiations, headers and the like, the actual processing might differ for various input and output formats.
+
+== Details
+
+=== Setup
+
+Let's assume we have a +PostEntityServerResource+ parameterized with "+Item+", i.e. +class PostItemResource extends PostEntityServerResource<Item>+; this
+class is mapped to the path +"/items/"+. An item has a name and a description.
+
+=== Initiating the flow
+
+After a @Get request to "/items/", a form with "name" and "description" fields is displayed; submitting this form (with @Post) will start the
+Post Resource Request Cycle.
+
+=== Entering skysail
+
+After being routed to the appropriate resource by the restlet framework, the request described here will touch skysail code for the first time here:
+
+----
+io.skysail.server.restlet.resources.PostEntityServerResource.post(Form, Variant)
+----
+
+The main purpose of this method is to create a ResourceFilter, utilizing a RequestHandler object, which will take over from here. A resource filter
+basically defines a chain of filters, which will process the request according to the specific needs of this kind of request.
+
+=== The Filter chain
+
+Here we have a Post Resource Request, so a filter chain dealing with post resource requests will provide the following filters, being called on after the other:
+
+image::../img/postResourceRequestCycle.png[]
+image::http://asciidoctor.org/images/octocat.jpg[GitHub mascot]
+
+==== io.skysail.server.restlet.filter.ExceptionCatchingFilter.ExceptionCatchingFilter(SkysailApplication)
+
+A filter which wraps all following code with a try/catch block, to provide generic error handling in case something goes wrong in the chain.
+
+==== io.skysail.server.restlet.filter.CheckInvalidInputFilter<R, T>
+
+Sanitizing input
+
+==== io.skysail.server.restlet.filter.FormDataExtractingFilter<R, T>
+
+Reads the form data from the request and processes it:
+
+In io.skysail.server.restlet.resources.PostEntityServerResource.getData(Form), a new entity is created by calling io.skysail.server.restlet.resources.PostEntityServerResource.createEntityTemplate()
+on the current resource. This entity template is then populated with the data from the form, resulting in the acutal entity to be put into the database (after running successfully through the
+following steps.
+
+==== io.skysail.server.restlet.filter.CheckBusinessViolationsFilter<R, T>
+
+Now that we have a proper entity, representing what is supposed to be put in the database, we will apply the check business violations filter. This filter will check all the constraints put on the
+entity or its fields. If a violation is found, a 4xx response code will be set and the filter chain will be aborted.
+
+==== io.skysail.server.restlet.filter.OptionalEncryptionFilter<R, T>
+
+A filter supposed to encrypt the entity - not yet supported.
+
+==== io.skysail.server.restlet.filter.PersistEntityFilter<R, T>
+
+Now we enter the persist filter - it will try to persist the provided entity by calling the currents resource "io.skysail.server.app.todos.lists.PostListResource.addEntity(.)" method.
+Typically, this method will apply some more business logic and then delegate to a repository implementation. For skysail entities, this repository will utilize orientdb: In
+io.skysail.server.db.impl.Persister, the entity (the Java POJO) will first be converted into a orientdb vertex (maybe multiple vertices with edges in between) and then committed.
+
+Persisting the entity means creating a new unique id for it. This id is passed back to the calling code and used to determine the location href set on the response.
+
+==== io.skysail.server.restlet.filter.EntityWasAddedFilter<R, T>
+
+Assuming everything was successful up to here, the "entity was added" filter is called which uses the event admin to post an event about the creation of this new entity to interested parties.
+
+==== io.skysail.server.restlet.filter.PostRedirectGetFilter
+
+Now that we made it up to here, the chain has been passed in one direction and will return back to the calling code. During this, the "afterHandle" methods of the filters will be called
+and run logic, if any. The post-redirect-get filter decides about any response redirections. Typically, in the case of an html form submission, it is good practice to redirect to another page
+and issue a get request.
+
+==== io.skysail.server.restlet.filter.AddLinkheadersFilter<R, T>
+
+We've reached the add linkheaders filter (its "afterHandle" method to be precise). It makes sure that the HATEOS information is added to the response as linkheaders attributes.
+
+
+FormResponse

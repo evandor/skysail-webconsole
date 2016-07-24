@@ -1,0 +1,70 @@
+= Main Concepts
+:jbake-type: page
+:jbake-tags: documentation, manual
+:jbake-status: published
+v1.2, 2016-02-15
+:library: Asciidoctor
+:idprefix:
+:numbered:
+:imagesdir: images
+:toc: manual
+:css-signature: demo
+:toc-placement: preamble
+
+There are a couple of concepts skysail relies on:
+
+== Modularity
+
+== Architecture
+
+== Entities and API
+
+When it comes to the *Application Programming Interface* (API) and entity definitions, different frameworks take different approaches of how 
+the user (todo define user) specifies entities, their relations and the way they are created, accessed, deleted and manipulated.
+
+=== Entities
+
+The "ultimate" representation of an entity in skysail is Java (more precisely JVM-) code. A skysail entity is a POJO implementing _Identifiable_ (or
+_Nameable_, which extends _Identifiable_). Its fields can be augmented with a couple of annotations which will help skysail understand their role 
+in the various representations an entity can have.
+
+A simple entity definition in skysail could look like this:
+
+----
+@Getter
+@Setter
+public class Bookmark implements Identifiable {
+
+    @Id
+    private String id;
+
+    @Field
+    private String name;
+}
+----
+
+This example uses lombok, which eliminates some boilerplate code (like getters and setters which are added transparently). 
+
+Have a look link:concepts/entities.html[here] to understand how an entity is defined in depth.
+
+This approach helps skysail to provide various transformations to (and from) this entity representation. 
+
+
+=== Entities' Relations
+
+=== API
+
+
+== Further topics
+
+=== Notifications
+
+link:concepts/notifications.html[Notifications]
+
+=== CORS
+
+link:concepts/cors.html[Cors subpage]
+
+=== Tabs
+
+link:concepts/tabs.html[Tabs subpage]

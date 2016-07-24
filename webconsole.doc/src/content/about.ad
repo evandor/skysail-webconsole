@@ -1,0 +1,30 @@
+= About 
+:jbake-type: page
+:jbake-tags: documentation, manual
+:jbake-status: published
+:linkattrs:
+
+== skysail webconsole
+
+*skysail webconsole* is an effort to provide a webbased __OSGi management agent__ which can be 
+deployed into any OSGi runtime as a single bundle without any dependencies. While the core idea of
+OSGi is about defining and managing dependencies, the integration of a utility like a webconsole to
+monitor the internals of your OSGi runtime should not interfere with the system you want to be monitored
+(and therefore should not depend on additional dependencies and services).  
+
+
+Typically, the OSGi framework you use already provides a management agent which can be accessed via the
+console (or, remotely, via telnet). For beginners, this is somehow exciting, but also annoying, because,
+as soon as you run into some sort of error, the only thing you have is some cryptic message you have to
+decipher. A webconsole (like felix webconsole) provides a web UI, ideally giving you the same control over
+the runtime plus a more user friendly way to display the same information you'd have on the console. 
+
+
+But there could be more! OSGi is a dynamic runtime, bundles come and go, and with them there are services
+which spring into life and might cease to exist sometime later. The core ideas (explicit package dependencies
+and a service registry) of OSGi are simple, but a real life application can be hard to understand. Providing
+advanced visualization of how bundles relate to each other (and how "wiring" between them changes over time) 
+is a very helpful tool for OSGi developers which *skysail webconsole* tries to provide.
+
+
+WARNING: skysail is still in alpha development stage, don't use it for anything you have to rely on.
