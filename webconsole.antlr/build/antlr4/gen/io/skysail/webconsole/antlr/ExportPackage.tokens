@@ -1,0 +1,14 @@
+T__0=1
+T__1=2
+Directive=3
+Attribute=4
+UniqueName=5
+Ident=6
+Extended=7
+Alphanum=8
+ALPHA=9
+DIGIT=10
+Argument=11
+WS=12
+','=1
+';'=2
