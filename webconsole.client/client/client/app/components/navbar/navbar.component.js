@@ -51,6 +51,7 @@ System.register(["@angular/core", "@angular/router", '../../services/backend.ser
                     this._appGlobals._isLoading.subscribe(function (value) { return _this.loading = value; });
                     this._appGlobals._bundleIdList.subscribe(function (val) { return _this.bundleIdList = val; });
                     this._appGlobals._routeParams.subscribe(function (val) { return _this.routeParams = val; });
+                    this._appGlobals._backendUrl.subscribe(function (val) { return _this.backendUrl = val; });
                     this._router.events.subscribe(function () {
                         _breadcrumbsService.clear();
                         _breadcrumbsService.add(new breadcrumb_1.Breadcrumb(['/bundles'], '<i class="fa fa-home" aria-hidden="true"></i>'));
@@ -116,7 +117,7 @@ System.register(["@angular/core", "@angular/router", '../../services/backend.ser
                     this._router.navigate(['/bundles', this.getCurrentBundleIndex(this.routeParams['id']) - 1]);
                 };
                 Navbar.prototype.rawData = function () {
-                    return "http://localhost:2002/backend/v1/bundles";
+                    return this.backendUrl + "backend/v1/bundles";
                 };
                 Navbar.prototype.getCurrentBundleIndex = function (routeParamId) {
                     var index = 0;

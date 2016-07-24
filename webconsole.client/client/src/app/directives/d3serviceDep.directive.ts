@@ -38,16 +38,9 @@ export class D3ServiceDepDirective {
             filteredBundles.forEach(bundle => {
                 //console.log("creating new Node with id " + bundle.id);
                 nodes.push(new Node(bundle.id, bundle.symbolicName, 17, 500));
-                //console.log(bundle.wireDescriptor.providedWires);
-                /*var arr = Object.keys(bundle.).map(function (key) {
-                    return {
-                        key: key,
-                        value: bundle.wireDescriptor.providedWires[key]
-                    }
-                });*/
                 bundle.usedServiceIds.forEach(serviceId => {
                     var providingBundle = getProvidingBundle(serviceId);
-                    console.log(bundle.id + " => " + serviceId + " => " + providingBundle);
+                    //console.log(bundle.id + " => " + serviceId + " => " + providingBundle);
                     edges.push(new Edge(bundle.id, providingBundle, 1));
                 });
             });
@@ -72,7 +65,7 @@ export class D3ServiceDepDirective {
                 edges[x].source = nodeHash[edges[x].source];
                 edges[x].target = nodeHash[edges[x].target];
             };
-            console.log(edges);
+            //console.log(edges);
 
             var weightScale = d3.scale.linear()
                 .domain(d3.extent(edges, function (d) { return d.weight; }))

@@ -22,12 +22,6 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map'], fun
             },
             function (_1) {}],
         execute: function() {
-            /*export interface BundlesInterface {
-              id: string;
-              symbolicName: string;
-              version: string;
-              status: string;
-            }*/
             BundlesService = (function () {
                 function BundlesService(_http) {
                     this._http = _http;

@@ -20,9 +20,7 @@ System.register(['@angular/core'], function(exports_1, context_1) {
         execute: function() {
             BreadcrumbsService = (function () {
                 function BreadcrumbsService() {
-                    console.log("in breadcrumbsservice constructor");
                     this.breadcrumbs = [];
-                    //this.breadcrumbs.push(new Breadcrumb(['bundles'], '<span class="glyphicon glyphicon-home" aria-hidden="true"></span>'));
                 }
                 BreadcrumbsService.prototype.getBreadcrumbs = function () {
                     return this.breadcrumbs;

@@ -31,7 +31,7 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', '../
                     this._http = _http;
                     this._appGlobals = _appGlobals;
                     this._baseUrl = '';
-                    console.log("BackendServices constructor");
+                    //console.log("BackendServices constructor");
                     _appGlobals._backendUrl.subscribe(function (value) { return _this._baseUrl = value; });
                     console.log("base url set to '" + this._baseUrl + "'");
                     if (this._baseUrl == "http://undefined:undefined/") {

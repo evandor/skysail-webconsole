@@ -19,7 +19,7 @@ export class BackendServices {
     private _baseUrl = '';
 
     constructor(private _http: Http, private _appGlobals: AppGlobals) {
-        console.log("BackendServices constructor");
+        //console.log("BackendServices constructor");
         _appGlobals._backendUrl.subscribe(value => this._baseUrl = value);
         console.log("base url set to '" + this._baseUrl + "'");
         if (this._baseUrl == "http://undefined:undefined/") {

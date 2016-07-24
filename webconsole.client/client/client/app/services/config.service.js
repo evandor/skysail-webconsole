@@ -26,15 +26,18 @@ System.register(["@angular/core", './window.service', '@angular/http'], function
         execute: function() {
             ConfigService = (function () {
                 function ConfigService(windows, http) {
-                    var _this = this;
                     this.windows = windows;
                     this.http = http;
-                    http.get('config.json')
-                        .map(function (res) { return res.json(); })
-                        .subscribe(function (config) {
-                        _this.host = config.host;
-                        _this.port = config.port;
-                    });
+                    this.host = location.hostname;
+                    this.port = "2002";
+                    this.host = location.hostname;
+                    // does not make sense to define host and port here...
+                    /*http.get('config.json')
+                        .map(res => res.json())
+                        .subscribe((config:any) => {
+                            this.host = config.host;
+                            this.port = config.port;
+                        })*/
                 }
                 ConfigService = __decorate([
                     core_1.Injectable(), 

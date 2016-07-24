@@ -32,6 +32,7 @@ export class Navbar {
     currentId = "0";
     private sub: any;
     private routeParams: any;
+    private backendUrl: string;
     private prevExistsFlag: boolean = false;
 
     constructor(
@@ -45,6 +46,7 @@ export class Navbar {
 
         this._appGlobals._bundleIdList.subscribe(val => this.bundleIdList = val);
         this._appGlobals._routeParams.subscribe(val => this.routeParams = val);
+        this._appGlobals._backendUrl.subscribe(val => this.backendUrl = val);
 
         this._router.events.subscribe(() => {
             _breadcrumbsService.clear();
@@ -111,7 +113,7 @@ export class Navbar {
     }
 
     rawData() {
-        return "http://localhost:2002/backend/v1/bundles";
+        return this.backendUrl + "backend/v1/bundles";
     }
 
     getCurrentBundleIndex(routeParamId): number {
