@@ -30,6 +30,12 @@
     </form>
   </div>
 
+  <div [hidden]="submitted">
+    <h1>Version</h1>
+
+    <p>{{version}}</p>
+  </div>
+
   <div [hidden]="!submitted">
     <h2>You submitted the following:</h2>
     <div class="row">
