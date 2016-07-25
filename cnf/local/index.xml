@@ -1,3 +1,520 @@
 <?xml version="1.0" encoding="utf-8"?>
-<repository increment="0" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+<repository increment="1469447357000" name="Local" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="net.sourceforge.htmlunit"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="2.22.0"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="472f29d3428db303c6841f0eeb1ba0fde712a5b83d84fcc3bd6b2e75620d4a2b"/>
+      <attribute name="url" value="net.sourceforge.htmlunit/net.sourceforge.htmlunit-2.22.0.jar"/>
+      <attribute name="size" type="Long" value="11470807"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="net.sourceforge.htmlunit"/>
+      <attribute name="bundle-version" type="Version" value="2.22.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="net.sourceforge.htmlunit"/>
+      <attribute name="bundle-version" type="Version" value="2.22.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.gargoylesoftware.htmlunit"/>
+      <attribute name="version" type="Version" value="2.22.0"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.htmlunit"/>
+      <attribute name="bundle-version" type="Version" value="2.22.0"/>
+      <directive name="uses" value="com.gargoylesoftware.htmlunit.activex.javascript.msxml,com.gargoylesoftware.htmlunit.attachment,com.gargoylesoftware.htmlunit.html,com.gargoylesoftware.htmlunit.javascript,com.gargoylesoftware.htmlunit.javascript.background,com.gargoylesoftware.htmlunit.javascript.configuration,com.gargoylesoftware.htmlunit.util"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.gargoylesoftware.htmlunit.activex.javascript.msxml"/>
+      <attribute name="version" type="Version" value="2.22.0"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.htmlunit"/>
+      <attribute name="bundle-version" type="Version" value="2.22.0"/>
+      <directive name="uses" value="com.gargoylesoftware.htmlunit,com.gargoylesoftware.htmlunit.html,com.gargoylesoftware.htmlunit.javascript,com.gargoylesoftware.htmlunit.javascript.configuration,com.gargoylesoftware.htmlunit.javascript.host.dom"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.gargoylesoftware.htmlunit.attachment"/>
+      <attribute name="version" type="Version" value="2.22.0"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.htmlunit"/>
+      <attribute name="bundle-version" type="Version" value="2.22.0"/>
+      <directive name="uses" value="com.gargoylesoftware.htmlunit"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.gargoylesoftware.htmlunit.gae"/>
+      <attribute name="version" type="Version" value="2.22.0"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.htmlunit"/>
+      <attribute name="bundle-version" type="Version" value="2.22.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.gargoylesoftware.htmlunit.html"/>
+      <attribute name="version" type="Version" value="2.22.0"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.htmlunit"/>
+      <attribute name="bundle-version" type="Version" value="2.22.0"/>
+      <directive name="uses" value="com.gargoylesoftware.htmlunit,com.gargoylesoftware.htmlunit.html.impl,com.gargoylesoftware.htmlunit.javascript.configuration,com.gargoylesoftware.htmlunit.javascript.host.dom,com.gargoylesoftware.htmlunit.javascript.host.event,com.gargoylesoftware.htmlunit.util,javax.imageio"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.gargoylesoftware.htmlunit.html.applets"/>
+      <attribute name="version" type="Version" value="2.22.0"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.htmlunit"/>
+      <attribute name="bundle-version" type="Version" value="2.22.0"/>
+      <directive name="uses" value="com.gargoylesoftware.htmlunit,com.gargoylesoftware.htmlunit.html"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.gargoylesoftware.htmlunit.html.impl"/>
+      <attribute name="version" type="Version" value="2.22.0"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.htmlunit"/>
+      <attribute name="bundle-version" type="Version" value="2.22.0"/>
+      <directive name="uses" value="com.gargoylesoftware.htmlunit,com.gargoylesoftware.htmlunit.html"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.gargoylesoftware.htmlunit.html.xpath"/>
+      <attribute name="version" type="Version" value="2.22.0"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.htmlunit"/>
+      <attribute name="bundle-version" type="Version" value="2.22.0"/>
+      <directive name="uses" value="com.gargoylesoftware.htmlunit.html"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.gargoylesoftware.htmlunit.httpclient"/>
+      <attribute name="version" type="Version" value="2.22.0"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.htmlunit"/>
+      <attribute name="bundle-version" type="Version" value="2.22.0"/>
+      <directive name="uses" value="com.gargoylesoftware.htmlunit"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.gargoylesoftware.htmlunit.javascript"/>
+      <attribute name="version" type="Version" value="2.22.0"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.htmlunit"/>
+      <attribute name="bundle-version" type="Version" value="2.22.0"/>
+      <directive name="uses" value="com.gargoylesoftware.htmlunit,com.gargoylesoftware.htmlunit.html,com.gargoylesoftware.htmlunit.javascript.background,com.gargoylesoftware.htmlunit.javascript.configuration,com.gargoylesoftware.htmlunit.javascript.host,com.gargoylesoftware.htmlunit.javascript.host.dom"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.gargoylesoftware.htmlunit.javascript.background"/>
+      <attribute name="version" type="Version" value="2.22.0"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.htmlunit"/>
+      <attribute name="bundle-version" type="Version" value="2.22.0"/>
+      <directive name="uses" value="com.gargoylesoftware.htmlunit"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.gargoylesoftware.htmlunit.javascript.configuration"/>
+      <attribute name="version" type="Version" value="2.22.0"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.htmlunit"/>
+      <attribute name="bundle-version" type="Version" value="2.22.0"/>
+      <directive name="uses" value="com.gargoylesoftware.htmlunit,com.gargoylesoftware.htmlunit.javascript"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.gargoylesoftware.htmlunit.javascript.host"/>
+      <attribute name="version" type="Version" value="2.22.0"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.htmlunit"/>
+      <attribute name="bundle-version" type="Version" value="2.22.0"/>
+      <directive name="uses" value="com.gargoylesoftware.htmlunit,com.gargoylesoftware.htmlunit.html,com.gargoylesoftware.htmlunit.javascript,com.gargoylesoftware.htmlunit.javascript.configuration,com.gargoylesoftware.htmlunit.javascript.host.crypto,com.gargoylesoftware.htmlunit.javascript.host.css,com.gargoylesoftware.htmlunit.javascript.host.dom,com.gargoylesoftware.htmlunit.javascript.host.event,com.gargoylesoftware.htmlunit.javascript.host.geo,com.gargoylesoftware.htmlunit.javascript.host.html,com.gargoylesoftware.htmlunit.javascript.host.performance,com.gargoylesoftware.htmlunit.javascript.host.speech"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.gargoylesoftware.htmlunit.javascript.host.arrays"/>
+      <attribute name="version" type="Version" value="2.22.0"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.htmlunit"/>
+      <attribute name="bundle-version" type="Version" value="2.22.0"/>
+      <directive name="uses" value="com.gargoylesoftware.htmlunit.javascript,com.gargoylesoftware.htmlunit.javascript.configuration"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.gargoylesoftware.htmlunit.javascript.host.canvas"/>
+      <attribute name="version" type="Version" value="2.22.0"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.htmlunit"/>
+      <attribute name="bundle-version" type="Version" value="2.22.0"/>
+      <directive name="uses" value="com.gargoylesoftware.htmlunit.javascript,com.gargoylesoftware.htmlunit.javascript.configuration,com.gargoylesoftware.htmlunit.javascript.host.arrays,com.gargoylesoftware.htmlunit.javascript.host.html,com.gargoylesoftware.htmlunit.javascript.host.media"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.gargoylesoftware.htmlunit.javascript.host.canvas.ext"/>
+      <attribute name="version" type="Version" value="2.22.0"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.htmlunit"/>
+      <attribute name="bundle-version" type="Version" value="2.22.0"/>
+      <directive name="uses" value="com.gargoylesoftware.htmlunit.javascript,com.gargoylesoftware.htmlunit.javascript.configuration"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.gargoylesoftware.htmlunit.javascript.host.canvas.rendering"/>
+      <attribute name="version" type="Version" value="2.22.0"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.htmlunit"/>
+      <attribute name="bundle-version" type="Version" value="2.22.0"/>
+      <directive name="uses" value="javax.imageio"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.gargoylesoftware.htmlunit.javascript.host.crypto"/>
+      <attribute name="version" type="Version" value="2.22.0"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.htmlunit"/>
+      <attribute name="bundle-version" type="Version" value="2.22.0"/>
+      <directive name="uses" value="com.gargoylesoftware.htmlunit.javascript,com.gargoylesoftware.htmlunit.javascript.configuration,com.gargoylesoftware.htmlunit.javascript.host,com.gargoylesoftware.htmlunit.javascript.host.arrays"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.gargoylesoftware.htmlunit.javascript.host.css"/>
+      <attribute name="version" type="Version" value="2.22.0"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.htmlunit"/>
+      <attribute name="bundle-version" type="Version" value="2.22.0"/>
+      <directive name="uses" value="com.gargoylesoftware.htmlunit,com.gargoylesoftware.htmlunit.html,com.gargoylesoftware.htmlunit.javascript,com.gargoylesoftware.htmlunit.javascript.configuration,com.gargoylesoftware.htmlunit.javascript.host,com.gargoylesoftware.htmlunit.javascript.host.dom,com.gargoylesoftware.htmlunit.javascript.host.event,com.gargoylesoftware.htmlunit.javascript.host.html"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.gargoylesoftware.htmlunit.javascript.host.dom"/>
+      <attribute name="version" type="Version" value="2.22.0"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.htmlunit"/>
+      <attribute name="bundle-version" type="Version" value="2.22.0"/>
+      <directive name="uses" value="com.gargoylesoftware.htmlunit,com.gargoylesoftware.htmlunit.html,com.gargoylesoftware.htmlunit.html.impl,com.gargoylesoftware.htmlunit.javascript,com.gargoylesoftware.htmlunit.javascript.configuration,com.gargoylesoftware.htmlunit.javascript.host,com.gargoylesoftware.htmlunit.javascript.host.css,com.gargoylesoftware.htmlunit.javascript.host.event,com.gargoylesoftware.htmlunit.javascript.host.html,com.gargoylesoftware.htmlunit.javascript.host.xml"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.gargoylesoftware.htmlunit.javascript.host.event"/>
+      <attribute name="version" type="Version" value="2.22.0"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.htmlunit"/>
+      <attribute name="bundle-version" type="Version" value="2.22.0"/>
+      <directive name="uses" value="com.gargoylesoftware.htmlunit,com.gargoylesoftware.htmlunit.html,com.gargoylesoftware.htmlunit.javascript,com.gargoylesoftware.htmlunit.javascript.configuration,com.gargoylesoftware.htmlunit.javascript.host"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.gargoylesoftware.htmlunit.javascript.host.fetch"/>
+      <attribute name="version" type="Version" value="2.22.0"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.htmlunit"/>
+      <attribute name="bundle-version" type="Version" value="2.22.0"/>
+      <directive name="uses" value="com.gargoylesoftware.htmlunit.javascript,com.gargoylesoftware.htmlunit.javascript.configuration"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.gargoylesoftware.htmlunit.javascript.host.file"/>
+      <attribute name="version" type="Version" value="2.22.0"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.htmlunit"/>
+      <attribute name="bundle-version" type="Version" value="2.22.0"/>
+      <directive name="uses" value="com.gargoylesoftware.htmlunit.javascript,com.gargoylesoftware.htmlunit.javascript.configuration,com.gargoylesoftware.htmlunit.javascript.host.dom,com.gargoylesoftware.htmlunit.javascript.host.event"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.gargoylesoftware.htmlunit.javascript.host.geo"/>
+      <attribute name="version" type="Version" value="2.22.0"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.htmlunit"/>
+      <attribute name="bundle-version" type="Version" value="2.22.0"/>
+      <directive name="uses" value="com.gargoylesoftware.htmlunit.javascript,com.gargoylesoftware.htmlunit.javascript.configuration"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.gargoylesoftware.htmlunit.javascript.host.html"/>
+      <attribute name="version" type="Version" value="2.22.0"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.htmlunit"/>
+      <attribute name="bundle-version" type="Version" value="2.22.0"/>
+      <directive name="uses" value="com.gargoylesoftware.htmlunit,com.gargoylesoftware.htmlunit.html,com.gargoylesoftware.htmlunit.javascript,com.gargoylesoftware.htmlunit.javascript.configuration,com.gargoylesoftware.htmlunit.javascript.host,com.gargoylesoftware.htmlunit.javascript.host.css,com.gargoylesoftware.htmlunit.javascript.host.dom,com.gargoylesoftware.htmlunit.javascript.host.event"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.gargoylesoftware.htmlunit.javascript.host.idb"/>
+      <attribute name="version" type="Version" value="2.22.0"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.htmlunit"/>
+      <attribute name="bundle-version" type="Version" value="2.22.0"/>
+      <directive name="uses" value="com.gargoylesoftware.htmlunit.javascript,com.gargoylesoftware.htmlunit.javascript.configuration,com.gargoylesoftware.htmlunit.javascript.host.event"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.gargoylesoftware.htmlunit.javascript.host.intl"/>
+      <attribute name="version" type="Version" value="2.22.0"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.htmlunit"/>
+      <attribute name="bundle-version" type="Version" value="2.22.0"/>
+      <directive name="uses" value="com.gargoylesoftware.htmlunit,com.gargoylesoftware.htmlunit.javascript,com.gargoylesoftware.htmlunit.javascript.configuration"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.gargoylesoftware.htmlunit.javascript.host.media"/>
+      <attribute name="version" type="Version" value="2.22.0"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.htmlunit"/>
+      <attribute name="bundle-version" type="Version" value="2.22.0"/>
+      <directive name="uses" value="com.gargoylesoftware.htmlunit.javascript,com.gargoylesoftware.htmlunit.javascript.configuration,com.gargoylesoftware.htmlunit.javascript.host.event"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.gargoylesoftware.htmlunit.javascript.host.media.midi"/>
+      <attribute name="version" type="Version" value="2.22.0"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.htmlunit"/>
+      <attribute name="bundle-version" type="Version" value="2.22.0"/>
+      <directive name="uses" value="com.gargoylesoftware.htmlunit.javascript,com.gargoylesoftware.htmlunit.javascript.configuration,com.gargoylesoftware.htmlunit.javascript.host.event"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.gargoylesoftware.htmlunit.javascript.host.media.presentation"/>
+      <attribute name="version" type="Version" value="2.22.0"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.htmlunit"/>
+      <attribute name="bundle-version" type="Version" value="2.22.0"/>
+      <directive name="uses" value="com.gargoylesoftware.htmlunit.javascript,com.gargoylesoftware.htmlunit.javascript.configuration"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.gargoylesoftware.htmlunit.javascript.host.media.rtc"/>
+      <attribute name="version" type="Version" value="2.22.0"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.htmlunit"/>
+      <attribute name="bundle-version" type="Version" value="2.22.0"/>
+      <directive name="uses" value="com.gargoylesoftware.htmlunit.javascript,com.gargoylesoftware.htmlunit.javascript.configuration,com.gargoylesoftware.htmlunit.javascript.host.event"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.gargoylesoftware.htmlunit.javascript.host.moz"/>
+      <attribute name="version" type="Version" value="2.22.0"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.htmlunit"/>
+      <attribute name="bundle-version" type="Version" value="2.22.0"/>
+      <directive name="uses" value="com.gargoylesoftware.htmlunit.javascript,com.gargoylesoftware.htmlunit.javascript.configuration"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.gargoylesoftware.htmlunit.javascript.host.performance"/>
+      <attribute name="version" type="Version" value="2.22.0"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.htmlunit"/>
+      <attribute name="bundle-version" type="Version" value="2.22.0"/>
+      <directive name="uses" value="com.gargoylesoftware.htmlunit.javascript,com.gargoylesoftware.htmlunit.javascript.configuration,com.gargoylesoftware.htmlunit.javascript.host.event"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.gargoylesoftware.htmlunit.javascript.host.security"/>
+      <attribute name="version" type="Version" value="2.22.0"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.htmlunit"/>
+      <attribute name="bundle-version" type="Version" value="2.22.0"/>
+      <directive name="uses" value="com.gargoylesoftware.htmlunit.javascript,com.gargoylesoftware.htmlunit.javascript.configuration"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.gargoylesoftware.htmlunit.javascript.host.speech"/>
+      <attribute name="version" type="Version" value="2.22.0"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.htmlunit"/>
+      <attribute name="bundle-version" type="Version" value="2.22.0"/>
+      <directive name="uses" value="com.gargoylesoftware.htmlunit.javascript,com.gargoylesoftware.htmlunit.javascript.configuration,com.gargoylesoftware.htmlunit.javascript.host.event"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.gargoylesoftware.htmlunit.javascript.host.svg"/>
+      <attribute name="version" type="Version" value="2.22.0"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.htmlunit"/>
+      <attribute name="bundle-version" type="Version" value="2.22.0"/>
+      <directive name="uses" value="com.gargoylesoftware.htmlunit.javascript,com.gargoylesoftware.htmlunit.javascript.configuration,com.gargoylesoftware.htmlunit.javascript.host,com.gargoylesoftware.htmlunit.javascript.host.dom,com.gargoylesoftware.htmlunit.svg"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.gargoylesoftware.htmlunit.javascript.host.worker"/>
+      <attribute name="version" type="Version" value="2.22.0"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.htmlunit"/>
+      <attribute name="bundle-version" type="Version" value="2.22.0"/>
+      <directive name="uses" value="com.gargoylesoftware.htmlunit.javascript,com.gargoylesoftware.htmlunit.javascript.configuration,com.gargoylesoftware.htmlunit.javascript.host.event"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.gargoylesoftware.htmlunit.javascript.host.xml"/>
+      <attribute name="version" type="Version" value="2.22.0"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.htmlunit"/>
+      <attribute name="bundle-version" type="Version" value="2.22.0"/>
+      <directive name="uses" value="com.gargoylesoftware.htmlunit,com.gargoylesoftware.htmlunit.html,com.gargoylesoftware.htmlunit.javascript,com.gargoylesoftware.htmlunit.javascript.configuration,com.gargoylesoftware.htmlunit.javascript.host.dom,com.gargoylesoftware.htmlunit.javascript.host.event,com.gargoylesoftware.htmlunit.javascript.host.html"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.gargoylesoftware.htmlunit.javascript.regexp"/>
+      <attribute name="version" type="Version" value="2.22.0"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.htmlunit"/>
+      <attribute name="bundle-version" type="Version" value="2.22.0"/>
+      <directive name="uses" value="com.gargoylesoftware.htmlunit"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.gargoylesoftware.htmlunit.protocol"/>
+      <attribute name="version" type="Version" value="2.22.0"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.htmlunit"/>
+      <attribute name="bundle-version" type="Version" value="2.22.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.gargoylesoftware.htmlunit.protocol.about"/>
+      <attribute name="version" type="Version" value="2.22.0"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.htmlunit"/>
+      <attribute name="bundle-version" type="Version" value="2.22.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.gargoylesoftware.htmlunit.protocol.data"/>
+      <attribute name="version" type="Version" value="2.22.0"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.htmlunit"/>
+      <attribute name="bundle-version" type="Version" value="2.22.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.gargoylesoftware.htmlunit.protocol.javascript"/>
+      <attribute name="version" type="Version" value="2.22.0"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.htmlunit"/>
+      <attribute name="bundle-version" type="Version" value="2.22.0"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.gargoylesoftware.htmlunit.svg"/>
+      <attribute name="version" type="Version" value="2.22.0"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.htmlunit"/>
+      <attribute name="bundle-version" type="Version" value="2.22.0"/>
+      <directive name="uses" value="com.gargoylesoftware.htmlunit,com.gargoylesoftware.htmlunit.html"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.gargoylesoftware.htmlunit.util"/>
+      <attribute name="version" type="Version" value="2.22.0"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.htmlunit"/>
+      <attribute name="bundle-version" type="Version" value="2.22.0"/>
+      <directive name="uses" value="com.gargoylesoftware.htmlunit"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.gargoylesoftware.htmlunit.xml"/>
+      <attribute name="version" type="Version" value="2.22.0"/>
+      <attribute name="bundle-symbolic-name" value="net.sourceforge.htmlunit"/>
+      <attribute name="bundle-version" type="Version" value="2.22.0"/>
+      <directive name="uses" value="com.gargoylesoftware.htmlunit,com.gargoylesoftware.htmlunit.html"/>
+    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=com.gargoylesoftware.htmlunit.attachment)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=com.gargoylesoftware.htmlunit.gae)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=com.gargoylesoftware.htmlunit.javascript.host.canvas.ext)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=com.gargoylesoftware.htmlunit.javascript.host.fetch)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=com.gargoylesoftware.htmlunit.javascript.host.idb)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=com.gargoylesoftware.htmlunit.javascript.host.media)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=com.gargoylesoftware.htmlunit.javascript.host.media.midi)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=com.gargoylesoftware.htmlunit.javascript.host.media.presentation)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=com.gargoylesoftware.htmlunit.javascript.host.media.rtc)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=com.gargoylesoftware.htmlunit.javascript.host.moz)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=com.gargoylesoftware.htmlunit.javascript.host.security)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=com.gargoylesoftware.htmlunit.javascript.host.speech)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=com.gargoylesoftware.htmlunit.protocol)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=com.gargoylesoftware.htmlunit.protocol.about)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=com.gargoylesoftware.htmlunit.protocol.javascript)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.crypto)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.crypto.spec)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.imageio)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.imageio.stream)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.naming)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.naming.directory)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.naming.ldap)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.net)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.net.ssl)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.security.auth.x500)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.servlet)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.servlet.http)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.swing)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.swing.border)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.swing.event)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.swing.filechooser)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.swing.table)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.swing.text)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=javax.swing.tree)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.apache.avalon.framework.logger)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.apache.log)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.apache.log4j)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.apache.xml.resolver)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.apache.xml.resolver.readers)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.ietf.jgss)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.slf4j)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.slf4j.helpers)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=org.slf4j.spi)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(osgi.wiring.package=sun.io)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.ee">
+      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.7))"/>
+    </requirement>
+  </resource>
 </repository>

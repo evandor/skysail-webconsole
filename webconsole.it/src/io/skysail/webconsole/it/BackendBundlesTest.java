@@ -4,13 +4,12 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
 
-@RunWith(MockitoJUnitRunner.class)
+//@RunWith(MockitoJUnitRunner.class)
 public class BackendBundlesTest {
 
     private final BundleContext context = FrameworkUtil.getBundle(BackendBundlesTest.class).getBundleContext();
@@ -28,8 +27,9 @@ public class BackendBundlesTest {
     }
 
     @Test
-    public void testName() {
-        String bundlesJson = browser.getBundles();
-
+    @Ignore
+    public void testName() throws Exception {
+        String bundlespage = browser.getBundles();
+        System.out.println(bundlespage);
     }
 }

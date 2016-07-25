@@ -21,7 +21,7 @@ public abstract class AbstractHttpHandler {
     abstract String getResponse(IHTTPSession session) throws JsonProcessingException;
 
     protected String post(IHTTPSession session) throws JsonProcessingException {
-    	return "";
+        return "";
     }
 
     String getMimeType() {
@@ -38,14 +38,18 @@ public abstract class AbstractHttpHandler {
 
             String msg;
             try {
-            	if (session.getMethod().equals(Method.GET)) {
-            		msg = getResponse(session);
-            	} else if (session.getMethod().equals(Method.POST)) {
-            		msg = post(session);
-            	} else {
-            		throw new UnsupportedOperationException();
-            	}
-            	r =  NanoHTTPD.newFixedLengthResponse(Status.OK, getMimeType(), msg);
+                if (session.getMethod().equals(Method.GET)) {
+                    msg = getResponse(session);
+                } else if (session.getMethod().equals(Method.POST)) {
+                    msg = post(session);
+                } else {
+                    throw new UnsupportedOperationException();
+                }
+                String mimeType = getMimeType();
+                if (session.getUri().endsWith(".js")){
+                    mimeType = "application/javascript";
+                }
+                r = NanoHTTPD.newFixedLengthResponse(Status.OK, mimeType, msg);
             } catch (IOException e) {
                 log.error(e.getMessage(), e);
                 return fi.iki.elonen.NanoHTTPD.newFixedLengthResponse(Status.INTERNAL_ERROR, NanoHTTPD.MIME_HTML,
@@ -68,6 +72,5 @@ public abstract class AbstractHttpHandler {
 
         return resp;
     }
-
 
 }
