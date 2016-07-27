@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="bnd:org.apache.servicemix.bundles.junit:4.12.0.1">
-    <CLASSES>
-      <root url="jar://$USER_HOME$/.bnd/shacache/shas/BFF4106CB0BB14A5718C40A5D2B04B98DDC6E643/org.apache.servicemix.bundles.junit-4.12.0.1.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

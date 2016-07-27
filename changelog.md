@@ -12,6 +12,8 @@
 #### changes:
 
  * adding search feature to services overview
+ * some cleanups
+ * new standalone version
 
 
 ## webconsole.all 0.1.10

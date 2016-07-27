@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="bnd:slf4j.api:1.7.7">
-    <CLASSES>
-      <root url="jar://$USER_HOME$/.bnd/cache/https%3A%2F%2Fraw.githubusercontent.com%2Fbndtools%2Fbundle-hub%2Fmaster%2Fslf4j.api/slf4j.api-1.7.7.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="bnd:org.mockito.mockito-core:1.9.5">
-    <CLASSES>
-      <root url="jar://$USER_HOME$/.bnd/cache/https%3A%2F%2Fraw.githubusercontent.com%2Fbndtools%2Fbundle-hub%2Fmaster%2Forg.mockito.mockito-core/org.mockito.mockito-core-1.9.5.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

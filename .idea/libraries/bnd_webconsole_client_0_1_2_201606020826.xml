@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="bnd:webconsole.client:0.1.2.201606020826">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/cnf/release/webconsole.client/webconsole.client-0.1.2.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

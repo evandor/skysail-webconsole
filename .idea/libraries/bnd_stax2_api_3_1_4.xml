@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="bnd:stax2-api:3.1.4">
-    <CLASSES>
-      <root url="jar://$USER_HOME$/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/stax2-api-3.1.4.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

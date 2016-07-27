@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="bnd:slf4j.api:1.7.21">
-    <CLASSES>
-      <root url="jar://$USER_HOME$/.bnd/cache/https%3A%2F%2Fgithub.com%2Fevandor%2Fskysail-repository%2Fraw%2Fmaster%2Frelease/slf4j-api-1.7.21.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
