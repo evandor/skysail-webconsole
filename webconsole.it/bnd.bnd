@@ -27,8 +27,9 @@ Test-Cases: ${classes;CONCRETE;ANNOTATED;org.junit.runner.RunWith}
 	${mockito},\
 	osgi.annotation;version=6.0.1,\
 	osgi.core;version=6.0,\
-	osgi.cmpn;version=6.0,\
-	net.sourceforge.htmlunit;version=2.22
+	osgi.cmpn;version=6.0
+	#,\
+	#net.sourceforge.htmlunit;version=2.22
 
 javac.source: 1.8
 javac.target: 1.8
@@ -49,8 +50,9 @@ tester.trace: true
     org.apache.felix.gogo.command;version='[0.16.0,0.16.1)',\
     org.apache.felix.gogo.runtime;version='[0.16.2,0.16.3)',\
     org.apache.felix.gogo.shell;version='[0.12.0,0.12.1)',\
-    slf4j.api;version='[1.7.21,1.7.22)',\
-    net.sourceforge.htmlunit;version=2.22
+    slf4j.api;version='[1.7.21,1.7.22)'
+    #,\
+    #net.sourceforge.htmlunit;version=2.22
 
 # Needed for Mockito's mocking to work
 -runsystempackages.objenesis: sun.misc,sun.reflect

@@ -1,5 +1,19 @@
 # skysail-webconsole changelog
 
+## webconsole.all 0.1.11
+
+### based on 
+
+  * webconsole.version           0.3.11
+  * webconsole.antlr.version     0.2.2
+  * webconsole.client.version    0.1.20
+  * webconsole.osgi.version      0.1.15
+
+#### changes:
+
+ * adding search feature to services overview
+
+
 ## webconsole.all 0.1.10
 
 ### based on 
