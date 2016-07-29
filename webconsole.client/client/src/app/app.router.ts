@@ -9,6 +9,7 @@ import {ServiceComponent} from './components/services/service.component';
 import {PackagesComponent} from './components/packages.component'
 import {HelpComponent} from './components/help.component';
 import {SnapshotsComponent} from './components/snapshots/snapshots.component';
+import {RuntimeComponent} from './components/runtime.component';
 import {BundleContentComponent} from './components/bundles/bundlecontent.component'
 import {CodeMirrorComponent} from './components/codemirror.component'
 
@@ -25,6 +26,7 @@ export const routes: RouterConfig = [
     { path: 'packages',     component: PackagesComponent },
     { path: 'logs',         component: LogsComponent },
     { path: 'snapshots',    component: SnapshotsComponent },
+    { path: 'runtime',      component: RuntimeComponent },
     { path: 'config',       component: ConfigComponent },
     { path: 'help',         component: HelpComponent },
     { path: '**',           component: BundlesComponent }

@@ -18,18 +18,15 @@ export class D3ServiceDepDirective {
     constructor(private _el: ElementRef, private _backend: BackendServices) { }
 
     ngOnInit() {
-        var url = "http://localhost:2002/backend/v1/snapshotdetails/latest"
-        var identifier = "#d3serviceDep";
-        d3.json(url, function (error, data) {
-            if (error != null) {
-                console.log(error);
-            }
+        this._backend.getLatestSnapshot().subscribe(res => {
+            
+            var identifier = "#d3serviceDep";
 
             var nodes = Array<Node>();
             var edges = Array<Edge>();
             var toCounter = new Map<string, number>();
 
-            var filteredBundles = data.bundles.filter(function(el) {
+            var filteredBundles = res.bundles.filter(function(el) {
                 //console.log(el.id);
                 return el;//el.id == 0 ? null : el;
             });
@@ -47,7 +44,7 @@ export class D3ServiceDepDirective {
 
             function getProvidingBundle(serviceId: string) {
                 var result = null;
-                data.services.forEach(service => {
+                res.services.forEach(service => {
                     if (service.id == serviceId) {
                         result = service.bundleId;
                     }

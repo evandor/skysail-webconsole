@@ -11,7 +11,8 @@ public class FrameworkHandler extends AbstractHttpHandler { // NOSONAR
 
     private BundleContext bundleContext;
 
-    public FrameworkHandler(BundleContext bundleContext) {
+    public FrameworkHandler(BundleContext bundleContext, String basicAuth) {
+        super(basicAuth);
         this.bundleContext = bundleContext;
     }
 

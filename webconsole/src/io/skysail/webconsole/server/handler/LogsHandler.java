@@ -10,16 +10,17 @@ import io.skysail.webconsole.services.LogService;
 
 public class LogsHandler extends AbstractHttpHandler {
 
-	private LogService logService;
+    private LogService logService;
 
-	public LogsHandler(LogService logService) {
-		this.logService = logService;
-	}
+    public LogsHandler(LogService logService, String basicAuth) {
+        super(basicAuth);
+        this.logService = logService;
+    }
 
-	@Override
-	String getResponse(IHTTPSession session) throws JsonProcessingException {
+    @Override
+    String getResponse(IHTTPSession session) throws JsonProcessingException {
         List<LogEntryDescriptor> descriptors = logService.getLogEntries();
         return mapper.writeValueAsString(descriptors);
-	}
+    }
 
 }

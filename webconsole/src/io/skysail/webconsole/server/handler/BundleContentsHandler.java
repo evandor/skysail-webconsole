@@ -12,7 +12,8 @@ public class BundleContentsHandler extends AbstractHttpHandler { // NOSONAR
 
     private OsgiServiceTracker osgiServiceTracker;
 
-    public BundleContentsHandler(OsgiServiceTracker osgiServiceTracker) {
+    public BundleContentsHandler(OsgiServiceTracker osgiServiceTracker, String basicAuth) {
+        super(basicAuth);
         this.osgiServiceTracker = osgiServiceTracker;
     }
 

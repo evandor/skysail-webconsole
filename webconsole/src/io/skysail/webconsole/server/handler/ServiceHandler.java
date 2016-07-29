@@ -15,7 +15,8 @@ public class ServiceHandler extends AbstractHttpHandler { // NOSONAR
 
     private BundleContext bundleContext;
 
-    public ServiceHandler(BundleContext bundleContext) {
+    public ServiceHandler(BundleContext bundleContext, String basicAuth) {
+        super(basicAuth);
         this.bundleContext = bundleContext;
     }
 

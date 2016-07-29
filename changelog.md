@@ -14,6 +14,8 @@
  * adding search feature to services overview
  * some cleanups
  * new standalone version
+ * port and http basic authentication password can be configured
+ * new tab RuntimeConfig
 
 
 ## webconsole.all 0.1.10

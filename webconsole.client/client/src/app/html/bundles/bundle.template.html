@@ -83,13 +83,14 @@
     <table class="table">
       <thead>
         <tr>
-          <th width='200px;'>Package</th>
+          <th width='200px;'>Package  <input type="text" name="search_name" size="20" style="border: 0px solid gray;"
+              [(ngModel)]="searchName" /> <i class="fa fa-search" aria-hidden="true"></i></th>
           <th>Version Range</th>
           <th>Resolution</th>
           <th>Satiesfied by (Candidates)</th>
         </tr>
       </thead>
-      <tr *ngFor="let pkg of bundle.importPackage">
+      <tr *ngFor="let pkg of (bundle.importPackage | packagesFilter:searchName)">
         <td [class]="getImportPackageClass(pkg)">
           <span class="glyphicon glyphicon-log-in" aria-hidden="true" style="color: blue"></span>&nbsp;&nbsp;<b>{{pkg.pkgName}}</b>
         </td>

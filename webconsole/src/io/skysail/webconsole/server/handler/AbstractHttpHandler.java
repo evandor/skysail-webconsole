@@ -17,6 +17,11 @@ import lombok.extern.slf4j.Slf4j;
 public abstract class AbstractHttpHandler {
 
     protected ObjectMapper mapper = new ObjectMapper();
+    private String basicAuth;
+
+    public AbstractHttpHandler(String basicAuth) {
+        this.basicAuth = basicAuth;
+    }
 
     abstract String getResponse(IHTTPSession session) throws JsonProcessingException;
 
@@ -35,6 +40,14 @@ public abstract class AbstractHttpHandler {
         if (cors != null && Method.OPTIONS.equals(session.getMethod())) {
             r = fi.iki.elonen.NanoHTTPD.newFixedLengthResponse(Status.OK, "text/plain", null, 0);
         } else {
+
+            // apply basic authentication
+            Map<String, String> headers = session.getHeaders();
+            if (basicAuth != null && !basicAuth.equals(headers.get("authorization"))) {
+                Response response = NanoHTTPD.newFixedLengthResponse(Status.UNAUTHORIZED,  NanoHTTPD.MIME_PLAINTEXT, "Needs authentication.");
+                response.addHeader("WWW-Authenticate", "Basic realm=\"SkysailWebconsole\"");
+                return response;
+            }
 
             String msg;
             try {
@@ -65,7 +78,7 @@ public abstract class AbstractHttpHandler {
 
     protected Response addCORSHeaders(Map<String, String> queryHeaders, Response resp, String cors) {
         resp.addHeader("Access-Control-Allow-Origin", cors);
-        resp.addHeader("Access-Control-Allow-Headers", "origin,accept,content-type");
+        resp.addHeader("Access-Control-Allow-Headers", "origin,accept,content-type,Authorization,Access-Control-Allow-Origin");
         resp.addHeader("Access-Control-Allow-Credentials", "true");
         resp.addHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD");
         resp.addHeader("Access-Control-Max-Age", "" + 42 * 60 * 60);

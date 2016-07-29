@@ -9,7 +9,8 @@ public class SnapshotHandler extends AbstractHttpHandler { // NOSONAR
 
     private SnapshotsService snapshotsService;
 
-    public SnapshotHandler(SnapshotsService snapshotsService) {
+    public SnapshotHandler(SnapshotsService snapshotsService, String basicAuth) {
+        super(basicAuth);
         this.snapshotsService = snapshotsService;
     }
 

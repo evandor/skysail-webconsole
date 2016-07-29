@@ -32,16 +32,12 @@ System.register(['@angular/core', '../services/backend.service', 'd3'], function
                     this.pNodes = Array(); // providerNodes
                 }
                 D3BundleSizesDirective.prototype.ngOnInit = function () {
-                    var url = "http://localhost:2002/backend/v1/bundles";
-                    d3.json(url, function (error, data) {
-                        if (error != null) {
-                            console.log(error);
-                        }
+                    this._backend.getBundles().subscribe(function (res) {
                         var pieChart = d3.layout.pie();
                         pieChart.value(function (d) {
                             return d.size;
                         });
-                        var yourPie = pieChart(data);
+                        var yourPie = pieChart(res);
                         var newArc = d3.svg.arc();
                         newArc.outerRadius(200);
                         newArc.innerRadius(140);

@@ -12,7 +12,8 @@ public class BundleListenerHandler extends AbstractHttpHandler { // NOSONAR
 
     private ObjectMapper mapper = new ObjectMapper();
 
-    public BundleListenerHandler(AgentBundleListener bundleListener) {
+    public BundleListenerHandler(AgentBundleListener bundleListener, String basicAuth) {
+        super(basicAuth);
         this.bundleListener = bundleListener;
     }
 

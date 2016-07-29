@@ -9,7 +9,8 @@ public class FrameworkListenerHandler extends AbstractHttpHandler {
 
     private AgentFrameworkListener frameworklistener;
 
-    public FrameworkListenerHandler(AgentFrameworkListener serviceListener) {
+    public FrameworkListenerHandler(AgentFrameworkListener serviceListener, String basicAuth) {
+        super(basicAuth);
         this.frameworklistener = serviceListener;
     }
 

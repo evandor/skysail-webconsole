@@ -11,7 +11,8 @@ public class PackagesHandler extends AbstractHttpHandler {
 
     private OsgiServiceTracker osgiServiceTracker;
 
-    public PackagesHandler(OsgiServiceTracker osgiServiceTracker) {
+    public PackagesHandler(OsgiServiceTracker osgiServiceTracker, String basicAuth) {
+        super(basicAuth);
         this.osgiServiceTracker = osgiServiceTracker;
     }
 

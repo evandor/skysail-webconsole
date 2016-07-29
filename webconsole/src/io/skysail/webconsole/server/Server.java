@@ -1,7 +1,9 @@
 package io.skysail.webconsole.server;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.Arrays;
+import java.util.Base64;
 
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
@@ -20,6 +22,7 @@ import io.skysail.webconsole.server.handler.FrameworkHandler;
 import io.skysail.webconsole.server.handler.FrameworkListenerHandler;
 import io.skysail.webconsole.server.handler.LogsHandler;
 import io.skysail.webconsole.server.handler.PackagesHandler;
+import io.skysail.webconsole.server.handler.RuntimeConfigHandler;
 import io.skysail.webconsole.server.handler.ServiceHandler;
 import io.skysail.webconsole.server.handler.ServiceListenerHandler;
 import io.skysail.webconsole.server.handler.ServicesHandler;
@@ -68,6 +71,8 @@ public class Server extends NanoHTTPD {
 
     private VersionHandler versionHandler;
 
+    private RuntimeConfigHandler runtimeConfigHandler;
+
     private SnapshotsService snapshotsService;
 
     private LogService logService;
@@ -76,8 +81,13 @@ public class Server extends NanoHTTPD {
     private BundleContentsHandler bundleContentsHandler;
     private BundleFileContentHandler bundleFileContentHandler;
 
-    public Server(BundleContext bundleContext, OsgiServiceTracker osgiServiceTracker, int port) throws IOException {
+    public Server(BundleContext bundleContext, OsgiServiceTracker osgiServiceTracker, int port, String httpBasicPassword) throws IOException {
         super(port);
+
+        //String basicAuth = "Basic " + DatatypeConverter.printBase64Binary(("websonsole" + ":" + httpBasicPassword).getBytes());
+
+        String basicAuth = "Basic " + new String(Base64.getEncoder().encode(("webconsole" + ":" + httpBasicPassword).getBytes()), Charset.forName("UTF-8"));
+
         start(NanoHTTPD.SOCKET_READ_TIMEOUT, false);
 
         snapshotsService = new SnapshotsService(bundleContext);
@@ -87,26 +97,28 @@ public class Server extends NanoHTTPD {
         serviceListener = new AgentServiceListener(bundleContext);
         frameworkListener = new AgentFrameworkListener(bundleContext);
 
-        bundlesHandler = new BundlesHandler(osgiServiceTracker);
-        bundleServicesHandler = new BundleServicesHandler(osgiServiceTracker);
-        bundleContentsHandler = new BundleContentsHandler(osgiServiceTracker);
-        bundleFileContentHandler = new BundleFileContentHandler(osgiServiceTracker);
+        bundlesHandler = new BundlesHandler(osgiServiceTracker, basicAuth);
+        bundleServicesHandler = new BundleServicesHandler(osgiServiceTracker, basicAuth);
+        bundleContentsHandler = new BundleContentsHandler(osgiServiceTracker, basicAuth);
+        bundleFileContentHandler = new BundleFileContentHandler(osgiServiceTracker, basicAuth);
 
-        servicesHandler = new ServicesHandler(osgiServiceTracker);
-        packagesHandler = new PackagesHandler(osgiServiceTracker);
+        servicesHandler = new ServicesHandler(osgiServiceTracker, basicAuth);
+        packagesHandler = new PackagesHandler(osgiServiceTracker, basicAuth);
 
-        snapshotsHandler = new SnapshotsHandler(snapshotsService);
-        snapshotHandler = new SnapshotHandler(snapshotsService);
+        snapshotsHandler = new SnapshotsHandler(snapshotsService, basicAuth);
+        snapshotHandler = new SnapshotHandler(snapshotsService, basicAuth);
 
-        logsHandler = new LogsHandler(logService);
-        frameworkHandler = new FrameworkHandler(bundleContext);
+        logsHandler = new LogsHandler(logService, basicAuth);
+        frameworkHandler = new FrameworkHandler(bundleContext, basicAuth);
 
-        bundleHandler = new BundleHandler(osgiServiceTracker);
-        serviceHandler = new ServiceHandler(bundleContext);
+        bundleHandler = new BundleHandler(osgiServiceTracker, basicAuth);
+        serviceHandler = new ServiceHandler(bundleContext, basicAuth);
 
-        bundleListenerHandler = new BundleListenerHandler(bundleListener);
-        serviceListenerHandler = new ServiceListenerHandler(serviceListener);
-        frameworkListenerHandler = new FrameworkListenerHandler(frameworkListener);
+        bundleListenerHandler = new BundleListenerHandler(bundleListener, basicAuth);
+        serviceListenerHandler = new ServiceListenerHandler(serviceListener, basicAuth);
+        frameworkListenerHandler = new FrameworkListenerHandler(frameworkListener, basicAuth);
+
+        runtimeConfigHandler = new RuntimeConfigHandler(basicAuth);
 
         Bundle clientBundle = Arrays.stream(bundleContext.getBundles())
                 .filter(b -> b.getSymbolicName().equals(WEBCONSOLE_CLIENT)).findFirst()
@@ -114,7 +126,7 @@ public class Server extends NanoHTTPD {
 
         log.info("using client bundle '{}' [{}]", clientBundle.getSymbolicName(), clientBundle.getVersion());
 
-        versionHandler = new VersionHandler(clientBundle);
+        versionHandler = new VersionHandler(clientBundle, basicAuth);
         staticFilesHandler = new StaticFilesHandler(clientBundle);
 
         /*
@@ -206,6 +218,9 @@ public class Server extends NanoHTTPD {
         }
         if ("/backend/v1/client/version".equals(session.getUri())) {
             return versionHandler.handle(session);
+        }
+        if ("/backend/v1/runtimeconfig".equals(session.getUri())) {
+            return runtimeConfigHandler.handle(session);
         }
         if (session.getUri().equals("") || session.getUri().equals("/")) {
             Response res = newFixedLengthResponse(Response.Status.REDIRECT, NanoHTTPD.MIME_HTML, "");

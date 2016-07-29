@@ -38,16 +38,12 @@ System.register(['@angular/core', '../services/backend.service', '../domain/node
                     this.pNodes = Array(); // providerNodes
                 }
                 D3ServiceDepDirective.prototype.ngOnInit = function () {
-                    var url = "http://localhost:2002/backend/v1/snapshotdetails/latest";
-                    var identifier = "#d3serviceDep";
-                    d3.json(url, function (error, data) {
-                        if (error != null) {
-                            console.log(error);
-                        }
+                    this._backend.getLatestSnapshot().subscribe(function (res) {
+                        var identifier = "#d3serviceDep";
                         var nodes = Array();
                         var edges = Array();
                         var toCounter = new Map();
-                        var filteredBundles = data.bundles.filter(function (el) {
+                        var filteredBundles = res.bundles.filter(function (el) {
                             //console.log(el.id);
                             return el; //el.id == 0 ? null : el;
                         });
@@ -62,7 +58,7 @@ System.register(['@angular/core', '../services/backend.service', '../domain/node
                         });
                         function getProvidingBundle(serviceId) {
                             var result = null;
-                            data.services.forEach(function (service) {
+                            res.services.forEach(function (service) {
                                 if (service.id == serviceId) {
                                     result = service.bundleId;
                                 }

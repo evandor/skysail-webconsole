@@ -65,9 +65,9 @@ public class AgentActivator implements BundleActivator {
 
     private void createServer() { // NOSONAR
         try {
-            int port = 2002;
+            int port = Integer.parseInt(System.getProperty("skysail.webconsole.port", "2002"));
             log.info("starting intern webconsole server on port {}", port);
-            server = new io.skysail.webconsole.server.Server(context, osgiServiceTracker, port );
+            server = new io.skysail.webconsole.server.Server(context, osgiServiceTracker, port, "webconsole");
         } catch (Exception e) {
             log.error(e.getMessage(), e);
         }

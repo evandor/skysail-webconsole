@@ -38,20 +38,17 @@ System.register(['@angular/core', '../services/backend.service', '../domain/node
                     this.pNodes = Array(); // providerNodes
                 }
                 D3PkgDepDirective.prototype.ngOnInit = function () {
-                    var url = "http://localhost:2002/backend/v1/snapshotdetails/latest";
-                    var identifier = "#d3PkgDep";
-                    d3.json(url, function (error, data) {
-                        if (error != null) {
-                            console.log(error);
-                        }
+                    this._backend.getLatestSnapshot().subscribe(function (res) {
+                        var identifier = "#d3PkgDep";
                         var nodes = Array();
                         var edges = Array();
                         var toCounter = new Map();
-                        var filteredBundles = data.bundles.filter(function (el) {
-                            //console.log(el.id);
-                            return el.id == 0 ? null : el;
-                        });
-                        filteredBundles.forEach(function (bundle) {
+                        /* var filteredBundles = res.bundles.filter(function (el) {
+                             //console.log(el.id);
+                             return el.id == 0 ? null : el;
+                         });*/
+                        //filteredBundles
+                        res.bundles.forEach(function (bundle) {
                             //console.log("creating new Node with id " + bundle.id);
                             nodes.push(new node_1.Node(bundle.id, bundle.symbolicName, 17, 500));
                             //console.log(bundle.wireDescriptor.providedWires);

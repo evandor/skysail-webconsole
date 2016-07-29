@@ -18,16 +18,12 @@ export class D3BundleSizesDirective {
     constructor(private _el: ElementRef, private _backend: BackendServices) { }
 
     ngOnInit() {
-        var url = "http://localhost:2002/backend/v1/bundles"
-        d3.json(url, function (error, data) {
-            if (error != null) {
-                console.log(error);
-            }
+        this._backend.getBundles().subscribe(res => {
             var pieChart = d3.layout.pie();
             pieChart.value(function(d) {
                   return d.size;
               });
-            var yourPie = pieChart(data);
+            var yourPie = pieChart(res);
             var newArc = d3.svg.arc();
             newArc.outerRadius(200);
             newArc.innerRadius(140);

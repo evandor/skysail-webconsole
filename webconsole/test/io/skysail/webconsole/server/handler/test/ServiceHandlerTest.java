@@ -3,6 +3,10 @@ package io.skysail.webconsole.server.handler.test;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
+import static org.mockito.Mockito.when;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -33,9 +37,9 @@ public class ServiceHandlerTest {
     @Before
     public void setup() {
         bundleContext = Mockito.mock(BundleContext.class);
-        serviceHandler = new ServiceHandler(bundleContext);
+        serviceHandler = new ServiceHandler(bundleContext,"webconsole");
         session = Mockito.mock(IHTTPSession.class);
-        Mockito.when(session.getMethod()).thenReturn(Method.GET);
+        when(session.getMethod()).thenReturn(Method.GET);
     }
 
     @Test
@@ -56,14 +60,17 @@ public class ServiceHandlerTest {
         ServiceReference<?> serviceRef = Mockito.mock(ServiceReference.class);
         serviceReferences[0] = serviceRef;
 
-        Mockito.when(bundleContext.getAllServiceReferences(null, "(service.id=1)")).thenReturn(serviceReferences);
-        Mockito.when(session.getUri()).thenReturn("/services/1");
+        when(bundleContext.getAllServiceReferences(null, "(service.id=1)")).thenReturn(serviceReferences);
+        when(session.getUri()).thenReturn("/services/1");
+        Map<String, String> headers = new HashMap<>();
+        headers.put("authorization", "webconsole");
+        when(session.getHeaders()).thenReturn(headers);
 
-        Mockito.when(serviceRef.getProperty(Constants.SERVICE_ID)).thenReturn(1L);
-        Mockito.when(serviceRef.getProperty(Constants.OBJECTCLASS))
+        when(serviceRef.getProperty(Constants.SERVICE_ID)).thenReturn(1L);
+        when(serviceRef.getProperty(Constants.OBJECTCLASS))
                 .thenReturn(new String[] { "org.osgi.service.resolver.Resolver" });
-        Mockito.when(serviceRef.getBundle()).thenReturn(theBundle);
-        Mockito.when(serviceRef.getPropertyKeys()).thenReturn(new String[0]);
+        when(serviceRef.getBundle()).thenReturn(theBundle);
+        when(serviceRef.getPropertyKeys()).thenReturn(new String[0]);
 
         Response response = serviceHandler.handle(session);
 

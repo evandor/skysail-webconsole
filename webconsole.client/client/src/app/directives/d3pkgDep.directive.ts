@@ -18,24 +18,20 @@ export class D3PkgDepDirective {
     constructor(private _el: ElementRef, private _backend: BackendServices) { }
 
     ngOnInit() {
-        var url = "http://localhost:2002/backend/v1/snapshotdetails/latest"
-        var identifier = "#d3PkgDep";
-        d3.json(url, function (error, data) {
-            if (error != null) {
-                console.log(error);
-            }
-
+        this._backend.getLatestSnapshot().subscribe(res => {
+            var identifier = "#d3PkgDep";
             var nodes = Array<Node>();
             var edges = Array<Edge>();
             var toCounter = new Map<string, number>();
 
-            var filteredBundles = data.bundles.filter(function(el) {
-                //console.log(el.id);
-                return el.id == 0 ? null : el;
-            });
+            /* var filteredBundles = res.bundles.filter(function (el) {
+                 //console.log(el.id);
+                 return el.id == 0 ? null : el;
+             });*/
 
 
-            filteredBundles.forEach(bundle => {
+            //filteredBundles
+            res.bundles.forEach(bundle => {
                 //console.log("creating new Node with id " + bundle.id);
                 nodes.push(new Node(bundle.id, bundle.symbolicName, 17, 500));
                 //console.log(bundle.wireDescriptor.providedWires);
@@ -115,7 +111,7 @@ export class D3PkgDepDirective {
                 .attr("d", 'M 0 0 12 6 0 12 3 6');
 
             d3.selectAll("line").attr("marker-end", "url(#Triangle1)");
-            
+
             function forceTick() {
                 d3.selectAll("line.link")
                     .attr("x1", function (d) { return d.source.x; })
@@ -129,6 +125,7 @@ export class D3PkgDepDirective {
                     })
             }
         });
+
     }
 
 

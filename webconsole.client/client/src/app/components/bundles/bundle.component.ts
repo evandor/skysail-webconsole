@@ -29,13 +29,15 @@ import {LinkPipe} from '../../pipes/link.pipe';
 import {BundleStatePipe} from '../../pipes/bundleState.pipe';
 import {MaxLengthPipe} from '../../pipes/maxLength.pipe';
 
+import {PackagesFilter} from '../../pipes/packagesFilter.pipe'
+
 import { TreeComponent } from 'angular2-tree-component';
 
 @Component({
     selector: 'bundle',
     directives: [FORM_DIRECTIVES, NgFor, NgFormModel, Tabs, Tab, SubTab, TreeComponent],
     providers: [BackendServices, HTTP_PROVIDERS],
-    pipes: [NewlinePipe, MaxLengthPipe, ValuesPipe, KeyValuesPipe, BundleStatePipe, LinkPipe],
+    pipes: [NewlinePipe, MaxLengthPipe, ValuesPipe, KeyValuesPipe, BundleStatePipe, LinkPipe,PackagesFilter],
     templateUrl: 'app/html/bundles/bundle.template.html'
 })
 export class BundleComponent implements OnInit {
@@ -44,6 +46,7 @@ export class BundleComponent implements OnInit {
     capabilities: KeyValue[] = [];
     private sub: any;
     wires = [];//new Map<string, Capability[]>();
+    public searchName: string = '';
 
     exportedPackagesNodes = [
         {
@@ -90,15 +93,16 @@ export class BundleComponent implements OnInit {
                     var providedWires = res.wireDescriptor.providedWires;
                     var oldIdentifier = "";
                     var theValue = [];
-                    providedWires.forEach(wire => {
-                        var identifier = wire.capability['id']
-                        if (oldIdentifier != identifier) {
-                            oldIdentifier = identifier;
-                            this.wires[identifier] = Array<any>();
-                        }
-                        this.wires[identifier].push(wire);
-                    });
-
+                    if (providedWires != null) {
+                        providedWires.forEach(wire => {
+                            var identifier = wire.capability['id']
+                            if (oldIdentifier != identifier) {
+                                oldIdentifier = identifier;
+                                this.wires[identifier] = Array<any>();
+                            }
+                            this.wires[identifier].push(wire);
+                        });
+                    }
                     this._backend.getBundleServices(this.bundle.id)
                         .subscribe(serviceRes => {
                             this.bundle.providedServices = serviceRes;
@@ -128,7 +132,7 @@ export class BundleComponent implements OnInit {
             var parentNode = model.getParent(id);
             var nodeName = segment;
             if (id == pkg.pkgName) {
-                nodeName += " ("+pkg.version+")";
+                nodeName += " (" + pkg.version + ")";
             }
             if (parentNode == null) {
                 this.handleSegment(model, model.root, id, nodeName);
@@ -147,7 +151,7 @@ export class BundleComponent implements OnInit {
         });
         if (existingNode == null) {
             root.children.push(new TreeNode(id, segment));
-        } 
+        }
     }
 
     ngOnDestroy() {

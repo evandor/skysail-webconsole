@@ -10,17 +10,21 @@ import {Breadcrumb} from '../components/navbar/breadcrumb';
 import {Bundle} from '../domain/bundle';
 import {ExportPackage} from '../domain/exportPackage'
 
+import {PackagesFilter} from '../pipes/packagesFilter.pipe'
+
 declare var jQuery: any;
 
 @Component({
     selector: 'packages',
     directives: [FORM_DIRECTIVES, ROUTER_DIRECTIVES, NgFor, NgFormModel],
     providers: [BackendServices],
+    pipes: [PackagesFilter],
     templateUrl: 'app/html/packages.template.html'
 })
 export class PackagesComponent implements OnInit {
 
     packages: ExportPackage[];
+    public searchName: string = '';
 
     searchId: string = "";
 

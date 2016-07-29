@@ -1,9 +1,11 @@
 package io.skysail.webconsole.it;
 
+import com.gargoylesoftware.htmlunit.WebClient;
+
 public class Browser {
 
     private String baseUrl;
-    //private WebClient webClient;
+    private WebClient webClient;
 
     public Browser() {
         baseUrl = "http://localhost:2002/";

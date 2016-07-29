@@ -9,6 +9,7 @@
         <li [class]="checkActive('Packages')"><a class="nav-link" [routerLink]="['/packages']">Packages</a></li>
         <li [class]="checkActive('Logs')"><a class="nav-link" [routerLink]="['/logs']">Logs</a></li>
         <li [class]="checkActive('Snapshots')"><a class="nav-link" [routerLink]="['/snapshots']">Snapshots</a></li>
+        <li [class]="checkActive('Runtime')"><a class="nav-link" [routerLink]="['/runtime']">Runtime</a></li>
         <li [class]="checkActive('Help')"><a class="nav-link" [routerLink]="['/help']">?</a></li>
         <li *ngIf="isLoading()" class="nav-item" style="margin-right:30px;"><i class="fa fa-spinner fa-spin" style="font-size:16px;color:green;margin-top:10px;" aria-hidden="true"></i></li>
         <li *ngIf="!isLoading()" class="nav-item" style="margin-right:30px;"><i class="fa fa-check-circle-o" style="font-size:19px;color:green;margin-top:10px;" aria-hidden="true"></i></li>

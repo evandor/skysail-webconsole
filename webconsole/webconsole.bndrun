@@ -36,3 +36,5 @@
     #skysail.api;version=latest
 
 #    org.apache.felix.webconsole.plugins.memoryusage;version='[1.0.4,1.0.5)',\
+-runvm: skysail.webconsole.port=2003
+	

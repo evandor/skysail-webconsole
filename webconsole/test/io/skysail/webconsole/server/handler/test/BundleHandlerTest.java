@@ -26,7 +26,7 @@ public class BundleHandlerTest {
     @Before
     public void setup() {
         osgiServiceTracker = Mockito.mock(OsgiServiceTracker.class);
-        bundleHandler = new BundleHandler(osgiServiceTracker);
+        bundleHandler = new BundleHandler(osgiServiceTracker,"");
         session = Mockito.mock(IHTTPSession.class);
         Mockito.when(session.getMethod()).thenReturn(Method.GET);
     }

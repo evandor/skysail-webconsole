@@ -1,6 +1,6 @@
 import {Bundle} from '../domain/bundle';
 
-export interface ExportPackage {
+export class ExportPackage {
     pkgName: string;
     version: string;
     uses: string;

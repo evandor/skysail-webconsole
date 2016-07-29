@@ -8,17 +8,16 @@ import fi.iki.elonen.NanoHTTPD.IHTTPSession;
 
 public class VersionHandler extends AbstractHttpHandler { // NOSONAR
 
-	private Bundle clientBundle;
+    private Bundle clientBundle;
 
-    public VersionHandler(Bundle clientBundle) {
-		this.clientBundle = clientBundle;
-	}
-
-	@Override
-    String getResponse(IHTTPSession session) throws JsonProcessingException {
-    	return clientBundle.getSymbolicName() + " [" +clientBundle.getVersion().toString() + "]";
+    public VersionHandler(Bundle clientBundle, String basicAuth) {
+        super(basicAuth);
+        this.clientBundle = clientBundle;
     }
 
-
+    @Override
+    String getResponse(IHTTPSession session) throws JsonProcessingException {
+        return clientBundle.getSymbolicName() + " [" + clientBundle.getVersion().toString() + "]";
+    }
 
 }

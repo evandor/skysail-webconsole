@@ -31,6 +31,7 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', '../
                     this._http = _http;
                     this._appGlobals = _appGlobals;
                     this._baseUrl = '';
+                    this.headers = new http_1.Headers();
                     //console.log("BackendServices constructor");
                     _appGlobals._backendUrl.subscribe(function (value) { return _this._baseUrl = value; });
                     console.log("base url set to '" + this._baseUrl + "'");
@@ -38,67 +39,73 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', '../
                         this._baseUrl = "http://localhost:2002/";
                         console.log("base url undefined, setting back to default " + this._baseUrl);
                     }
+                    this.headers.append('Authorization', 'Basic d2ViY29uc29sZTp3ZWJjb25zb2xl');
+                    this.headers.append('Access-Control-Allow-Origin', '*');
                 }
                 BackendServices.prototype.get = function (path) {
                     var headers = new http_1.Headers();
-                    //headers.append('Authorization', 'Basic YWRtaW46c2t5c2FpbA==');
+                    headers.append('Authorization', 'Basic d2Vic29uc29sZTp3ZWJzb25zb2xl');
                     return this._http.get(this._baseUrl + path, { headers: headers })
                         .map(function (res) { return res.json(); });
                 };
                 BackendServices.prototype.getFramework = function () {
-                    return this._http.get(this._baseUrl + 'backend/v1/framework')
+                    return this._http.get(this._baseUrl + 'backend/v1/framework', { headers: this.headers })
                         .map(function (res) { return res.json(); });
                 };
                 BackendServices.prototype.getBundles = function () {
-                    return this._http.get(this._baseUrl + 'backend/v1/bundles')
+                    return this._http.get(this._baseUrl + 'backend/v1/bundles', { headers: this.headers })
                         .map(function (res) { return res.json(); });
                 };
                 BackendServices.prototype.getBundle = function (id) {
-                    return this._http.get(this._baseUrl + 'backend/v1/bundles/' + id)
+                    return this._http.get(this._baseUrl + 'backend/v1/bundles/' + id, { headers: this.headers })
                         .map(function (res) { return res.json(); });
                 };
                 BackendServices.prototype.getBundleServices = function (id) {
-                    return this._http.get(this._baseUrl + 'backend/v1/bundles/' + id + "/services")
+                    return this._http.get(this._baseUrl + 'backend/v1/bundles/' + id + "/services", { headers: this.headers })
                         .map(function (res) { return res.json(); });
                 };
                 BackendServices.prototype.getBundleContents = function (id) {
-                    return this._http.get(this._baseUrl + 'backend/v1/bundles/' + id + "/contents")
+                    return this._http.get(this._baseUrl + 'backend/v1/bundles/' + id + "/contents", { headers: this.headers })
                         .map(function (res) { return res.json(); });
                 };
                 BackendServices.prototype.getBundleFileContents = function (id, filename) {
-                    return this._http.get(this._baseUrl + 'backend/v1/bundles/' + id + "/contents/" + filename)
+                    return this._http.get(this._baseUrl + 'backend/v1/bundles/' + id + "/contents/" + filename, { headers: this.headers })
                         .map(function (res) { return res.json(); });
                 };
                 BackendServices.prototype.getServices = function () {
-                    return this._http.get(this._baseUrl + 'backend/v1/services')
+                    return this._http.get(this._baseUrl + 'backend/v1/services', { headers: this.headers })
                         .map(function (res) { return res.json(); });
                 };
                 BackendServices.prototype.getService = function (id) {
-                    return this._http.get(this._baseUrl + 'backend/v1/services/' + id)
+                    return this._http.get(this._baseUrl + 'backend/v1/services/' + id, { headers: this.headers })
                         .map(function (res) { return res.json(); });
                 };
                 BackendServices.prototype.getPackages = function () {
-                    return this._http.get(this._baseUrl + 'backend/v1/packages')
+                    return this._http.get(this._baseUrl + 'backend/v1/packages', { headers: this.headers })
                         .map(function (res) { return res.json(); });
                 };
                 BackendServices.prototype.getLogs = function () {
-                    return this._http.get(this._baseUrl + 'backend/v1/logs')
+                    return this._http.get(this._baseUrl + 'backend/v1/logs', { headers: this.headers })
                         .map(function (res) { return res.json(); });
                 };
                 BackendServices.prototype.getSnapshots = function () {
-                    return this._http.get(this._baseUrl + 'backend/v1/snapshots')
+                    return this._http.get(this._baseUrl + 'backend/v1/snapshots', { headers: this.headers })
                         .map(function (res) { return res.json(); });
                 };
                 BackendServices.prototype.getLatestSnapshot = function () {
-                    return this._http.get(this._baseUrl + 'backend/v1/snapshotdetails/latest')
+                    return this._http.get(this._baseUrl + 'backend/v1/snapshotdetails/latest', { headers: this.headers })
                         .map(function (res) { return res.json(); });
                 };
                 BackendServices.prototype.createSnapshot = function () {
-                    return this._http.post(this._baseUrl + 'backend/v1/snapshots/', JSON.stringify("create"));
+                    return this._http.post(this._baseUrl + 'backend/v1/snapshots/', JSON.stringify("create"), { headers: this.headers });
                 };
                 BackendServices.prototype.getVersion = function () {
-                    return this._http.get(this._baseUrl + 'backend/v1/client/version')
+                    return this._http.get(this._baseUrl + 'backend/v1/client/version', { headers: this.headers })
                         .map(function (res) { return res.text(); });
+                };
+                BackendServices.prototype.getRuntimeConfig = function () {
+                    return this._http.get(this._baseUrl + 'backend/v1/runtimeconfig', { headers: this.headers })
+                        .map(function (res) { return res.json(); });
                 };
                 BackendServices = __decorate([
                     core_1.Injectable(), 

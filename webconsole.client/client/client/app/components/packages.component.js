@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/common', "@angular/router", '../services/backend.service', '../services/appglobals.service'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/common', "@angular/router", '../services/backend.service', '../services/appglobals.service', '../pipes/packagesFilter.pipe'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '../serv
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, router_1, backend_service_1, appglobals_service_1;
+    var core_1, common_1, router_1, backend_service_1, appglobals_service_1, packagesFilter_pipe_1;
     var PackagesComponent;
     return {
         setters:[
@@ -28,6 +28,9 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '../serv
             },
             function (appglobals_service_1_1) {
                 appglobals_service_1 = appglobals_service_1_1;
+            },
+            function (packagesFilter_pipe_1_1) {
+                packagesFilter_pipe_1 = packagesFilter_pipe_1_1;
             }],
         execute: function() {
             PackagesComponent = (function () {
@@ -36,6 +39,7 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '../serv
                     this.router = router;
                     this._backend = _backend;
                     this._appGlobals = _appGlobals;
+                    this.searchName = '';
                     this.searchId = "";
                 }
                 PackagesComponent.prototype.onSelectBundle = function (bundle) {
@@ -55,6 +59,7 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '../serv
                         selector: 'packages',
                         directives: [common_1.FORM_DIRECTIVES, router_1.ROUTER_DIRECTIVES, common_1.NgFor, common_1.NgFormModel],
                         providers: [backend_service_1.BackendServices],
+                        pipes: [packagesFilter_pipe_1.PackagesFilter],
                         templateUrl: 'app/html/packages.template.html'
                     }), 
                     __metadata('design:paramtypes', [router_1.Router, backend_service_1.BackendServices, appglobals_service_1.AppGlobals])

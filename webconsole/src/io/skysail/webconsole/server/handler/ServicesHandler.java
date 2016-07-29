@@ -13,7 +13,8 @@ public class ServicesHandler extends AbstractHttpHandler { // NOSONAR
 
     private OsgiServiceTracker osgiServiceTracker;
 
-    public ServicesHandler(OsgiServiceTracker osgiServiceTracker) {
+    public ServicesHandler(OsgiServiceTracker osgiServiceTracker, String basicAuth) {
+        super(basicAuth);
         this.osgiServiceTracker = osgiServiceTracker;
     }
 

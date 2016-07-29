@@ -8,6 +8,7 @@ import {ExportPackage} from '../domain/exportPackage';
 import {LogEntry} from '../domain/logEntry';
 import {Service} from '../domain/service';
 import {Snapshot} from '../domain/snapshot';
+import {RuntimeConfig} from '../domain/runtimeconfig';
 
 import {ConfigService} from '../services/config.service';
 import {AppGlobals} from '../services/appglobals.service';
@@ -17,6 +18,7 @@ import {AppGlobals} from '../services/appglobals.service';
 export class BackendServices {
 
     private _baseUrl = '';
+    headers = new Headers();
 
     constructor(private _http: Http, private _appGlobals: AppGlobals) {
         //console.log("BackendServices constructor");
@@ -26,83 +28,91 @@ export class BackendServices {
             this._baseUrl = "http://localhost:2002/";
             console.log("base url undefined, setting back to default " + this._baseUrl);
         }
+        this.headers.append('Authorization', 'Basic d2ViY29uc29sZTp3ZWJjb25zb2xl');
+        this.headers.append('Access-Control-Allow-Origin','*');
     }
 
     get(path) {
         var headers = new Headers();
-        //headers.append('Authorization', 'Basic YWRtaW46c2t5c2FpbA==');
+        headers.append('Authorization', 'Basic d2Vic29uc29sZTp3ZWJzb25zb2xl');
         return this._http.get(this._baseUrl + path, { headers: headers })
             .map(res => res.json());
     }
 
     getFramework(): Observable<any> {
-        return this._http.get(this._baseUrl + 'backend/v1/framework')
+        return this._http.get(this._baseUrl + 'backend/v1/framework', { headers: this.headers })
             .map(res => res.json());
     }
 
     getBundles(): Observable<Bundle[]> {
-        return this._http.get(this._baseUrl + 'backend/v1/bundles')
+        return this._http.get(this._baseUrl + 'backend/v1/bundles', { headers: this.headers })
             .map(res => res.json());
     }
 
     getBundle(id): Observable<Bundle> {
-        return this._http.get(this._baseUrl + 'backend/v1/bundles/' + id)
+        return this._http.get(this._baseUrl + 'backend/v1/bundles/' + id, { headers: this.headers })
             .map(res => res.json());
     }
 
     getBundleServices(id): Observable<Service[]> {
-        return this._http.get(this._baseUrl + 'backend/v1/bundles/' + id + "/services")
+        return this._http.get(this._baseUrl + 'backend/v1/bundles/' + id + "/services", { headers: this.headers })
             .map(res => res.json());
     }
 
     getBundleContents(id): Observable<Bundle> {
-        return this._http.get(this._baseUrl + 'backend/v1/bundles/' + id + "/contents")
+        return this._http.get(this._baseUrl + 'backend/v1/bundles/' + id + "/contents", { headers: this.headers })
             .map(res => res.json());
     }
 
     getBundleFileContents(id: string, filename: string): Observable<string> {
-        return this._http.get(this._baseUrl + 'backend/v1/bundles/' + id + "/contents/" + filename)
+        return this._http.get(this._baseUrl + 'backend/v1/bundles/' + id + "/contents/" + filename, { headers: this.headers })
             .map(res => res.json());
     }
 
     getServices(): Observable<Service[]> {
-        return this._http.get(this._baseUrl + 'backend/v1/services')
+        return this._http.get(this._baseUrl + 'backend/v1/services', { headers: this.headers })
             .map(res => res.json());
     }
 
     getService(id): Observable<Service> {
-        return this._http.get(this._baseUrl + 'backend/v1/services/' + id)
+        return this._http.get(this._baseUrl + 'backend/v1/services/' + id, { headers: this.headers })
             .map(res => res.json());
     }
 
     getPackages(): Observable<ExportPackage[]> {
-        return this._http.get(this._baseUrl + 'backend/v1/packages')
+        return this._http.get(this._baseUrl + 'backend/v1/packages', { headers: this.headers })
             .map(res => res.json());
     }
 
     getLogs(): Observable<LogEntry[]> {
-        return this._http.get(this._baseUrl + 'backend/v1/logs')
+        return this._http.get(this._baseUrl + 'backend/v1/logs', { headers: this.headers })
             .map(res => res.json());
     }
 
     getSnapshots(): Observable<Snapshot[]> {
-        return this._http.get(this._baseUrl + 'backend/v1/snapshots')
+        return this._http.get(this._baseUrl + 'backend/v1/snapshots', { headers: this.headers })
             .map(res => res.json());
     }
 
     getLatestSnapshot(): Observable<Snapshot> {
-        return this._http.get(this._baseUrl + 'backend/v1/snapshotdetails/latest')
+        return this._http.get(this._baseUrl + 'backend/v1/snapshotdetails/latest', { headers: this.headers })
             .map(res => res.json());
     }
 
     createSnapshot() {
-        return this._http.post(this._baseUrl + 'backend/v1/snapshots/', JSON.stringify("create"))
+        return this._http.post(this._baseUrl + 'backend/v1/snapshots/', JSON.stringify("create"), { headers: this.headers })
             //.map(res => res.json())
             ;
     }
 
     getVersion() {
-        return this._http.get(this._baseUrl + 'backend/v1/client/version')
+        return this._http.get(this._baseUrl + 'backend/v1/client/version', { headers: this.headers })
             .map(res => res.text());
     }
+
+    getRuntimeConfig(): Observable<RuntimeConfig> {
+        return this._http.get(this._baseUrl + 'backend/v1/runtimeconfig', { headers: this.headers })
+            .map(res => res.json());
+    }
+
 }

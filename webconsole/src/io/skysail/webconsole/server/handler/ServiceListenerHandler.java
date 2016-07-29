@@ -9,7 +9,8 @@ public class ServiceListenerHandler extends AbstractHttpHandler {
 
     private AgentServiceListener serviceListener;
 
-    public ServiceListenerHandler(AgentServiceListener serviceListener) {
+    public ServiceListenerHandler(AgentServiceListener serviceListener, String basicAuth) {
+        super(basicAuth);
         this.serviceListener = serviceListener;
     }
 
