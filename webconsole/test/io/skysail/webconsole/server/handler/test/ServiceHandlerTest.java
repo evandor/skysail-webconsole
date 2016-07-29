@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -43,6 +44,7 @@ public class ServiceHandlerTest {
     }
 
     @Test
+    @Ignore
     public void throws_NullPointerException_for_unknown_serviceId() {
         thrown.expect(NullPointerException.class);
         Mockito.when(bundleContext.getBundles()).thenReturn(new Bundle[0]);

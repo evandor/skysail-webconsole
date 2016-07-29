@@ -36,7 +36,7 @@ public class BundleSnapshotTest extends BundleDetailsTest {
 		Mockito.when(wiring.getRequiredWires(null)).thenReturn(someWires);
 		Mockito.when(bundle.adapt(BundleWiring.class)).thenReturn(wiring);
 
-		BundleSnapshot bundleSnapshot = new BundleSnapshot(bundle);
+		BundleSnapshot bundleSnapshot = new BundleSnapshot(bundle,null);
 
 		assertThat(bundleSnapshot.getWireDescriptor().getProvidedWires().size(),is(1));
 		assertThat(bundleSnapshot.getWireDescriptor().getRequiredWires().size(),is(1));

@@ -11,6 +11,7 @@ System.register([], function(exports_1, context_1) {
                     this.importPackage = [];
                     this.providedServices = [];
                     this.servicesInUse = [];
+                    this.scrMap = new Map();
                 }
                 return Bundle;
             }());

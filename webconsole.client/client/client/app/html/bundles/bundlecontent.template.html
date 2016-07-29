@@ -5,7 +5,15 @@
 
         <table class="table">
             <tr>
-                <th><span>Sources</span></th>
+                <th><span>OSGI-INF</span></th>
+                <td>
+                    <div *ngFor="let path of bundle.infPaths">
+                        <span (click)="showFileContents(bundle.id,path)">- {{path}}</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th><span>Sources (OSGI-OPT)</span></th>
                 <td>
                     <div *ngFor="let path of bundle.sourcePaths">
                         <span (click)="showFileContents(bundle.id,path)">- {{path}}</span>

@@ -22,7 +22,7 @@ public class BundleDescriptorTest {
 
     @Test
     public void captures_simple_bundle() {
-        BundleDescriptor descriptor = new BundleDescriptor(bundle);
+        BundleDescriptor descriptor = new BundleDescriptor(bundle,null);
 
         assertThat(descriptor.getId(), is("7"));
         assertThat(descriptor.getState(), is("ACTIVE"));
@@ -32,7 +32,7 @@ public class BundleDescriptorTest {
 
     @Test
     public void captures_bundles_size() {
-        BundleDescriptor descriptor = new BundleDescriptor(bundle);
+        BundleDescriptor descriptor = new BundleDescriptor(bundle,null);
 
         //assertThat(descriptor.getSize(), is("7"));
     }

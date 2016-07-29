@@ -8,6 +8,23 @@
 import aQute.bnd.build.Workspace
 import aQute.bnd.osgi.Constants
 
+def currentJvm = org.gradle.internal.jvm.Jvm.current()
+
+logger.lifecycle """\
+================================================================================
+Welcome to syksail 
+================================================================================
+GIT            : https://github.com/evandor/skysail-webconsole
+CI             : http://jenkins.twentyeleven.de  
+
+Gradle version : $gradle.gradleVersion
+Gradle home is : $gradle.gradleHomeDir
+Gradle user dir: $gradle.gradleUserHomeDir
+Base directory : $projectDir
+Java Version   : $currentJvm
+================================================================================
+"""
+
 /* Add bnd gradle plugin as a script dependency */
 buildscript {
   dependencies {

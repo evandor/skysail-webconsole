@@ -66,7 +66,7 @@ public class SnapshotsTest {
     @Test
     public void snapshot_has_reference_to_bundles_if_provided_by_osgiService() {
         List<BundleSnapshot> bundleDescriptors = Arrays
-                .asList(new BundleSnapshot(TestUtils.mockBundle(0L, "symbolicName", "0.1.0")));
+                .asList(new BundleSnapshot(TestUtils.mockBundle(0L, "symbolicName", "0.1.0"),null));
        // Mockito.when(osgiService.getBundleSnapshots()).thenReturn(bundleDescriptors);
         //Snapshot theSnapshot = snapshots.createSnapshot("first");
        // assertThat(theSnapshot.getBundles().size(), is(1));
@@ -75,7 +75,7 @@ public class SnapshotsTest {
     @Test
     public void creates_bundle_diff_from_two_snapshots() {
         Bundle bundleBefore = TestUtils.mockBundle(0L, "symbolicName", "0.1.0");
-        List<BundleSnapshot> bundleDescriptors = Arrays.asList(new BundleSnapshot(bundleBefore));
+        List<BundleSnapshot> bundleDescriptors = Arrays.asList(new BundleSnapshot(bundleBefore,null));
 //        Mockito.when(osgiService.getBundleSnapshots()).thenReturn(bundleDescriptors);
 //        snapshots.createSnapshot("first");
 //

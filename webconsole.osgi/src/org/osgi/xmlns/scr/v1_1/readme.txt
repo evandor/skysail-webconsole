@@ -1,0 +1,1 @@
+created from https://osgi.org/xmlns/scr/v1.1.0/scr.xsd using javas xjc after removing line 108.

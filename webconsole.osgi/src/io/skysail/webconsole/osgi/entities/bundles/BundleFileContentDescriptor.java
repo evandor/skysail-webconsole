@@ -1,6 +1,7 @@
 package io.skysail.webconsole.osgi.entities.bundles;
 
 import org.osgi.framework.Bundle;
+import org.osgi.framework.BundleContext;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -11,8 +12,8 @@ public class BundleFileContentDescriptor extends BundleDescriptor {
     @Setter
     private String code;
 
-    public BundleFileContentDescriptor(Bundle bundle) {
-        super(bundle);
+    public BundleFileContentDescriptor(Bundle bundle, BundleContext context) {
+        super(bundle, context);
     }
 
 

@@ -17,9 +17,13 @@ public class FileUtilsTest {
     }
 
     @Test
+    public void window_style_path_starting_with_file() {
+       assertThat(FileUtils.normalizeBundleLocation("file:/C:/webconsole.jar"),is("C:\\webconsole.jar"));
+    }
+
+    @Test
     @Ignore
     public void testName() {
-        System.out.println(FileUtils.getCurrentDirectory());
         long size = FileUtils.getSize("reference:file:build.gradle");
         assertThat(size, is(7L));
     }

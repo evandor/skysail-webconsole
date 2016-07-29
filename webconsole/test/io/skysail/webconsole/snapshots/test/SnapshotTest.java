@@ -27,7 +27,7 @@ public class SnapshotTest {
     @Test
     public void provides_list_of_bundles() {
         OsgiService osgiService = Mockito.mock(OsgiService.class);
-        List<BundleSnapshot> bundleDescriptors = Arrays.asList(new BundleSnapshot(mockedBundle));
+        List<BundleSnapshot> bundleDescriptors = Arrays.asList(new BundleSnapshot(mockedBundle,null));
 
         Mockito.when(osgiService.getBundleSnapshots()).thenReturn(bundleDescriptors);
         Snapshot snapshot = new Snapshot(osgiService, 1l, "title");

@@ -1,6 +1,7 @@
 package io.skysail.webconsole.osgi.entities.bundles;
 
 import org.osgi.framework.Bundle;
+import org.osgi.framework.BundleContext;
 import org.osgi.framework.wiring.BundleWiring;
 
 import io.skysail.webconsole.osgi.entities.wires.WireDescriptorSnapshot;
@@ -26,8 +27,8 @@ public class BundleSnapshot extends BundleDescriptor {
     /**
      * @param bundle an OSGi bundle.
      */
-    public BundleSnapshot(Bundle bundle) {
-        super(bundle);
+    public BundleSnapshot(Bundle bundle, BundleContext context) {
+        super(bundle, context);
         wireDescriptor = new WireDescriptorSnapshot(bundle.adapt(BundleWiring.class));
        // registeredServices = getRegisteredServices(bundle);
        // servicesInUse = getServicesInUse(bundle);

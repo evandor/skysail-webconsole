@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/common', "@angular/router", '@angular/http', '../../services/backend.service', '../../services/appglobals.service', '../../services/breadcrumbs.service', '../../domain/bundle', '../../components/tabs', '../../components/tab', '../../components/subtab', '../../domain/treenode', '../../domain/treemodel', '../../pipes/newline.pipe', '../../pipes/values.pipe', '../../pipes/keyvalues.pipe', '../../pipes/link.pipe', '../../pipes/bundleState.pipe', '../../pipes/maxLength.pipe', '../../pipes/packagesFilter.pipe', 'angular2-tree-component'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/common', "@angular/router", '@angular/http', '../../services/backend.service', '../../services/appglobals.service', '../../services/breadcrumbs.service', '../../domain/bundle', '../../components/tabs', '../../components/tab', '../../components/subtab', '../../domain/keyValue', '../../domain/treenode', '../../domain/treemodel', '../../pipes/newline.pipe', '../../pipes/values.pipe', '../../pipes/keyvalues.pipe', '../../pipes/link.pipe', '../../pipes/bundleState.pipe', '../../pipes/maxLength.pipe', '../../pipes/packagesFilter.pipe', 'angular2-tree-component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '@angula
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, router_1, http_1, backend_service_1, appglobals_service_1, breadcrumbs_service_1, bundle_1, tabs_1, tab_1, subtab_1, treenode_1, treemodel_1, newline_pipe_1, values_pipe_1, keyvalues_pipe_1, link_pipe_1, bundleState_pipe_1, maxLength_pipe_1, packagesFilter_pipe_1, angular2_tree_component_1;
+    var core_1, common_1, router_1, http_1, backend_service_1, appglobals_service_1, breadcrumbs_service_1, bundle_1, tabs_1, tab_1, subtab_1, keyValue_1, treenode_1, treemodel_1, newline_pipe_1, values_pipe_1, keyvalues_pipe_1, link_pipe_1, bundleState_pipe_1, maxLength_pipe_1, packagesFilter_pipe_1, angular2_tree_component_1;
     var BundleComponent;
     return {
         setters:[
@@ -46,6 +46,9 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '@angula
             },
             function (subtab_1_1) {
                 subtab_1 = subtab_1_1;
+            },
+            function (keyValue_1_1) {
+                keyValue_1 = keyValue_1_1;
             },
             function (treenode_1_1) {
                 treenode_1 = treenode_1_1;
@@ -89,27 +92,8 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '@angula
                     this.capabilities = [];
                     this.wires = []; //new Map<string, Capability[]>();
                     this.searchName = '';
-                    this.exportedPackagesNodes = [
-                        {
-                            name: 'root1',
-                            children: [
-                                { name: 'child1' },
-                                { name: 'child2' }
-                            ]
-                        },
-                        {
-                            name: 'root2',
-                            children: [
-                                { name: 'child2.1' },
-                                {
-                                    name: 'child2.2',
-                                    children: [
-                                        { name: 'subsub' }
-                                    ]
-                                }
-                            ]
-                        }
-                    ];
+                    this.exportedPackagesNodes = [];
+                    this.scrs = [];
                 }
                 BundleComponent.prototype.ngOnInit = function () {
                     var _this = this;
@@ -146,6 +130,11 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '@angula
                                 console.log("[" + treeModel.root.children.toString() + "]");
                             });
                             _this.exportedPackagesNodes = treeModel.root.children;
+                            var props = res.scrMap;
+                            for (var key in props) {
+                                _this.scrs.push(new keyValue_1.KeyValue(key, props[key]));
+                            }
+                            ;
                             _this._appGlobals.setIsLoading(false);
                         });
                     });

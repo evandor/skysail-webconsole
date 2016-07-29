@@ -29,7 +29,7 @@ public class ServiceDetails extends ServiceDescriptor {
 			.filter(key -> service.getProperty(key) != null)
 			.collect(Collectors.toMap(Function.identity(), service::getProperty));
 		this.usingBundles = Arrays.stream(service.getUsingBundles() != null ? service.getUsingBundles() : new Bundle[0])
-			.map((Bundle b) -> new BundleDescriptor(b))
+			.map((Bundle b) -> new BundleDescriptor(b,null))
 			.collect(Collectors.toList());
 	}
 

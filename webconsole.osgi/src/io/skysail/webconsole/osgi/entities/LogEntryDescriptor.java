@@ -22,7 +22,7 @@ public class LogEntryDescriptor {
 		level = mapLevel(entry.getLevel());
 		message = entry.getMessage();
 		service = entry.getServiceReference() != null ? new ServiceDescriptor(entry.getServiceReference()) : null;
-		bundleDescriptor = entry.getBundle() != null ? new BundleDescriptor(entry.getBundle()) : null;
+		bundleDescriptor = entry.getBundle() != null ? new BundleDescriptor(entry.getBundle(), null) : null;
 		exception = entry.getException() != null ? entry.getException().toString() : "";
 	}
 

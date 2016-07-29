@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.osgi.framework.Bundle;
+import org.osgi.framework.BundleContext;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import io.skysail.domain.Identifiable;
 import io.skysail.webconsole.osgi.entities.services.ServiceReferenceDescriptor;
@@ -31,14 +34,20 @@ public class BundleDescriptor implements Identifiable {
     private List<String> registeredServiceIds;
     private List<String> usedServiceIds;
 
+    @JsonIgnore
+    @Getter
+	private BundleContext context;
+
     /**
      * Constructor taking an OSGi bundle.
      *
      * @param bundle
      *            an OSGi bundle
+     * @param context 
      */
-    public BundleDescriptor(Bundle bundle) {
-        id = Long.toString(bundle.getBundleId());
+    public BundleDescriptor(Bundle bundle, BundleContext context) {
+        this.context = context;
+		id = Long.toString(bundle.getBundleId());
         symbolicName = bundle.getSymbolicName();
         version = bundle.getVersion() != null ? bundle.getVersion().toString() : "0.0.0";
         state = translate(bundle.getState());

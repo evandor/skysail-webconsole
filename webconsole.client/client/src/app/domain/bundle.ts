@@ -26,4 +26,9 @@ export class Bundle {
     servicesInUse: Service[] = [];
     sourcePaths: string[];
     registeredServicesCount: number;
+    scrMap: Map<string, string>;
+
+    constructor() {
+        this.scrMap = new Map<string, string>();
+    }
 }

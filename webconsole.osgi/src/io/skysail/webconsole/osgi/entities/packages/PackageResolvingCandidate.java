@@ -14,7 +14,7 @@ public class PackageResolvingCandidate {
 
     @SuppressWarnings("deprecation")
     public PackageResolvingCandidate(ExportedPackage export) {
-        exportingBundle = new BundleDescriptor(export.getExportingBundle());
+        exportingBundle = new BundleDescriptor(export.getExportingBundle(),null);
         name = export.getName();
         version = export.getVersion().toString();
     }

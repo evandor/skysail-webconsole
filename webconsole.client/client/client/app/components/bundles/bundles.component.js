@@ -78,7 +78,11 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '../../s
                     this.filteredCount = 0;
                     this.bundleIdList = [];
                     this.maxSize = 0;
+                    this.pageHelp = new Map();
                     _appGlobals._filteredCount.subscribe(function (value) { return _this.filteredCount = value; });
+                    if (localStorage.getItem('help_bundles') == 'hide') {
+                        this.pageHelp.set('show_help_bundles', false);
+                    }
                 }
                 BundlesComponent.prototype.onSelect = function (bundle) {
                     this.router.navigate(['/bundles', bundle.id]);
@@ -120,6 +124,17 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '../../s
                     this.value = value;
                     this.maxSize = max;
                     this.size = size;
+                };
+                BundlesComponent.prototype.isShown = function (id) {
+                    var showHint = this.pageHelp.get('show_' + id);
+                    if (showHint == false) {
+                        return false;
+                    }
+                    return true;
+                };
+                BundlesComponent.prototype.hidePermanently = function (id) {
+                    localStorage.setItem(id, 'hide');
+                    this.pageHelp.set('show_' + id, false);
                 };
                 BundlesComponent = __decorate([
                     core_1.Component({

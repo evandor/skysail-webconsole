@@ -48,27 +48,9 @@ export class BundleComponent implements OnInit {
     wires = [];//new Map<string, Capability[]>();
     public searchName: string = '';
 
-    exportedPackagesNodes = [
-        {
-            name: 'root1',
-            children: [
-                { name: 'child1' },
-                { name: 'child2' }
-            ]
-        },
-        {
-            name: 'root2',
-            children: [
-                { name: 'child2.1' },
-                {
-                    name: 'child2.2',
-                    children: [
-                        { name: 'subsub' }
-                    ]
-                }
-            ]
-        }
-    ];
+    exportedPackagesNodes = [];
+    
+    scrs: KeyValue[] = [];
 
     constructor(
         private _backend: BackendServices,
@@ -115,6 +97,13 @@ export class BundleComponent implements OnInit {
                         console.log("[" + treeModel.root.children.toString() + "]");
                     });
                     this.exportedPackagesNodes = treeModel.root.children;
+                    
+                    var props = <Map<string, string>>res.scrMap;
+                    for (var key in props) {
+                        this.scrs.push(new KeyValue(key, props[key]));
+                    };
+                    
+                    
                     this._appGlobals.setIsLoading(false);
                 }
                 );

@@ -14,22 +14,22 @@ import io.skysail.webconsole.osgi.entities.LogEntryDescriptor;
 
 public class LogService {
 
-    private LogRepository logRepository;
+	private LogRepository logRepository;
 
-    public LogService(BundleContext bundleContext) {
-        logRepository = new LogRepository();
-        ServiceReference<?> ref = bundleContext.getServiceReference(LogReaderService.class.getName());
-        if (ref != null) {
-            LogReaderService reader = (LogReaderService) bundleContext.getService(ref);
-            reader.addLogListener(logRepository);
-        }
-    }
+	public LogService(BundleContext ctx) {
+		logRepository = new LogRepository();
+		ServiceReference<?> ref = ctx.getServiceReference(LogReaderService.class.getName());
+		if (ref != null) {
+			LogReaderService reader = (LogReaderService) ctx.getService(ref);
+			reader.addLogListener(logRepository);
+		}
+	}
 
-    public List<LogEntryDescriptor> getLogEntries() {
-        return (logRepository != null ? logRepository.getLogs() : Collections.emptyList()).stream()
-                .map(LogEntry.class::cast)
-                .map(entry -> new LogEntryDescriptor(entry))
-                .collect(Collectors.toList());
-    }
+	public List<LogEntryDescriptor> getLogEntries() {
+		return (logRepository != null ? logRepository.getLogs() : Collections.emptyList()).stream()
+				.map(LogEntry.class::cast)
+				.map(entry -> new LogEntryDescriptor(entry))
+				.collect(Collectors.toList());
+	}
 
 }

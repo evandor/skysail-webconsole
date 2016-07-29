@@ -1,5 +1,10 @@
 <h2><i class="fa fa-th-large" aria-hidden="true" style="color: green"></i> Bundles <small>({{filteredCount}} of {{bundles?.length}})</small></h2>
 
+<div *ngIf="isShown('help_bundles')" class="alert alert-warning alert-dismissible fade in" role="alert" style="font-size:small">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="hidePermanently('help_bundles')"><span aria-hidden="true">&times;</span></button>
+  <strong>Bundles</strong> are the building blocks in an OSGi environment.
+</div>
+
 <tabs>
   <tab [tabTitle]="'Bundles Overview'">
     <table class="table table-hover" style="table-layout: fixed; width=100%;white-space: nowrap;">

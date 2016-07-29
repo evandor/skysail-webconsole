@@ -25,9 +25,9 @@ declare var jQuery: any;
 
 @Component({
     selector: 'bundles',
-    directives: [FORM_DIRECTIVES, ROUTER_DIRECTIVES, NgFor, NgFormModel, Tabs, Tab, SubTab, AdjacencyDirective, D3PkgDepDirective, 
-                 D3ServiceDepDirective,
-                 D3BundleSizesDirective, PercentBarDirective],
+    directives: [FORM_DIRECTIVES, ROUTER_DIRECTIVES, NgFor, NgFormModel, Tabs, Tab, SubTab, AdjacencyDirective, D3PkgDepDirective,
+        D3ServiceDepDirective,
+        D3BundleSizesDirective, PercentBarDirective],
     providers: [BackendServices],
     templateUrl: 'app/html/bundles/bundles.template.html',
     pipes: [BundlesFilter, BundleStatePipe],
@@ -45,8 +45,13 @@ export class BundlesComponent implements OnInit, OnChanges {
     maxSize: number = 0;
     size: number;
 
+    pageHelp: Map<string, boolean> = new Map<string, boolean>();
+
     constructor(private router: Router, private _backend: BackendServices, private _breadcrumbService: BreadcrumbsService, private _appGlobals: AppGlobals) {
         _appGlobals._filteredCount.subscribe(value => this.filteredCount = value);
+        if (localStorage.getItem('help_bundles') == 'hide') {
+            this.pageHelp.set('show_help_bundles', false);
+        }
     }
 
     onSelect(bundle: Bundle) {
@@ -95,6 +100,19 @@ export class BundlesComponent implements OnInit, OnChanges {
         this.value = value;
         this.maxSize = max;
         this.size = size;
+    }
+    
+    isShown(id: string):boolean {
+        var showHint = this.pageHelp.get('show_' + id);
+        if (showHint == false) {
+            return false;
+        }
+        return true;
+    }
+
+    hidePermanently(id: string) {
+        localStorage.setItem(id, 'hide');
+        this.pageHelp.set('show_' + id, false);
     }
 
 }

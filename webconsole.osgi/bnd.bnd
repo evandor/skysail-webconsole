@@ -16,7 +16,8 @@ Bundle-Description: Core logic of the skysail webconsole project
 Private-Package: \
 	io.skysail.webconsole.osgi.entities.antlr,\
 	io.skysail.webconsole.osgi.messages,\
-	io.skysail.webconsole.osgi.utils
+	io.skysail.webconsole.osgi.utils,\
+	org.osgi.xmlns.scr.v1_1
 	
 Export-Package: \
 	io.skysail.webconsole.antlr.*,\

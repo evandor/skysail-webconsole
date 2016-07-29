@@ -1,11 +1,6 @@
 package io.skysail.webconsole.osgi.services;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.Arrays;
 import java.util.Base64;
 import java.util.Collections;
@@ -35,6 +30,7 @@ import io.skysail.webconsole.osgi.entities.packages.ExportPackage;
 import io.skysail.webconsole.osgi.entities.services.ServiceDescriptor;
 import io.skysail.webconsole.osgi.entities.services.ServiceDetails;
 import io.skysail.webconsole.osgi.utils.FileUtils;
+import io.skysail.webconsole.osgi.utils.LogServiceUtils;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -63,17 +59,17 @@ public class OsgiService implements BundleActivator {
     }
 
     public List<BundleDescriptor> getBundleDescriptors() {
-        return getBundlesRepresentations(b -> new BundleDescriptor(b));
+        return getBundlesRepresentations(b -> new BundleDescriptor(b,bundleContext));
     }
 
     public List<BundleSnapshot> getBundleSnapshots() {
-        return getBundlesRepresentations(b -> new BundleSnapshot(b)).stream()
+        return getBundlesRepresentations(b -> new BundleSnapshot(b,bundleContext)).stream()
                 .map(BundleSnapshot.class::cast)
                 .collect(Collectors.toList());
     }
 
     public List<BundleDetails> getBundleDetails() {
-        return getBundlesRepresentations(b -> new BundleDetails(b)).stream()
+        return getBundlesRepresentations(b -> new BundleDetails(b,bundleContext)).stream()
                 .map(BundleDetails.class::cast)
                 .collect(Collectors.toList());
     }
@@ -90,7 +86,7 @@ public class OsgiService implements BundleActivator {
                     .sorted((b1, b2) -> Integer.valueOf(b1.getId()).compareTo(Integer.valueOf(b2.getId())))
                     .collect(Collectors.toList());
         } catch (InvalidSyntaxException e) {
-            log.error(e.getMessage(), e);
+        	LogServiceUtils.error(bundleContext, e);
         }
         return Collections.emptyList();
     }
@@ -107,7 +103,7 @@ public class OsgiService implements BundleActivator {
                     .sorted((b1, b2) -> Integer.valueOf(b1.getId()).compareTo(Integer.valueOf(b2.getId())))
                     .collect(Collectors.toList());
         } catch (InvalidSyntaxException e) {
-            log.error(e.getMessage(), e);
+        	LogServiceUtils.error(bundleContext, e);
         }
         return Collections.emptyList();
     }
@@ -124,7 +120,7 @@ public class OsgiService implements BundleActivator {
             return Collections.emptyList();
         }
         return Arrays.stream(bundleContext.getBundles()) // NOSONAR
-                .map(b -> new BundleDetails(b))
+                .map(b -> new BundleDetails(b,bundleContext))
                 .map(b -> b.getExportPackage())
                 .flatMap(b -> b.stream())
                 .sorted((p1, p2) -> p1.getPkgName().compareTo(p2.getPkgName()))
@@ -158,18 +154,18 @@ public class OsgiService implements BundleActivator {
 
     public BundleContentDescriptor getBundleContentDescriptor(String id) {
         BundleDetails bundleDetails = getBundleDetails(id);
-        String location = bundleDetails.getLocation().replace(FileUtils.REFERENCE_FILE, "").replace("%25", "%");
-        BundleContentDescriptor result = new BundleContentDescriptor(getBundle(id).get());
+        String location = FileUtils.normalizeBundleLocation(bundleDetails.getLocation());
+        BundleContentDescriptor result = new BundleContentDescriptor(getBundle(id).get(),bundleContext);
         try (ZipFile zipFile = new ZipFile(location)) {
             zipFile.stream().filter(e -> !e.getName().endsWith("/")).forEach(result::addPath);
         } catch (IOException e) {
-            log.error(e.getMessage(),e);
+        	LogServiceUtils.error(bundleContext, e);
         }
         return result;
     }
 
     public BundleDetails getBundleDetails(String bundleId) {
-        return getBundle(bundleId).map(b -> new BundleDetails(b))
+        return getBundle(bundleId).map(b -> new BundleDetails(b, bundleContext))
                 .orElseThrow(() -> new IllegalArgumentException(""));
     }
 
@@ -181,34 +177,12 @@ public class OsgiService implements BundleActivator {
         String content = "";
         Optional<Bundle> bundle = getBundle(id);
         if (bundle.isPresent()) {
-            content = getContent(bundle.get(), filename);
+            content = FileUtils.getContent(bundle.get(), bundleContext, filename);
         }
 
-        BundleFileContentDescriptor result = new BundleFileContentDescriptor(getBundle(id).get());
+        BundleFileContentDescriptor result = new BundleFileContentDescriptor(getBundle(id).get(),bundleContext);
         result.setCode(content);
         return result;
-    }
-
-    private String getContent(Bundle bundle, String filename) {
-        URL resource = bundle.getResource(filename);
-        BufferedReader br;
-        if (resource == null) {
-            return null;
-        }
-        try {
-            URLConnection connection = resource.openConnection();
-            InputStream inputStream = connection.getInputStream();
-            br = new BufferedReader(new InputStreamReader(inputStream));
-            StringBuilder sb = new StringBuilder();
-            while (br.ready()) {
-                sb.append(br.readLine()).append("\n");
-            }
-            br.close();
-            return sb.toString();
-        } catch (Exception e) {
-            log.error(e.getMessage() + " when accessing " + resource, e);
-        }
-        return "problem accessing uri " + filename;
     }
 
     private Optional<Bundle> getBundle(String bundleId) {

@@ -26,7 +26,7 @@ public class BundleContentDescriptorTest {
 
     @Before
     public void setup() {
-        bundleContentDescriptor = new BundleContentDescriptor(bundle);
+        bundleContentDescriptor = new BundleContentDescriptor(bundle,null);
     }
 
     @Test
