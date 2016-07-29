@@ -11,7 +11,7 @@
 
 #### changes:
 
- * dependency fix
+ * dependency fixes
 
 ## webconsole.all 0.1.11
 
