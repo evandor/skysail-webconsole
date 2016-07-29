@@ -68,7 +68,7 @@ Bundle Details
 # Try it
 
 * Start an OSGi framework where you have access to the console (e.g. ./eclipse -console)
-* to use the current build, run "install http://jenkins.twentyeleven.de/job/skysail-webconsole/ws/cnf/release/webconsole.all/webconsole.all-0.1.10.jar" in the console
+* to use the current build, run "install http://jenkins.twentyeleven.de/job/skysail-webconsole/ws/cnf/release/webconsole.all/webconsole.all-0.1.11.jar" in the console
 * get the bundle id of the new webconsole bundle (e.g. by running "ss" (equinox) or "lb" (felix)
 * start the bundle: "start &lt;bundleId&gt;"
 * point your browser to "http://localhost:2002" (sorry, port is fixed for now)
