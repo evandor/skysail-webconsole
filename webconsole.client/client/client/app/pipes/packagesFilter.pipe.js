@@ -1,4 +1,4 @@
-System.register(['@angular/core', '../domain/exportpackage', '../services/appglobals.service'], function(exports_1, context_1) {
+System.register(['@angular/core', '../domain/exportPackage', '../services/appglobals.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,15 +10,15 @@ System.register(['@angular/core', '../domain/exportpackage', '../services/appglo
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, exportpackage_1, appglobals_service_1;
+    var core_1, exportPackage_1, appglobals_service_1;
     var PackagesFilter;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (exportpackage_1_1) {
-                exportpackage_1 = exportpackage_1_1;
+            function (exportPackage_1_1) {
+                exportPackage_1 = exportPackage_1_1;
             },
             function (appglobals_service_1_1) {
                 appglobals_service_1 = appglobals_service_1_1;
@@ -31,7 +31,7 @@ System.register(['@angular/core', '../domain/exportpackage', '../services/appglo
                 PackagesFilter.prototype.transform = function (packages, args) {
                     if (packages == null) {
                         //this._appGlobals.setFilteredCount(0);
-                        return exportpackage_1.ExportPackage[0];
+                        return exportPackage_1.ExportPackage[0];
                     }
                     if (typeof args[0] == 'undefined') {
                         //this._appGlobals.setFilteredCount(services.length);

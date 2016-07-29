@@ -1,6 +1,6 @@
 Bundle-Name: SKYSAIL :: webconsole :: osgi
 
-Bundle-Version: 0.1.15.${tstamp}
+Bundle-Version: 0.1.16.${tstamp}
 
 Bundle-Description: Core logic of the skysail webconsole project
 
@@ -22,11 +22,10 @@ Include-Resource: libs=libs
 Private-Package: \
 	io.skysail.webconsole.osgi.entities.antlr,\
 	io.skysail.webconsole.osgi.messages,\
-	io.skysail.webconsole.osgi.utils,\
-	org.osgi.xmlns.scr.v1_1
+	io.skysail.webconsole.osgi.utils
 	
 Export-Package: \
-    com.fasterxml.jackson.*,\
+	com.fasterxml.jackson.*,\
 	io.skysail.webconsole.antlr.*,\
 	org.antlr.v4.runtime.*,\
 	io.skysail.webconsole.osgi.services,\
@@ -36,7 +35,8 @@ Export-Package: \
 	io.skysail.webconsole.osgi.entities.packages,\
 	io.skysail.domain,\
 	io.skysail.webconsole.osgi.entities.snapshots,\
-	io.skysail.webconsole.osgi.entities.wires
+	io.skysail.webconsole.osgi.entities.wires,\
+	org.osgi.xmlns.scr.v1_1
 	
 Import-Package: \
     !javax.validation.*,\

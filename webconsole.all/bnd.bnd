@@ -1,6 +1,6 @@
 Bundle-Name: SKYSAIL :: webconsole :: all
 
-Bundle-Version: 0.1.11.${tstamp}
+Bundle-Version: 0.1.12.${tstamp}
 
 Bundle-Description: An OSGi webconsole to inspect a running framework
 
@@ -30,6 +30,7 @@ Export-Package: \
     io.skysail.webconsole.*,\
     org.antlr.v4.runtime.*,\
     com.fasterxml.jackson.*,\
+    org.osgi.xmlns.scr.v1_1.*,\
     client.*
 
 #    !client.node_modules.*,\

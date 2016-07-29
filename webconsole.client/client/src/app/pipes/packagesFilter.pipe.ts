@@ -1,5 +1,5 @@
 import {Injectable, Pipe, PipeTransform} from '@angular/core';
-import {ExportPackage} from '../domain/exportpackage';
+import {ExportPackage} from '../domain/exportPackage';
 import {AppGlobals} from '../services/appglobals.service';
 
 @Pipe({
