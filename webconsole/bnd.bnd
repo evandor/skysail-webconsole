@@ -21,8 +21,6 @@ Private-Package: \
 Include-Resource: libs=libs
 
 -buildpath: \
-    libs/jackson-core-2.5.1.jar;version=file,\
-    libs/jackson-databind-2.5.1.jar;version=file,\
     libs/nanohttpd-webserver-2.3.0.jar;version=file,\
     libs/nanohttpd-websocket-2.3.0.jar;version=file,\
     libs/javers-core-2.0.0-RC1.jar;version=file,\
@@ -38,7 +36,6 @@ Include-Resource: libs=libs
     slf4j.api;version=1.7
 
 Export-Package: \
-    com.fasterxml.jackson.*,\
     com.google.gson.*,\
     fi.iki.elonen.*,\
     org.picocontainer.*,\

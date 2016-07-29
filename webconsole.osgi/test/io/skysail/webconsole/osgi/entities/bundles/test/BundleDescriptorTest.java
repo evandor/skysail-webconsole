@@ -2,11 +2,13 @@ package io.skysail.webconsole.osgi.entities.bundles.test;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
+import static org.mockito.Mockito.mock;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 import org.osgi.framework.Bundle;
+import org.osgi.framework.BundleContext;
 import org.osgi.framework.Version;
 
 import io.skysail.webconsole.osgi.entities.bundles.BundleDescriptor;
@@ -14,10 +16,13 @@ import io.skysail.webconsole.osgi.entities.bundles.BundleDescriptor;
 public class BundleDescriptorTest {
 
     protected Bundle bundle;
+    protected BundleContext context;
+
 
     @Before
     public void setUp() {
         bundle = setUpDefaultBundle();
+        context = mock(BundleContext.class);
     }
 
     @Test

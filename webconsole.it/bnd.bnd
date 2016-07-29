@@ -27,8 +27,9 @@ Test-Cases: ${classes;CONCRETE;ANNOTATED;org.junit.runner.RunWith}
 	${mockito},\
 	osgi.annotation;version=6.0.1,\
 	osgi.core;version=6.0,\
-	osgi.cmpn;version=6.0,\
-	net.sourceforge.htmlunit;version=2.22
+	osgi.cmpn;version=6.0
+	#,\
+	#net.sourceforge.htmlunit;version=2.22
 
 javac.source: 1.8
 javac.target: 1.8
@@ -38,19 +39,20 @@ tester.trace: true
 # We need JUnit and Mockito to resolve the test cases at runtime. 
 # Other runtime dependencies should be added as necessary
 -runbundles: \
-    webconsole;version=${webconsole.version},\
-    webconsole.antlr;version=${webconsole.antlr.version},\
-    webconsole.client;version=${webconsole.client.version},\
-    webconsole.osgi;version=${webconsole.osgi.version},\
-    ${junit},\
-    ${mockito},\
-    ch.qos.logback.classic;version='[1.0.0,1.0.1)',\
-    ch.qos.logback.core;version='[1.0.0,1.0.1)',\
-    org.apache.felix.gogo.command;version='[0.16.0,0.16.1)',\
-    org.apache.felix.gogo.runtime;version='[0.16.2,0.16.3)',\
-    org.apache.felix.gogo.shell;version='[0.12.0,0.12.1)',\
-    slf4j.api;version='[1.7.21,1.7.22)'
+	webconsole;version=${webconsole.version},\
+	webconsole.antlr;version=${webconsole.antlr.version},\
+	webconsole.client;version=${webconsole.client.version},\
+	webconsole.osgi;version=${webconsole.osgi.version},\
+	${junit},\
+	${mockito},\
+	ch.qos.logback.classic;version='[1.0.0,1.0.1)',\
+	ch.qos.logback.core;version='[1.0.0,1.0.1)',\
+	org.apache.felix.gogo.command;version='[0.16.0,0.16.1)',\
+	org.apache.felix.gogo.runtime;version='[0.16.2,0.16.3)',\
+	org.apache.felix.gogo.shell;version='[0.12.0,0.12.1)',\
+	slf4j.api;version='[1.7.21,1.7.22)'
     #,\
+	#io.skysail.bundled.htmlunit-osgi-withdeps;version=2.22.1
     #net.sourceforge.htmlunit;version=2.22
 
 # Needed for Mockito's mocking to work

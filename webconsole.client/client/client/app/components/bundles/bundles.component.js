@@ -78,10 +78,15 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '../../s
                     this.filteredCount = 0;
                     this.bundleIdList = [];
                     this.maxSize = 0;
-                    this.pageHelp = new Map();
+                    //pageHelp: Map<string, boolean> = new Map<string, boolean>();
+                    this.hidePageHelpFor = '';
                     _appGlobals._filteredCount.subscribe(function (value) { return _this.filteredCount = value; });
-                    if (localStorage.getItem('help_bundles') == 'hide') {
-                        this.pageHelp.set('show_help_bundles', false);
+                    /* if (localStorage.getItem('help_bundles') == 'hide') {
+                         this.pageHelp.set('show_help_bundles', false);
+                     }*/
+                    this.hidePageHelpFor = localStorage.getItem('pageHelpBundles');
+                    if (this.hidePageHelpFor == null) {
+                        this.hidePageHelpFor = '';
                     }
                 }
                 BundlesComponent.prototype.onSelect = function (bundle) {
@@ -126,15 +131,20 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '../../s
                     this.size = size;
                 };
                 BundlesComponent.prototype.isShown = function (id) {
-                    var showHint = this.pageHelp.get('show_' + id);
-                    if (showHint == false) {
-                        return false;
+                    var str = localStorage.getItem('pageHelpBundles');
+                    if (str == null) {
+                        return true;
                     }
-                    return true;
+                    return (str.indexOf("," + id) === -1);
                 };
                 BundlesComponent.prototype.hidePermanently = function (id) {
-                    localStorage.setItem(id, 'hide');
-                    this.pageHelp.set('show_' + id, false);
+                    this.hidePageHelpFor += "," + id;
+                    localStorage.setItem('pageHelpBundles', this.hidePageHelpFor);
+                    //this.pageHelp.set('show_' + id, false);
+                };
+                BundlesComponent.prototype.showAllInlineHelp = function () {
+                    this.hidePageHelpFor = '';
+                    localStorage.removeItem('pageHelpBundles');
                 };
                 BundlesComponent = __decorate([
                     core_1.Component({

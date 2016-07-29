@@ -14,9 +14,10 @@
  * adding search feature to services overview
  * some cleanups
  * new standalone version
- * port and http basic authentication password can be configured
- * new tab RuntimeConfig
-
+ * port and http basic authentication password can be configured (work in progress)
+ * started new tab RuntimeConfig (work in progress)
+ * started help info (work in progress)
+ * started Serivce Component Runtime tab (work in progress)
 
 ## webconsole.all 0.1.10
 

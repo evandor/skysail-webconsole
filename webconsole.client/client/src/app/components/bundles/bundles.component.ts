@@ -45,12 +45,18 @@ export class BundlesComponent implements OnInit, OnChanges {
     maxSize: number = 0;
     size: number;
 
-    pageHelp: Map<string, boolean> = new Map<string, boolean>();
+    //pageHelp: Map<string, boolean> = new Map<string, boolean>();
+    hidePageHelpFor: string = '';
 
     constructor(private router: Router, private _backend: BackendServices, private _breadcrumbService: BreadcrumbsService, private _appGlobals: AppGlobals) {
         _appGlobals._filteredCount.subscribe(value => this.filteredCount = value);
-        if (localStorage.getItem('help_bundles') == 'hide') {
+       /* if (localStorage.getItem('help_bundles') == 'hide') {
             this.pageHelp.set('show_help_bundles', false);
+        }*/
+        this.hidePageHelpFor = localStorage.getItem('pageHelpBundles');
+        if (this.hidePageHelpFor == null) {
+            this.hidePageHelpFor = '';
+            //localStorage.setItem('pageHelpBundles', this.hidePageHelpFor);
         }
     }
 
@@ -103,16 +109,22 @@ export class BundlesComponent implements OnInit, OnChanges {
     }
     
     isShown(id: string):boolean {
-        var showHint = this.pageHelp.get('show_' + id);
-        if (showHint == false) {
-            return false;
+        var str = localStorage.getItem('pageHelpBundles') as string;
+        if (str == null) {
+            return true;
         }
-        return true;
+        return (str.indexOf(","+id) === -1);
     }
 
     hidePermanently(id: string) {
-        localStorage.setItem(id, 'hide');
-        this.pageHelp.set('show_' + id, false);
+        this.hidePageHelpFor += ","+id;
+        localStorage.setItem('pageHelpBundles', this.hidePageHelpFor);
+        //this.pageHelp.set('show_' + id, false);
+    }
+
+    showAllInlineHelp() {
+        this.hidePageHelpFor = '';
+        localStorage.removeItem('pageHelpBundles');
     }
 
 }
