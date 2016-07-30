@@ -1,5 +1,18 @@
 # skysail-webconsole changelog
 
+## webconsole.all 0.1.13
+
+### based on 
+
+  * webconsole.version           0.3.13
+  * webconsole.antlr.version     0.2.2
+  * webconsole.client.version    0.1.22
+  * webconsole.osgi.version      0.1.17
+
+#### changes:
+
+ * dependency fixes
+
 ## webconsole.all 0.1.12
 
 ### based on 
