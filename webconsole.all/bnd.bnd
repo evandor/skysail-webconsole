@@ -37,7 +37,6 @@ Export-Package: \
     
 Import-Package: \
     !javax.validation.*,\
-    !javax.xml.*,\
     !javax.inject.*,\
 	!org.codehaus.*,\
 	!org.joda.convert.*,\

@@ -1,6 +1,6 @@
 Bundle-Name: SKYSAIL :: webconsole
 
-Bundle-Version: 0.3.12.${tstamp}
+Bundle-Version: 0.3.13.${tstamp}
 
 Bundle-Description: An OSGi webconsole to inspect a running framework, utilizing webconsole.osgi, \
 	webconsole.client and webconsole.antlr
@@ -51,7 +51,6 @@ Export-Package: \
     
 Import-Package: \
     !javax.validation.*,\
-    !javax.xml.*,\
     !javax.inject.*,\
 	!org.codehaus.*,\
 	!org.joda.convert.*,\

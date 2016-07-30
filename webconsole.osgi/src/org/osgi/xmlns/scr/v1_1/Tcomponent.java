@@ -1,8 +1,8 @@
 //
-// Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.8-b130911.1802 generiert 
-// Siehe <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2016.07.29 um 11:26:52 AM CEST 
+// Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.8-b130911.1802 generiert
+// Siehe <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
+// Ã„nderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren.
+// Generiert: 2016.07.29 um 11:26:52 AM CEST
 //
 
 
@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAnyAttribute;
@@ -24,14 +25,15 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import javax.xml.namespace.QName;
+
 import org.w3c.dom.Element;
 
 
 /**
- * <p>Java-Klasse für Tcomponent complex type.
- * 
+ * <p>Java-Klasse fï¿½r Tcomponent complex type.
+ *
  * <p>Das folgende Schemafragment gibt den erwarteten Content an, der in dieser Klasse enthalten ist.
- * 
+ *
  * <pre>
  * &lt;complexType name="Tcomponent">
  *   &lt;complexContent>
@@ -59,8 +61,8 @@ import org.w3c.dom.Element;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Tcomponent", propOrder = {
@@ -112,26 +114,26 @@ public class Tcomponent {
 
     /**
      * Gets the value of the propertyOrProperties property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the propertyOrProperties property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getPropertyOrProperties().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link Tproperty }
      * {@link Tproperties }
-     * 
-     * 
+     *
+     *
      */
     public List<Object> getPropertyOrProperties() {
         if (propertyOrProperties == null) {
@@ -142,11 +144,11 @@ public class Tcomponent {
 
     /**
      * Ruft den Wert der service-Eigenschaft ab.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Tservice }
-     *     
+     *
      */
     public Tservice getService() {
         return service;
@@ -154,11 +156,11 @@ public class Tcomponent {
 
     /**
      * Legt den Wert der service-Eigenschaft fest.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Tservice }
-     *     
+     *
      */
     public void setService(Tservice value) {
         this.service = value;
@@ -166,25 +168,25 @@ public class Tcomponent {
 
     /**
      * Gets the value of the reference property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the reference property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getReference().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link Treference }
-     * 
-     * 
+     *
+     *
      */
     public List<Treference> getReference() {
         if (reference == null) {
@@ -195,11 +197,11 @@ public class Tcomponent {
 
     /**
      * Ruft den Wert der implementation-Eigenschaft ab.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Timplementation }
-     *     
+     *
      */
     public Timplementation getImplementation() {
         return implementation;
@@ -207,11 +209,11 @@ public class Tcomponent {
 
     /**
      * Legt den Wert der implementation-Eigenschaft fest.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Timplementation }
-     *     
+     *
      */
     public void setImplementation(Timplementation value) {
         this.implementation = value;
@@ -219,26 +221,26 @@ public class Tcomponent {
 
     /**
      * Gets the value of the any property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the any property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getAny().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link Element }
      * {@link Object }
-     * 
-     * 
+     *
+     *
      */
     public List<Object> getAny() {
         if (any == null) {
@@ -249,11 +251,11 @@ public class Tcomponent {
 
     /**
      * Ruft den Wert der enabled-Eigenschaft ab.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public boolean isEnabled() {
         if (enabled == null) {
@@ -265,11 +267,11 @@ public class Tcomponent {
 
     /**
      * Legt den Wert der enabled-Eigenschaft fest.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setEnabled(Boolean value) {
         this.enabled = value;
@@ -277,11 +279,11 @@ public class Tcomponent {
 
     /**
      * Ruft den Wert der name-Eigenschaft ab.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getName() {
         return name;
@@ -289,11 +291,11 @@ public class Tcomponent {
 
     /**
      * Legt den Wert der name-Eigenschaft fest.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setName(String value) {
         this.name = value;
@@ -301,11 +303,11 @@ public class Tcomponent {
 
     /**
      * Ruft den Wert der factory-Eigenschaft ab.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getFactory() {
         return factory;
@@ -313,11 +315,11 @@ public class Tcomponent {
 
     /**
      * Legt den Wert der factory-Eigenschaft fest.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setFactory(String value) {
         this.factory = value;
@@ -325,11 +327,11 @@ public class Tcomponent {
 
     /**
      * Ruft den Wert der immediate-Eigenschaft ab.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public Boolean isImmediate() {
         return immediate;
@@ -337,11 +339,11 @@ public class Tcomponent {
 
     /**
      * Legt den Wert der immediate-Eigenschaft fest.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setImmediate(Boolean value) {
         this.immediate = value;
@@ -349,11 +351,11 @@ public class Tcomponent {
 
     /**
      * Ruft den Wert der configurationPolicy-Eigenschaft ab.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link TconfigurationPolicy }
-     *     
+     *
      */
     public TconfigurationPolicy getConfigurationPolicy() {
         if (configurationPolicy == null) {
@@ -365,11 +367,11 @@ public class Tcomponent {
 
     /**
      * Legt den Wert der configurationPolicy-Eigenschaft fest.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link TconfigurationPolicy }
-     *     
+     *
      */
     public void setConfigurationPolicy(TconfigurationPolicy value) {
         this.configurationPolicy = value;
@@ -377,11 +379,11 @@ public class Tcomponent {
 
     /**
      * Ruft den Wert der activate-Eigenschaft ab.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getActivate() {
         if (activate == null) {
@@ -393,11 +395,11 @@ public class Tcomponent {
 
     /**
      * Legt den Wert der activate-Eigenschaft fest.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setActivate(String value) {
         this.activate = value;
@@ -405,11 +407,11 @@ public class Tcomponent {
 
     /**
      * Ruft den Wert der deactivate-Eigenschaft ab.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getDeactivate() {
         if (deactivate == null) {
@@ -421,11 +423,11 @@ public class Tcomponent {
 
     /**
      * Legt den Wert der deactivate-Eigenschaft fest.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setDeactivate(String value) {
         this.deactivate = value;
@@ -433,11 +435,11 @@ public class Tcomponent {
 
     /**
      * Ruft den Wert der modified-Eigenschaft ab.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getModified() {
         return modified;
@@ -445,11 +447,11 @@ public class Tcomponent {
 
     /**
      * Legt den Wert der modified-Eigenschaft fest.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setModified(String value) {
         this.modified = value;
@@ -457,15 +459,15 @@ public class Tcomponent {
 
     /**
      * Gets a map that contains attributes that aren't bound to any typed property on this class.
-     * 
+     *
      * <p>
-     * the map is keyed by the name of the attribute and 
+     * the map is keyed by the name of the attribute and
      * the value is the string value of the attribute.
-     * 
+     *
      * the map returned by this method is live, and you can add new attribute
      * by updating the map directly. Because of this design, there's no setter.
-     * 
-     * 
+     *
+     *
      * @return
      *     always non-null
      */

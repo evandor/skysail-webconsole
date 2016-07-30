@@ -1,6 +1,6 @@
 Bundle-Name: SKYSAIL :: webconsole :: osgi
 
-Bundle-Version: 0.1.16.${tstamp}
+Bundle-Version: 0.1.17.${tstamp}
 
 Bundle-Description: Core logic of the skysail webconsole project
 
@@ -40,7 +40,6 @@ Export-Package: \
 	
 Import-Package: \
     !javax.validation.*,\
-    !javax.xml.*,\
     !javax.inject.*,\
     !org.codehaus.*,\
     !org.joda.convert.*,\
