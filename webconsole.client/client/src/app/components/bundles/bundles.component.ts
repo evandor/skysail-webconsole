@@ -11,6 +11,7 @@ import {Bundle} from '../../domain/bundle';
 import {Tabs} from '../../components/tabs';
 import {Tab} from '../../components/tab';
 import {SubTab} from '../../components/subtab';
+import {InlineHelp} from '../../components/inlinehelp.component';
 
 import {BundleStatePipe} from '../../pipes/bundleState.pipe';
 import {BundlesFilter} from '../../pipes/bundlesFilter.pipe'
@@ -25,7 +26,7 @@ declare var jQuery: any;
 
 @Component({
     selector: 'bundles',
-    directives: [FORM_DIRECTIVES, ROUTER_DIRECTIVES, NgFor, NgFormModel, Tabs, Tab, SubTab, AdjacencyDirective, D3PkgDepDirective,
+    directives: [FORM_DIRECTIVES, ROUTER_DIRECTIVES, NgFor, NgFormModel, Tabs, Tab, SubTab, InlineHelp, AdjacencyDirective, D3PkgDepDirective,
         D3ServiceDepDirective,
         D3BundleSizesDirective, PercentBarDirective],
     providers: [BackendServices],
@@ -45,18 +46,13 @@ export class BundlesComponent implements OnInit, OnChanges {
     maxSize: number = 0;
     size: number;
 
-    //pageHelp: Map<string, boolean> = new Map<string, boolean>();
     hidePageHelpFor: string = '';
 
     constructor(private router: Router, private _backend: BackendServices, private _breadcrumbService: BreadcrumbsService, private _appGlobals: AppGlobals) {
         _appGlobals._filteredCount.subscribe(value => this.filteredCount = value);
-       /* if (localStorage.getItem('help_bundles') == 'hide') {
-            this.pageHelp.set('show_help_bundles', false);
-        }*/
         this.hidePageHelpFor = localStorage.getItem('pageHelpBundles');
         if (this.hidePageHelpFor == null) {
             this.hidePageHelpFor = '';
-            //localStorage.setItem('pageHelpBundles', this.hidePageHelpFor);
         }
     }
 

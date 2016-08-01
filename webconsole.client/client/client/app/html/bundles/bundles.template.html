@@ -3,15 +3,13 @@
 <tabs>
   <tab [tabTitle]="'Bundles Overview'">
 
-    <div *ngIf="isShown('help_bundles_overview')" class="alert alert-warning alert-dismissible fade in" role="alert" style="font-size:small">
-      <button type="button" class="close small" data-dismiss="alert" aria-label="Close" (click)="hidePermanently('help_bundles_overview')" style="font-size:small"><span aria-hidden="true">Sure, I know</span></button>
-      <strong>Bundles</strong> are the building blocks in an OSGi environment. Esentially, they are <i>common jar files</i>      
-      with <i>additional information in their
-      manifest.mf file</i>, defining their capabilities and requirements. If their dependencies are met (by other bundles and
-      the runtime in general), they get resolved by the OSGi runtime and can provide <b>services</b> via the OSGi service
+    <inlinehelp [id]="'help_bundles_overview'" [closeText]="'Sure, I know'">
+      <strong>Bundles</strong> are the building blocks in an OSGi environment. Esentially, they are <i>common jar files</i>      with <i>additional information in their
+      manifest.mf file</i>, defining their capabilities and requirements. If their dependencies are met (by other bundles
+      and the runtime in general), they get resolved by the OSGi runtime and can provide <b>services</b> via the OSGi service
       registry.
       <br><br> The following bundles are currently deployed in the OSGi runtime:
-    </div>
+    </inlinehelp>
 
     <table class="table table-hover" style="table-layout: fixed; width=100%;white-space: nowrap;">
       <thead>
@@ -39,12 +37,11 @@
   </tab>
 
   <tab [tabTitle]="'Adjacency Matrix'">
-    <div *ngIf="isShown('help_bundles_matrix')" class="alert alert-warning alert-dismissible fade in" role="alert" style="font-size:small">
-      <button type="button" class="close small" data-dismiss="alert" aria-label="Close" (click)="hidePermanently('help_bundles_matrix')" style="font-size:small"><span aria-hidden="true">Ah,ok...</span></button>     
-      Bundles export some of their packages, and usually import packages provided by other bundles. This Bundles export some
-      of their packages, and usually import packages provided by other bundles. This adjacency matrix should help you understand
-      which bundles are related to which other bundles. To be done...
-    </div>
+    <inlinehelp [id]="'help_bundles_matrix'" [closeText]="'Ah, ok...'">
+      Bundles export some of their packages, and usually import packages provided by other bundles. This Bundles export 
+      some of their packages, and usually import packages provided by other bundles. This adjacency matrix should help 
+      you understand which bundles are related to which other bundles. To be done...
+    </inlinehelp>
 
     <div id="vizcontainer">
       <svg style="width:1000px;height:1000px;border:1px lightgray solid;" adjacency />
@@ -52,10 +49,10 @@
   </tab>
 
   <tab [tabTitle]="getBarChartTitle('Service Dependencies')">
-    <div *ngIf="isShown('help_bundles_servicedep')" class="alert alert-warning alert-dismissible fade in" role="alert" style="font-size:small">
-      <button type="button" class="close small" data-dismiss="alert" aria-label="Close" (click)="hidePermanently('help_bundles_servicedep')"><span aria-hidden="true">Ah,ok...</span></button>      
-      Bundles can provide services, and those services might depend on services from other bundles to be available. To be done...
-    </div>
+    <inlinehelp [id]="'help_bundles_servicedep'" [category]="'bundles'" [closeText]="'Ah, ok...'">
+      Bundles can provide services, and those services might depend on services from other bundles to be available. To be
+      done...
+    </inlinehelp>
 
     Show System Bundle: <input type=checkbox id="showSystemBundle">
     <div>
@@ -65,9 +62,10 @@
 
   <tab [tabTitle]="getBarChartTitle('Package Dependencies')">
     <div *ngIf="isShown('help_bundles_packagedep')" class="alert alert-warning alert-dismissible fade in" role="alert" style="font-size:small">
-      <button type="button" class="close small" data-dismiss="alert" aria-label="Close" (click)="hidePermanently('help_bundles_packagedep')" style="font-size:small"><span aria-hidden="true">well...</span></button>      
-      Bundles export some of their packages (with a package-related version), and they might depend on packages provided
-      by other bundles (in a specific version range). To be done...
+      <button type="button" class="close small" data-dismiss="alert" aria-label="Close" (click)="hidePermanently('help_bundles_packagedep')"
+        style="font-size:small"><span aria-hidden="true">well...</span></button> Bundles export some of their packages
+      (with a package-related version), and they might depend on packages provided by other bundles (in a specific version
+      range). To be done...
     </div>
     Show System Bundle: <input type=checkbox id="showSystemBundle">
     <div>
@@ -77,8 +75,9 @@
 
   <tab [tabTitle]="getBarChartTitle('Size Distribution')">
     <div *ngIf="isShown('help_bundles_size')" class="alert alert-warning alert-dismissible fade in" role="alert" style="font-size:small">
-      <button type="button" class="close small" data-dismiss="alert" aria-label="Close" (click)="hidePermanently('help_bundles_size')" style="font-size:small"><span aria-hidden="true">Hm, is it?</span></button>      
-      This is going to be a size distribution chart...
+      <button type="button" class="close small" data-dismiss="alert" aria-label="Close" (click)="hidePermanently('help_bundles_size')"
+        style="font-size:small"><span aria-hidden="true">Hm, is it?</span></button> This is going to be a size distribution
+      chart...
     </div>
     <div>
       <svg id="d3BundleSizes" style="width:1000px;height:600px;border:0px #bfbfbf solid;" d3BundleSizes />
