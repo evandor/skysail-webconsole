@@ -84,6 +84,10 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/map', '../
                     return this._http.get(this._baseUrl + 'backend/v1/packages', { headers: this.headers })
                         .map(function (res) { return res.json(); });
                 };
+                BackendServices.prototype.getMatchingPackages = function (part) {
+                    return this._http.get(this._baseUrl + 'backend/v1/packages/' + part, { headers: this.headers })
+                        .map(function (res) { return res.json(); });
+                };
                 BackendServices.prototype.getLogs = function () {
                     return this._http.get(this._baseUrl + 'backend/v1/logs', { headers: this.headers })
                         .map(function (res) { return res.json(); });

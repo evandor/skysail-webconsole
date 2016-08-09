@@ -84,6 +84,11 @@ export class BackendServices {
             .map(res => res.json());
     }
 
+    getMatchingPackages(part: string): Observable<ExportPackage[]> {
+        return this._http.get(this._baseUrl + 'backend/v1/packages/' + part, { headers: this.headers })
+            .map(res => res.json());
+    }
+
     getLogs(): Observable<LogEntry[]> {
         return this._http.get(this._baseUrl + 'backend/v1/logs', { headers: this.headers })
             .map(res => res.json());

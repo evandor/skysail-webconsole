@@ -126,6 +126,19 @@ public class OsgiService implements BundleActivator {
                 .sorted((p1, p2) -> p1.getPkgName().compareTo(p2.getPkgName()))
                 .collect(Collectors.toList());
     }
+    
+    public Object getPackageDescriptor(String packageName) {
+        if (bundleContext == null) {
+            log.warn(BUNDLE_CONTEXT_NOT_AVAILABLE);
+            return Collections.emptyList();
+        }
+        return Arrays.stream(bundleContext.getBundles()) // NOSONAR
+                .map(b -> new BundleDetails(b,bundleContext))
+                .map(b -> b.getExportPackage())
+                .flatMap(b -> b.stream())
+                .filter(p -> p.getPkgName().contains(packageName))
+                .collect(Collectors.toList());
+	}
 
     public final Object getService(String serviceName) {
         if (services == null) {

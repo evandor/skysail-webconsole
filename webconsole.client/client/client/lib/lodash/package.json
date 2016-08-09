@@ -1,15 +1,8 @@
 {
   "_args": [
     [
-      {
-        "name": "lodash",
-        "raw": "lodash@^4.5.1",
-        "rawSpec": "^4.5.1",
-        "scope": null,
-        "spec": ">=4.5.1 <5.0.0",
-        "type": "range"
-      },
-      "/Users/carsten/git/skysail-webconsole/webconsole.client/client/node_modules/concurrently"
+      "lodash@^4.5.1",
+      "C:\\git\\skysail-webconsole\\webconsole.client\\client\\node_modules\\concurrently"
     ]
   ],
   "_from": "lodash@>=4.5.1 <5.0.0",
@@ -40,11 +33,11 @@
     "/concurrently",
     "/lite-server"
   ],
-  "_resolved": "https://registry.npmjs.org/lodash/-/lodash-4.13.1.tgz",
+  "_resolved": "http://registry.npmjs.org/lodash/-/lodash-4.13.1.tgz",
   "_shasum": "83e4b10913f48496d4d16fec4a560af2ee744b68",
   "_shrinkwrap": null,
   "_spec": "lodash@^4.5.1",
-  "_where": "/Users/carsten/git/skysail-webconsole/webconsole.client/client/node_modules/concurrently",
+  "_where": "C:\\git\\skysail-webconsole\\webconsole.client\\client\\node_modules\\concurrently",
   "author": {
     "email": "john.david.dalton@gmail.com",
     "name": "John-David Dalton",

@@ -29,7 +29,7 @@ Export-Package: \
     io.skysail.domain.*,\
     io.skysail.webconsole.*,\
     org.antlr.v4.runtime.*,\
-    com.fasterxml.jackson.core.*,\
+    com.fasterxml.jackson.*,\
     org.osgi.xmlns.scr.v1_1.*,\
     client.*
 

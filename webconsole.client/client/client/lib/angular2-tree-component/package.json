@@ -1,26 +1,19 @@
 {
   "_args": [
     [
-      {
-        "name": "angular2-tree-component",
-        "raw": "angular2-tree-component",
-        "rawSpec": "",
-        "scope": null,
-        "spec": "latest",
-        "type": "tag"
-      },
-      "/Users/carsten/git/skysail-webconsole/webconsole.client/client"
+      "angular2-tree-component@^1.1.10",
+      "C:\\git\\skysail-webconsole\\webconsole.client\\client"
     ]
   ],
-  "_from": "angular2-tree-component@latest",
-  "_id": "angular2-tree-component@1.1.10",
+  "_from": "angular2-tree-component@>=1.1.10 <2.0.0",
+  "_id": "angular2-tree-component@1.1.12",
   "_inCache": true,
   "_installable": true,
   "_location": "/angular2-tree-component",
   "_nodeVersion": "5.10.0",
   "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/angular2-tree-component-1.1.10.tgz_1468771177476_0.033909100107848644"
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/angular2-tree-component-1.1.12.tgz_1470509031863_0.6952270292676985"
   },
   "_npmUser": {
     "email": "info@500tech.com",
@@ -30,20 +23,20 @@
   "_phantomChildren": {},
   "_requested": {
     "name": "angular2-tree-component",
-    "raw": "angular2-tree-component",
-    "rawSpec": "",
+    "raw": "angular2-tree-component@^1.1.10",
+    "rawSpec": "^1.1.10",
     "scope": null,
-    "spec": "latest",
-    "type": "tag"
+    "spec": ">=1.1.10 <2.0.0",
+    "type": "range"
   },
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/angular2-tree-component/-/angular2-tree-component-1.1.10.tgz",
-  "_shasum": "5415b29250b9a1608e279946ac572d95ed0503d6",
+  "_resolved": "http://registry.npmjs.org/angular2-tree-component/-/angular2-tree-component-1.1.12.tgz",
+  "_shasum": "f36aefc644147c448120f6325d1a6246d72c2fd0",
   "_shrinkwrap": null,
-  "_spec": "angular2-tree-component",
-  "_where": "/Users/carsten/git/skysail-webconsole/webconsole.client/client",
+  "_spec": "angular2-tree-component@^1.1.10",
+  "_where": "C:\\git\\skysail-webconsole\\webconsole.client\\client",
   "author": {
     "email": "adam@500tech.com",
     "name": "Adam Klein"
@@ -82,8 +75,8 @@
   },
   "directories": {},
   "dist": {
-    "shasum": "5415b29250b9a1608e279946ac572d95ed0503d6",
-    "tarball": "https://registry.npmjs.org/angular2-tree-component/-/angular2-tree-component-1.1.10.tgz"
+    "shasum": "f36aefc644147c448120f6325d1a6246d72c2fd0",
+    "tarball": "https://registry.npmjs.org/angular2-tree-component/-/angular2-tree-component-1.1.12.tgz"
   },
   "engines": {
     "node": ">= 4.2.1",
@@ -92,7 +85,7 @@
   "files": [
     "dist/"
   ],
-  "gitHead": "42135ef5d175eac96b3dd949e3e8c180f1dde5ab",
+  "gitHead": "4aff19e56cdeb74e848200cf4d288e7e739d6e28",
   "homepage": "https://github.com/500tech/angular2-tree-component",
   "keywords": [
     "angular2",
@@ -136,5 +129,5 @@
     "test": "karma start"
   },
   "typings": "dist/angular2-tree-component.d.ts",
-  "version": "1.1.10"
+  "version": "1.1.12"
 }

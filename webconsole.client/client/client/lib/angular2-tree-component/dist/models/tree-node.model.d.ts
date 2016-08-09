@@ -6,15 +6,13 @@ export declare class TreeNode implements ITreeNode {
     data: any;
     parent: TreeNode;
     treeModel: TreeModel;
-    private _isExpanded;
     isExpanded: boolean;
-    private _isActive;
     isActive: boolean;
     isFocused: boolean;
-    children: TreeNode[];
     level: number;
     path: string[];
     elementRef: ElementRef;
+    children: TreeNode[];
     private _originalNode;
     originalNode: any;
     constructor(data: any, parent: TreeNode, treeModel: TreeModel);
@@ -41,8 +39,9 @@ export declare class TreeNode implements ITreeNode {
     private _getIndexInParent();
     loadChildren(): void;
     toggle(): void;
-    private _activate();
-    private _deactivate();
+    toggleExpanded(): void;
+    setIsExpanded(value: any): void;
+    setIsActive(value: any): void;
     toggleActivated(): void;
     scrollIntoView(): void;
     focus(): void;

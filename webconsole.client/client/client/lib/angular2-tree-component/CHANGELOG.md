@@ -1,3 +1,11 @@
+<a name="1.1.12"></a>
+# 1.1.12 (2016-08-06)
+* Fixed update() re-expanding nodes marked with isExpanded field
+
+<a name="1.1.11"></a>
+# 1.1.11 (2016-08-06)
+* Added update() method to allow changing tree structure (add / remove nodes)
+
 <a name="1.1.10"></a>
 # 1.1.10 (2016-07-17)
 * Added context to options, to use in custom template component

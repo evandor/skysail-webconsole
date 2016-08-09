@@ -92,7 +92,7 @@
       </thead>
       <tr *ngFor="let pkg of (bundle.importPackage | packagesFilter:searchName)">
         <td [class]="getImportPackageClass(pkg)">
-          <span class="glyphicon glyphicon-log-in" aria-hidden="true" style="color: blue"></span>&nbsp;&nbsp;<b>{{pkg.pkgName}}</b>
+          <b (click)="showMatchingPackages(pkg.pkgName)">{{pkg.pkgName}}</b>
         </td>
         <td>{{pkg.versionRange}}</td>
         <td>
@@ -103,7 +103,7 @@
         <td>
           <div *ngFor="let candidate of pkg.packageResolvingCandidates">
             <span *ngIf="candidate.exportingBundle.id == bundle.id">self</span>
-            <span *ngIf="candidate.exportingBundle.id != bundle.id">Bundle {{candidate.exportingBundle.id}}: packageVersion {{candidate.version}} </span>
+            <span *ngIf="candidate.exportingBundle.id != bundle.id">Bundle <span style="cursor: pointer; color:#000066;" (click)="onSelectBundle(candidate.exportingBundle.id)">{{candidate.exportingBundle.id}}</span>: packageVersion {{candidate.version}} </span>
           </div>
         </td>
       </tr>

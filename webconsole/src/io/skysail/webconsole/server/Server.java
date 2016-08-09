@@ -21,6 +21,7 @@ import io.skysail.webconsole.server.handler.BundlesHandler;
 import io.skysail.webconsole.server.handler.FrameworkHandler;
 import io.skysail.webconsole.server.handler.FrameworkListenerHandler;
 import io.skysail.webconsole.server.handler.LogsHandler;
+import io.skysail.webconsole.server.handler.PackageHandler;
 import io.skysail.webconsole.server.handler.PackagesHandler;
 import io.skysail.webconsole.server.handler.RuntimeConfigHandler;
 import io.skysail.webconsole.server.handler.ServiceHandler;
@@ -59,6 +60,7 @@ public class Server extends NanoHTTPD {
     private ServiceHandler serviceHandler;
 
     private PackagesHandler packagesHandler;
+    private PackageHandler packageHandler;
 
     private SnapshotsHandler snapshotsHandler;
     private SnapshotHandler snapshotHandler;
@@ -104,6 +106,7 @@ public class Server extends NanoHTTPD {
 
         servicesHandler = new ServicesHandler(osgiServiceTracker, basicAuth);
         packagesHandler = new PackagesHandler(osgiServiceTracker, basicAuth);
+        packageHandler = new PackageHandler(osgiServiceTracker, basicAuth);
 
         snapshotsHandler = new SnapshotsHandler(snapshotsService, basicAuth);
         snapshotHandler = new SnapshotHandler(snapshotsService, basicAuth);
@@ -189,7 +192,10 @@ public class Server extends NanoHTTPD {
             return serviceHandler.handle(session);
         }
 
-        if ("/backend/v1/packages".equals(session.getUri())) {
+        if (session.getUri().startsWith("/backend/v1/packages/")) {
+            return packageHandler.handle(session);
+        }
+        if (session.getUri().equals("/backend/v1/packages")) {
             return packagesHandler.handle(session);
         }
 

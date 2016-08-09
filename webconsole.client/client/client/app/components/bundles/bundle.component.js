@@ -216,6 +216,9 @@ System.register(['@angular/core', '@angular/common', "@angular/router", '@angula
                 BundleComponent.prototype.showContents = function (bundle) {
                     this._router.navigate(['/bundles', bundle.id, 'contents']);
                 };
+                BundleComponent.prototype.showMatchingPackages = function (name) {
+                    this._router.navigate(['/packages', name]);
+                };
                 BundleComponent.prototype.onSubmit = function () {
                     console.log("submitted");
                 };

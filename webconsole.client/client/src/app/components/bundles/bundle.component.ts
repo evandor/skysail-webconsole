@@ -198,6 +198,10 @@ export class BundleComponent implements OnInit {
     showContents(bundle: Bundle) {
         this._router.navigate(['/bundles', bundle.id, 'contents']);
     }
+    
+    showMatchingPackages(name: string) {
+        this._router.navigate(['/packages', name]);
+    }
 
     onSubmit() {
         console.log("submitted");

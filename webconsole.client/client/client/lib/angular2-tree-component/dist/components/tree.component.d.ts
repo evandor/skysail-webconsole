@@ -4,6 +4,8 @@ import { TreeOptions } from '../models/tree-options.model';
 export declare class TreeComponent implements OnChanges {
     treeModel: TreeModel;
     constructor(treeModel: TreeModel);
+    _nodes: any[];
+    _options: TreeOptions;
     nodes: any[];
     options: TreeOptions;
     focused: boolean;
