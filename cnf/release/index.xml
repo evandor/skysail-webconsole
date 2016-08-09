@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<repository increment="1470758188000" name="Release" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+<repository increment="1470758267000" name="Release" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="webconsole.all"/>
@@ -26551,6 +26551,27 @@
     <capability namespace="osgi.wiring.host">
       <attribute name="osgi.wiring.host" value="webconsole.client"/>
       <attribute name="bundle-version" type="Version" value="0.1.22.201607300840"/>
+    </capability>
+  </resource>
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="osgi.identity" value="webconsole.client"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" type="Version" value="0.1.23.201608091557"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="osgi.content" value="7fc88afb826be29157d3c4e0b2c4cc6e3498a78e10f0c841c532eea2e730d72e"/>
+      <attribute name="url" value="webconsole.client/webconsole.client-0.1.23.jar"/>
+      <attribute name="size" type="Long" value="5317938"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="osgi.wiring.bundle" value="webconsole.client"/>
+      <attribute name="bundle-version" type="Version" value="0.1.23.201608091557"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="osgi.wiring.host" value="webconsole.client"/>
+      <attribute name="bundle-version" type="Version" value="0.1.23.201608091557"/>
     </capability>
   </resource>
   <resource>
