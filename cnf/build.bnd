@@ -1,8 +1,11 @@
 
+// release:
 webconsole.version           '[0.3.14,0.4)'
 // release:
 webconsole.antlr.version     '[0.2.2,0.2.3)'
+// release:
 webconsole.client.version    '[0.1.23,0.2)'
+// release:
 webconsole.osgi.version      '[0.1.18,0.2)'
 
 
