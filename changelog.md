@@ -11,7 +11,7 @@
 
 #### changes:
 
- * added package/id path and resource
+ * added slf4j to exported bundles
 
 # skysail-webconsole changelog
 

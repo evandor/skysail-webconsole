@@ -21,6 +21,5 @@ mockito: org.mockito.mockito-core;version="[1.9,2)",\
     org.apache.felix.gogo.command;version='[0.16.0,0.16.1)',\
     org.apache.felix.gogo.runtime;version='[0.16.2,0.16.3)',\
     org.apache.felix.gogo.shell;version='[0.12.0,0.12.1)',\
-    slf4j.api;version='[1.7.21,1.7.22)',\
     net.sourceforge.htmlunit;version=2.22,\
     io.skysail.bundled.htmlunit-osgi-withdeps;version=2.22.1
