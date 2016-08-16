@@ -2,6 +2,16 @@
 
 ## webconsole.all 0.1.15
 
+### based on: same as 0.1.14
+
+#### changes:
+
+ * imported packages fix
+
+# skysail-webconsole changelog
+
+## webconsole.all 0.1.15
+
 ### based on 
 
   * webconsole.version           0.3.15
