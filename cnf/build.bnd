@@ -1,6 +1,6 @@
 
 // release:
-webconsole.version           '[0.3.14,0.4)'
+webconsole.version           '[0.3.15,0.4)'
 // release:
 webconsole.antlr.version     '[0.2.2,0.2.3)'
 // release:

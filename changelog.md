@@ -4,7 +4,7 @@
 
 ### based on 
 
-  * webconsole.version           0.3.14
+  * webconsole.version           0.3.15
   * webconsole.antlr.version     0.2.2
   * webconsole.client.version    0.1.23
   * webconsole.osgi.version      0.1.19
