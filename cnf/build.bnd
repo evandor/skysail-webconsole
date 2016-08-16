@@ -6,7 +6,7 @@ webconsole.antlr.version     '[0.2.2,0.2.3)'
 // release:
 webconsole.client.version    '[0.1.23,0.2)'
 // release:
-webconsole.osgi.version      '[0.1.18,0.2)'
+webconsole.osgi.version      '[0.1.19,0.2)'
 
 
 osgi.version                 '[6.0.0,6.0.1)'

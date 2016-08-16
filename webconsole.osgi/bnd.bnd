@@ -1,6 +1,6 @@
 Bundle-Name: SKYSAIL :: webconsole :: osgi
 
-Bundle-Version: 0.1.18.${tstamp}
+Bundle-Version: 0.1.19.${tstamp}
 
 Bundle-Description: Core logic of the skysail webconsole project
 
@@ -36,7 +36,8 @@ Export-Package: \
 	io.skysail.domain,\
 	io.skysail.webconsole.osgi.entities.snapshots,\
 	io.skysail.webconsole.osgi.entities.wires,\
-	org.osgi.xmlns.scr.v1_1
+	org.osgi.xmlns.scr.v1_1,\
+	slf4j.api
 	
 Import-Package: \
     !javax.validation.*,\
