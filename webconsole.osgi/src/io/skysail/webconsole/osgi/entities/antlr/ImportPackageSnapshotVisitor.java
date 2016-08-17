@@ -10,9 +10,7 @@ import io.skysail.webconsole.antlr.ImportPackageParser.PackageNameContext;
 import io.skysail.webconsole.antlr.ImportPackageParser.ParameterContext;
 import io.skysail.webconsole.osgi.entities.packages.ImportPackageSnapshot;
 import io.skysail.webconsole.osgi.entities.packages.Resolution;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 public class ImportPackageSnapshotVisitor extends ImportPackageBaseVisitor<Void> {
 
     private List<ImportPackageSnapshot> importedPackages;
@@ -61,7 +59,7 @@ public class ImportPackageSnapshotVisitor extends ImportPackageBaseVisitor<Void>
         try {
             return Resolution.valueOf(resolutionString.toUpperCase());
         } catch (Exception e) {
-            log.warn("could not parse resolution string '{}'", resolutionString);
+            //log.warn("could not parse resolution string '{}'", resolutionString);
             return Resolution.MANDATORY;
         }
     }

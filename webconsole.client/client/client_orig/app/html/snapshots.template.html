@@ -1,0 +1,16 @@
+<h2><i class="fa fa-search" aria-hidden="true" style="color: #7502d8"></i> Snapshots</h2>
+
+<table class="table" width='90%'>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>#Bundles</th>
+      <th>#Services</th>
+    </tr>
+  </thead>
+  <tr *ngFor="let snapshot of snapshots">
+    <td>{{snapshot.title}}</td>
+    <td>{{snapshot.bundleCount}}</td>
+    <td>{{snapshot.serviceCount}}</td>
+  </tr>
+</table>

@@ -8,21 +8,21 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 import org.osgi.framework.Bundle;
-import org.osgi.framework.BundleContext;
 import org.osgi.framework.Version;
+import org.osgi.util.tracker.ServiceTracker;
 
 import io.skysail.webconsole.osgi.entities.bundles.BundleDescriptor;
 
 public class BundleDescriptorTest {
 
     protected Bundle bundle;
-    protected BundleContext context;
+    protected ServiceTracker tracker;
 
 
     @Before
     public void setUp() {
         bundle = setUpDefaultBundle();
-        context = mock(BundleContext.class);
+        tracker = mock(ServiceTracker.class);
     }
 
     @Test

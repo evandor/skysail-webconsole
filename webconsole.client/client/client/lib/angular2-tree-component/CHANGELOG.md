@@ -1,3 +1,15 @@
+<a name="1.1.14"></a>
+# 1.1.13 (2016-10-06)
+* Widen expander click area (#24)
+* Not using deprecated methods (#24)
+* Fixed bug when running update() after async children were loaded
+* Setting focus on tree on all mouse actions
+
+<a name="1.1.13"></a>
+# 1.1.13 (2016-08-06)
+* Added action mappings (#19)
+* Moved typings to dependency (#13)
+
 <a name="1.1.12"></a>
 # 1.1.12 (2016-08-06)
 * Fixed update() re-expanding nodes marked with isExpanded field

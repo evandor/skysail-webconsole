@@ -8,13 +8,11 @@ import java.net.URL;
 import java.net.URLConnection;
 
 import org.osgi.framework.Bundle;
-import org.osgi.framework.BundleContext;
+import org.osgi.util.tracker.ServiceTracker;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class FileUtils {
 
@@ -28,7 +26,7 @@ public class FileUtils {
         String filename = normalizeBundleLocation(location);
         long size = new File(filename).length() / 1024;
         if (size == 0) {
-            log.info("could not determine file size of '{}'", filename);
+            //log.info("could not determine file size of '{}'", filename);
         }
         return size;
     }
@@ -39,7 +37,7 @@ public class FileUtils {
         return result;
     }
 
-    public static String getContent(Bundle bundle, BundleContext bundleContext, String filename) {
+    public static String getContent(Bundle bundle, ServiceTracker tracker, String filename) {
         URL resource = bundle.getResource(filename);
         BufferedReader br;
         if (resource == null) {
@@ -56,7 +54,7 @@ public class FileUtils {
             br.close();
             return sb.toString();
         } catch (Exception e) {
-            LogServiceUtils.error(bundleContext, e);
+            LogServiceUtils.error(tracker, e);
         }
         return "problem accessing uri " + filename;
     }
@@ -70,7 +68,7 @@ public class FileUtils {
         } else if (location.startsWith(REFERENCE_FILE)) {
             return location.substring(REFERENCE_FILE.length()).replace("%25", "%");
         } else {
-            log.warn("could not parse bundle location {}", location);
+           // log.warn("could not parse bundle location {}", location);
         }
         return "";
     }

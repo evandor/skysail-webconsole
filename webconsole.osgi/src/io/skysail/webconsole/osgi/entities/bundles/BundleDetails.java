@@ -13,10 +13,11 @@ import java.util.zip.ZipFile;
 
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.osgi.framework.Bundle;
-import org.osgi.framework.BundleContext;
 import org.osgi.framework.Constants;
 import org.osgi.framework.startlevel.BundleStartLevel;
 import org.osgi.framework.wiring.BundleWiring;
+import org.osgi.service.log.LogService;
+import org.osgi.util.tracker.ServiceTracker;
 import org.osgi.xmlns.scr.v1_1.Tcomponent;
 
 import io.skysail.webconsole.antlr.ExportPackageLexer;
@@ -35,14 +36,12 @@ import io.skysail.webconsole.osgi.entities.wires.WireDescriptor;
 import io.skysail.webconsole.osgi.utils.FileUtils;
 import io.skysail.webconsole.osgi.utils.XmlUtils;
 import lombok.Getter;
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * maximal OSGi bundle representation.
  *
  */
 @Getter
-@Slf4j
 public class BundleDetails extends BundleDescriptor {
 
     private String location;
@@ -66,8 +65,8 @@ public class BundleDetails extends BundleDescriptor {
      * @param bundle
      *            an OSGi bundle
      */
-    public BundleDetails(Bundle bundle, BundleContext context) {
-        super(bundle, context);
+    public BundleDetails(Bundle bundle, ServiceTracker<LogService, LogService> tracker) {
+        super(bundle, tracker);
         this.location = bundle.getLocation();
         this.lastModification = bundle.getLastModified();
         this.startLevel = bundle.adapt(BundleStartLevel.class).getStartLevel();
@@ -98,11 +97,11 @@ public class BundleDetails extends BundleDescriptor {
             zipFile.stream().filter(e -> e.getName().startsWith("OSGI-INF/")).filter(e -> e.getName().endsWith(".xml"))
                     .forEach(e -> scrFiles.add(e.getName()));
         } catch (IOException e) { // NOSONAR
-            log.warn(e.getMessage());
+           // log.warn(e.getMessage());
         }
         for (String filename : scrFiles) {
-            String xml = FileUtils.getContent(bundle, getContext(), filename);
-            scrMap.put(filename, XmlUtils.parse(xml, getContext()));
+            String xml = FileUtils.getContent(bundle, getTracker(), filename);
+            scrMap.put(filename, XmlUtils.parse(xml, getTracker()));
         }
     }
 

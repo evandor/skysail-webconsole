@@ -34,9 +34,7 @@ import io.skysail.webconsole.server.handler.VersionHandler;
 import io.skysail.webconsole.services.LogService;
 import io.skysail.webconsole.services.OsgiServiceTracker;
 import io.skysail.webconsole.services.SnapshotsService;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 public class Server extends NanoHTTPD {
 
     private static final String BACKEND = "/backend/";
@@ -83,12 +81,17 @@ public class Server extends NanoHTTPD {
     private BundleContentsHandler bundleContentsHandler;
     private BundleFileContentHandler bundleFileContentHandler;
 
-    public Server(BundleContext bundleContext, OsgiServiceTracker osgiServiceTracker, int port, String httpBasicPassword) throws IOException {
+    public Server(BundleContext bundleContext, OsgiServiceTracker osgiServiceTracker, int port,
+            String httpBasicPassword) throws IOException {
         super(port);
 
-        //String basicAuth = "Basic " + DatatypeConverter.printBase64Binary(("websonsole" + ":" + httpBasicPassword).getBytes());
+        // String basicAuth = "Basic " +
+        // DatatypeConverter.printBase64Binary(("websonsole" + ":" +
+        // httpBasicPassword).getBytes());
 
-        String basicAuth = "Basic " + new String(Base64.getEncoder().encode(("webconsole" + ":" + httpBasicPassword).getBytes()), Charset.forName("UTF-8"));
+        String basicAuth = "Basic "
+                + new String(Base64.getEncoder().encode(("webconsole" + ":" + httpBasicPassword).getBytes()),
+                        Charset.forName("UTF-8"));
 
         start(NanoHTTPD.SOCKET_READ_TIMEOUT, false);
 
@@ -127,7 +130,7 @@ public class Server extends NanoHTTPD {
                 .filter(b -> b.getSymbolicName().equals(WEBCONSOLE_CLIENT)).findFirst()
                 .orElse(bundleContext.getBundle());
 
-        log.info("using client bundle '{}' [{}]", clientBundle.getSymbolicName(), clientBundle.getVersion());
+       // log.info("using client bundle '{}' [{}]", clientBundle.getSymbolicName(), clientBundle.getVersion());
 
         versionHandler = new VersionHandler(clientBundle, basicAuth);
         staticFilesHandler = new StaticFilesHandler(clientBundle);
@@ -157,7 +160,7 @@ public class Server extends NanoHTTPD {
      */
     @Override
     public Response serve(IHTTPSession session) {
-        log.debug("processing {} on uri '{}'", session.getMethod(), session.getUri());
+        //log.debug("processing {} on uri '{}'", session.getMethod(), session.getUri());
 
         // --- POSTS ---------------------------------
         if (session.getMethod().equals(Method.POST) && "/backend/snapshots/".equals(session.getUri())) {

@@ -16,9 +16,7 @@ import fi.iki.elonen.NanoHTTPD;
 import fi.iki.elonen.NanoHTTPD.IHTTPSession;
 import fi.iki.elonen.NanoHTTPD.Response;
 import fi.iki.elonen.NanoHTTPD.Response.Status;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 public class StaticFilesHandler {
 
     private Bundle agentBundle;
@@ -44,7 +42,7 @@ public class StaticFilesHandler {
             br.close();
             return sb.toString();
         } catch (Exception e) {
-            log.error(e.getMessage() + " when accessing " + resource, e);
+            //log.error(e.getMessage() + " when accessing " + resource, e);
         }
         return "problem accessing uri " + uri.toString();
     }
@@ -52,17 +50,19 @@ public class StaticFilesHandler {
     public Response handle(IHTTPSession session) {
         String msg;
         try {
-            //msg = getResponse(new URI(session.getUri()));
-            //return NanoHTTPD.newFixedLengthResponse(Status.OK, getMediaType(session.getUri()), msg);
+            // msg = getResponse(new URI(session.getUri()));
+            // return NanoHTTPD.newFixedLengthResponse(Status.OK,
+            // getMediaType(session.getUri()), msg);
             byte[] responseBytes = getResponseBytes(new URI(session.getUri()));
             if (responseBytes != null) {
                 InputStream inputStream = new ByteArrayInputStream(responseBytes);
-                return NanoHTTPD.newFixedLengthResponse(Status.OK, getMediaType(session.getUri()), inputStream, responseBytes.length);
+                return NanoHTTPD.newFixedLengthResponse(Status.OK, getMediaType(session.getUri()), inputStream,
+                        responseBytes.length);
             } else {
                 return NanoHTTPD.newFixedLengthResponse(Status.NOT_FOUND, getMediaType(session.getUri()), "");
             }
         } catch (URISyntaxException e) {
-            log.error(e.getMessage(), e);
+            //log.error(e.getMessage(), e);
             return fi.iki.elonen.NanoHTTPD.newFixedLengthResponse(Status.INTERNAL_ERROR, NanoHTTPD.MIME_HTML,
                     e.getMessage());
         }
@@ -84,15 +84,15 @@ public class StaticFilesHandler {
 
             ByteArrayOutputStream bao = new ByteArrayOutputStream();
 
-            while((bytesRead = inputStream.read(buff)) != -1) {
-               bao.write(buff, 0, bytesRead);
+            while ((bytesRead = inputStream.read(buff)) != -1) {
+                bao.write(buff, 0, bytesRead);
             }
 
             byte[] data = bao.toByteArray();
 
             return data;
         } catch (Exception e) {
-            log.error(e.getMessage() + " when accessing " + resource, e);
+            //log.error(e.getMessage() + " when accessing " + resource, e);
         }
         return new byte[0];
     }

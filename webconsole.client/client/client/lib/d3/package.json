@@ -1,8 +1,16 @@
 {
   "_args": [
     [
-      "d3@3.5.17",
-      "C:\\git\\skysail-webconsole\\webconsole.client\\client"
+      {
+        "raw": "d3@3.5.17",
+        "scope": null,
+        "escapedName": "d3",
+        "name": "d3",
+        "rawSpec": "3.5.17",
+        "spec": "3.5.17",
+        "type": "version"
+      },
+      "/Users/carsten/git/skysail-webconsole/webconsole.client/client"
     ]
   ],
   "_from": "d3@3.5.17",
@@ -16,27 +24,28 @@
     "tmp": "tmp/d3-3.5.17.tgz_1462408194546_0.654020820511505"
   },
   "_npmUser": {
-    "email": "mbostock@gmail.com",
-    "name": "mbostock"
+    "name": "mbostock",
+    "email": "mbostock@gmail.com"
   },
   "_npmVersion": "2.11.3",
   "_phantomChildren": {},
   "_requested": {
-    "name": "d3",
     "raw": "d3@3.5.17",
-    "rawSpec": "3.5.17",
     "scope": null,
+    "escapedName": "d3",
+    "name": "d3",
+    "rawSpec": "3.5.17",
     "spec": "3.5.17",
     "type": "version"
   },
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "http://registry.npmjs.org/d3/-/d3-3.5.17.tgz",
+  "_resolved": "https://registry.npmjs.org/d3/-/d3-3.5.17.tgz",
   "_shasum": "bc46748004378b21a360c9fc7cf5231790762fb8",
   "_shrinkwrap": null,
   "_spec": "d3@3.5.17",
-  "_where": "C:\\git\\skysail-webconsole\\webconsole.client\\client",
+  "_where": "/Users/carsten/git/skysail-webconsole/webconsole.client/client",
   "author": {
     "name": "Mike Bostock",
     "url": "http://bost.ocks.org/mike"
@@ -74,17 +83,17 @@
     }
   },
   "jspm": {
-    "buildConfig": {
-      "uglify": true
-    },
-    "files": [
-      "d3.js"
-    ],
     "main": "d3",
     "shim": {
       "d3": {
         "exports": "d3"
       }
+    },
+    "files": [
+      "d3.js"
+    ],
+    "buildConfig": {
+      "uglify": true
     }
   },
   "keywords": [
@@ -99,12 +108,12 @@
   "main": "d3.js",
   "maintainers": [
     {
-      "email": "mbostock@gmail.com",
-      "name": "mbostock"
+      "name": "mbostock",
+      "email": "mbostock@gmail.com"
     },
     {
-      "email": "jason@jasondavies.com",
-      "name": "jasondavies"
+      "name": "jasondavies",
+      "email": "jason@jasondavies.com"
     }
   ],
   "name": "d3",

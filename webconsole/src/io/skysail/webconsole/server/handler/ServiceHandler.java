@@ -8,9 +8,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 
 import fi.iki.elonen.NanoHTTPD.IHTTPSession;
 import io.skysail.webconsole.osgi.entities.services.ServiceDetails;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 public class ServiceHandler extends AbstractHttpHandler { // NOSONAR
 
     private BundleContext bundleContext;
@@ -32,11 +30,11 @@ public class ServiceHandler extends AbstractHttpHandler { // NOSONAR
             ServiceReference<?>[] references = bundleContext
                     .getAllServiceReferences(null, "(service.id=" + serviceId + ")");
             if (references == null || references.length == 0) {
-                log.error("no service reference found for service.id = '{}'", serviceId);
+               // log.error("no service reference found for service.id = '{}'", serviceId);
             }
             return new ServiceDetails(references[0]);
         } catch (InvalidSyntaxException e) {
-            log.error(e.getMessage(), e);
+            //log.error(e.getMessage(), e);
         }
         return null;
     }

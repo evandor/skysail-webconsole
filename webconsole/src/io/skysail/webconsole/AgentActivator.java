@@ -13,7 +13,6 @@ import org.osgi.service.resolver.Resolver;
 import io.skysail.webconsole.osgi.services.OsgiService;
 import io.skysail.webconsole.server.Server;
 import io.skysail.webconsole.services.OsgiServiceTracker;
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * Using an activator so that we don't depend on any DS implementation in the
@@ -21,7 +20,6 @@ import lombok.extern.slf4j.Slf4j;
  *
  * The activator starts the server in a new thread.
  */
-@Slf4j
 public class AgentActivator implements BundleActivator {
 
     private Thread loggerThread;
@@ -32,7 +30,7 @@ public class AgentActivator implements BundleActivator {
 
     @Override
     public void start(BundleContext context) throws Exception {
-        log.info("starting webconsole plugin");
+//        log.info("starting webconsole plugin");
         this.context = context;
         osgiServiceTracker = new OsgiServiceTracker(context, OsgiService.class, null);
         osgiServiceTracker.open();
@@ -43,7 +41,7 @@ public class AgentActivator implements BundleActivator {
 
     @Override
     public void stop(BundleContext context) throws Exception {
-        log.info("stopping webconsole plugin");
+       // log.info("stopping webconsole plugin");
         this.context = null;
         osgiServiceTracker.close();
         try {
@@ -54,7 +52,7 @@ public class AgentActivator implements BundleActivator {
             }
             loggerThread.interrupt();
         } catch (Exception e) {
-            log.error(e.getMessage(), e);
+            //log.error(e.getMessage(), e);
         }
     }
 
@@ -66,10 +64,10 @@ public class AgentActivator implements BundleActivator {
     private void createServer() { // NOSONAR
         try {
             int port = Integer.parseInt(System.getProperty("skysail.webconsole.port", "2002"));
-            log.info("starting intern webconsole server on port {}", port);
+            //log.info("starting intern webconsole server on port {}", port);
             server = new io.skysail.webconsole.server.Server(context, osgiServiceTracker, port, "webconsole");
         } catch (Exception e) {
-            log.error(e.getMessage(), e);
+            //log.error(e.getMessage(), e);
         }
     }
 
@@ -83,7 +81,7 @@ public class AgentActivator implements BundleActivator {
                 runtime.exec("/usr/bin/firefox -new-window " + url);
             }
         } catch (IOException | URISyntaxException e) {
-            log.error(e.getMessage(), e);
+            //log.error(e.getMessage(), e);
         }
     }
 

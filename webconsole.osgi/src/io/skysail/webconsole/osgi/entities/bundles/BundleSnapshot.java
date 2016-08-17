@@ -1,8 +1,9 @@
 package io.skysail.webconsole.osgi.entities.bundles;
 
 import org.osgi.framework.Bundle;
-import org.osgi.framework.BundleContext;
 import org.osgi.framework.wiring.BundleWiring;
+import org.osgi.service.log.LogService;
+import org.osgi.util.tracker.ServiceTracker;
 
 import io.skysail.webconsole.osgi.entities.wires.WireDescriptorSnapshot;
 import lombok.Getter;
@@ -21,17 +22,13 @@ public class BundleSnapshot extends BundleDescriptor {
 
     private String exportService;
     private WireDescriptorSnapshot wireDescriptor;
-    //private List<ServiceReferenceDescriptor> registeredServices;
-    //private List<ServiceReferenceDescriptor> servicesInUse;
 
     /**
      * @param bundle an OSGi bundle.
      */
-    public BundleSnapshot(Bundle bundle, BundleContext context) {
-        super(bundle, context);
+    public BundleSnapshot(Bundle bundle, ServiceTracker<LogService, LogService> tracker) {
+        super(bundle, tracker);
         wireDescriptor = new WireDescriptorSnapshot(bundle.adapt(BundleWiring.class));
-       // registeredServices = getRegisteredServices(bundle);
-       // servicesInUse = getServicesInUse(bundle);
     }
 
 }

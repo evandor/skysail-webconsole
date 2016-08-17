@@ -6,7 +6,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.osgi.framework.Bundle;
-import org.osgi.framework.BundleContext;
+import org.osgi.service.log.LogService;
+import org.osgi.util.tracker.ServiceTracker;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -15,13 +16,11 @@ import io.skysail.webconsole.osgi.entities.services.ServiceReferenceDescriptor;
 import io.skysail.webconsole.osgi.utils.FileUtils;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * A minimal OSGi bundle representation.
  */
 @Getter
-@Slf4j
 public class BundleDescriptor implements Identifiable {
 
     @Setter
@@ -36,17 +35,17 @@ public class BundleDescriptor implements Identifiable {
 
     @JsonIgnore
     @Getter
-	private BundleContext context;
+	private ServiceTracker<LogService, LogService> tracker;
 
     /**
      * Constructor taking an OSGi bundle.
      *
      * @param bundle
      *            an OSGi bundle
-     * @param context 
+     * @param tracker
      */
-    public BundleDescriptor(Bundle bundle, BundleContext context) {
-        this.context = context;
+    public BundleDescriptor(Bundle bundle, ServiceTracker<LogService, LogService> tracker) {
+        this.tracker = tracker;
 		id = Long.toString(bundle.getBundleId());
         symbolicName = bundle.getSymbolicName();
         version = bundle.getVersion() != null ? bundle.getVersion().toString() : "0.0.0";
@@ -59,7 +58,7 @@ public class BundleDescriptor implements Identifiable {
     private void handleLocation(Bundle bundle) {
         String location = bundle.getLocation();
         if (location == null) {
-            log.info("could not determine file size for bundle {}", bundle.getSymbolicName());
+           // log.info("could not determine file size for bundle {}", bundle.getSymbolicName());
             return;
         }
         this.size = FileUtils.getSize(location);

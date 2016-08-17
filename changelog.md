@@ -1,5 +1,19 @@
 # skysail-webconsole changelog
 
+## webconsole.all 0.1.16
+
+### based on 
+
+  * webconsole.version           0.3.16
+  * webconsole.antlr.version     0.2.2
+  * webconsole.client.version    0.2.0
+  * webconsole.osgi.version      0.2.0
+
+#### changes:
+
+ * removed dependency to logging framework (slf4j)
+ * removed some links to features not working yet
+
 ## webconsole.all 0.1.15
 
 ### based on: same as 0.1.14

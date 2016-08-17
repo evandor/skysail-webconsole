@@ -19,6 +19,7 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceReference;
 import org.osgi.framework.ServiceRegistration;
+import org.osgi.service.log.LogService;
 import org.osgi.util.tracker.ServiceTracker;
 
 import io.skysail.webconsole.osgi.entities.bundles.BundleContentDescriptor;
@@ -31,52 +32,56 @@ import io.skysail.webconsole.osgi.entities.services.ServiceDescriptor;
 import io.skysail.webconsole.osgi.entities.services.ServiceDetails;
 import io.skysail.webconsole.osgi.utils.FileUtils;
 import io.skysail.webconsole.osgi.utils.LogServiceUtils;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 public class OsgiService implements BundleActivator {
 
-    private static final String BUNDLE_CONTEXT_NOT_AVAILABLE = "bundleContext not available";
+    private static final String BUNDLE_CONTEXT_NOT_AVAILABLE = "BundleContext not available";
 
     private final Map<String, ServiceTracker> services = new HashMap<>();
 
     private BundleContext bundleContext;
 
-    private ServiceRegistration<OsgiService> registeredService;
+    private ServiceRegistration<OsgiService> osgiService;
+
+    private ServiceTracker<LogService,LogService> logServiceTracker;
 
     @Override
-    public void start(BundleContext context) throws Exception {
-        log.debug("starting {}", this.getClass().getName());
+    public void start(BundleContext context) {
+        logServiceTracker = new ServiceTracker<>(context, LogService.class.getName(), null);
+        logServiceTracker.open();
         this.bundleContext = context;
-        registeredService = context.registerService(OsgiService.class, this, new Hashtable<>());
+        osgiService = context.registerService(OsgiService.class, this, new Hashtable<>());
+        LogServiceUtils.info(logServiceTracker, "started activator " + this.getClass().getName());
     }
 
     @Override
-    public void stop(BundleContext context) throws Exception {
-        log.debug("stopping {}", this.getClass().getName());
+    public void stop(BundleContext context) {
+        LogServiceUtils.info(logServiceTracker, "about to stop activator " + this.getClass().getName());
         this.bundleContext = null;
-        registeredService = null;
+        osgiService = null;
+        logServiceTracker.close();
+        logServiceTracker = null;
     }
 
     public List<BundleDescriptor> getBundleDescriptors() {
-        return getBundlesRepresentations(b -> new BundleDescriptor(b,bundleContext));
+        return getBundlesRepresentations(b -> new BundleDescriptor(b,logServiceTracker));
     }
 
     public List<BundleSnapshot> getBundleSnapshots() {
-        return getBundlesRepresentations(b -> new BundleSnapshot(b,bundleContext)).stream()
+        return getBundlesRepresentations(b -> new BundleSnapshot(b,logServiceTracker)).stream()
                 .map(BundleSnapshot.class::cast)
                 .collect(Collectors.toList());
     }
 
     public List<BundleDetails> getBundleDetails() {
-        return getBundlesRepresentations(b -> new BundleDetails(b,bundleContext)).stream()
+        return getBundlesRepresentations(b -> new BundleDetails(b,logServiceTracker)).stream()
                 .map(BundleDetails.class::cast)
                 .collect(Collectors.toList());
     }
 
     public List<ServiceDescriptor> getServiceDescriptors() {
         if (bundleContext == null) {
-            log.warn(BUNDLE_CONTEXT_NOT_AVAILABLE);
+            LogServiceUtils.warn(logServiceTracker, BUNDLE_CONTEXT_NOT_AVAILABLE);
             return Collections.emptyList();
         }
         try {
@@ -86,14 +91,14 @@ public class OsgiService implements BundleActivator {
                     .sorted((b1, b2) -> Integer.valueOf(b1.getId()).compareTo(Integer.valueOf(b2.getId())))
                     .collect(Collectors.toList());
         } catch (InvalidSyntaxException e) {
-        	LogServiceUtils.error(bundleContext, e);
+        	LogServiceUtils.error(logServiceTracker, e);
         }
         return Collections.emptyList();
     }
 
     public List<ServiceDetails> getServiceDetails() {
         if (bundleContext == null) {
-            log.warn(BUNDLE_CONTEXT_NOT_AVAILABLE);
+            LogServiceUtils.warn(logServiceTracker, BUNDLE_CONTEXT_NOT_AVAILABLE);
             return Collections.emptyList();
         }
         try {
@@ -103,7 +108,7 @@ public class OsgiService implements BundleActivator {
                     .sorted((b1, b2) -> Integer.valueOf(b1.getId()).compareTo(Integer.valueOf(b2.getId())))
                     .collect(Collectors.toList());
         } catch (InvalidSyntaxException e) {
-        	LogServiceUtils.error(bundleContext, e);
+        	LogServiceUtils.error(logServiceTracker, e);
         }
         return Collections.emptyList();
     }
@@ -116,24 +121,24 @@ public class OsgiService implements BundleActivator {
 
     public List<ExportPackage> getPackageDescriptors() {
         if (bundleContext == null) {
-            log.warn(BUNDLE_CONTEXT_NOT_AVAILABLE);
+            LogServiceUtils.warn(logServiceTracker, BUNDLE_CONTEXT_NOT_AVAILABLE);
             return Collections.emptyList();
         }
         return Arrays.stream(bundleContext.getBundles()) // NOSONAR
-                .map(b -> new BundleDetails(b,bundleContext))
+                .map(b -> new BundleDetails(b,logServiceTracker))
                 .map(b -> b.getExportPackage())
                 .flatMap(b -> b.stream())
                 .sorted((p1, p2) -> p1.getPkgName().compareTo(p2.getPkgName()))
                 .collect(Collectors.toList());
     }
-    
+
     public Object getPackageDescriptor(String packageName) {
         if (bundleContext == null) {
-            log.warn(BUNDLE_CONTEXT_NOT_AVAILABLE);
+            LogServiceUtils.warn(logServiceTracker, BUNDLE_CONTEXT_NOT_AVAILABLE);
             return Collections.emptyList();
         }
         return Arrays.stream(bundleContext.getBundles()) // NOSONAR
-                .map(b -> new BundleDetails(b,bundleContext))
+                .map(b -> new BundleDetails(b,logServiceTracker))
                 .map(b -> b.getExportPackage())
                 .flatMap(b -> b.stream())
                 .filter(p -> p.getPkgName().contains(packageName))
@@ -146,7 +151,7 @@ public class OsgiService implements BundleActivator {
         }
         ServiceTracker<?, ?> serviceTracker = services.get(serviceName);
         if (serviceTracker == null) {
-            serviceTracker = new ServiceTracker(bundleContext, serviceName, null);
+            serviceTracker = new ServiceTracker<>(bundleContext, serviceName, null);
             serviceTracker.open();
             services.put(serviceName, serviceTracker);
         }
@@ -155,7 +160,7 @@ public class OsgiService implements BundleActivator {
 
     private List<BundleDescriptor> getBundlesRepresentations(Function<Bundle, ? extends BundleDescriptor> mapper) {
         if (bundleContext == null) {
-            log.warn(BUNDLE_CONTEXT_NOT_AVAILABLE);
+            LogServiceUtils.warn(logServiceTracker, BUNDLE_CONTEXT_NOT_AVAILABLE);
             return Collections.emptyList();
         }
 
@@ -168,17 +173,17 @@ public class OsgiService implements BundleActivator {
     public BundleContentDescriptor getBundleContentDescriptor(String id) {
         BundleDetails bundleDetails = getBundleDetails(id);
         String location = FileUtils.normalizeBundleLocation(bundleDetails.getLocation());
-        BundleContentDescriptor result = new BundleContentDescriptor(getBundle(id).get(),bundleContext);
+        BundleContentDescriptor result = new BundleContentDescriptor(getBundle(id).get(),logServiceTracker);
         try (ZipFile zipFile = new ZipFile(location)) {
             zipFile.stream().filter(e -> !e.getName().endsWith("/")).forEach(result::addPath);
         } catch (IOException e) {
-        	LogServiceUtils.error(bundleContext, e);
+        	LogServiceUtils.error(logServiceTracker, e);
         }
         return result;
     }
 
     public BundleDetails getBundleDetails(String bundleId) {
-        return getBundle(bundleId).map(b -> new BundleDetails(b, bundleContext))
+        return getBundle(bundleId).map(b -> new BundleDetails(b, logServiceTracker))
                 .orElseThrow(() -> new IllegalArgumentException(""));
     }
 
@@ -190,10 +195,10 @@ public class OsgiService implements BundleActivator {
         String content = "";
         Optional<Bundle> bundle = getBundle(id);
         if (bundle.isPresent()) {
-            content = FileUtils.getContent(bundle.get(), bundleContext, filename);
+            content = FileUtils.getContent(bundle.get(), logServiceTracker, filename);
         }
 
-        BundleFileContentDescriptor result = new BundleFileContentDescriptor(getBundle(id).get(),bundleContext);
+        BundleFileContentDescriptor result = new BundleFileContentDescriptor(getBundle(id).get(),logServiceTracker);
         result.setCode(content);
         return result;
     }

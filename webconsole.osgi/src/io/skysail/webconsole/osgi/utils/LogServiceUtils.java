@@ -1,40 +1,32 @@
 package io.skysail.webconsole.osgi.utils;
 
-import org.osgi.framework.BundleContext;
-import org.osgi.framework.ServiceReference;
 import org.osgi.service.log.LogService;
+import org.osgi.util.tracker.ServiceTracker;
 
-import lombok.extern.slf4j.Slf4j;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
-@Slf4j
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class LogServiceUtils {
 
-	public static synchronized void error(BundleContext context, Exception e) {
-		logMessage(context, LogService.LOG_ERROR, e.getMessage());
-		log.error(e.getMessage(), e);
-	}
+    public static synchronized void error(ServiceTracker<LogService, LogService> tracker, Exception e) {
+        logMessage(tracker, LogService.LOG_ERROR, e.getMessage());
+    }
 
-	public static synchronized void info(BundleContext bundle, String info) {
-		logMessage(bundle, LogService.LOG_INFO, info);
-		log.info(info);
-	}
+    public static synchronized void info(ServiceTracker<LogService, LogService> tracker, String info) {
+        logMessage(tracker, LogService.LOG_INFO, info);
+    }
 
-	public static synchronized void warn(BundleContext bundle, String warning) {
-		logMessage(bundle, LogService.LOG_WARNING, warning);
-		log.info(warning);
-	}
+    public static synchronized void warn(ServiceTracker<LogService, LogService> tracker, String warning) {
+        logMessage(tracker, LogService.LOG_WARNING, warning);
+    }
 
-	private static synchronized void logMessage(BundleContext ctx, int level, String message) {
-		ServiceReference<LogService> serviceReference = ctx.getServiceReference(LogService.class);
-		if (serviceReference == null) {
-			return;
-		}
-		LogService logService = ctx.getService(serviceReference);
-		if (logService == null) {
-			return;
-		}
-		logService.log(level, message);
-		ctx.ungetService(serviceReference);
-	}
+    private static synchronized void logMessage(ServiceTracker<LogService, LogService> logServiceTracker, int level, String message) {
+        LogService logService = logServiceTracker.getService();
+        if (logService == null) {
+            return;
+        }
+        logService.log(level, message);
+    }
 
 }

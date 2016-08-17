@@ -1,6 +1,6 @@
 Bundle-Name: SKYSAIL :: webconsole :: all
 
-Bundle-Version: 0.1.16.${tstamp}
+Bundle-Version: 0.1.17.${tstamp}
 
 Bundle-Description: An OSGi webconsole to inspect a running framework
 
@@ -14,8 +14,7 @@ Bundle-Activator: io.skysail.webconsole.all.WebconsoleAllActivator
     ${osgi},\
     ${testlibs},\
     ${fasterxml},\
-    lombok;version=1.16,\
-    slf4j.api;version=1.7
+    lombok;version=1.16
 
 Export-Package: \
     com.google.gson.*,\
@@ -40,6 +39,7 @@ Import-Package: \
     !javax.inject.*,\
 	!org.codehaus.*,\
 	!org.joda.convert.*,\
+    org.slf4j;resolution:=optional,\
 	*
 
 #   !org.joda.*,\

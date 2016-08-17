@@ -2,21 +2,8 @@
 
 -runee: JavaSE-1.8
 
--runrequires: \
-    osgi.identity;filter:='(&(osgi.identity=org.apache.felix.gogo.command)(version>=0.16.0))',\
-    osgi.identity;filter:='(&(osgi.identity=org.apache.felix.gogo.runtime)(version>=0.16.2))',\
-    osgi.identity;filter:='(&(osgi.identity=org.apache.felix.gogo.shell)(version>=0.12.0))',\
-    osgi.identity;filter:='(&(osgi.identity=slf4j.api)(version>=1.7.21))'
-
 -runbundles: \
-    osgi.core;version=6.0,\
     webconsole.all;version=latest,\
-    org.apache.felix.log;version=latest,\
-    ch.qos.logback.classic;version='[1.0.0,1.0.1)',\
-    ch.qos.logback.core;version='[1.0.0,1.0.1)',\
     org.apache.felix.gogo.command;version='[0.16.0,0.16.1)',\
     org.apache.felix.gogo.runtime;version='[0.16.2,0.16.3)',\
-    org.apache.felix.gogo.shell;version='[0.12.0,0.12.1)',\
-    slf4j.api;version='[1.7.21,1.7.22)',\
-    org.apache.felix.configadmin;version='[1.8.0,1.8.1)',\
-    org.osgi.service.event;version='[1.3.1,1.3.2)'
+    org.apache.felix.gogo.shell;version='[0.12.0,0.12.1)'

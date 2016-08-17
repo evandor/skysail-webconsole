@@ -5,7 +5,8 @@ import java.util.List;
 import java.util.zip.ZipEntry;
 
 import org.osgi.framework.Bundle;
-import org.osgi.framework.BundleContext;
+import org.osgi.service.log.LogService;
+import org.osgi.util.tracker.ServiceTracker;
 
 import lombok.Getter;
 
@@ -19,8 +20,8 @@ public class BundleContentDescriptor extends BundleDescriptor {
     private List<String> sourcePaths = new ArrayList<>();
     private List<String> contentPaths = new ArrayList<>();
 
-    public BundleContentDescriptor(Bundle bundle, BundleContext context) {
-        super(bundle, context);
+    public BundleContentDescriptor(Bundle bundle, ServiceTracker<LogService, LogService> tracker) {
+        super(bundle, tracker);
     }
 
     public void addPath(ZipEntry e) {

@@ -11,9 +11,7 @@ import fi.iki.elonen.NanoHTTPD.IHTTPSession;
 import fi.iki.elonen.NanoHTTPD.Method;
 import fi.iki.elonen.NanoHTTPD.Response;
 import fi.iki.elonen.NanoHTTPD.Response.Status;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 public abstract class AbstractHttpHandler {
 
     protected ObjectMapper mapper = new ObjectMapper();
@@ -64,7 +62,7 @@ public abstract class AbstractHttpHandler {
                 }
                 r = NanoHTTPD.newFixedLengthResponse(Status.OK, mimeType, msg);
             } catch (IOException e) {
-                log.error(e.getMessage(), e);
+                //log.error(e.getMessage(), e);
                 return fi.iki.elonen.NanoHTTPD.newFixedLengthResponse(Status.INTERNAL_ERROR, NanoHTTPD.MIME_HTML,
                         e.getMessage());
             }

@@ -27,6 +27,7 @@ export declare class TreeNode implements ITreeNode {
     displayField: any;
     id: any;
     getField(key: any): any;
+    setField(key: any, value: any): void;
     findAdjacentSibling(steps: any): any;
     findNextSibling(): any;
     findPreviousSibling(): any;
@@ -38,14 +39,18 @@ export declare class TreeNode implements ITreeNode {
     private _getParentsChildren();
     private _getIndexInParent();
     loadChildren(): void;
+    _setIsExpanded(value: any): void;
     toggle(): void;
+    expand(): void;
+    collapse(): void;
     toggleExpanded(): void;
     setIsExpanded(value: any): void;
-    setIsActive(value: any): void;
-    toggleActivated(): void;
+    setIsActive(value: any, multi?: boolean): void;
+    toggleActivated(multi?: boolean): void;
     scrollIntoView(): void;
     focus(): void;
     blur(): void;
     doubleClick(rawEvent: MouseEvent): void;
-    contextMenu(rawEvent: MouseEvent): void;
+    mouseAction(actionName: string, $event: any): void;
+    _initChildren(): void;
 }

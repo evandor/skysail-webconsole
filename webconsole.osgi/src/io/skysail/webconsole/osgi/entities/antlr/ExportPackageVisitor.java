@@ -9,9 +9,7 @@ import io.skysail.webconsole.antlr.ExportPackageParser.ExportPackageContext;
 import io.skysail.webconsole.antlr.ExportPackageParser.PackageNameContext;
 import io.skysail.webconsole.antlr.ExportPackageParser.ParameterContext;
 import io.skysail.webconsole.osgi.entities.packages.ExportPackage;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 public class ExportPackageVisitor extends ExportPackageBaseVisitor<Void> {
 
     private List<ExportPackage> exportedPackages;
@@ -53,7 +51,7 @@ public class ExportPackageVisitor extends ExportPackageBaseVisitor<Void> {
             } else if ("include".equals(directive[0])) {
                 currentExportPackages.stream().forEach(cep -> cep.setInclude(directive[1]));
             } else {
-                log.warn("unknown directive {}", directive[0]);
+                //log.warn("unknown directive {}", directive[0]);
             }
         } else if (ctx.Attribute() != null) {
             String[] attribute = ctx.Attribute().getText().split("=");

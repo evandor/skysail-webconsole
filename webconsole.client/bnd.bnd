@@ -1,6 +1,6 @@
 Bundle-Name: SKYSAIL :: webconsole :: client
 
-Bundle-Version: 0.1.23.${tstamp}
+Bundle-Version: 0.2.0.${tstamp}
 
 Bundle-Description: An OSGi webconsole to inspect a running framework (angularjs client part)
 

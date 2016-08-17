@@ -2,7 +2,7 @@ package io.skysail.webconsole.osgi.utils.test;
 
 import org.junit.Test;
 import org.mockito.Mockito;
-import org.osgi.framework.BundleContext;
+import org.osgi.util.tracker.ServiceTracker;
 
 import io.skysail.webconsole.osgi.utils.XmlUtils;
 
@@ -13,11 +13,11 @@ public class XmlUtilsTest {
 			+ "<implementation class=\"io.skysail.api.features.FeatureContext\"/>\n"
 	  + "<reference name=\"FeaturesStateRepository\" cardinality=\"0..n\" policy=\"dynamic\" interface=\"io.skysail.api.features.FeatureStateRepository\" bind=\"addFeaturesStateRepository\" unbind=\"removeFeaturesStateRepository\"/>\n"
 	+ "</scr:component>\n";
-	
+
 	@Test
 	public void testName() throws Exception {
-		BundleContext bundle = Mockito.mock(BundleContext.class);
-		XmlUtils.parse(input, bundle);
+	    ServiceTracker tracker = Mockito.mock(ServiceTracker.class);
+		XmlUtils.parse(input, tracker);
 	}
 
 }

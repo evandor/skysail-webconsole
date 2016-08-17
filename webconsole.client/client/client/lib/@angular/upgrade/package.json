@@ -1,8 +1,16 @@
 {
   "_args": [
     [
-      "@angular/upgrade@2.0.0-rc.3",
-      "C:\\git\\skysail-webconsole\\webconsole.client\\client"
+      {
+        "raw": "@angular/upgrade@2.0.0-rc.3",
+        "scope": "@angular",
+        "escapedName": "@angular%2fupgrade",
+        "name": "@angular/upgrade",
+        "rawSpec": "2.0.0-rc.3",
+        "spec": "2.0.0-rc.3",
+        "type": "version"
+      },
+      "/Users/carsten/git/skysail-webconsole/webconsole.client/client"
     ]
   ],
   "_from": "@angular/upgrade@2.0.0-rc.3",
@@ -16,27 +24,28 @@
     "tmp": "tmp/upgrade-2.0.0-rc.3.tgz_1466553922679_0.9497343255206943"
   },
   "_npmUser": {
-    "email": "angular-core+npm@google.com",
-    "name": "angular"
+    "name": "angular",
+    "email": "angular-core+npm@google.com"
   },
   "_npmVersion": "3.9.2",
   "_phantomChildren": {},
   "_requested": {
-    "name": "@angular/upgrade",
     "raw": "@angular/upgrade@2.0.0-rc.3",
-    "rawSpec": "2.0.0-rc.3",
     "scope": "@angular",
+    "escapedName": "@angular%2fupgrade",
+    "name": "@angular/upgrade",
+    "rawSpec": "2.0.0-rc.3",
     "spec": "2.0.0-rc.3",
     "type": "version"
   },
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "http://registry.npmjs.org/@angular/upgrade/-/upgrade-2.0.0-rc.3.tgz",
+  "_resolved": "https://registry.npmjs.org/@angular/upgrade/-/upgrade-2.0.0-rc.3.tgz",
   "_shasum": "8e4c68a23cab073e9faecc28546bdbd0ad272238",
   "_shrinkwrap": null,
   "_spec": "@angular/upgrade@2.0.0-rc.3",
-  "_where": "C:\\git\\skysail-webconsole\\webconsole.client\\client",
+  "_where": "/Users/carsten/git/skysail-webconsole/webconsole.client/client",
   "author": {
     "name": "angular"
   },
@@ -57,15 +66,15 @@
   "main": "upgrade.js",
   "maintainers": [
     {
-      "email": "angular-core+npm@google.com",
-      "name": "angular"
+      "name": "angular",
+      "email": "angular-core+npm@google.com"
     }
   ],
   "name": "@angular/upgrade",
   "optionalDependencies": {},
   "peerDependencies": {
-    "@angular/compiler": "2.0.0-rc.3",
     "@angular/core": "2.0.0-rc.3",
+    "@angular/compiler": "2.0.0-rc.3",
     "@angular/platform-browser": "2.0.0-rc.3"
   },
   "readme": "ERROR: No README data found!",

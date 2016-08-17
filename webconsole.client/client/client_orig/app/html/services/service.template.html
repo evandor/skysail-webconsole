@@ -1,0 +1,61 @@
+<h2><i class="fa fa-play-circle" aria-hidden="true" style="color: orange"></i> Details of Service <i>{{service.id}}</i></h2>
+
+<div *ngIf="isLoading">loading...</div>
+
+<table class="table">
+    <tr>
+        <th>&nbsp;</th>
+        <th>ID</th>
+        <td>{{service.id}}</td>
+    </tr>
+    <tr>
+        <th><span class="glyphicon glyphicon-cog" aria-hidden="true" style="color: gray"></span></th>
+        <th>Object Class</th>
+        <td>
+            {{service.objectClass}}
+        </td>
+    </tr>
+    <tr *ngIf="service.pid">
+        <th>&nbsp;</th>
+        <th>PID</th>
+        <td>{{service.pid}}</td>
+    </tr>
+    <tr *ngIf="service.ranking">
+        <th>&nbsp;</th>
+        <th>Ranking</th>
+        <td>{{service.ranking}}</td>
+    </tr>
+    <tr>
+        <th>&nbsp;</th>
+        <th>Properties</th>
+        <td>
+            <ul>
+                <li *ngFor="let property of properties"><b>{{property.key}}</b>: {{property.value}}</li>                
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <th><span class="glyphicon glyphicon-th-large" aria-hidden="true" style="color: green"></span></th>
+        <th>Bundle</th>
+        <td (click)="onSelect(service.bundleId)" style="cursor: pointer; color:#337ab7;">
+            (#{{service.bundleId}})
+        </td>
+    </tr>
+    <tr>
+        <th>&nbsp;</th>
+        <th>Using Bundles</th>
+        <td>
+            <ul>
+                <li (click)="onSelect(usingBundle)" style="cursor: pointer; color:#337ab7;" *ngFor="let usingBundle of usingBundles">
+                    <span class="glyphicon glyphicon-th-large" aria-hidden="true" style="color: green"></span> 
+                    {{usingBundle.symbolicName}} [{{usingBundle.version}}] (#{{usingBundle.id}})
+               </li>                
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <th>&nbsp;</th>
+        <th>Links</th>
+        <td><a href='http://localhost:2002/backend/v1/services/{{service.id}}'>Raw</a></td>
+    </tr>
+</table>

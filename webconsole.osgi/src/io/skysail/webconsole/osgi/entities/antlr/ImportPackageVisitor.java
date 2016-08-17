@@ -10,9 +10,7 @@ import io.skysail.webconsole.antlr.ImportPackageParser.PackageNameContext;
 import io.skysail.webconsole.antlr.ImportPackageParser.ParameterContext;
 import io.skysail.webconsole.osgi.entities.packages.ImportPackage;
 import io.skysail.webconsole.osgi.entities.packages.Resolution;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 public class ImportPackageVisitor extends ImportPackageBaseVisitor<Void> {
 
     private List<ImportPackage> importedPackages;
@@ -48,7 +46,7 @@ public class ImportPackageVisitor extends ImportPackageBaseVisitor<Void> {
             if ("resolution".equals(directive[0])) {
                 currentImportedPackages.stream().forEach(cep -> cep.setResolution(parseResolution(directive[1])));
             } else {
-                log.warn("unknown directive {}", directive[0]);
+                System.out.println("unknown directive " + directive[0]);
             }
         } else if (ctx.Attribute() != null) {
             String[] attribute = ctx.Attribute().getText().split("=");
@@ -71,7 +69,7 @@ public class ImportPackageVisitor extends ImportPackageBaseVisitor<Void> {
         try {
             return Resolution.valueOf(resolutionString.toUpperCase());
         } catch (Exception e) { // NOSONAR
-            log.warn("could not parse resolution string '{}'", resolutionString);
+            System.out.println("could not parse resolution string " + resolutionString);
             return Resolution.MANDATORY;
         }
     }

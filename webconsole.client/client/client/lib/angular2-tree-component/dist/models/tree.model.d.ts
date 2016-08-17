@@ -55,7 +55,10 @@ export declare class TreeModel implements ITreeModel {
     focusDrillDown(): void;
     focusDrillUp(): void;
     isActive(node: any): boolean;
-    setActiveNode(node: any, value: any): void;
+    setActiveNode(node: any, value: any, multi?: boolean): void;
+    _setActiveNodeSingle(node: any, value: any): void;
+    _setActiveNodeMulti(node: any, value: any): void;
     isExpanded(node: any): boolean;
     setExpandedNode(node: any, value: any): void;
+    performKeyAction(node: any, $event: any): boolean;
 }
