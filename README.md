@@ -13,7 +13,7 @@ just started, needs serious polishing, internally and visually... - just a prove
 
 # Version 
 
-0.1.13
+0.1.17
 
 # Screenshots
 
