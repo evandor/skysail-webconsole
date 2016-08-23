@@ -1,1 +1,0 @@
-{"version":3,"sources":["app/domain/runtimeconfig.ts"],"names":[],"mappings":";;;;;;;YAAA;gBAAA;gBAEA,CAAC;gBAAD,oBAAC;YAAD,CAFA,AAEC,IAAA;YAFD,yCAEC,CAAA","file":"app/domain/runtimeconfig.js","sourcesContent":["export class RuntimeConfig {\n    systemProperties: string;\n}"],"sourceRoot":"/source/"}
