@@ -30,3 +30,11 @@
 /VersionRangeListener.java
 /VersionRangeParser.java
 /VersionRangeVisitor.java
+/CSV.tokens
+/CSVBaseListener.java
+/CSVBaseVisitor.java
+/CSVLexer.java
+/CSVLexer.tokens
+/CSVListener.java
+/CSVParser.java
+/CSVVisitor.java
