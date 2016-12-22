@@ -13,7 +13,6 @@
         'angular2-tree-component': 'lib/angular2-tree-component',
         'lodash':                  'lib/lodash',
         'd3':                      'lib/d3/d3.min.js', //https://d3js.org/d3.v3.min.js'
-        //'angular2-localstorage': 'lib/angular2-localstorage'
     };
 
     // packages tells the System loader how to load when no filename and/or no extension
@@ -22,7 +21,7 @@
         'rxjs': { defaultExtension: 'js' },
         'angular2-tree-component'   : { main: 'dist/angular2-tree-component.js', defaultExtension: 'js' },
         'lodash'                    : { main: 'lodash.js', defaultExtension: 'js' },
-        'angular2-localstorage': { defaultExtension: 'js' }
+        'angular2-localstorage'     : { defaultExtension: 'js' }
     };
 
     var packageNames = [
