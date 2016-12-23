@@ -12,7 +12,7 @@ var debug = require('gulp-debug');
  * Remove build directory.
  */
 gulp.task('clean', (cb) => {
-    return del(["client"], cb);
+    return del(["dist"], cb);
 });
 
 /**
@@ -36,7 +36,7 @@ gulp.task("compile", [], () => { // "tslint"
     return tsResult.js
         .pipe(sourcemaps.write("."))
         .pipe(debug({title: 'compile2:'}))
-        .pipe(gulp.dest("client"));
+        .pipe(gulp.dest("dist"));
 });
 
 /**
@@ -45,7 +45,7 @@ gulp.task("compile", [], () => { // "tslint"
 gulp.task("resources", () => {
     return gulp.src(["src/**/*", "!**/*.ts"])
         .pipe(debug({title: 'resource:'}))
-        .pipe(gulp.dest("client"));
+        .pipe(gulp.dest("dist"));
 });
 
 /**
@@ -67,7 +67,7 @@ gulp.task("libs", () => {
             'lodash/**'
             //'angular2-localstorage/**'
         ], {cwd: "node_modules/**"}) /* Glob required here. */
-        .pipe(gulp.dest("client/lib"));
+        .pipe(gulp.dest("dist/lib"));
 });
 
 /**
