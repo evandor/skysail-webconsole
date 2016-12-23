@@ -16,7 +16,6 @@
   "_from": "rxjs@5.0.0-beta.6",
   "_id": "rxjs@5.0.0-beta.6",
   "_inCache": true,
-  "_installable": true,
   "_location": "/rxjs",
   "_nodeVersion": "5.0.0",
   "_npmOperationalInternal": {
@@ -39,8 +38,7 @@
     "type": "version"
   },
   "_requiredBy": [
-    "/",
-    "/angular2-tree-component"
+    "/"
   ],
   "_resolved": "https://registry.npmjs.org/rxjs/-/rxjs-5.0.0-beta.6.tgz",
   "_shasum": "cb6dc46d6ddfedfeefc9b15dafd09c34a4370d23",

@@ -34,16 +34,16 @@ javac.target: 1.8
 # We need JUnit and Mockito to resolve the test cases at runtime. 
 # Other runtime dependencies should be added as necessary
 -runbundles: \
-    webconsole.antlr;version=${webconsole.antlr.version},\
-    webconsole.osgi;version=${webconsole.osgi.version},\
-    ${junit},\
-    ${mockito},\
-    ch.qos.logback.classic;version='[1.0.0,1.0.1)',\
-    ch.qos.logback.core;version='[1.0.0,1.0.1)',\
-    org.apache.felix.gogo.command;version='[0.16.0,0.16.1)',\
-    org.apache.felix.gogo.runtime;version='[0.16.2,0.16.3)',\
-    org.apache.felix.gogo.shell;version='[0.12.0,0.12.1)',\
-    slf4j.api;version='[1.7.21,1.7.22)'
+	webconsole.antlr;version=${webconsole.antlr.version},\
+	webconsole.osgi;version=${webconsole.osgi.version},\
+	${junit},\
+	${mockito},\
+	ch.qos.logback.classic;version='[1.0.0,1.0.1)',\
+	ch.qos.logback.core;version='[1.0.0,1.0.1)',\
+	org.apache.felix.gogo.command;version='[0.16.0,0.16.1)',\
+	org.apache.felix.gogo.runtime;version='[0.16.2,0.16.3)',\
+	org.apache.felix.gogo.shell;version='[0.12.0,0.12.1)',\
+	slf4j.api;version='[1.7.21,1.7.22)'
 
 # Needed for Mockito's mocking to work
 -runsystempackages.objenesis: sun.misc,sun.reflect
