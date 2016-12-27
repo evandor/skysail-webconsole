@@ -12,6 +12,7 @@ import org.osgi.util.tracker.ServiceTracker;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import io.skysail.domain.Identifiable;
+import io.skysail.domain.html.Field;
 import io.skysail.webconsole.osgi.entities.services.ServiceReferenceDescriptor;
 import io.skysail.webconsole.osgi.utils.FileUtils;
 import lombok.Getter;
@@ -26,9 +27,15 @@ public class BundleDescriptor implements Identifiable {
     @Setter
     private String id; // eg "0"
 
+    @Field
     private String symbolicName; // eg "org.apache.felix.framework"
+
+    @Field
     private String version; // eg "5.2.0"
+
+    @Field
     private String state; // eg "ACTIVE"
+
     private long size; // eg 3234 (KB)
     private List<String> registeredServiceIds;
     private List<String> usedServiceIds;
