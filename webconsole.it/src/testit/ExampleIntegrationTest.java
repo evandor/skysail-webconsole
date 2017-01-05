@@ -14,21 +14,21 @@ import org.osgi.framework.FrameworkUtil;
 @RunWith(MockitoJUnitRunner.class)
 public class ExampleIntegrationTest {
 
-	private final BundleContext context = FrameworkUtil.getBundle(ExampleIntegrationTest.class).getBundleContext();
+    private final BundleContext context = FrameworkUtil.getBundle(ExampleIntegrationTest.class).getBundleContext();
 
-	@Before
-	public void before() {
-		// TODO add test setup here
-	}
+    @Before
+    public void before() {
+        // TODO add test setup here
+    }
 
-	@After
-	public void after() {
-		// TODO add test clear up here
-	}
+    @After
+    public void after() {
+        // TODO add test clear up here
+    }
 
-	@Test
-	public void testExample() {
-		assertThat(context.getBundle(1).getSymbolicName(),is("webconsole"));
-	}
+    @Test
+    public void testExample() {
+        assertThat(context.getBundle(1).getSymbolicName(), is("skysail.domain"));
+    }
 
 }

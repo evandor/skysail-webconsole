@@ -22,8 +22,9 @@ public class BackendBundlesTest {
 
     @Test
     public void webconsole_bundle_is_running() {
-        assertThat(context.getBundle(1).getSymbolicName(), is("webconsole"));
+        assertThat(context.getBundle(1).getSymbolicName(), is("skysail.domain"));
         assertThat(context.getBundle(1).getState(), is(32));
+        assertThat(context.getBundle(2).getSymbolicName(), is("webconsole"));
     }
 
     @Test

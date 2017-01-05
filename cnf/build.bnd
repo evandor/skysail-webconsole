@@ -1,11 +1,14 @@
+ 
+skysail.domain.version       '[6.0.0,6.0.1)'
+
 // release 0.3.16
-webconsole.version           '[0.3.17,0.4)'
+webconsole.version           '[0.3.17,0.3.18)'
 // release: 0.2.2
 webconsole.antlr.version     '[0.2.3,0.2.4)'
 // release:
-webconsole.client.version    '[0.2.0,0.3)'
+webconsole.client.version    '[0.2.2,0.2.3)'
 // release 0.2.0:
-webconsole.osgi.version      '[0.2.1,0.3)'
+webconsole.osgi.version      '[0.2.1,0.2.2)'
 
 
 osgi.version                 '[6.0.0,6.0.1)'
