@@ -7,12 +7,12 @@ import java.util.stream.Collectors;
 
 import org.osgi.framework.ServiceReference;
 
-import io.skysail.domain.Identifiable;
+import io.skysail.domain.Entity;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
-public class ServiceReferenceDescriptor implements Identifiable {
+public class ServiceReferenceDescriptor implements Entity {
 
     @Setter
     private String id; // service id

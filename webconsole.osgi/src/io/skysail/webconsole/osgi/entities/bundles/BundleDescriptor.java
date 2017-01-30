@@ -11,8 +11,12 @@ import org.osgi.util.tracker.ServiceTracker;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+<<<<<<< Updated upstream
 import io.skysail.domain.Identifiable;
 import io.skysail.domain.html.Field;
+=======
+import io.skysail.domain.Entity;
+>>>>>>> Stashed changes
 import io.skysail.webconsole.osgi.entities.services.ServiceReferenceDescriptor;
 import io.skysail.webconsole.osgi.utils.FileUtils;
 import lombok.Getter;
@@ -22,7 +26,7 @@ import lombok.Setter;
  * A minimal OSGi bundle representation.
  */
 @Getter
-public class BundleDescriptor implements Identifiable {
+public class BundleDescriptor implements Entity {
 
     @Setter
     private String id; // eg "0"
