@@ -1,7 +1,5 @@
-var arrayMap = require('./_arrayMap'),
-    baseIteratee = require('./_baseIteratee'),
-    basePickBy = require('./_basePickBy'),
-    getAllKeysIn = require('./_getAllKeysIn');
+var baseIteratee = require('./_baseIteratee'),
+    basePickBy = require('./_basePickBy');
 
 /**
  * Creates an object composed of the `object` properties `predicate` returns
@@ -12,7 +10,8 @@ var arrayMap = require('./_arrayMap'),
  * @since 4.0.0
  * @category Object
  * @param {Object} object The source object.
- * @param {Function} [predicate=_.identity] The function invoked per property.
+ * @param {Array|Function|Object|string} [predicate=_.identity]
+ *  The function invoked per property.
  * @returns {Object} Returns the new object.
  * @example
  *
@@ -22,16 +21,7 @@ var arrayMap = require('./_arrayMap'),
  * // => { 'a': 1, 'c': 3 }
  */
 function pickBy(object, predicate) {
-  if (object == null) {
-    return {};
-  }
-  var props = arrayMap(getAllKeysIn(object), function(prop) {
-    return [prop];
-  });
-  predicate = baseIteratee(predicate);
-  return basePickBy(object, props, function(value, path) {
-    return predicate(value, path[0]);
-  });
+  return object == null ? {} : basePickBy(object, baseIteratee(predicate));
 }
 
 module.exports = pickBy;

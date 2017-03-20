@@ -1,5 +1,4 @@
-var basePickBy = require('./_basePickBy'),
-    hasIn = require('./hasIn');
+var arrayReduce = require('./_arrayReduce');
 
 /**
  * The base implementation of `_.pick` without support for individual
@@ -7,14 +6,17 @@ var basePickBy = require('./_basePickBy'),
  *
  * @private
  * @param {Object} object The source object.
- * @param {string[]} paths The property paths to pick.
+ * @param {string[]} props The property identifiers to pick.
  * @returns {Object} Returns the new object.
  */
-function basePick(object, paths) {
+function basePick(object, props) {
   object = Object(object);
-  return basePickBy(object, paths, function(value, path) {
-    return hasIn(object, path);
-  });
+  return arrayReduce(props, function(result, key) {
+    if (key in object) {
+      result[key] = object[key];
+    }
+    return result;
+  }, {});
 }
 
 module.exports = basePick;

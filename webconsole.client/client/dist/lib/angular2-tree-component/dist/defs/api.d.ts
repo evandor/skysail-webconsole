@@ -1,44 +1,8 @@
 /**
  * Welcome to ng2tree
  */
-/**
-* This is the interface of the options input of the tree.
-* See docs for more detailed explanations
-*/
-export interface ITreeOptions {
-    /**
-     * Override children field. Default: 'children'
-     */
-    childrenField?: string;
-    /**
-     * Override display field. Default: 'name'
-     */
-    displayField?: string;
-    /**
-     * Override id field. Default: 'id'
-     */
-    idField?: string;
-    /**
-     * Override isExpanded field. Default: 'isExpanded'
-     */
-    isExpandedField?: string;
-    /**
-     * Override isHidden field. Default: 'isHidden'
-     */
-    isHiddenField?: string;
-    /**
-     * Supply function for getting fields asynchronously. Should return a Promise
-     */
-    getChildren?: (node: ITreeNode) => any;
-    /**
-     * Change the default mouse and key actions on the tree
-     */
-    actionMapping?: any;
-    /**
-     * Allow drag and drop on the tree. Default: false
-     */
-    allowDrag?: boolean;
-}
+import { ElementRef } from '@angular/core';
+import { TreeOptions } from '../models/tree-options.model';
 /**
  * This is the interface of a single Tree Node
  */
@@ -64,7 +28,7 @@ export interface ITreeNode {
     /**
      * Pointer to the ElementRef of the TreeNodeComponent that's displaying this node
      */
-    elementRef: any;
+    elementRef: ElementRef;
     /**
      * Level in the tree (starts from 1).
      */
@@ -78,10 +42,6 @@ export interface ITreeNode {
      * By default it's the 'id' of the original node, unless stated otherwise in options.idField
      */
     id: any;
-    /**
-     * The context that was given in the options object.
-     */
-    context: any;
     isExpanded: boolean;
     isActive: boolean;
     isFocused: boolean;
@@ -119,19 +79,7 @@ export interface ITreeNode {
     /**
      * Expands / Collapses the node
      */
-    toggleExpanded(): any;
-    /**
-     * Expands the node
-     */
-    expand(): any;
-    /**
-     * Collapses the node
-     */
-    collapse(): any;
-    /**
-     * Expands all ancestors of the node
-     */
-    ensureVisible(): any;
+    toggle(): any;
     /**
      * Activates / Deactivates the node (selects / deselects)
      */
@@ -144,10 +92,6 @@ export interface ITreeNode {
      * Blur (unfocus) the node
      */
     blur(): any;
-    /**
-     * Scroll the screen to make the node visible
-     */
-    scrollIntoView(): any;
     /**
      * Fire an event to the renderer of the tree (if it was registered)
      */
@@ -172,7 +116,7 @@ export interface ITreeModel {
     /**
      * Options that were passed to the tree component
      */
-    options: ITreeOptions;
+    options: TreeOptions;
     /**
      * Is the tree currently focused
      */
@@ -206,41 +150,4 @@ export interface ITreeModel {
      * Focuses on the parent of the current focused node (same as left arrow on a collapsed node)
      */
     focusDrillUp(): any;
-    /**
-     * Marks isHidden field in all nodes recursively according to the filter param.
-     * If a node is marked visible, all of its ancestors will be marked visible as well.
-     * @param filter  either a string or a function.
-     *   In case it's a string, it will be searched case insensitively in the node's display attribute
-     *   In case it's a function, it will be passed the node, and should return true if the node should be visible, false otherwise
-     * @param autoShow  if true, make sure all nodes that passed the filter are visible
-     */
-    filterNodes(filter: any, autoShow?: boolean): any;
-    /**
-     * Marks all nodes isHidden = false
-     */
-    clearFilter(): any;
-    /**
-     * moves a node from one location in the tree to another
-     * @param location  has a from and a to attributes, each has a node and index attributes.
-       The combination of node + index tells which node needs to be moved, and to where
-     */
-    moveNode(location: {
-        from: {
-            node: ITreeNode;
-            index: number;
-        };
-        to: {
-            node: ITreeNode;
-            index: number;
-        };
-    }): any;
-    /**
-     * Gets the current dragged node. Useful for overriding the drop action.
-     * @param node  The parent node of the current dragged node
-     * @param index  The index inside parent's children, of the current dragged node
-     */
-    getDragNode(): {
-        node: ITreeNode;
-        index: number;
-    };
 }

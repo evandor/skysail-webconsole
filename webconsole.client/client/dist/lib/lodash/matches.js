@@ -1,20 +1,13 @@
 var baseClone = require('./_baseClone'),
     baseMatches = require('./_baseMatches');
 
-/** Used to compose bitmasks for cloning. */
-var CLONE_DEEP_FLAG = 1;
-
 /**
  * Creates a function that performs a partial deep comparison between a given
  * object and `source`, returning `true` if the given object has equivalent
- * property values, else `false`.
+ * property values, else `false`. The created function is equivalent to
+ * `_.isMatch` with a `source` partially applied.
  *
- * **Note:** The created function is equivalent to `_.isMatch` with `source`
- * partially applied.
- *
- * Partial comparisons will match empty array and empty object `source`
- * values against any array or object value, respectively. See `_.isEqual`
- * for a list of supported value comparisons.
+ * **Note:** This method supports comparing the same values as `_.isEqual`.
  *
  * @static
  * @memberOf _
@@ -24,16 +17,16 @@ var CLONE_DEEP_FLAG = 1;
  * @returns {Function} Returns the new spec function.
  * @example
  *
- * var objects = [
- *   { 'a': 1, 'b': 2, 'c': 3 },
- *   { 'a': 4, 'b': 5, 'c': 6 }
+ * var users = [
+ *   { 'user': 'barney', 'age': 36, 'active': true },
+ *   { 'user': 'fred',   'age': 40, 'active': false }
  * ];
  *
- * _.filter(objects, _.matches({ 'a': 4, 'c': 6 }));
- * // => [{ 'a': 4, 'b': 5, 'c': 6 }]
+ * _.filter(users, _.matches({ 'age': 40, 'active': false }));
+ * // => [{ 'user': 'fred', 'age': 40, 'active': false }]
  */
 function matches(source) {
-  return baseMatches(baseClone(source, CLONE_DEEP_FLAG));
+  return baseMatches(baseClone(source, true));
 }
 
 module.exports = matches;

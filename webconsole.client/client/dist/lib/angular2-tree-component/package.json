@@ -1,92 +1,82 @@
 {
   "_args": [
     [
-      {
-        "raw": "angular2-tree-component@^1.1.10",
-        "scope": null,
-        "escapedName": "angular2-tree-component",
-        "name": "angular2-tree-component",
-        "rawSpec": "^1.1.10",
-        "spec": ">=1.1.10 <2.0.0",
-        "type": "range"
-      },
-      "/Users/carsten/git/skysail-webconsole/webconsole.client/client"
+      "angular2-tree-component@^1.1.10",
+      "C:\\git\\skysail-webconsole\\webconsole.client\\client"
     ]
   ],
   "_from": "angular2-tree-component@>=1.1.10 <2.0.0",
-  "_id": "angular2-tree-component@1.3.6",
+  "_id": "angular2-tree-component@1.1.12",
   "_inCache": true,
+  "_installable": true,
   "_location": "/angular2-tree-component",
   "_nodeVersion": "5.10.0",
   "_npmOperationalInternal": {
     "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/angular2-tree-component-1.3.6.tgz_1479205555918_0.23879177123308182"
+    "tmp": "tmp/angular2-tree-component-1.1.12.tgz_1470509031863_0.6952270292676985"
   },
   "_npmUser": {
-    "name": "500tech",
-    "email": "info@500tech.com"
+    "email": "info@500tech.com",
+    "name": "500tech"
   },
   "_npmVersion": "3.8.3",
-  "_phantomChildren": {
-    "symbol-observable": "1.0.4"
-  },
+  "_phantomChildren": {},
   "_requested": {
-    "raw": "angular2-tree-component@^1.1.10",
-    "scope": null,
-    "escapedName": "angular2-tree-component",
     "name": "angular2-tree-component",
+    "raw": "angular2-tree-component@^1.1.10",
     "rawSpec": "^1.1.10",
+    "scope": null,
     "spec": ">=1.1.10 <2.0.0",
     "type": "range"
   },
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/angular2-tree-component/-/angular2-tree-component-1.3.6.tgz",
-  "_shasum": "9c4c1401e1d09ce3e892f7dac428d05002a62e1b",
+  "_resolved": "http://registry.npmjs.org/angular2-tree-component/-/angular2-tree-component-1.1.12.tgz",
+  "_shasum": "f36aefc644147c448120f6325d1a6246d72c2fd0",
   "_shrinkwrap": null,
   "_spec": "angular2-tree-component@^1.1.10",
-  "_where": "/Users/carsten/git/skysail-webconsole/webconsole.client/client",
+  "_where": "C:\\git\\skysail-webconsole\\webconsole.client\\client",
   "author": {
-    "name": "Adam Klein",
-    "email": "adam@500tech.com"
+    "email": "adam@500tech.com",
+    "name": "Adam Klein"
   },
   "bugs": {
     "url": "https://github.com/500tech/angular2-tree-component/issues"
   },
   "contributors": [
     {
-      "name": "Adam Klein",
-      "email": "adam@500tech.com"
+      "email": "adam@500tech.com",
+      "name": "Adam Klein"
     }
   ],
   "dependencies": {
-    "core-js": "^2.4.0",
+    "core-js": "2.4.0",
     "es6-promise": "^3.1.2",
     "es6-shim": "^0.35.0",
-    "lodash": "^4.6.1",
+    "lodash": "4.6.1",
     "reflect-metadata": "^0.1.3",
-    "rxjs": "^5.0.0-beta.12",
-    "ts-helpers": "^1.1.1"
+    "rxjs": "5.0.0-beta.6",
+    "ts-helpers": "1.1.1"
   },
   "description": "A simple yet powerful tree component for Angular2",
   "devDependencies": {
-    "@angular/common": "^2.0.0",
-    "@angular/compiler": "^2.0.0",
-    "@angular/core": "^2.0.0",
-    "@angular/http": "^2.0.0",
-    "@angular/platform-browser": "^2.0.0",
-    "@angular/platform-browser-dynamic": "^2.0.0",
+    "@angular/common": "^2.0.0-rc.3",
+    "@angular/compiler": "^2.0.0-rc.3",
+    "@angular/core": "^2.0.0-rc.3",
+    "@angular/http": "^2.0.0-rc.3",
+    "@angular/platform-browser": "^2.0.0-rc.3",
+    "@angular/platform-browser-dynamic": "^2.0.0-rc.3",
     "rimraf": "^2.5.1",
     "typedoc": "^0.3.12",
     "typescript": "^1.8.0",
     "typings": "^0.8.1",
-    "zone.js": "^0.6.21"
+    "zone.js": "^0.6.12"
   },
   "directories": {},
   "dist": {
-    "shasum": "9c4c1401e1d09ce3e892f7dac428d05002a62e1b",
-    "tarball": "https://registry.npmjs.org/angular2-tree-component/-/angular2-tree-component-1.3.6.tgz"
+    "shasum": "f36aefc644147c448120f6325d1a6246d72c2fd0",
+    "tarball": "https://registry.npmjs.org/angular2-tree-component/-/angular2-tree-component-1.1.12.tgz"
   },
   "engines": {
     "node": ">= 4.2.1",
@@ -95,7 +85,7 @@
   "files": [
     "dist/"
   ],
-  "gitHead": "04f3500a31e2961cdf6d847cb2921b5fcfafa829",
+  "gitHead": "4aff19e56cdeb74e848200cf4d288e7e739d6e28",
   "homepage": "https://github.com/500tech/angular2-tree-component",
   "keywords": [
     "angular2",
@@ -108,20 +98,20 @@
   "main": "dist/angular2-tree-component.js",
   "maintainers": [
     {
-      "name": "500tech",
-      "email": "info@500tech.com"
+      "email": "info@500tech.com",
+      "name": "500tech"
     }
   ],
   "name": "angular2-tree-component",
   "optionalDependencies": {},
   "peerDependencies": {
-    "@angular/common": "^2.0.0",
-    "@angular/compiler": "^2.0.0",
-    "@angular/core": "^2.0.0",
-    "@angular/http": "^2.0.0",
-    "@angular/platform-browser": "^2.0.0",
-    "@angular/platform-browser-dynamic": "^2.0.0",
-    "zone.js": "^0.6.21"
+    "@angular/common": "^2.0.0-rc.3",
+    "@angular/compiler": "^2.0.0-rc.3",
+    "@angular/core": "^2.0.0-rc.3",
+    "@angular/http": "^2.0.0-rc.3",
+    "@angular/platform-browser": "^2.0.0-rc.3",
+    "@angular/platform-browser-dynamic": "^2.0.0-rc.3",
+    "zone.js": "^0.6.12"
   },
   "readme": "ERROR: No README data found!",
   "repository": {
@@ -132,13 +122,12 @@
     "build": "tsc",
     "clean": "rimraf node_modules && npm run clean:typescript && npm cache clean",
     "clean:typescript": "rimraf dist",
-    "doc": "typedoc --module commonjs --out doc lib/defs/api.ts",
     "example:systemjs": "npm run build && cp -rf dist example/systemjs/node_modules/angular2-tree-component/ && cd example/systemjs && npm start",
     "example:webpack": "npm run build && cp -rf dist example/webpack/node_modules/angular2-tree-component/ && cd example/webpack && npm start",
     "example:webpack:build": "cd example/webpack && npm run build",
-    "prebuild": "typings install",
+    "postinstall": "typings install",
     "test": "karma start"
   },
   "typings": "dist/angular2-tree-component.d.ts",
-  "version": "1.3.6"
+  "version": "1.1.12"
 }

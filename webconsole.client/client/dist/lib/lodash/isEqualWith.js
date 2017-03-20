@@ -13,7 +13,8 @@ var baseIsEqual = require('./_baseIsEqual');
  * @param {*} value The value to compare.
  * @param {*} other The other value to compare.
  * @param {Function} [customizer] The function to customize comparisons.
- * @returns {boolean} Returns `true` if the values are equivalent, else `false`.
+ * @returns {boolean} Returns `true` if the values are equivalent,
+ *  else `false`.
  * @example
  *
  * function isGreeting(value) {
@@ -35,7 +36,7 @@ var baseIsEqual = require('./_baseIsEqual');
 function isEqualWith(value, other, customizer) {
   customizer = typeof customizer == 'function' ? customizer : undefined;
   var result = customizer ? customizer(value, other) : undefined;
-  return result === undefined ? baseIsEqual(value, other, undefined, customizer) : !!result;
+  return result === undefined ? baseIsEqual(value, other, customizer) : !!result;
 }
 
 module.exports = isEqualWith;

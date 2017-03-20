@@ -1,56 +1,46 @@
 {
   "_args": [
     [
-      {
-        "raw": "lodash@^4.13.1",
-        "scope": null,
-        "escapedName": "lodash",
-        "name": "lodash",
-        "rawSpec": "^4.13.1",
-        "spec": ">=4.13.1 <5.0.0",
-        "type": "range"
-      },
-      "/Users/carsten/git/skysail-webconsole/webconsole.client/client"
+      "lodash@^4.5.1",
+      "C:\\git\\skysail-webconsole\\webconsole.client\\client\\node_modules\\concurrently"
     ]
   ],
-  "_from": "lodash@>=4.13.1 <5.0.0",
-  "_id": "lodash@4.17.2",
+  "_from": "lodash@>=4.5.1 <5.0.0",
+  "_id": "lodash@4.13.1",
   "_inCache": true,
+  "_installable": true,
   "_location": "/lodash",
-  "_nodeVersion": "7.1.0",
+  "_nodeVersion": "4.2.4",
   "_npmOperationalInternal": {
-    "host": "packages-18-east.internal.npmjs.com",
-    "tmp": "tmp/lodash-4.17.2.tgz_1479280899250_0.8391377755906433"
+    "host": "packages-16-east.internal.npmjs.com",
+    "tmp": "tmp/lodash-4.13.1.tgz_1464019142054_0.5244540225248784"
   },
   "_npmUser": {
-    "name": "jdalton",
-    "email": "john.david.dalton@gmail.com"
+    "email": "john.david.dalton@gmail.com",
+    "name": "jdalton"
   },
-  "_npmVersion": "2.15.11",
+  "_npmVersion": "2.14.12",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "lodash@^4.13.1",
-    "scope": null,
-    "escapedName": "lodash",
     "name": "lodash",
-    "rawSpec": "^4.13.1",
-    "spec": ">=4.13.1 <5.0.0",
+    "raw": "lodash@^4.5.1",
+    "rawSpec": "^4.5.1",
+    "scope": null,
+    "spec": ">=4.5.1 <5.0.0",
     "type": "range"
   },
   "_requiredBy": [
-    "/",
-    "/angular2-tree-component",
     "/concurrently",
     "/lite-server"
   ],
-  "_resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.2.tgz",
-  "_shasum": "34a3055babe04ce42467b607d700072c7ff6bf42",
+  "_resolved": "http://registry.npmjs.org/lodash/-/lodash-4.13.1.tgz",
+  "_shasum": "83e4b10913f48496d4d16fec4a560af2ee744b68",
   "_shrinkwrap": null,
-  "_spec": "lodash@^4.13.1",
-  "_where": "/Users/carsten/git/skysail-webconsole/webconsole.client/client",
+  "_spec": "lodash@^4.5.1",
+  "_where": "C:\\git\\skysail-webconsole\\webconsole.client\\client\\node_modules\\concurrently",
   "author": {
-    "name": "John-David Dalton",
     "email": "john.david.dalton@gmail.com",
+    "name": "John-David Dalton",
     "url": "http://allyoucanleet.com/"
   },
   "bugs": {
@@ -58,13 +48,18 @@
   },
   "contributors": [
     {
-      "name": "John-David Dalton",
       "email": "john.david.dalton@gmail.com",
+      "name": "John-David Dalton",
       "url": "http://allyoucanleet.com/"
     },
     {
-      "name": "Mathias Bynens",
+      "email": "blaine.bublitz@gmail.com",
+      "name": "Blaine Bublitz",
+      "url": "https://github.com/phated"
+    },
+    {
       "email": "mathias@qiwi.be",
+      "name": "Mathias Bynens",
       "url": "https://mathiasbynens.be/"
     }
   ],
@@ -73,8 +68,8 @@
   "devDependencies": {},
   "directories": {},
   "dist": {
-    "shasum": "34a3055babe04ce42467b607d700072c7ff6bf42",
-    "tarball": "https://registry.npmjs.org/lodash/-/lodash-4.17.2.tgz"
+    "shasum": "83e4b10913f48496d4d16fec4a560af2ee744b68",
+    "tarball": "https://registry.npmjs.org/lodash/-/lodash-4.13.1.tgz"
   },
   "homepage": "https://lodash.com/",
   "icon": "https://lodash.com/icon.svg",
@@ -87,12 +82,16 @@
   "main": "lodash.js",
   "maintainers": [
     {
-      "name": "jdalton",
-      "email": "john.david.dalton@gmail.com"
+      "email": "john.david.dalton@gmail.com",
+      "name": "jdalton"
     },
     {
-      "name": "mathias",
-      "email": "mathias@qiwi.be"
+      "email": "mathias@qiwi.be",
+      "name": "mathias"
+    },
+    {
+      "email": "blaine.bublitz@gmail.com",
+      "name": "phated"
     }
   ],
   "name": "lodash",
@@ -105,5 +104,5 @@
   "scripts": {
     "test": "echo \"See https://travis-ci.org/lodash/lodash-cli for testing details.\""
   },
-  "version": "4.17.2"
+  "version": "4.13.1"
 }

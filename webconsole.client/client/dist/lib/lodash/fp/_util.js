@@ -9,6 +9,6 @@ module.exports = {
   'iteratee': require('../iteratee'),
   'keys': require('../_baseKeys'),
   'rearg': require('../rearg'),
-  'toInteger': require('../toInteger'),
+  'spread': require('../spread'),
   'toPath': require('../toPath')
 };

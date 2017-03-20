@@ -1,21 +1,14 @@
 {
   "_args": [
     [
-      {
-        "raw": "@angular/common@2.0.0-rc.3",
-        "scope": "@angular",
-        "escapedName": "@angular%2fcommon",
-        "name": "@angular/common",
-        "rawSpec": "2.0.0-rc.3",
-        "spec": "2.0.0-rc.3",
-        "type": "version"
-      },
-      "/Users/carsten/git/skysail-webconsole/webconsole.client/client"
+      "@angular/common@2.0.0-rc.3",
+      "C:\\git\\skysail-webconsole\\webconsole.client\\client"
     ]
   ],
   "_from": "@angular/common@2.0.0-rc.3",
   "_id": "@angular/common@2.0.0-rc.3",
   "_inCache": true,
+  "_installable": true,
   "_location": "/@angular/common",
   "_nodeVersion": "5.4.1",
   "_npmOperationalInternal": {
@@ -23,28 +16,27 @@
     "tmp": "tmp/common-2.0.0-rc.3.tgz_1466553873189_0.29696530289947987"
   },
   "_npmUser": {
-    "name": "angular",
-    "email": "angular-core+npm@google.com"
+    "email": "angular-core+npm@google.com",
+    "name": "angular"
   },
   "_npmVersion": "3.9.2",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "@angular/common@2.0.0-rc.3",
-    "scope": "@angular",
-    "escapedName": "@angular%2fcommon",
     "name": "@angular/common",
+    "raw": "@angular/common@2.0.0-rc.3",
     "rawSpec": "2.0.0-rc.3",
+    "scope": "@angular",
     "spec": "2.0.0-rc.3",
     "type": "version"
   },
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/@angular/common/-/common-2.0.0-rc.3.tgz",
+  "_resolved": "http://registry.npmjs.org/@angular/common/-/common-2.0.0-rc.3.tgz",
   "_shasum": "1e5680ff0858aee51b204d5ce5a024ca182ba852",
   "_shrinkwrap": null,
   "_spec": "@angular/common@2.0.0-rc.3",
-  "_where": "/Users/carsten/git/skysail-webconsole/webconsole.client/client",
+  "_where": "C:\\git\\skysail-webconsole\\webconsole.client\\client",
   "author": {
     "name": "angular"
   },
@@ -65,8 +57,8 @@
   "main": "index.js",
   "maintainers": [
     {
-      "name": "angular",
-      "email": "angular-core+npm@google.com"
+      "email": "angular-core+npm@google.com",
+      "name": "angular"
     }
   ],
   "name": "@angular/common",

@@ -1,12 +1,12 @@
-var baseRest = require('./_baseRest'),
-    createWrap = require('./_createWrap'),
+var createWrapper = require('./_createWrapper'),
     getHolder = require('./_getHolder'),
-    replaceHolders = require('./_replaceHolders');
+    replaceHolders = require('./_replaceHolders'),
+    rest = require('./rest');
 
-/** Used to compose bitmasks for function metadata. */
-var WRAP_BIND_FLAG = 1,
-    WRAP_BIND_KEY_FLAG = 2,
-    WRAP_PARTIAL_FLAG = 32;
+/** Used to compose bitmasks for wrapper metadata. */
+var BIND_FLAG = 1,
+    BIND_KEY_FLAG = 2,
+    PARTIAL_FLAG = 32;
 
 /**
  * Creates a function that invokes the method at `object[key]` with `partials`
@@ -53,13 +53,13 @@ var WRAP_BIND_FLAG = 1,
  * bound('hi');
  * // => 'hiya fred!'
  */
-var bindKey = baseRest(function(object, key, partials) {
-  var bitmask = WRAP_BIND_FLAG | WRAP_BIND_KEY_FLAG;
+var bindKey = rest(function(object, key, partials) {
+  var bitmask = BIND_FLAG | BIND_KEY_FLAG;
   if (partials.length) {
     var holders = replaceHolders(partials, getHolder(bindKey));
-    bitmask |= WRAP_PARTIAL_FLAG;
+    bitmask |= PARTIAL_FLAG;
   }
-  return createWrap(key, bitmask, object, partials, holders);
+  return createWrapper(key, bitmask, object, partials, holders);
 });
 
 // Assign default placeholders.

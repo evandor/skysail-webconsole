@@ -15,15 +15,6 @@ export declare class TreeModel implements ITreeModel {
     activeNodes: TreeNode[];
     _focusedNode: TreeNode;
     focusedNodeId: string;
-    _dragNode: {
-        node: TreeNode;
-        index: number;
-    };
-    _dropLocation: {
-        component: any;
-        node: TreeNode;
-        index: number;
-    };
     static focusedTree: any;
     private events;
     virtualRoot: TreeNode;
@@ -31,8 +22,8 @@ export declare class TreeModel implements ITreeModel {
     eventNames: string[];
     setData({nodes, options, events}: {
         nodes: any;
-        options: any;
-        events: any;
+        options?: any;
+        events?: any;
     }): void;
     update(): void;
     _calculateExpandedNodes(startNode?: any): void;
@@ -43,9 +34,8 @@ export declare class TreeModel implements ITreeModel {
     getActiveNode(): TreeNode;
     getActiveNodes(): TreeNode[];
     getTreeNode(node: any, parent: TreeNode): TreeNode;
-    getVisibleRoots(): TreeNode[];
-    getFirstRoot(skipHidden?: boolean): TreeNode;
-    getLastRoot(skipHidden?: boolean): TreeNode;
+    getFirstRoot(): TreeNode;
+    getLastRoot(): TreeNode;
     isFocused: boolean;
     isNodeFocused(node: any): boolean;
     setFocus(value: any): void;
@@ -65,41 +55,7 @@ export declare class TreeModel implements ITreeModel {
     focusDrillDown(): void;
     focusDrillUp(): void;
     isActive(node: any): boolean;
-    setActiveNode(node: any, value: any, multi?: boolean): void;
-    _setActiveNodeSingle(node: any, value: any): void;
-    _setActiveNodeMulti(node: any, value: any): void;
+    setActiveNode(node: any, value: any): void;
     isExpanded(node: any): boolean;
     setExpandedNode(node: any, value: any): void;
-    performKeyAction(node: any, $event: any): boolean;
-    filterNodes(filter: any, autoShow?: boolean): void;
-    clearFilter(): void;
-    canMoveNode({from, to}: {
-        from: any;
-        to: any;
-    }): boolean;
-    moveNode({from, to}: {
-        from: any;
-        to: any;
-    }): void;
-    setDragNode(dragNode: {
-        node: TreeNode;
-        index: number;
-    }): void;
-    getDragNode(): {
-        node: TreeNode;
-        index: number;
-    };
-    isDragging(): TreeNode;
-    setDropLocation(dropLocation: {
-        component: any;
-        node: TreeNode;
-        index: number;
-    }): void;
-    getDropLocation(): {
-        component: any;
-        node: TreeNode;
-        index: number;
-    };
-    isDraggingOver(component: any): boolean;
-    cancelDrag(): void;
 }

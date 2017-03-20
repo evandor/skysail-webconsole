@@ -1,6 +1,5 @@
 export declare const TREE_EVENTS: {
     onToggle: string;
-    onToggleExpanded: string;
     onActiveChanged: string;
     onActivate: string;
     onDeactivate: string;
@@ -10,6 +9,4 @@ export declare const TREE_EVENTS: {
     onContextMenu: string;
     onInitialized: string;
     onUpdateData: string;
-    onMoveNode: string;
-    onEvent: string;
 };

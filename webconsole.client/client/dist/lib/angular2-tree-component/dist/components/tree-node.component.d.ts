@@ -1,17 +1,9 @@
-import { ElementRef, AfterViewInit, TemplateRef } from '@angular/core';
+import { DynamicComponentLoader, ElementRef, AfterViewInit } from '@angular/core';
 import { TreeNode } from '../models/tree-node.model';
-import { ITreeNodeTemplate } from './tree-node-content.component';
 export declare class TreeNodeComponent implements AfterViewInit {
+    private componentLoader;
     private elementRef;
     node: TreeNode;
-    nodeIndex: number;
-    treeNodeContentTemplate: TemplateRef<ITreeNodeTemplate>;
-    loadingTemplate: TemplateRef<any>;
-    onDragStart(): void;
-    onDragEnd(): void;
-    onDragOver($event: any): void;
-    onDrop($event: any): void;
-    onDragLeave(nodeContentWrapper: any, $event: any): void;
-    constructor(elementRef: ElementRef);
+    constructor(componentLoader: DynamicComponentLoader, elementRef: ElementRef);
     ngAfterViewInit(): void;
 }

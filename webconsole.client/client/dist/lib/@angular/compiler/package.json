@@ -1,21 +1,14 @@
 {
   "_args": [
     [
-      {
-        "raw": "@angular/compiler@2.0.0-rc.3",
-        "scope": "@angular",
-        "escapedName": "@angular%2fcompiler",
-        "name": "@angular/compiler",
-        "rawSpec": "2.0.0-rc.3",
-        "spec": "2.0.0-rc.3",
-        "type": "version"
-      },
-      "/Users/carsten/git/skysail-webconsole/webconsole.client/client"
+      "@angular/compiler@2.0.0-rc.3",
+      "C:\\git\\skysail-webconsole\\webconsole.client\\client"
     ]
   ],
   "_from": "@angular/compiler@2.0.0-rc.3",
   "_id": "@angular/compiler@2.0.0-rc.3",
   "_inCache": true,
+  "_installable": true,
   "_location": "/@angular/compiler",
   "_nodeVersion": "5.4.1",
   "_npmOperationalInternal": {
@@ -23,28 +16,27 @@
     "tmp": "tmp/compiler-2.0.0-rc.3.tgz_1466553879846_0.6204756153747439"
   },
   "_npmUser": {
-    "name": "angular",
-    "email": "angular-core+npm@google.com"
+    "email": "angular-core+npm@google.com",
+    "name": "angular"
   },
   "_npmVersion": "3.9.2",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "@angular/compiler@2.0.0-rc.3",
-    "scope": "@angular",
-    "escapedName": "@angular%2fcompiler",
     "name": "@angular/compiler",
+    "raw": "@angular/compiler@2.0.0-rc.3",
     "rawSpec": "2.0.0-rc.3",
+    "scope": "@angular",
     "spec": "2.0.0-rc.3",
     "type": "version"
   },
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/@angular/compiler/-/compiler-2.0.0-rc.3.tgz",
+  "_resolved": "http://registry.npmjs.org/@angular/compiler/-/compiler-2.0.0-rc.3.tgz",
   "_shasum": "bba3da8419bec5103314326961971693ed1e1ee0",
   "_shrinkwrap": null,
   "_spec": "@angular/compiler@2.0.0-rc.3",
-  "_where": "/Users/carsten/git/skysail-webconsole/webconsole.client/client",
+  "_where": "C:\\git\\skysail-webconsole\\webconsole.client\\client",
   "author": {
     "name": "angular"
   },
@@ -65,8 +57,8 @@
   "main": "index.js",
   "maintainers": [
     {
-      "name": "angular",
-      "email": "angular-core+npm@google.com"
+      "email": "angular-core+npm@google.com",
+      "name": "angular"
     }
   ],
   "name": "@angular/compiler",

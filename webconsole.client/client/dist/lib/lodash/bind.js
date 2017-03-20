@@ -1,11 +1,11 @@
-var baseRest = require('./_baseRest'),
-    createWrap = require('./_createWrap'),
+var createWrapper = require('./_createWrapper'),
     getHolder = require('./_getHolder'),
-    replaceHolders = require('./_replaceHolders');
+    replaceHolders = require('./_replaceHolders'),
+    rest = require('./rest');
 
-/** Used to compose bitmasks for function metadata. */
-var WRAP_BIND_FLAG = 1,
-    WRAP_PARTIAL_FLAG = 32;
+/** Used to compose bitmasks for wrapper metadata. */
+var BIND_FLAG = 1,
+    PARTIAL_FLAG = 32;
 
 /**
  * Creates a function that invokes `func` with the `this` binding of `thisArg`
@@ -27,9 +27,9 @@ var WRAP_BIND_FLAG = 1,
  * @returns {Function} Returns the new bound function.
  * @example
  *
- * function greet(greeting, punctuation) {
+ * var greet = function(greeting, punctuation) {
  *   return greeting + ' ' + this.user + punctuation;
- * }
+ * };
  *
  * var object = { 'user': 'fred' };
  *
@@ -42,13 +42,13 @@ var WRAP_BIND_FLAG = 1,
  * bound('hi');
  * // => 'hi fred!'
  */
-var bind = baseRest(function(func, thisArg, partials) {
-  var bitmask = WRAP_BIND_FLAG;
+var bind = rest(function(func, thisArg, partials) {
+  var bitmask = BIND_FLAG;
   if (partials.length) {
     var holders = replaceHolders(partials, getHolder(bind));
-    bitmask |= WRAP_PARTIAL_FLAG;
+    bitmask |= PARTIAL_FLAG;
   }
-  return createWrap(func, bitmask, thisArg, partials, holders);
+  return createWrapper(func, bitmask, thisArg, partials, holders);
 });
 
 // Assign default placeholders.

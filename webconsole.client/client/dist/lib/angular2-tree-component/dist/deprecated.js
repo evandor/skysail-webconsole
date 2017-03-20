@@ -1,6 +1,0 @@
-"use strict";
-function deprecated(methodName, alternative) {
-    console.warn(methodName + " is deprecated.\n    please use " + alternative + " instead");
-}
-exports.deprecated = deprecated;
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZGVwcmVjYXRlZC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uL2xpYi9kZXByZWNhdGVkLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFBQSxvQkFBMkIsVUFBVSxFQUFFLFdBQVc7SUFDaEQsT0FBTyxDQUFDLElBQUksQ0FBSSxVQUFVLHdDQUNYLFdBQVcsYUFBVSxDQUFDLENBQUM7QUFDeEMsQ0FBQztBQUhlLGtCQUFVLGFBR3pCLENBQUEiLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgZnVuY3Rpb24gZGVwcmVjYXRlZChtZXRob2ROYW1lLCBhbHRlcm5hdGl2ZSkge1xuICBjb25zb2xlLndhcm4oYCR7bWV0aG9kTmFtZX0gaXMgZGVwcmVjYXRlZC5cbiAgICBwbGVhc2UgdXNlICR7YWx0ZXJuYXRpdmV9IGluc3RlYWRgKTtcbn1cbiJdfQ==

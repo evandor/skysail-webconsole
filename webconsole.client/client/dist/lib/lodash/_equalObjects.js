@@ -1,13 +1,8 @@
-var keys = require('./keys');
+var baseHas = require('./_baseHas'),
+    keys = require('./keys');
 
-/** Used to compose bitmasks for value comparisons. */
-var COMPARE_PARTIAL_FLAG = 1;
-
-/** Used for built-in method references. */
-var objectProto = Object.prototype;
-
-/** Used to check objects for own properties. */
-var hasOwnProperty = objectProto.hasOwnProperty;
+/** Used to compose bitmasks for comparison styles. */
+var PARTIAL_COMPARE_FLAG = 2;
 
 /**
  * A specialized version of `baseIsEqualDeep` for objects with support for
@@ -16,14 +11,15 @@ var hasOwnProperty = objectProto.hasOwnProperty;
  * @private
  * @param {Object} object The object to compare.
  * @param {Object} other The other object to compare.
- * @param {number} bitmask The bitmask flags. See `baseIsEqual` for more details.
- * @param {Function} customizer The function to customize comparisons.
  * @param {Function} equalFunc The function to determine equivalents of values.
+ * @param {Function} customizer The function to customize comparisons.
+ * @param {number} bitmask The bitmask of comparison flags. See `baseIsEqual`
+ *  for more details.
  * @param {Object} stack Tracks traversed `object` and `other` objects.
  * @returns {boolean} Returns `true` if the objects are equivalent, else `false`.
  */
-function equalObjects(object, other, bitmask, customizer, equalFunc, stack) {
-  var isPartial = bitmask & COMPARE_PARTIAL_FLAG,
+function equalObjects(object, other, equalFunc, customizer, bitmask, stack) {
+  var isPartial = bitmask & PARTIAL_COMPARE_FLAG,
       objProps = keys(object),
       objLength = objProps.length,
       othProps = keys(other),
@@ -35,18 +31,17 @@ function equalObjects(object, other, bitmask, customizer, equalFunc, stack) {
   var index = objLength;
   while (index--) {
     var key = objProps[index];
-    if (!(isPartial ? key in other : hasOwnProperty.call(other, key))) {
+    if (!(isPartial ? key in other : baseHas(other, key))) {
       return false;
     }
   }
   // Assume cyclic values are equal.
   var stacked = stack.get(object);
-  if (stacked && stack.get(other)) {
+  if (stacked) {
     return stacked == other;
   }
   var result = true;
   stack.set(object, other);
-  stack.set(other, object);
 
   var skipCtor = isPartial;
   while (++index < objLength) {
@@ -61,7 +56,7 @@ function equalObjects(object, other, bitmask, customizer, equalFunc, stack) {
     }
     // Recursively compare objects (susceptible to call stack limits).
     if (!(compared === undefined
-          ? (objValue === othValue || equalFunc(objValue, othValue, bitmask, customizer, stack))
+          ? (objValue === othValue || equalFunc(objValue, othValue, customizer, bitmask, stack))
           : compared
         )) {
       result = false;
@@ -82,7 +77,6 @@ function equalObjects(object, other, bitmask, customizer, equalFunc, stack) {
     }
   }
   stack['delete'](object);
-  stack['delete'](other);
   return result;
 }
 

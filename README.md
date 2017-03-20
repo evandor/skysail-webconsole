@@ -70,6 +70,9 @@ Bundle Details
 # Try it
 
 * Start an OSGi framework where you have access to the console (e.g. ./eclipse -console)
+* clone or download this github repository and run "gradlew clean build"
+* install file:///C:/git/skysail-webconsole/webconsole.all/generated/webconsole.all.jar
+
 * to use the current build, run "install http://jenkins.twentyeleven.de/job/skysail-webconsole/ws/cnf/release/webconsole.all/webconsole.all-0.1.17.jar" in the console
 * get the bundle id of the new webconsole bundle (e.g. by running "ss" (equinox) or "lb" (felix)
 * start the bundle: "start &lt;bundleId&gt;"

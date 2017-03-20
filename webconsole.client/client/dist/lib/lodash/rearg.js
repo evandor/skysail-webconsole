@@ -1,8 +1,9 @@
-var createWrap = require('./_createWrap'),
-    flatRest = require('./_flatRest');
+var baseFlatten = require('./_baseFlatten'),
+    createWrapper = require('./_createWrapper'),
+    rest = require('./rest');
 
-/** Used to compose bitmasks for function metadata. */
-var WRAP_REARG_FLAG = 256;
+/** Used to compose bitmasks for wrapper metadata. */
+var REARG_FLAG = 256;
 
 /**
  * Creates a function that invokes `func` with arguments arranged according
@@ -26,8 +27,8 @@ var WRAP_REARG_FLAG = 256;
  * rearged('b', 'c', 'a')
  * // => ['a', 'b', 'c']
  */
-var rearg = flatRest(function(func, indexes) {
-  return createWrap(func, WRAP_REARG_FLAG, undefined, undefined, undefined, indexes);
+var rearg = rest(function(func, indexes) {
+  return createWrapper(func, REARG_FLAG, undefined, undefined, undefined, baseFlatten(indexes, 1));
 });
 
 module.exports = rearg;

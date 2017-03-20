@@ -1,31 +1,16 @@
-[![npm version](https://badge.fury.io/js/angular2-tree-component.svg)](https://badge.fury.io/js/angular2-tree-component)
 # angular2 tree component
 
-## A full featured tree component for Angular 2
-We've built so many projects that required a tree component, and could never find a library that supported all features.
-And building your own tree component is not an easy task.
+## Why use this library
 
-So, we decided to build one for Angular 2, with all the features you can think of:
 * Simple to use
 * Well Documented
+* Customizable (display fields, children's field, custom templates, etc...)
+* Events
+* API for accessing & altering the tree state
 * Keyboard navigation
 * Async data
-* Drag & Drop
-* Select & Multiselect
-* Filtering
-* Customizable (override field names, custom templates, etc...)
-* Event callbacks
-* API for accessing & altering the tree state
 * Easily styled (comes with very minimal styling)
 
-If you like this, support the project by starring it!
-
-## Angular 2 supported version
-angular2-tree-component supports angular 2.0.0 release
-
-## Demo & full documentation:
-Please refer to the full documentation:  
-[https://angular2-tree.readme.io/docs](https://angular2-tree.readme.io/docs)
 
 ## Examples
 ```
@@ -65,6 +50,10 @@ and add these lines to systemjs.config.js:
   };
 ```
 
+## Demo & full documentation:
+Please refer to the full documentation:  
+[https://angular2-tree.readme.io/docs](https://angular2-tree.readme.io/docs)
+
 ## What's next
 We would always love to hear suggestions for features & improvements - just open an issue.
 
@@ -72,13 +61,9 @@ Also, if there's anyone who created an awesome theme for angular2-tree-component
 
 Some things on our mind down the road:
 * virtual scroll
+* drag & drop behaviour in the tree
 * context menu
 * save & restore tree state
+* support both children-padding & computed level-based padding
 * checkbox & master checkbox support
-
-## Contributing
-There are currently no unit tests (yet).
-
-However, if you wish to contribute code, you can run `npm run example:webpack` and open localhost:3000 to test your code manually before submitting a pull request.
-
-Please email me at adam@500tech.com before starting to work on a feature / bug to make sure it's something that I'm not working on already.
+* filter & search

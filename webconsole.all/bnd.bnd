@@ -13,7 +13,6 @@ Bundle-Activator: io.skysail.webconsole.all.WebconsoleAllActivator
     webconsole.osgi;version=${webconsole.osgi.version},\
     ${osgi},\
     ${testlibs},\
-    ${fasterxml},\
     lombok;version=1.16
 
 Export-Package: \

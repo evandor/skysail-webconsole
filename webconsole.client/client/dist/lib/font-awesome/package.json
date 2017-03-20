@@ -1,53 +1,45 @@
 {
   "_args": [
     [
-      {
-        "raw": "font-awesome@^4.6.3",
-        "scope": null,
-        "escapedName": "font-awesome",
-        "name": "font-awesome",
-        "rawSpec": "^4.6.3",
-        "spec": ">=4.6.3 <5.0.0",
-        "type": "range"
-      },
-      "/Users/carsten/git/skysail-webconsole/webconsole.client/client"
+      "font-awesome@^4.6.3",
+      "C:\\git\\skysail-webconsole\\webconsole.client\\client"
     ]
   ],
   "_from": "font-awesome@>=4.6.3 <5.0.0",
-  "_id": "font-awesome@4.7.0",
+  "_id": "font-awesome@4.6.3",
   "_inCache": true,
+  "_installable": true,
   "_location": "/font-awesome",
   "_nodeVersion": "5.5.0",
   "_npmOperationalInternal": {
-    "host": "packages-18-east.internal.npmjs.com",
-    "tmp": "tmp/font-awesome-4.7.0.tgz_1477344817307_0.6990068354643881"
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/font-awesome-4.6.3.tgz_1464162204853_0.17128069489262998"
   },
   "_npmUser": {
-    "name": "juliankrispel",
-    "email": "julian@goodafternoon.co"
+    "email": "julian@goodafternoon.co",
+    "name": "juliankrispel"
   },
   "_npmVersion": "3.3.12",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "font-awesome@^4.6.3",
-    "scope": null,
-    "escapedName": "font-awesome",
     "name": "font-awesome",
+    "raw": "font-awesome@^4.6.3",
     "rawSpec": "^4.6.3",
+    "scope": null,
     "spec": ">=4.6.3 <5.0.0",
     "type": "range"
   },
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/font-awesome/-/font-awesome-4.7.0.tgz",
-  "_shasum": "8fa8cf0411a1a31afd07b06d2902bb9fc815a133",
+  "_resolved": "http://registry.npmjs.org/font-awesome/-/font-awesome-4.6.3.tgz",
+  "_shasum": "86933651540ee00874c664017f50f2172f6531a2",
   "_shrinkwrap": null,
   "_spec": "font-awesome@^4.6.3",
-  "_where": "/Users/carsten/git/skysail-webconsole/webconsole.client/client",
+  "_where": "C:\\git\\skysail-webconsole\\webconsole.client\\client",
   "author": {
-    "name": "Dave Gandy",
     "email": "dave@fontawesome.io",
+    "name": "Dave Gandy",
     "url": "http://twitter.com/davegandy"
   },
   "bugs": {
@@ -76,13 +68,13 @@
   "devDependencies": {},
   "directories": {},
   "dist": {
-    "shasum": "8fa8cf0411a1a31afd07b06d2902bb9fc815a133",
-    "tarball": "https://registry.npmjs.org/font-awesome/-/font-awesome-4.7.0.tgz"
+    "shasum": "86933651540ee00874c664017f50f2172f6531a2",
+    "tarball": "https://registry.npmjs.org/font-awesome/-/font-awesome-4.6.3.tgz"
   },
   "engines": {
     "node": ">=0.10.3"
   },
-  "gitHead": "a8386aae19e200ddb0f6845b5feeee5eb7013687",
+  "gitHead": "8e241f209faa1dd2182c9fdc9c352d8806504a4e",
   "homepage": "http://fontawesome.io/",
   "keywords": [
     "font",
@@ -95,8 +87,8 @@
   "license": "(OFL-1.1 AND MIT)",
   "maintainers": [
     {
-      "name": "juliankrispel",
-      "email": "julian@goodafternoon.co"
+      "email": "julian@goodafternoon.co",
+      "name": "juliankrispel"
     }
   ],
   "name": "font-awesome",
@@ -108,5 +100,5 @@
   },
   "scripts": {},
   "style": "css/font-awesome.css",
-  "version": "4.7.0"
+  "version": "4.6.3"
 }

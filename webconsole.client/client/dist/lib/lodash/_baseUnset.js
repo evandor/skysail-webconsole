@@ -1,4 +1,6 @@
-var castPath = require('./_castPath'),
+var baseHas = require('./_baseHas'),
+    castPath = require('./_castPath'),
+    isKey = require('./_isKey'),
     last = require('./last'),
     parent = require('./_parent'),
     toKey = require('./_toKey');
@@ -8,13 +10,15 @@ var castPath = require('./_castPath'),
  *
  * @private
  * @param {Object} object The object to modify.
- * @param {Array|string} path The property path to unset.
+ * @param {Array|string} path The path of the property to unset.
  * @returns {boolean} Returns `true` if the property is deleted, else `false`.
  */
 function baseUnset(object, path) {
-  path = castPath(path, object);
+  path = isKey(path, object) ? [path] : castPath(path);
   object = parent(object, path);
-  return object == null || delete object[toKey(last(path))];
+
+  var key = toKey(last(path));
+  return !(object != null && baseHas(object, key)) || delete object[key];
 }
 
 module.exports = baseUnset;

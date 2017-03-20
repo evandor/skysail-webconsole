@@ -1,5 +1,4 @@
-import { OnChanges, TemplateRef } from '@angular/core';
-import { ITreeNodeTemplate } from './tree-node-content.component';
+import { OnChanges } from '@angular/core';
 import { TreeModel } from '../models/tree.model';
 import { TreeOptions } from '../models/tree-options.model';
 export declare class TreeComponent implements OnChanges {
@@ -7,13 +6,10 @@ export declare class TreeComponent implements OnChanges {
     constructor(treeModel: TreeModel);
     _nodes: any[];
     _options: TreeOptions;
-    loadingTemplate: TemplateRef<any>;
-    treeNodeTemplate: TemplateRef<ITreeNodeTemplate>;
     nodes: any[];
     options: TreeOptions;
     focused: boolean;
     onToggle: any;
-    onToggleExpanded: any;
     onActiveChanged: any;
     onActivate: any;
     onDeactivate: any;
@@ -21,10 +17,7 @@ export declare class TreeComponent implements OnChanges {
     onBlur: any;
     onDoubleClick: any;
     onContextMenu: any;
-    onUpdateData: any;
     onInitialized: any;
-    onMoveNode: any;
-    onEvent: any;
     onKeydown($event: any): void;
     onMousedown($event: any): void;
     ngOnChanges(changes: any): void;
