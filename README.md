@@ -19,15 +19,15 @@ just started, needs serious polishing, internally and visually... - just a prove
 
 Bundles Overview:
 
-![screenshot bundles overview](http://jenkins.twentyeleven.de/job/skysail-webconsole/ws/webconsole/etc/docs/webconsole.bundles.png)
+![screenshot bundles overview](http://downloads.skysail.io/skysail-webconsole/img/webconsole.bundles.png)
 
 Package Dependencies Graph
 
-![screenshot bundles package dependencies](http://jenkins.twentyeleven.de/job/skysail-webconsole/ws/webconsole/etc/docs/webconsole.bundles.pkgDep.png)
+![screenshot bundles package dependencies](http://downloads.skysail.io/skysail-webconsole/img/webconsole.bundles.pkgDep.png)
 
 Bundle Details
 
-![screenshot bundle details](http://jenkins.twentyeleven.de/job/skysail-webconsole/ws/webconsole/etc/docs/webconsole.bundle.details.png)
+![screenshot bundle details](http://downloads.skysail.io/skysail-webconsole/img/webconsole.bundle.details.png)
 
 # Demo
 
@@ -67,13 +67,17 @@ Bundle Details
 | Runtime       |                          |                    |
 |               | Overview                 | 0.1.12             |
 
-# Try it
+# Try it (and build yourself)
+
+* clone or download this github repository and run "gradlew clean build"
+* in the folder "... skysail-webconsole/webconsole.all/generated/" a jar file called webconsole.all should be created
+* install it (like described below) using the OSGi console of a running OSGi application like this:
+  "install file:///C:/git/skysail-webconsole/webconsole.all/generated/webconsole.all.jar"
+
+# Try it (with downloaded jar)
 
 * Start an OSGi framework where you have access to the console (e.g. ./eclipse -console)
-* clone or download this github repository and run "gradlew clean build"
-* install file:///C:/git/skysail-webconsole/webconsole.all/generated/webconsole.all.jar
-
-* to use the current build, run "install http://jenkins.twentyeleven.de/job/skysail-webconsole/ws/cnf/release/webconsole.all/webconsole.all-0.1.17.jar" in the console
+* to use the current build, run "install http://downloads.skysail.io/skysail-webconsole/webconsole.all.jar" in the console
 * get the bundle id of the new webconsole bundle (e.g. by running "ss" (equinox) or "lb" (felix)
 * start the bundle: "start &lt;bundleId&gt;"
 * point your browser to "http://localhost:2002" (sorry, port is fixed for now) - chrome is more fun here than firefox than ie...
