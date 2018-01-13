@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Gradle: webconsole.osgi">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/webconsole.osgi/generated/webconsole.osgi.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

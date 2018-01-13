@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Gradle: webconsole.antlr-0.2.2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/cnf/release/webconsole.antlr/webconsole.antlr-0.2.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

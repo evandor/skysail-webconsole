@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="distributionType" value="LOCAL" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleHome" value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.11-bin/452syho4l32rlk2s8ivdjogs8/gradle-2.11" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/cnf" />
+            <option value="$PROJECT_DIR$/webconsole" />
+            <option value="$PROJECT_DIR$/webconsole.all" />
+            <option value="$PROJECT_DIR$/webconsole.antlr" />
+            <option value="$PROJECT_DIR$/webconsole.client" />
+            <option value="$PROJECT_DIR$/webconsole.doc" />
+            <option value="$PROJECT_DIR$/webconsole.it" />
+            <option value="$PROJECT_DIR$/webconsole.osgi" />
+            <option value="$PROJECT_DIR$/webconsole.osgi.it" />
+          </set>
+        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
+        <option name="useAutoImport" value="true" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

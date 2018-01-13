@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Gradle: webconsole.client">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/webconsole.client/generated/webconsole.client.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

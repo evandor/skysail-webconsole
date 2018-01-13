@@ -5,9 +5,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import io.skysail.webconsole.osgi.entities.Entity;
 import org.osgi.framework.ServiceReference;
 
-import io.skysail.domain.Entity;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,6 +15,7 @@ import lombok.Setter;
 public class ServiceReferenceDescriptor implements Entity {
 
     @Setter
+    @Getter
     private String id; // service id
 
     private Map<String, Object> properties = new HashMap<>();
@@ -35,5 +36,10 @@ public class ServiceReferenceDescriptor implements Entity {
             }
         });
 
+    }
+
+    @Override
+    public String getId() {
+        return id;
     }
 }
